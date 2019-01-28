@@ -1,0 +1,106 @@
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Acronyms / abbreviations
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+\newacronym[\glslongpluralkey={Business Processes}]{bp}{BP}{Business Process}
+\newacronym{bpi}{BPI}{Business Process Intelligence}
+\newacronym{bpm}{BPM}{Business Process Management}
+\newacronym{bpmn}{BPMN}{Business Process Model and Notation}
+\newacronym{bpms}{BPMS}{Business Process Management System}
+\newacronym{ecg}{ECG}{event coupling graph}
+\newacronym{fmc}{FMC}{Fundamental Modeling Concepts}
+\newacronym{it}{IT}{Information Technology}
+\newacronym{kpi}{KPI}{Key Performance Indicator}
+\newacronym{obda}{OBDA}{Ontology-based Data Access}
+\newacronym{owl}{OWL}{Web Ontology Language}
+\newacronym{nlp}{NLP}{Natural Language Processing}
+\newacronym{pn}{PN}{Petri net}
+\newacronym{ppi}{PPI}{Process Performance Indicator}
+\newacronym{soa}{SOA}{Service-Oriented Architecture}
+\newacronym{xes}{XES}{eXtensible Event Stream}
+\newacronym{wf}{WF}{workflow}
+\newacronym{wfms}{WfMS}{Workflow Management System}
+%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Keywords
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Automated discovery algorithms -------------------------------
+%
+\newglossaryentry{alpha}{name={$\alpha$},description={the $\alpha$ imperative process discovery algorithm}}
+\newglossaryentry{alphap}{name={$\alpha+$},description={the $\alpha+$ imperative process discovery algorithm}}
+\newglossaryentry{alphapp}{name={$\alpha++$},description={the $\alpha++$ imperative process discovery algorithm}}
+\newglossaryentry{minerful}{name={MINERful},description={the MINERful declarative process discovery algorithm}}
+\newglossaryentry{heuri}{name={Heuristic},description={the Heuristic Miner imperative process discovery algorithm}}
+%
+% Declarative process modelling --------------------------------
+%
+\newglossaryentry{declare}{name={\textsc{Declare}},description={the \textsc{Declare} declarative process modelling language}}
+%
+% Log, trace, event --------------------------------------------
+%
+% log alphabet
+\def\LogAlph {\ensuremath{\mathcal{A}}}
+\newglossaryentry{logalph}{
+	name={log alphabet},description={process alphabet, as reflected in the log},%
+	symbol={\LogAlph}}
+
+% event universe
+\def\EvtUniv {\ensuremath{\mathcal{E}}\xspace}
+\newglossaryentry{evtuniv}{
+	name={log alphabet},description={universe of events},%
+	symbol={\LogAlph}}
+
+%
+% event
+\def\Evt {\ensuremath{e}}
+\newglossaryentry{evt}{
+	name={event},description={a record of an instantaneous fact during the process enactment},%
+	symbol={\EvtUniv}}
+
+%
+% perspective
+\def\Perspective {\ensuremath{P}}\xspace
+\newglossaryentry{persp}{
+	name={event},description={a perspective},%
+	symbol={\Perspective}}
+%
+% trace
+\def\Trace {\ensuremath{\sigma}}\xspace
+\newglossaryentry{evttrace}{
+	name={trace},description={a sequence of \glsentrytext{event}s},%
+	symbol={\Trace}}
+%
+% event log
+\def\EvtLog {\ensuremath{L}}
+\newglossaryentry{evtlog}{
+	name={event log},description={a collection of \glsentrytext{trace}s},%
+	symbol={\EvtLog}}
+
+%
+% event log
+\def\AttrVal {\ensuremath{\#}}
+\newglossaryentry{attrVal}{
+	name={event log},description={a collection of attribute values},%
+	symbol={\AttrVal}}
+
+%
+% task
+\newglossaryentry{task}{%
+	name={task},description={The non-divisible, elementary activity}}
+
+% Pool of Events
+\def\EventsPool {\ensuremath{PL}}
+\newglossaryentry{eventspool}{
+	name={Events Pool},description={A pool of events, where events are stored},%
+	symbol={\EventsPool}}
+
+%
+% repetitiveness
+\def\Repet {\ensuremath{Rep}}\xspace
+\newglossaryentry{repetitiveness}{
+	name={repetitiveness},description={fraction of uniqueness of an attribute},%
+	symbol={\Repet}}
+

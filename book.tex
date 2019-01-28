@@ -1,0 +1,104 @@
+%%%%%%%%%%%%%%%%%%%% book.tex %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% sample root file for the chapters of your "monograph"
+%
+% Use this file as a template for your own input.
+%
+%%%%%%%%%%%%%%%% Springer-Verlag %%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% RECOMMENDED %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[graybox,envcountchap,a4paper]{svmono}
+
+% choose options for [] as required from the list
+% in the Reference Guide
+
+%\usepackage{mathptmx}
+%\usepackage{helvet}
+%\usepackage{courier}
+%
+
+\input{addon/pkgloading.tex}
+
+%
+%\AtBeginDocument{
+%	\hypersetup{pdftitle=Mining software development projects} % Set the PDF's title to your title
+%	\hypersetup{pdfauthor=Saimir Bala} % Set the PDF's author to your name
+%	\hypersetup{pdfkeywords={software development, business process management, visualisation, project mining}} % Set the PDF's keywords to your keywords
+%}
+
+
+% see the list of further useful packages
+% in the Reference Guide
+
+\makeindex             % used for the subject index
+                       % please use the style svind.ist with
+                       % your makeindex program
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+\author{Saimir Bala}
+\title{Mining software development projects}
+\subtitle{-- Monograph --}
+%\maketitle
+
+\frontmatter%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\include{chap/dedication}
+\include{chap/abstract}
+%\include{chap/foreword}
+%\include{chap/preface}
+\include{chap/acknowledgement}
+
+\tableofcontents
+
+\listoffigures
+
+\listoftables
+
+\include{chap/acronym}
+
+\mainmatter%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\include{part}
+
+\include{chap/chapter}
+
+\include{chap/ch1Intro}
+
+\include{chap/ch2ProblemBackground}
+
+\include{chap/ch3SolutionBackground}
+
+\include{chap/ch4Bpm1ProjectMining}
+
+\include{chap/ch5Bpm2TimeSeries}
+
+\include{chap/ch6DamjanUsefulnes}
+
+\include{chap/ch7Aron}
+
+\include{chap/ch8Discussion}
+
+\include{chap/ch9Conclusion}
+
+\include{chap/appendix}
+\nocite{*}
+
+\bibliographystyle{spmpsci}
+\bibliography{bib/bala,bib/biblio}
+
+\backmatter%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\include{chap/glossary}
+%\include{chap/solutions}
+\printindex
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}
+
+
+
+
+
