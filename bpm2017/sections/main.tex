@@ -1,0 +1,48 @@
+\section{Conceptual Approach}
+\label{sec:bpm2017approach}
+
+%In this section, we describe our approach for mining software development projects. First, we give an overview of the approach itself, then we formally define concepts required by our technique.
+
+%Version control systems (VCSs) are used in projects to ensure reliable collaboration.
+%We build our technique on \gls{vcs}. In this context, project participants work on files (e.g., text, source code, spread sheets) and commit their changes to a central repository, which maintains information on the work history.
+
+We propose a technique to extract and represent the work history and the dependencies among artifacts of a project-oriented business process. The technique takes as input a \gls{vcs} log and produces analysis data that describe the evolution of the artifacts, along with metrics about their distance and their similarity in terms of work.
+The process is depicted in \Cref{fig:visualization-process} and consists of three successive steps towards extracting hidden work dependencies from \gls{vcs} event data. The method works under three main assumptions. First, we assume a \emph{meaningful tree structure}, i.e. the project participants organize the files in a representative hierarchy (e.g., spatially separating documentation from testing into different folders). Second, project participants perform \emph{regular commits} in the \gls{vcs}. Third, project participants write \emph{descriptive comments} that allow other members to understand the changes.
+
+%\begin{itemize}
+%	\item [A1:] {\bf Meaningful file tree structure.} The file tree structure in a project represents the structure of work of the project participants.
+%	\item [A2:] {\bf Frequent commits.} Commits to the VCS are regularly performed.
+%	\item [A3:] {\bf Meaningful comments.} The comments included by project participant when committing their work represent the changes done to the file being commit.
+%\end{itemize}
+%\vspace*{-.5cm}
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=.7\textwidth]{bpm2017/figures/visualization-process-crop}
+	\caption[Approach for generating analysis data from VCS logs]{Approach for generating analysis data from VCS logs}
+	\label{fig:visualization-process}
+\end{figure}
+
+The first step of the technique is the preprocessing of the \gls{vcs} log received as input. The main goal of this phase is to generate a set of events and store them into a database. Second, we obtain different views on the stored events. In particular, we are interested in observing
+\begin{inparaenum}[\itshape i)]
+	\item all the commits that affected the files over time;
+	\item the amount of change brought by the commits to the files; and
+	\item the users who issued such commits.
+\end{inparaenum}
+The third phase is responsible for considering the different perspectives defined by the project manager and through the generated views extract the necessary knowledge. In the following, we detail the formal concepts and the algorithm of our technique.
+
+
+
+%\input{sections/approach-overview}
+
+\input{bpm2017/sections/preliminaries}
+
+\input{bpm2017/sections/approach-output}
+
+%\input{sections/metrics}
+
+\input{bpm2017/sections/example}
+
+%\input{sections/story-mining}
+
+%\input{sections/project-mining}
+

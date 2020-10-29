@@ -1,0 +1,27 @@
+\usetikzlibrary{positioning, calc}
+\tikzstyle{activity} = [rectangle, anchor=west, rounded corners, minimum width=2.5cm, minimum height=1.5cm,text centered, draw=black, fill=white!30, text width=3.3cm]
+\tikzstyle{arrow} = [thick,->,-latex, minimum width = 1cm]
+\tikzstyle{event} = [circle,scale=.5, minimum width=1cm, minimum height=1cm,draw,fill=white, text width=1cm]
+\tikzstyle{end event} = [event,ultra thick]
+
+	\begin{tikzpicture}[scale=.3]
+	\begin{scope}[auto, every node/.style={draw}, anchor=west, node distance=4.1cm]
+	\node (start) [event] {};
+	\node (add) [activity, right of=start, xshift=-1.5cm] {Modify \\method A};
+	\node (update) [activity, right of=add, xshift=0cm] {Fix bug};
+	\node (mod) [activity, right of=update, xshift=0cm] {Create model};
+	\node (spec) [activity, right of=mod, xshift=0cm] {Add solver methods};
+	\node (upd) [activity, right of=mod, xshift=4cm] {Implement method B};
+	\node (upd2) [activity, right of=mod, xshift=8cm] {Update model.java};
+	\node (end) [end event, right of=add,  xshift=41.5cm] {};
+
+	\draw [arrow]  (start) -- (add);
+	\draw [arrow]  (add) -- (update);
+ 	\draw [arrow]  (update) -- (mod);
+	\draw [arrow]  (mod) -- (spec);
+	\draw [arrow]  (spec) -- (upd);
+ 	\draw [arrow]  (upd) -- (upd2);
+ 	\draw [arrow]  (upd2) -- (end);
+
+	\end{scope}
+	\end{tikzpicture}

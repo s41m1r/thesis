@@ -1,0 +1,25 @@
+% Please add the following required packages to your document preamble:
+% \usepackage{booktabs}
+% \usepackage{graphicx}
+% \usepackage[normalem]{ulem}
+% \useunder{\uline}{\ul}{}
+%\vspace*{-.3cm}
+%\newcommand{\rowsep}{\vspace*{2pt}}
+%\newcommand{\colsep}{\hspace*{52pt}}
+\begin{table*}[]
+	\caption{An excerpt of a VCS log data}
+	\label{tab:vcs-log-data}
+	\setlength{\tabcolsep}{6pt}
+\centering
+\resizebox{\textwidth}{!}{%
+%\begin{tabular}{@{ }cm{.7cm}m{2cm}m{4.8cm}m{7cm}@{ }}
+\begin{tabular}{@{ }cm{1.8cm}m{1.6cm}m{4cm}m{7cm}@{ }}
+\toprule
+\textbf{Id} & \begin{tabular}[c]{@{}l@{}}\textbf{Project} \\ \textbf{Participant}\end{tabular} & \textbf{Date}                          & \textbf{Comment}                          & \textbf{Diff}                                                                                                                                                                                                                                                                                   \\ \midrule \rowcolor{lightgray}
+1          & John    & 2017-01-31 12:16:30 & Create readme file                   & \begin{tabular}[c]{@{}l@{}}diff --git a/README.md b/README.md\\ @@ -0,0 +1 @@\\+\# StoryMiningSoftwareRepositories\end{tabular}                                                                                                                                                          \\
+2          & Mary    & 2017-02-01 10:13:51 & Add a license                   &  \begin{tabular}[c]{@{}l@{}}diff --git a/README b/README\\ @@ -1,0 +2,3 @@\\ +The MIT License (MIT)\\ +\\ +Copyright (c) 2015 Mary+\end{tabular}                                                                                                                                     \\
+\rowcolor{lightgray} 3          & Paul    & 2017-02-02 16:10:22 & Updated the requirements.               &  \begin{tabular}[c]{@{}l@{}}diff --git a/README.md b/README.md\\ @@ -1,4 +1,5 @@ \\ + \# string 1, string 2, string 3\\ \\ diff --git a/requirements.txt b/requirements.txt\\ @@ -0,0 +1 @@\\ +The software must solve the problems\end{tabular} \\
+4          & Paul    & 2017-02-02 15:00:02 & Implement new requirements &  \begin{tabular}[c]{@{}l@{}}diff --git a/model.java b/model.java\\ @@ -1,9 +1,10 @@ \\ {+public static methodA()\{int newVal=0;}\\ @@ -21,10 +23,11 @@\\ + "1/0",,"0/0",\\ \\ diff --git a/test.java b/test.java\\ @@ -0,0 +1,2 @@\\ +//test method A\\ +testMethodA()\end{tabular}  \\ \bottomrule
+\end{tabular}%
+}
+\end{table*} 

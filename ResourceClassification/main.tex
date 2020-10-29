@@ -1,0 +1,112 @@
+\documentclass[conference]{IEEEtran}
+\usepackage[utf8]{inputenc}
+
+% Graphics
+\usepackage[pdftex]{graphicx}
+\DeclareGraphicsExtensions{.pdf,.jpeg,.jpg,.png,.svg}
+\usepackage{caption}
+\usepackage{subcaption}
+
+\usepackage{rotating}
+\usepackage{tabularx}
+
+\ifCLASSOPTIONcompsoc
+\usepackage[caption=false,font=normalsize,labelfont=sf,textfont=sf]{subfig}
+\else
+\usepackage[caption=false,font=footnotesize]{subfig}
+\fi
+
+% To use inline and other fancy list-like environments (e.g., inparaenum)
+\usepackage{paralist}
+
+% For smart references
+\usepackage{cleveref}
+\crefname{algocf}{Algorithm}{Algorithms}
+\crefname{figure}{figure}{figures}
+\crefname{missingfigure}{fig.}{figs.}
+
+\usepackage[nonumberlist,acronym]{glossaries}
+
+%% Add-ons
+%\input{add-ons/defs}
+\input{add-ons/glossary}
+
+% For side notes, missing figures and inline to-do's
+\usepackage[textsize=scriptsize]{todonotes}
+
+% For enumerating the line numbers
+\usepackage[switch]{lineno}
+%Multirow tables
+\usepackage{multirow}
+%Dashed line in tables
+\usepackage{arydshln}
+\usepackage{booktabs}
+
+\usepackage[section]{placeins}
+
+\usepackage{url}
+\urldef{\wumailaddresses}\path|{firstname.lastname}@wu.ac.at|
+%\urldef{\wumailaddresses}\path|{thomas.thonhofer,michael.aschauer,saimir.bala, andreas.rogge-solti, jan.mendling}@wu.ac.at|
+
+\begin{document}
+
+\title{Resource Classification from Version Control System Logs}
+
+\author{\IEEEauthorblockN{
+      Kushal Agrawal\IEEEauthorrefmark{3},
+      Michael Aschauer\IEEEauthorrefmark{1},
+      Thomas Thonhofer\IEEEauthorrefmark{1},
+Nico Tomsich\IEEEauthorrefmark{2} 
+\\
+Saimir Bala\IEEEauthorrefmark{1},
+Andreas Rogge-Solti\IEEEauthorrefmark{1}
+}
+\IEEEauthorblockA{
+   \IEEEauthorrefmark{3}\tt kushalagrawal1412@gmail.com,\\
+   \IEEEauthorrefmark{2}\tt nico.tomsich@gmail.com,\\  \IEEEauthorrefmark{1}\wumailaddresses}
+%\IEEEauthorblockA{\IEEEauthorrefmark{2}\tt nico.tomsich@gmail.com}
+%\IEEEauthorblockA{\IEEEauthorrefmark{3}\tt kushalagrawal1412@gmail.com}
+\IEEEauthorblockA{Wirtschaftsuniversität Wien\\
+   Institute for Information Business, Vienna, Austria\\}
+}
+
+% make the title area
+\maketitle
+
+% As a general rule, do not put math, special symbols or citations
+% in the abstract
+\begin{abstract}
+	Collaboration in business processes and projects requires a division of responsibilities among the participants. Version control systems allow us to collect profiles of the participants that hint at participants' roles in the collaborative work. The goal of this paper is to automatically classify participants into the roles they fulfill in the collaboration. Two approaches are proposed and compared in this paper. The first approach finds classes of users by applying k-means clustering to users based on attributes calculated for them. The classes identified by the clustering are then used to build a decision tree classification model. The second approach classifies individual commits based on commit messages and file types. The distribution of commit types is used for creating a decision tree classification model. The two approaches are implemented and tested against three real datasets, one from academia and two from industry. Our classification covers 86\% percent of the total commits. The results are evaluated with actual role information that was manually collected from the teams responsible for the analyzed repositories.
+
+%This paper documents a research project with the purpose of classifying users of version control systems based on commit logs. The goal is to create an algorithm which does this classification task automatically. The algorithm is implemented in Python, supported by machine learning and natural language processing tools. Two approaches are developed and used throughout the project. The first approach finds classes of users by applying k-means clustering to users based on attributes calculated for them. The classes identified by the clustering are then used to build a decision tree classification model. The second approach classifies individual commits based on commit message and file types. The commit types are aggregated for each user. The distribution of commit types is used for creating a decision tree classification model. The results are evaluated and improved using actual class information gathered from the teams responsible for the analyzed repositories.This is an exploratory study and the results provide insight into the topic and a basis for further research.\\
+\end{abstract}
+% keywords
+\def\IEEEkeywordsname{Keywords}
+\begin{IEEEkeywords}
+   Role discovery, Version Control Systems, Software Projects
+\end{IEEEkeywords}
+% For peer review papers, you can put extra information on the cover
+% page as needed:
+\ifCLASSOPTIONpeerreview
+\begin{center} \bfseries EDICS Category: 3-BBND \end{center}
+\fi
+%
+% For peerreview papers, this IEEEtran command inserts a page break and
+% creates the second title. It will be ignored for other modes.
+\IEEEpeerreviewmaketitle
+
+%\linenumbers
+\input{sections/Introduction}
+\input{sections/Background}
+\input{sections/Concept}
+\input{sections/Implementation}
+\input{sections/Conclusion}
+
+\section*{Acknowledgment}
+This work has been funded by the Austrian Research Promotion Agency (FFG)
+under grant 845638 (SHAPE) and the European Union’s Seventh Framework Programme under grant 612052 (SERAMIS).
+
+\bibliographystyle{IEEEtran}
+\bibliography{Bibliography}
+
+\end{document}

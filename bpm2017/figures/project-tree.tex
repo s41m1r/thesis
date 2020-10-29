@@ -1,0 +1,49 @@
+\begin{figure}
+	\centering
+%	\scriptsize{
+	\begin{forest}
+		%		for tree={
+		%			font=\ttfamily,
+		%			grow'=0,
+		%			child anchor=west,
+		%			parent anchor=south,
+		%			anchor=west,
+		%			calign=first,
+		%			inner xsep=10pt,
+		%			edge path={
+		%				\noexpand\path [draw, \forestoption{edge}]
+		%				(!u.south west) +(7.5pt,0) |- node[fill,inner sep=1.25pt] {} (.child anchor)\forestoption{edge label};
+		%			},
+		%			before typesetting nodes={
+		%				if n=1
+		%				{insert before={[,phantom]}}
+		%				{}
+		%			},
+		%			fit=band,
+		%			before computing xy={l=15pt},
+		%		}
+		[StoryMiningSoftwareRepositories ($f_1$)
+			[README.md ($f_2$)]
+			[running example ($f_3$)
+				[Requirements ($f_4$)
+					[requirements.txt ($f_5$)]
+				]
+				[Software ($f_6$)
+					[model.java ($f_7$)]
+					[test.java ($f_8$)]
+					[packages ($f_9$) [
+						p1 ($f_{10}$)
+							[visualization.txt ($f_{11}$)]
+						]
+					]
+				]
+				[specification.txt ($f_{12}$)]
+			]
+		]
+	\end{forest}
+%	}
+%	\vspace*{-0.3cm}
+	\caption{File tree describing the file structure in our scenario of use.}
+	\label{fig_fileTreeExample}
+%	\vspace*{-0.3cm}
+\end{figure} 
