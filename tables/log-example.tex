@@ -1,0 +1,23 @@
+% Please add the following required packages to your document preamble:
+% \usepackage{booktabs}
+% \usepackage{multirow}
+\begin{table}[]
+\centering
+\caption{Example of a \gls{vcs} log}
+\vspace{5pt}
+\label{tab:log-example}
+\begin{tabular}{@{}cccll@{}}
+   \toprule
+   \textbf{ID}        & \textbf{Res}       & \textbf{Timestamp}                   & \textbf{Changelist} & \textbf{Comment}                                                                                 \\ \midrule
+   \multirow{2}{*}{1} & \multirow{2}{*}{Y} & \multirow{2}{*}{2014-11-12 11:57:46} & A /file1            & \multirow{2}{*}{Added initial files}                                                             \\
+   &                    &                                      & A /file2            &                                                                                                  \\ \midrule
+   \multirow{2}{*}{2} & \multirow{2}{*}{X} & \multirow{2}{*}{2014-11-14 16:34:07} & M /file1            & \multirow{2}{*}{Developed interfaces}                                                            \\
+   &                    &                                      & M /file2            &                                                                                                  \\ \midrule
+   3                  & W                  & 2014-12-15 13:49:11                  & D /file1            & \begin{tabular}[c]{@{}l@{}}Reviewed interfaces. \\ Delete first. \\ Improve second.\end{tabular} \\ \midrule
+   4                  & W                  & 2015-01-08 16:06:41                  & A /file3            & Added better interface                                                                           \\ \midrule
+   \multirow{2}{*}{5} & \multirow{2}{*}{X} & \multirow{2}{*}{2015-01-13 11:47:09} & M /file2            & Improve backend                                                                                  \\
+   &                    &                                      & M /file3            & Add feature                                                                                      \\ \midrule
+   \multirow{2}{*}{6} & \multirow{2}{*}{Z} & \multirow{2}{*}{2015-01-16 16:50:29} & A /file4            & \multirow{2}{*}{Added tests}                                                                     \\
+   &                    &                                      & A /file5            &                                                                                                  \\ \bottomrule
+\end{tabular}
+\end{table}

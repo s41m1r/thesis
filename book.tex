@@ -8,25 +8,14 @@
 
 
 % RECOMMENDED %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\documentclass[graybox,envcountchap,a4paper]{svmono}
+\documentclass[graybox,envcountchap]{svmono}
 
 % choose options for [] as required from the list
 % in the Reference Guide
 
-%\usepackage{mathptmx}
-%\usepackage{helvet}
-%\usepackage{courier}
-%
-
 \input{addon/pkgloading.tex}
-
-%
-%\AtBeginDocument{
-%	\hypersetup{pdftitle=Mining software development projects} % Set the PDF's title to your title
-%	\hypersetup{pdfauthor=Saimir Bala} % Set the PDF's author to your name
-%	\hypersetup{pdfkeywords={software development, business process management, visualisation, project mining}} % Set the PDF's keywords to your keywords
-%}
-
+\input{addon/commands.tex}
+\input{addon/glossary.tex}
 
 % see the list of further useful packages
 % in the Reference Guide
@@ -46,11 +35,11 @@
 
 \frontmatter%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\include{chap/dedication}
+%\include{chap/dedication}
 \include{chap/abstract}
 %\include{chap/foreword}
 %\include{chap/preface}
-\include{chap/acknowledgement}
+%\include{chap/acknowledgement}
 
 \tableofcontents
 
@@ -75,6 +64,10 @@
 
 \include{chap/ch5Bpm2TimeSeries}
 
+\include{chap/ch5aProjectMining2}
+
+\include{chap/ch5bResourceClassification}
+
 \include{chap/ch6DamjanUsefulnes}
 
 \include{chap/ch7Aron}
@@ -83,15 +76,17 @@
 
 \include{chap/ch9Conclusion}
 
-\include{chap/appendix}
-\nocite{*}
+%\include{chap/appendix}
+%\nocite{*}
 
-\bibliographystyle{spmpsci}
-\bibliography{bib/bala,bib/biblio}
+%\bibliographystyle{spmpsci}´
+\bibliographystyle{apalike}
+\bibliography{bib/bala,bib/biblio,bib/bib-proposal}
 
 \backmatter%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \include{chap/glossary}
 %\include{chap/solutions}
+
 \printindex
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

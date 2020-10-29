@@ -1,0 +1,17 @@
+% Please add the following required packages to your document preamble:
+% \usepackage{booktabs}
+\begin{table}[]
+\centering
+\caption{Available dataset}
+\label{tab:dataset}
+\begin{tabular}{@{}m{2.5cm}m{9cm}@{}}
+\toprule
+\textbf{Log} & \textbf{Description} \\ \midrule
+SHAPE & Industry \gls{vcs} from software development in the railway domain \\
+Github & Logs from real world \gls{oss} development \\
+Github pull requests & Manually annotated pull requests from one real life open source project \\
+Jira & Log data from \gls{its} from industry partner \\
+Asana & Generated dataset from project management tool of industrial partner \\
+Kibana & Event traces from distributed process-agnostic enviroment used to handle communication among several processes \\ \bottomrule
+\end{tabular}
+\end{table}
