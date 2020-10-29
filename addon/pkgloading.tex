@@ -1,16 +1,20 @@
 %% For language-specific hyphenations etc.
-\usepackage[ngerman,english]{babel}
+\usepackage[english]{babel}
 \usepackage[utf8]{inputenc} % Required for inputting international characters
 \usepackage[T1]{fontenc} % Output font encoding for international characters
 \usepackage{lmodern}
-%% For subfigures
-%\usepackage{subcaption}
+% For subfigures
+\usepackage{subcaption}
 %\captionsetup{compatibility=false}
+%Import the natbib package and sets a bibliography  and citation styles
+\usepackage{natbib}
+%\setcitestyle{open={[},authoryear,close={]}}
 % For nice links
-\usepackage{url}
+%\usepackage{url}
 %Arbitrary size font selection 
 \usepackage{type1cm}         
 \usepackage{makeidx}         % allows index generation
+%\usepackage{cropmark}		% fixes \printindex
 \usepackage{graphicx}        % standard LaTeX graphics tool
 % when including figure files
 \graphicspath{{figures/}}
@@ -19,6 +23,7 @@
 
 \usepackage{newtxtext}       % 
 \usepackage{newtxmath}       % selects Times Roman as basic font
+\usepackage{fancyhdr}% http://ctan.org/pkg/fancyhdr
 
 \usepackage{xcolor}
 
@@ -30,7 +35,7 @@
 	pdfsubject={mining software development projects},
 	bookmarksopen=true,
 	bookmarksopenlevel=0,
-	hypertexnames=false,
+	hypertexnames=true,
 	colorlinks=false,       % false: boxed links; true: colored links
 	linkcolor=red,          % color of internal links (change box color with linkbordercolor)
 	citecolor=green,        % color of links to bibliography
@@ -47,13 +52,13 @@
 \usepackage{colortbl}
 
 % Compressed, sorted lists of numerical or partly-numerical citations, as regular text or as superscripts
-\usepackage{cite} 
+%\usepackage{cite} 
 
 %% For math symbols, such as \nexists
 %\usepackage{amssymb}
 %% For more math symbols, such as \mapsfrom
 %\usepackage{stmaryrd}
-%%\usepackage{textcomp}
+\usepackage{textcomp}
 %% For advanced graphics
 %%% For including figures, graphicx.sty has been loaded in
 %%% elsarticle.cls. If you prefer to use the old commands
@@ -74,8 +79,8 @@
 % For side notes, missing figures and inline to-do's
 \usepackage[textsize=scriptsize,backgroundcolor=orange!50]{todonotes}
 %% For specifying kewords and acronyms
-%\usepackage[nonumberlist,acronym,sanitize=none]{glossaries}
-%\glsdisablehyper
+\usepackage[nonumberlist,acronym]{glossaries}
+\glsdisablehyper
 %% For commenting out some parts of the text
 %\usepackage{comment}
 %%\usepackage{etoolbox}
@@ -87,32 +92,43 @@
 %
 %% For smart references
 \usepackage{cleveref}
-%% To have "Figure 3(a)" in place of "Figure 3a" and  "Table 3(a)" in place of "Table 3a"
-%%\captionsetup[subfigure]{subrefformat=simple,labelformat=simple}
-%%    \renewcommand\thesubfigure{(\alph{subfigure})}
-%\captionsetup[subtable]{subrefformat=simple,labelformat=simple}
-%    \renewcommand\thesubtable{(\alph{subtable})}
+\crefname{algocf}{algorithm}{Algorithms}
+\crefname{figure}{figure}{figures}
+\crefname{table}{table}{tables}
+\crefname{missingfigure}{fig.}{figs.}
+\crefname{lstlisting}{listing}{listings}
 %\Crefname{algocf}{Algorithm}{Algorithms}
-%% TikZ/Pgf advanced graphics
-%\usepackage{tkz-base}
-%\usetikzlibrary{decorations.pathmorphing,trees,snakes,arrows,shapes,automata}
+%% To have "Figure 3(a)" in place of "Figure 3a" and  "Table 3(a)" in place of "Table 3a"
+%\captionsetup[subfigure]{subrefformat=simple,labelformat=simple}
+%    \renewcommand\thesubfigure{(\alph{subfigure})}
+\captionsetup[subtable]{subrefformat=simple,labelformat=simple}
+    \renewcommand\thesubtable{(\alph{subtable})}
+
+% TikZ/Pgf advanced graphics
+\usepackage{tkz-base}
+\usetikzlibrary{decorations.pathmorphing,trees,arrows,shapes,automata}
+%Make a tree diagram
+\usepackage{forest}
 %% To use inline and other fancy list-like environments (e.g., inparaenum)
 %\usepackage{paralist}
 %% To divide a text line into multiple columns
 %\usepackage{multicol}
 %% To create good-looking book-style tables
-%\usepackage{booktabs}
+\usepackage{booktabs}
+\usepackage[normalem]{ulem}
+\useunder{\uline}{\ul}{}
+\usepackage{longtable}
 %% To play around with list environments
 %\usepackage{enumitem}
-%% To create multirow cells in tables
-%\usepackage{multirow}
+% To create multirow cells in tables
+\usepackage{multirow}
 %% To create rotated cells in tables
 %\usepackage{rotating}
 %%\usepackage{array}
 %% To create enumerated lists, whose numbering is reversed
 %\usepackage{etaremune}
 %%% To make algorithmic nice-looking pseudocode
-%\usepackage[ruled,linesnumbered]{algorithm2e}
+\usepackage[linesnumbered,ruled,noline]{algorithm2e}
 %%% For creating side-notes
 %% \usepackage{marginnote}
 %% For superimposing symbols over one another within math env.
@@ -129,6 +145,7 @@
 %\usepackage{lineno}
 %% For highlighted text
 %\usepackage{soul}
+\usepackage{float}
 %% To put table environments and co. side by side
 %%\usepackage{floatrow}
 %%\floatsetup[table]{style=plaintop}
@@ -139,3 +156,9 @@
 %% To enable text protrusion
 \usepackage{microtype}
 %%\usepackage[showframe]{geometry}
+\usepackage{xspace}
+\usepackage{pifont}
+\newcommand{\cmark}{\ding{51}}%
+\newcommand{\xmark}{\ding{55}}%
+%% For code
+\usepackage{listings}

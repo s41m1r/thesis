@@ -1,0 +1,10 @@
+\chapter{Resource Classification from Version Control System Logs}
+\label{chap:resource-classfication}
+
+Collaboration in business processes and projects requires a division of responsibilities among the participants. Version control systems allow us to collect profiles of the participants that hint at participants' roles in the collaborative work. The goal of this paper is to automatically classify participants into the roles they fulfill in the collaboration. Two approaches are proposed and compared in this paper. The first approach finds classes of users by applying k-means clustering to users based on attributes calculated for them. The classes identified by the clustering are then used to build a decision tree classification model. The second approach classifies individual commits based on commit messages and file types. The distribution of commit types is used for creating a decision tree classification model. The two approaches are implemented and tested against three real datasets, one from academia and two from industry. Our classification covers 86\% percent of the total commits. The results are evaluated with actual role information that was manually collected from the teams responsible for the analyzed repositories.
+
+\input{ResourceClassification/sections/Introduction}
+\input{ResourceClassification/sections/Background}
+\input{ResourceClassification/sections/Concept}
+\input{ResourceClassification/sections/Implementation}
+\input{ResourceClassification/sections/Conclusion}

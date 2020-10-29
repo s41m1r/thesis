@@ -4,24 +4,58 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 \newacronym[\glslongpluralkey={Business Processes}]{bp}{BP}{Business Process}
+\newacronym{bi}{BI}{Business Intelligence}
 \newacronym{bpi}{BPI}{Business Process Intelligence}
 \newacronym{bpm}{BPM}{Business Process Management}
 \newacronym{bpmn}{BPMN}{Business Process Model and Notation}
 \newacronym{bpms}{BPMS}{Business Process Management System}
+\newacronym{dbms}{DBMS}{database management system}
+\newacronym{dsr}{DSR}{Design Science Research}
+\newacronym{dt}{DT}{decision tree}
 \newacronym{ecg}{ECG}{event coupling graph}
+\newacronym{er}{ER}{entity-relationship}
+\newacronym{etl}{ETL}{extract, transform and load}
+\newacronym{feds}{FEDS}{Framework for Evaluation in Design Science Research}
 \newacronym{fmc}{FMC}{Fundamental Modeling Concepts}
+\newacronym{gt}{GT}{grounded theory}
+\newacronym{gui}{GUI}{graphical user interface}
+\newacronym{ide}{IDE}{Integrated Development Environment}
 \newacronym{it}{IT}{Information Technology}
+\newacronym{its}{ITS}{Issue Tracking System}
 \newacronym{kpi}{KPI}{Key Performance Indicator}
 \newacronym{obda}{OBDA}{Ontology-based Data Access}
+\newacronym{oss}{OSS}{Open-source Software}
+\newacronym{lca}{LCA}{Least Common Ancestor}
+\newacronym{loc}{LOC}{lines of code}
 \newacronym{owl}{OWL}{Web Ontology Language}
+\newacronym{msr}{MSR}{Mining Software Repositories}
 \newacronym{nlp}{NLP}{Natural Language Processing}
+\newacronym{pm}{PM}{Process mining}
 \newacronym{pn}{PN}{Petri net}
 \newacronym{ppi}{PPI}{Process Performance Indicator}
+\newacronym{ram}{RAM}{Reliability, Availability and Maintainability}
+\newacronym{rbac}{RBAC}{Role-Based Access Control}
+\newacronym{rup}{RUP}{Rational Unified Process}
+\newacronym{scm}{SCM}{software configuration management} 
 \newacronym{soa}{SOA}{Service-Oriented Architecture}
+\newacronym{svn}{SVN}{Subversion}
+\newacronym{tm}{TM}{Text Mining}
 \newacronym{xes}{XES}{eXtensible Event Stream}
+\newacronym{vcs}{VCS}{Version Control System}
 \newacronym{wf}{WF}{workflow}
 \newacronym{wfms}{WfMS}{Workflow Management System}
 %
+
+\newacronym{pw}{PW}{project workload}
+\newacronym{tw}{TW}{type of change workload}
+\newacronym{nap}{NAP}{number of authors in project}
+\newacronym{ntp}{NTP}{number of types of work in project}
+\newacronym{pis}{PIS}{specialization of author in each activity type}
+\newacronym{rpis}{RPIS}{specialization of relative author in each activity type}
+\newacronym{pws}{PWS}{specialization of project workload}
+\newacronym{rpws}{RPWS}{specialization of relative project workload}
+\newacronym{uti}{UTI}{User--Activity--Involvement}
+\newacronym{utw}{UTW}{User--Activity--Workload}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Keywords
@@ -54,53 +88,53 @@
 	symbol={\LogAlph}}
 
 %
-% event
-\def\Evt {\ensuremath{e}}
-\newglossaryentry{evt}{
-	name={event},description={a record of an instantaneous fact during the process enactment},%
-	symbol={\EvtUniv}}
-
+%% event
+%\def\Evt {\ensuremath{e}}
+%\newglossaryentry{evt}{
+%	name={event},description={a record of an instantaneous fact during the process enactment},%
+%	symbol={\EvtUniv}}
 %
-% perspective
-\def\Perspective {\ensuremath{P}}\xspace
-\newglossaryentry{persp}{
-	name={event},description={a perspective},%
-	symbol={\Perspective}}
+%%
+%% perspective
+%\def\Perspective {\ensuremath{P}}\xspace
+%\newglossaryentry{persp}{
+%	name={event},description={a perspective},%
+%	symbol={\Perspective}}
+%%
+%% trace
+%\def\Trace {\ensuremath{\sigma}}\xspace
+%\newglossaryentry{evttrace}{
+%	name={trace},description={a sequence of \glsentrytext{event}s},%
+%	symbol={\Trace}}
+%%
+%% event log
+%\def\EvtLog {\ensuremath{L}}
+%\newglossaryentry{evtlog}{
+%	name={event log},description={a collection of \glsentrytext{trace}s},%
+%	symbol={\EvtLog}}
 %
-% trace
-\def\Trace {\ensuremath{\sigma}}\xspace
-\newglossaryentry{evttrace}{
-	name={trace},description={a sequence of \glsentrytext{event}s},%
-	symbol={\Trace}}
+%%
+%% event log
+%\def\AttrVal {\ensuremath{\#}}
+%\newglossaryentry{attrVal}{
+%	name={event log},description={a collection of attribute values},%
+%	symbol={\AttrVal}}
 %
-% event log
-\def\EvtLog {\ensuremath{L}}
-\newglossaryentry{evtlog}{
-	name={event log},description={a collection of \glsentrytext{trace}s},%
-	symbol={\EvtLog}}
-
+%%
+%% task
+%\newglossaryentry{task}{%
+%	name={task},description={The non-divisible, elementary activity}}
 %
-% event log
-\def\AttrVal {\ensuremath{\#}}
-\newglossaryentry{attrVal}{
-	name={event log},description={a collection of attribute values},%
-	symbol={\AttrVal}}
-
+%% Pool of Events
+%\def\EventsPool {\ensuremath{PL}}
+%\newglossaryentry{eventspool}{
+%	name={Events Pool},description={A pool of events, where events are stored},%
+%	symbol={\EventsPool}}
 %
-% task
-\newglossaryentry{task}{%
-	name={task},description={The non-divisible, elementary activity}}
-
-% Pool of Events
-\def\EventsPool {\ensuremath{PL}}
-\newglossaryentry{eventspool}{
-	name={Events Pool},description={A pool of events, where events are stored},%
-	symbol={\EventsPool}}
-
-%
-% repetitiveness
-\def\Repet {\ensuremath{Rep}}\xspace
-\newglossaryentry{repetitiveness}{
-	name={repetitiveness},description={fraction of uniqueness of an attribute},%
-	symbol={\Repet}}
+%%
+%% repetitiveness
+%\def\Repet {\ensuremath{Rep}}\xspace
+%\newglossaryentry{repetitiveness}{
+%	name={repetitiveness},description={fraction of uniqueness of an attribute},%
+%	symbol={\Repet}}
 
