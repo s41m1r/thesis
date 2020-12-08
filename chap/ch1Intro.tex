@@ -183,7 +183,7 @@ Moreover, it provides four steps for choosing an appropriate evaluation strategy
 
 %\input{tables/artifacts-table.tex}
 
-\subsection{Extracting the Temporal Perspective of the Software Development Process (Artifact A1)} 
+\subsection{Discovering the Temporal Perspective of the Software Development Process (Artifact A1)} 
 %~\\\noindent\rule[1ex]{2.5cm}{2pt}~\\	
 Design objectives of \textbf{A1} are \begin{iiilist}
 	\item has to be applicable, 
@@ -216,7 +216,7 @@ This artifact is evaluated through a Quick \& Simple strategy \citep{Venable2016
 
 
 
-\subsection{Extracting the Case Perspective of the Software Development Process (Artifact A2)} 
+\subsection{Discovering the Case Perspective of the Software Development Process (Artifact A2)} 
 %Addresses RQ2.
 %~\\\noindent\rule[1ex]{2.5cm}{2pt}	
 Design objectives of \textbf{A2} include applicability, simplicity and providing comparison of different cases. The following features are designed: 
@@ -240,7 +240,7 @@ This artifact is evaluated through a Technical risk \& Efficacy strategy (see \c
 
 
 
-\subsection{Extracting the Organizational Perspective of the Software Development Process (Artifact A3)}
+\subsection{Discovering the Organizational Perspective of the Software Development Process (Artifact A3)}
 %~\\\noindent\rule[1ex]{2.5cm}{2pt}
 Design objectives of \textbf{A3} include applicability and correct classification of roles. The following features are designed 
 \begin{iiilist}
@@ -257,7 +257,7 @@ This artifact is evaluated through a Quick \& Simple strategy (\cite{Venable2016
 	\item evaluation of results with real data from partners and feedback (summative + naturalistic).
 \end{iiilist}
 
-\subsection{Extracting the Control-Flow Perspective of the Software Development Process (Artifact A4)} 
+\subsection{Discovering the Control-Flow Perspective of the Software Development Process (Artifact A4)} 
 %Addresses RQ2.
 %\rule{3cm}{1pt}
 %~\\\noindent\rule[1ex]{2.5cm}{2pt}
@@ -314,8 +314,10 @@ This artifact is evaluated through a Technical risk \& Efficacy strategy (see \c
 %\end{description}
 
 
-\section{Data Collection}
+\section{Generated Datasets}
 \label{sec:data-collection}
+
+\todo[inline]{Is this the best place for this section?}
 
 This thesis includes the collection of and generation of datasets from real life software projects. These project data were collected both from industrial partners and from \gls{oss}. \Cref{tab:dataset} summarizes the available data. Logs from industrial partner are concerned with specific development activities (e.g., building railway interlocking-system software) and include a sufficient number of events that cover one software release. Logs from \gls{oss} were manually extracted by GitHub repositories. A tool has then been devised to parse these data and use them to populate a database. An original dataset is represented by Github pull requests. This dataset contains a list of manually annotated pull requests using the coding scheme by \cite[]{Majchrzak2016}. An additional output of this thesis will be the creation of a larger dataset using a machine learning approach that is able to automatically categorize pull requests in the classes given by \cite[]{Majchrzak2016}.
 
@@ -354,11 +356,13 @@ This doctoral thesis aims at bridging the gap between automatic analysis of soft
 
 \begin{itemize}
 	
-	\item \textbf{Conceptualization of process-oriented business processes} Processes have been seen so far as repeatable endeavors. However, there are processes which are not repeated exactly in the same way twice. This is the case with project-oriented business processes. Such processes, are conducted as projects, in that they are usually planned a priori and run under limited resources. 
+	\item \textbf{Conceptualization of process-oriented business processes.} Processes have been seen so far as repeatable endeavors. However, there are processes which are not repeated exactly in the same way twice. This is the case with project-oriented business processes. Such processes, are conducted as projects, in that they are usually planned a priori and run under limited resources. 
 	
-	\item \textbf{Visualization} Existing techniques in the software engineering area are able to provide several possible views on the software development. Major visualization techniques can be divided into graph-based \citep{DBLP:journals/ijseke/GermanH06,DBLP:journals/smr/GreevyDG06}, notation-based \cite{DBLP:conf/wcre/McNairGW07}, matrix-based \citep{DBLP:conf/icsm/GirbaDL04} and metaphor-based \cite{DBLP:conf/vissoft/WettelL07}. These visualization techniques help in multiple ways, such as understanding code smells, refactoring, evolution, distribution of work etc. However, most of the works in software engineering area are not process-aware. Thus, this thesis aims at researching the most suitable visualization techniques that help understanding the work process that lays behind software development. 	
+	\item \textbf{Visualization.} Existing techniques in the software engineering area are able to provide several possible views on the software development. Major visualization techniques can be divided into graph-based \citep{DBLP:journals/ijseke/GermanH06,DBLP:journals/smr/GreevyDG06}, notation-based \citep{DBLP:conf/wcre/McNairGW07}, matrix-based \citep{DBLP:conf/icsm/GirbaDL04} and metaphor-based \citep{DBLP:conf/vissoft/WettelL07}. These visualization techniques help in multiple ways, such as understanding code smells, refactoring, evolution, distribution of work etc. However, most of the works in software engineering area are not process-aware. Thus, this thesis aims at researching the most suitable visualization techniques that help understanding the work process that lays behind software development. 	
 
-	\item \textbf{Extension of the scope of process mining} Process mining techniques rely on structured data. These data are typically captured by the standard XES \citep{xes-standard:2015} which defines precisely the input of process mining techniques. This work extends process mining towards mining processes also from data that are not directly represented in the XES standard. 
+	\item \textbf{Extension of the scope of process mining.} Process mining techniques rely on structured data. These data are typically captured by the standard XES \citep{xes-standard:2015} which defines precisely the input of process mining techniques. This work extends process mining towards mining processes also from data that are not directly represented in the XES standard. 
+	
+	\item \textbf{Datasets for further research.} During the course of this research a number of datasets have been generated. These datasets are available for further use by researchers who want to replicate these studies or pursue different goals using the same concepts that this thesis provides. 
 	
 \end{itemize}
 
@@ -376,24 +380,19 @@ This thesis is structured as follows.
 	
 	\item \textbf{Chapter 3: Data-Driven Approaches to Analyzing the Software Process} elaborates on existing solutions and techniques that are present in the literature which are used as a base to develop new artifacts for mining the software process. 
 	
-	\item \textbf{Chapter 4: Mining Project-Oriented Business Processes} tackles the problem of discovering the temporal aspect (RQ1) of the software development process. A visualization technique is presented that simplifies the managers' understanding of such perspective.
+	\item \textbf{Chapter 4: Discovering the Temporal Perspective} tackles the problem of discovering the temporal aspect (RQ1) of the software development process. A visualization technique is presented that simplifies the managers' understanding of such perspective.
 	
-	\item \textbf{Chapter 5: Uncovering the Hidden Co-Evolution in the Work History of Software Projects}  presents an approach that helps understanding how different artifacts co-evolve in software development. With this approach, it is possible to compare how similarly different artifacts evolve and consequently cluster them into similar development cases (RQ2).  
+	\item \textbf{Chapter 5: Discovering the Case Perspective}  presents an approach that helps understanding how different artifacts co-evolve in software development. With this approach, it is possible to compare how similarly different artifacts evolve and consequently cluster them into similar development cases (RQ2).  
 	
-	\item \textbf{Chapter 6: Resource Classification from Version Control System Logs} tackles the problem of automatically identifying emerging roles in software development. Thus, a technique for classifying human-resources (RQ3) based on factual data is presented.
+	\item \textbf{Chapter 6: Discovering the Organizational Perspective} tackles the problem of automatically identifying emerging roles in software development. Thus, a technique for classifying human-resources (RQ3) based on factual data is presented.
 	
-	\item \textbf{Chapter 7: Discovering Activities in Software Development Processes} complements the techniques presented in previous chapter with the information about which activities were executed by resources. These activity labels along with the temporal help understanding the control-flow (RQ4) of the development process.
+	\item \textbf{Chapter 7: Discovering the Control-Flow Perspective} complements the techniques presented in previous chapter with the information about which activities were executed by resources. These activity labels along with the temporal help understanding the control-flow (RQ4) of the development process.
 	
+	\item \textbf{Chapter 8: Further Discovery Approaches} presents two more approaches which use trace data to gather insights on the process. The first approach provides a showcase where trace data analyses of software repositories is combined with subjective information from questionnaire. Mixing these methods helps to better identify issues in and suggest interventions based on facts. The second approach leverages on speech act theory to better understand the work done in by software developers. Unstructured data from conversations is used to analyze collaboration and derive a process (RQ4).
 	
-	\item \textbf{Chapter 8: The Conversational Structure of Problem-Solution Co-Evolution} leverages on speech act theory to better understand the work done in by software developers. Unstructured data from conversations is used to analyze collaboration and derive a process (RQ4).
-	
-	\item \textbf{Chapter 9: Combining Questionnaire and Trace Data} provides a showcase where trace data analyses of software repositories is combined with subjective information from questionnaire. Mixing these methods helps to better identify issues in and suggest interventions based on facts.  
-	
-	\item \textbf{Chapter 10: Conclusion} summarizes the main findings. Further more, it discusses their implications along with future research. 
+	\item \textbf{Chapter 9: Conclusion} summarizes the main findings. Further more, it discusses their implications along with future research. 
 	 	
 \end{itemize}
-
-
 
 
 \section{Related Publications}
@@ -443,7 +442,7 @@ From ongoing work the following publications are expected.
 	
 	\item Process mining pull requests for identifying idea-creation patterns. Collaboration with researchers from Stevens Institute of Technology to be submitted to a class A journal on information systems -- Related to \textbf{RQ4}.
 	
-	\item Mining knowledge intensive processes from pull requests. Collaboration with researchers from Federal University of the State of Rio de Janeiro (UNIRIO) to be submitted to a class A conference. -- Related to \textbf{RQ2} \& \textbf{RQ4}.
+%	\item Mining knowledge intensive processes from pull requests. Collaboration with researchers from Federal University of the State of Rio de Janeiro (UNIRIO) to be submitted to a class A conference. -- Related to \textbf{RQ2} \& \textbf{RQ4}.
 \end{itemize}
 Further work published in the \gls{bpm} area is \cite[]{Wolinski2018}.
 \begin{itemize}

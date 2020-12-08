@@ -1,11 +1,11 @@
-\section{Implementation}
+\subsection{Implementation}
 \label{sec:impl}
 
 We implemented the outlined solution concept in a Python script. This script automatically fetches, processes and analyses the log files and creates a classification model that is based on the extracted information. The following tools are used for implementation:
 
 \begin{description}
 
-\item[Technology.] Python is a general-purpose, high-level programming language. It is open source, easy to use and offers various third party modules\footnote{https://www.python.org/}.
+\item[\textbf{Technology.}] Python is a general-purpose, high-level programming language. It is open source, easy to use and offers various third party modules\footnote{https://www.python.org/}.
 
 \item[\textbf{Machine Learning.}] The Scikit Learn module is used for machine learning\footnote{http://scikit-learn.org/stable/}. We used \glspl*{dt} for classification and regression. \Glspl*{dt} are a supervised learning method whose goal is to create a model that predicts a target feature of variable by inferring existing rules from the data.
 
@@ -17,15 +17,15 @@ Next, we discuss the data selection criteria. While there are many accessible co
 
 \begin{description}
 
-\item[Diversity.] Classification on a single repository might not produce a generally applicable result, whereas using more repositories increases complexity.
+\item[\textbf{Diversity}.] Classification on a single repository might not produce a generally applicable result, whereas using more repositories increases complexity.
 
-\item[Size.] Individual repositories' size is determined by the number of commits.
+\item[\textbf{Size}.] Individual repositories' size is determined by the number of commits.
 
-\item[Roles.] The real roles of the contributors of a repository is required for certain classification steps and the verification of results.
+\item[\textbf{Roles}.] The real roles of the contributors of a repository is required for certain classification steps and the verification of results.
 
-\item[Type.] Differences in organizational aspects of the projects: the type of the development team (e.g. professional or hobby), type of software (e.g. proprietary or open-source), and type of platform (e.g. private server or public repository hosting service) can influence the way repositories are used.
+\item[\textbf{Type}.] Differences in organizational aspects of the projects: the type of the development team (e.g. professional or hobby), type of software (e.g. proprietary or open-source), and type of platform (e.g. private server or public repository hosting service) can influence the way repositories are used.
 
-\item[Backend.] There exists a plethora of version control systems, each with their unique characteristics and formats. The approach should be able to handle popular systems including Subversion (SVN), Git, and Mercurial.
+\item[\textbf{Backend}.] There exists a plethora of version control systems, each with their unique characteristics and formats. The approach should be able to handle popular systems including Subversion (SVN), Git, and Mercurial.
 
 \end{description}
 
@@ -108,7 +108,7 @@ The classification task was done in two ways: 1. Manual analysis of the table an
 The final algorithm including retrieval, processing and analysis of data as well as classification and verification, consists of roughly 700 lines of code. The results for the two approaches are discussed below.
 
 
-\subsection{Results}
+\section{Evaluation}
 
 In the first step of the user-based approach, the most expressive features of the Infinica data set were identified. The solution was tested on the Infinica data set due to the immediate availability of detailed information about the log file. The best results were achieved with the combination of the commit frequency and the occurrence numbers of test related keywords.
 
@@ -265,21 +265,3 @@ For ProM (\Cref{fig:infinica-predict} left) the trained classes are less represe
 Because of the missing designated testers in both test data sets, the initial differentiation between technical and non-technical testers is not possible. Due to the moderate results of user based approach the commit based approach was initiated.
 
 
-
-
-\subsection{Discussion}
-
-Throughout this project we discovered a number of research directions to follow, methods to use and features to analyze, which made our research much more exploratory than originally planned. For our research we picked from a vast selection of potential methods and tools, a small set which seemed promising to us. %Considering the experimental character of the project and the fact that we did not really have an idea of what our findings would look like up front, we achieved quite good results. 
-The user-based approach, which was our initial plan, provided a useful insight into the data but fell short of providing generally applicable results in terms of a classification algorithm. The commit-based approach seems more valuable to us, due to its results and the much larger spectrum of information it delivers for analyzing users. The commit classification method seems quite robust and could with some extensions and refinements become a useful tool for analyzing arbitrary VCS repositories. The user profiles created based on this classification are definitely an interesting source of information and building a classification model on top of them has proven to be a legitimate approach. 
-
-Our first research question (RQ1) can be answered with: Yes, it is possible to classify users based on the information usually found in VCS logs. Our results show that at least for some typical roles in software development there can be enough information in commit messages and file types, to make certain statements about the users who created them. However this is not true for all users, especially when their commit styles and frequencies are very different.
-
-The other two questions are more difficult to answer. The classes to be found can differ between repositories. From our experience, developers can be distinguished from other roles quite easily due to high numbers of commits and/or modified files as well as the usage of certain words and phrases. Testers can also be set apart in most cases, mainly through key words. Looking at the file types of added, modified and deleted files also reveals users in the field of web development. Beyond that there are certainly more differences and classes to be found but they are less obvious and require more research.
-
-What do these results mean for the practical use of resource classification using VCS logs as discussed in \Cref{sec:problemDescription}? One clear finding of our work is that any project team trying to use this kind of classification, should specify and enforce some guidelines for how VCS should be used. They should at least make the usage of commit messages mandatory, ideally also define a structure and vocabulary for them. While the models we created are probably not applicable for an arbitrary team or project, a team could follow our approach to create their own individual model using specific knowledge. For a more generally applicable classification model, additional research and improvements to our solution would be necessary. 
-
-\subsubsection{Limitations}
-
-While our algorithms and models work well for describing our three data sets, it still needs to be tested for other repositories, especially from other domains. This would require testing with more data sets, more verification information and more manual analysis. While fetching more VCS repositories and running them through our algorithms could be done in a short amount of time, obtaining the necessary role information is challenging and the manual analysis time consuming.
-
-A current limitation of analyzing VCS logs is that commit messages are used differently between users, repositories and teams. We have to assume that it is challenging to find one classification model that produces valid results for any VCS repository, because there are ambiguities in what certain statements mean. In the worst case, users omit commit messages, which renders classification based on text impossible.

@@ -107,7 +107,7 @@ In the following, we present an approach to this problem.
 % Here we formally define the agglomeration feature. We can drill-up and drill-down on the data. E.g. show grouped events for folders at different levels.
 % \end{definition}
 
-\subsection{Project Discovery Technique}\label{sec:subsec:discovery_technique}
+\subsection{Time Perspective Discovery}\label{sec:subsec:discovery_technique}
 \begin{figure}[b]
 \centering
 \includegraphics[width=\textwidth]{bpm2015/imgs/Project_discovery}
@@ -118,11 +118,11 @@ For project discovery from the \gls{vcs} commit history, we need to identify act
 Our aim is to create a hierarchical model that provides an overview of the project work.
 Therefore, we have to identify the start and end times of activities and of work packages before we can visualize the project work. The input to the technique is the log that is stored in the \gls{vcs}. The challenge is that the raw log only records commits on the file system level and information on activity level is missing. However, we can deduce activity information from events based on the following assumptions.
 
-\begin{description}
-  \item[A1: Meaningful file tree structure.] The file tree structure in a project represents its work package structure. That is, the knowledge workers organize their work in a file hierarchy that reflects the project structure.
-  \item[A2: Local changes.] Activities in a work package affect only files of the work package folder, or in the corresponding sub-tree in the file tree structure.
-  \item[A3: Frequent commits.] Commits to the \gls{vcs} are regularly performed, when conducting work in an activity.
-\end{description}
+\begin{itemize}
+  \item \textbf{A1: Meaningful file tree structure.} The file tree structure in a project represents its work package structure. That is, the knowledge workers organize their work in a file hierarchy that reflects the project structure.
+  \item \textbf{A2: Local changes.} Activities in a work package affect only files of the work package folder, or in the corresponding sub-tree in the file tree structure.
+  \item \textbf{A3: Frequent commits.} Commits to the \gls{vcs} are regularly performed, when conducting work in an activity.
+\end{itemize}
 
 Note that assumption A1 can be seen as a strong assumption on the file tree structure. Nevertheless, we argue that even if A1 is not entirely met, the aggregation of work information on the file tree hierarchy provides a valuable view on the project.
 Figure~\ref{fig:project_discovery_technique} shows the different steps of the technique. We describe each of them in detail.
