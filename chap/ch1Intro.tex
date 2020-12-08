@@ -1,5 +1,5 @@
 \chapter{Introduction}
-\label{ch1-intro} % Always give a unique label
+\label{chap:intro} % Always give a unique label
 % use \chaptermark{}
 % to alter or adjust the chapter heading in the running head
 
@@ -9,49 +9,41 @@
 \Cref{sec:intro-structure} ... Structure
 }
 
-This chapter provides an introduction of this doctoral thesis. \Cref{sec:intro-motivation} provides the motivation
-	\Cref{sec:intro-contributions} background ... 
-	\Cref{sec:intro-research-paradigm} Research paradigm -- Peffers
-	\Cref{sec:intro-structure} Provides ... Structure
-	\Cref{sec:intro-related-publications} Lists the accepted and under review papers. 
+This chapter provides an introduction of this doctoral thesis. \Cref{sec:intro-motivation} motivation the research. \Cref{sec:problem-definition} defines the problem. \Cref{sec:intro-research-paradigm} gives an overview of the research methodology and defines the artifacts generated as outcome. \Cref{sec:data-collection} briefly discusses the data created and used in this thesis. \Cref{sec:intro-contributions} classifies the contributions of this thesis. \Cref{sec:intro-structure} provides an outlook of the structure, and \Cref{sec:intro-related-publications} lists the publications that have resulted from work on this thesis. 
 
 \section{Motivation}
 \label{sec:intro-motivation}
 
-\todo[inline]{Change to references to AuthorName,Year}
-
-
-\todo{Motivating scenario: highlight questions to which you really answer.}
-
-It is not a communication problem. It is monitoring the status quo problem.
-
-Describe a scenario. 
-
-Create the scenario with the manager who wants to know about 
-- performance
-- who works on what 
-- how long it takes
-
-Show that if we cannot not answer the above questions we run into problems with 
-- budget
-- cost
-- time
-
-How can the manager get help?
-
-Motivation:
-
-- SW. projects are complex
-- Transparency is an issue
-- If you do not know your current status then you have to gather information from different tools
-- If you do not then you as a manager may run into problems such as project out of
-i) time ii) balance iii) quality
-
-General tip:
- 
-- How will be researchers reading your papers? Which journals will you target? Who are the researchers which are interesting in reading your work?
-
-\todo[inline]{Intro + motivation:}
+%
+%\todo{Motivating scenario: highlight questions to which you really answer.}
+%
+%It is not a communication problem. It is monitoring the status quo problem.
+%
+%Describe a scenario. 
+%
+%Create the scenario with the manager who wants to know about 
+%- performance
+%- who works on what 
+%- how long it takes
+%
+%Show that if we cannot not answer the above questions we run into problems with 
+%- budget
+%- cost
+%- time
+%
+%How can the manager get help?
+%
+%Motivation:
+%
+%- SW. projects are complex
+%- Transparency is an issue
+%- If you do not know your current status then you have to gather information from different tools
+%- If you do not then you as a manager may run into problems such as project out of
+%i) time ii) balance iii) quality
+%
+%General tip:
+% 
+%- How will be researchers reading your papers? Which journals will you target? Who are the researchers which are interesting in reading your work?
 
 
 Software development is a process that involves creativity. Yet, practical software development projects are executed with specific requirements on time, budget and quality. In order to fulfill these requirements the development process must be monitored. For example, it is important to know what type of work is being done at a certain moment in time and by whom. This is for instance the case for large development projects where coordination mechanisms emerge spontaneously among developers who want to contribute with their code.
@@ -75,7 +67,7 @@ they involve creativity when executing the tasks, i.e. there exists no strict pr
 \begin{figure}
 	\centering
 	\includegraphics[width=0.4\linewidth]{figures/data-to-work}
-	\caption{Illustration of the problem: work is reflected by available data}
+	\caption{Automatically derive work from trace data}
 	\label{fig:data-to-work}
 \end{figure}
 
@@ -149,18 +141,18 @@ Because the project managers can benefit from a process view to better analyze h
 \section{Research Methodology and Generated Artifacts}
 \label{sec:intro-research-paradigm}
 
-\todo[inline]{Here goes Peffers~\cite[]{Peffers2008}
-	
-	Make clear what type of contribution you are proposing. E.g., engineering: set of techniques, algorithms, etc.
-	
-	This section presents the research method. It also describes the dataset and outlines the expected research outcome.
-}
+%\todo[inline]{Here goes Peffers~\cite[]{Peffers2008}
+%	
+%	Make clear what type of contribution you are proposing. E.g., engineering: set of techniques, algorithms, etc.
+%	
+%	This section presents the research method. It also describes the dataset and outlines the expected research outcome.
+%}
 
 Information systems research is an interdisciplinary field of study that uses theories from social sciences, economics, and computer science. The field can be divided into two complementary paradigms: \emph{behavioral science} and \emph{design science}. Behavioral science aims at developing and justifying theories in order to explain or predict information systems phenomena \cite[]{Gregor2006}. Design science focuses on the creation and evaluation of innovative design \emph{artifacts} \cite[]{Hevner2004}. \Cref{fig:DS-process} illustrates the design science approach as a process~\cite[]{Peffers2008}. 
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=.8\linewidth]{figures/DS-process}
+	\includegraphics[width=\linewidth]{figures/DS-process}
 	\caption{The Design Science Research process, adapted from~\cite[]{Peffers2008}}
 	\label{fig:DS-process}
 \end{figure}
@@ -191,7 +183,7 @@ Moreover, it provides four steps for choosing an appropriate evaluation strategy
 
 %\input{tables/artifacts-table.tex}
 
-\subsection{Extracting the temporal perspective of a process (Artifact A1)} 
+\subsection{Extracting the Temporal Perspective of the Software Development Process (Artifact A1)} 
 %~\\\noindent\rule[1ex]{2.5cm}{2pt}~\\	
 Design objectives of \textbf{A1} are \begin{iiilist}
 	\item has to be applicable, 
@@ -224,7 +216,7 @@ This artifact is evaluated through a Quick \& Simple strategy \citep{Venable2016
 
 
 
-\subsection{Extracting the case perspective of a process (Artifact A2)} 
+\subsection{Extracting the Case Perspective of the Software Development Process (Artifact A2)} 
 %Addresses RQ2.
 %~\\\noindent\rule[1ex]{2.5cm}{2pt}	
 Design objectives of \textbf{A2} include applicability, simplicity and providing comparison of different cases. The following features are designed: 
@@ -248,7 +240,7 @@ This artifact is evaluated through a Technical risk \& Efficacy strategy (see \c
 
 
 
-\subsection{Extracting the organizational perspective of a process (Artifact A3)}
+\subsection{Extracting the Organizational Perspective of the Software Development Process (Artifact A3)}
 %~\\\noindent\rule[1ex]{2.5cm}{2pt}
 Design objectives of \textbf{A3} include applicability and correct classification of roles. The following features are designed 
 \begin{iiilist}
@@ -265,7 +257,7 @@ This artifact is evaluated through a Quick \& Simple strategy (\cite{Venable2016
 	\item evaluation of results with real data from partners and feedback (summative + naturalistic).
 \end{iiilist}
 
-\subsection{Extracting the control-flow perspective of a process (Artifact A4)} 
+\subsection{Extracting the Control-Flow Perspective of the Software Development Process (Artifact A4)} 
 %Addresses RQ2.
 %\rule{3cm}{1pt}
 %~\\\noindent\rule[1ex]{2.5cm}{2pt}
@@ -323,6 +315,7 @@ This artifact is evaluated through a Technical risk \& Efficacy strategy (see \c
 
 
 \section{Data Collection}
+\label{sec:data-collection}
 
 This thesis includes the collection of and generation of datasets from real life software projects. These project data were collected both from industrial partners and from \gls{oss}. \Cref{tab:dataset} summarizes the available data. Logs from industrial partner are concerned with specific development activities (e.g., building railway interlocking-system software) and include a sufficient number of events that cover one software release. Logs from \gls{oss} were manually extracted by GitHub repositories. A tool has then been devised to parse these data and use them to populate a database. An original dataset is represented by Github pull requests. This dataset contains a list of manually annotated pull requests using the coding scheme by \cite[]{Majchrzak2016}. An additional output of this thesis will be the creation of a larger dataset using a machine learning approach that is able to automatically categorize pull requests in the classes given by \cite[]{Majchrzak2016}.
 
@@ -357,11 +350,51 @@ This thesis includes the collection of and generation of datasets from real life
 
 \todo[inline]{Summarize contributions beyond the papers. E.g., visualisation, conceptualisation of process-oriented business processes, etc}
 
+This doctoral thesis aims at bridging the gap between automatic analysis of software development data and process mining. It provides analyses techniques that help learning specific characteristics of the software process from its trace data. Beyond the publications, this thesis makes the following contributions.
+
+\begin{itemize}
+	
+	\item \textbf{Conceptualization of process-oriented business processes} Processes have been seen so far as repeatable endeavors. However, there are processes which are not repeated exactly in the same way twice. This is the case with project-oriented business processes. Such processes, are conducted as projects, in that they are usually planned a priori and run under limited resources. 
+	
+	\item \textbf{Visualization} Existing techniques in the software engineering area are able to provide several possible views on the software development. Major visualization techniques can be divided into graph-based \citep{DBLP:journals/ijseke/GermanH06,DBLP:journals/smr/GreevyDG06}, notation-based \cite{DBLP:conf/wcre/McNairGW07}, matrix-based \citep{DBLP:conf/icsm/GirbaDL04} and metaphor-based \cite{DBLP:conf/vissoft/WettelL07}. These visualization techniques help in multiple ways, such as understanding code smells, refactoring, evolution, distribution of work etc. However, most of the works in software engineering area are not process-aware. Thus, this thesis aims at researching the most suitable visualization techniques that help understanding the work process that lays behind software development. 	
+
+	\item \textbf{Extension of the scope of process mining} Process mining techniques rely on structured data. These data are typically captured by the standard XES \citep{xes-standard:2015} which defines precisely the input of process mining techniques. This work extends process mining towards mining processes also from data that are not directly represented in the XES standard. 
+	
+\end{itemize}
+
+
 
 \section{Thesis Structure}
 \label{sec:intro-structure}
 
-This 
+This thesis is structured as follows. 
+
+\begin{itemize}
+	\item \textbf{Chapter 1: Introduction}  motivates research on the topic of mining processes from software repositories. 
+	
+	\item \textbf{Chapter 2: Research Background} presents the body of knowledge which inform this thesis. 
+	
+	\item \textbf{Chapter 3: Data-Driven Approaches to Analyzing the Software Process} elaborates on existing solutions and techniques that are present in the literature which are used as a base to develop new artifacts for mining the software process. 
+	
+	\item \textbf{Chapter 4: Mining Project-Oriented Business Processes} tackles the problem of discovering the temporal aspect (RQ1) of the software development process. A visualization technique is presented that simplifies the managers' understanding of such perspective.
+	
+	\item \textbf{Chapter 5: Uncovering the Hidden Co-Evolution in the Work History of Software Projects}  presents an approach that helps understanding how different artifacts co-evolve in software development. With this approach, it is possible to compare how similarly different artifacts evolve and consequently cluster them into similar development cases (RQ2).  
+	
+	\item \textbf{Chapter 6: Resource Classification from Version Control System Logs} tackles the problem of automatically identifying emerging roles in software development. Thus, a technique for classifying human-resources (RQ3) based on factual data is presented.
+	
+	\item \textbf{Chapter 7: Discovering Activities in Software Development Processes} complements the techniques presented in previous chapter with the information about which activities were executed by resources. These activity labels along with the temporal help understanding the control-flow (RQ4) of the development process.
+	
+	
+	\item \textbf{Chapter 8: The Conversational Structure of Problem-Solution Co-Evolution} leverages on speech act theory to better understand the work done in by software developers. Unstructured data from conversations is used to analyze collaboration and derive a process (RQ4).
+	
+	\item \textbf{Chapter 9: Combining Questionnaire and Trace Data} provides a showcase where trace data analyses of software repositories is combined with subjective information from questionnaire. Mixing these methods helps to better identify issues in and suggest interventions based on facts.  
+	
+	\item \textbf{Chapter 10: Conclusion} summarizes the main findings. Further more, it discusses their implications along with future research. 
+	 	
+\end{itemize}
+
+
+
 
 \section{Related Publications}
 \label{sec:intro-related-publications}
@@ -373,6 +406,8 @@ This thesis has led to the following number of publications.
 %\cite[]{Bala2015} developed \textbf{A1} that addresses \textbf{RQ1}.
 %\cite[]{Bala2017a} developed \textbf{A2} that addresses \textbf{RQ2}.
 %\cite[]{Agrawal2016} developed \textbf{A3} that addresses \textbf{RQ3}.
+\noindent {Mining the Time Perspective(\textbf{RQ1}):}~\cite[]{Bala2015}
+	
 	\begin{itemize}
 	\item \textbf{Bala, S.}, Cabanillas, C., Mendling, J., Rogge-Solti, A., and Polleres, A.: \textit{Mining Project-Oriented Business Processes}. In Hamid Reza Motahari-Nezhad, Jan Recker, and Matthias Weidlich, editors, BPM 2015, Innsbruck, Austria, volume 9253 of Lecture Notes in Computer Science, pages 425--440. Springer, 2015. \cite[]{Bala2015}
 	\end{itemize}

@@ -9,74 +9,63 @@
 \appendix
 
 \motto{All's well that ends well}
-\chapter{Chapter Heading}
+\chapter{Tables}
 \label{introA} % Always give a unique label
 % use \chaptermark{}
 % to alter or adjust the chapter heading in the running head
 
-Use the template \emph{appendix.tex} together with the Springer document class SVMono (monograph-type books) or SVMult (edited books) to style appendix of your book.
+\section{Dataset from Company A}
 
+Below is the aggregated dataset from company A describing frequency of activity types over the sprints.
 
-\section{Section Heading}
-\label{sec:A1}
-% Always give a unique label
-% and use \ref{<label>} for cross-references
-% and \cite{<label>} for bibliographic references
-% use \sectionmark{}
-% to alter or adjust the section heading in the running head
-Instead of simply listing headings of different levels we recommend to let every heading be followed by at least a short passage of text. Furtheron please use the \LaTeX\ automatism for all your cross-references and citations.
-
-
-\subsection{Subsection Heading}
-\label{sec:A2}
-Instead of simply listing headings of different levels we recommend to let every heading be followed by at least a short passage of text. Furtheron please use the \LaTeX\ automatism for all your cross-references and citations as has already been described in Sect.~\ref{sec:A1}.
-
-For multiline equations we recommend to use the \verb|eqnarray| environment.
-\begin{eqnarray}
-\vec{a}\times\vec{b}=\vec{c} \nonumber\\
-\vec{a}\times\vec{b}=\vec{c}
-\label{eq:A01}
-\end{eqnarray}
-
-\subsubsection{Subsubsection Heading}
-Instead of simply listing headings of different levels we recommend to let every heading be followed by at least a short passage of text. Furtheron please use the \LaTeX\ automatism for all your cross-references and citations as has already been described in Sect.~\ref{sec:A2}.
-
-Please note that the first line of text that follows a heading is not indented, whereas the first lines of all subsequent paragraphs are.
-
-% For figures use
-%
-\begin{figure}[t]
-%\centering
-% Use the relevant command for your figure-insertion program
-% to insert the figure file.
-% For example, with the option graphics use
-\includegraphics[scale=.65]{figure}
-%
-% If not, use
-%\picplace{5cm}{2cm} % Give the correct figure height and width in cm
-%
-\caption{Please write your figure caption here}
-\label{fig:A1}       % Give a unique label
-\end{figure}
-
-% For tables use
-%
-\begin{table}
-\caption{Please write your table caption here}
-\label{tab:A1}       % Give a unique label
-%
-% For LaTeX tables use
-%
-\begin{tabular}{p{2cm}p{2.4cm}p{2cm}p{4.9cm}}
-\hline\noalign{\smallskip}
-Classes & Subclass & Length & Action Mechanism  \\
-\noalign{\smallskip}\hline\noalign{\smallskip}
-Translation & mRNA$^a$  & 22 (19--25) & Translation repression, mRNA cleavage\\
-Translation & mRNA cleavage & 21 & mRNA cleavage\\
-Translation & mRNA  & 21--22 & mRNA cleavage\\
-Translation & mRNA  & 24--26 & Histone and DNA Modification\\
-\noalign{\smallskip}\hline\noalign{\smallskip}
-\end{tabular}
-$^a$ Table foot note (with superscript)
+% Please add the following required packages to your document preamble:
+% \usepackage{booktabs}
+% \usepackage{graphicx}
+\begin{table}[]
+	\centering
+	\caption{Analyzed sprints}
+	\label{tab:sprints-counts}
+	\resizebox{\textwidth}{!}{%
+		\begin{tabular}{@{}llllll@{}}
+			\toprule
+			Sprint & Start Date & End Date   & No. features & No. implementation & No. bugs \\ \midrule
+			1      & 2015-12-30 & 2016-01-12 & 9            & 0                  & 0        \\
+			2      & 2016-01-13 & 2016-01-26 & 18           & 2                  & 1        \\
+			3      & 2016-01-27 & 2016-02-09 & 2            & 0                  & 11       \\
+			4      & 2016-02-10 & 2016-02-23 & 4            & 3                  & 9        \\
+			5      & 2016-02-24 & 2016-03-08 & 5            & 3                  & 17       \\
+			6      & 2016-03-09 & 2016-03-22 & 1            & 0                  & 2        \\
+			7      & 2016-03-23 & 2016-04-05 & 8            & 5                  & 9        \\
+			8      & 2016-04-06 & 2016-04-19 & 5            & 13                 & 12       \\
+			9      & 2016-04-20 & 2016-05-03 & 5            & 5                  & 8        \\
+			10     & 2016-05-04 & 2016-05-17 & 4            & 25                 & 19       \\
+			11     & 2016-05-18 & 2016-05-31 & 4            & 2                  & 28       \\
+			12     & 2016-06-01 & 2016-06-14 & 1            & 10                 & 12       \\
+			13     & 2016-06-15 & 2016-06-28 & 0            & 0                  & 16       \\
+			14     & 2016-06-29 & 2016-07-12 & 0            & 1                  & 10       \\
+			15     & 2016-07-13 & 2016-07-26 & 0            & 6                  & 12       \\
+			16     & 2016-07-27 & 2016-08-09 & 1            & 9                  & 10       \\
+			17     & 2016-08-10 & 2016-08-23 & 2            & 6                  & 4        \\
+			18     & 2016-08-24 & 2016-09-06 & 6            & 13                 & 12       \\
+			19     & 2016-09-07 & 2016-09-20 & 2            & 6                  & 14       \\
+			20     & 2016-09-21 & 2016-10-04 & 6            & 12                 & 12       \\
+			21     & 2016-10-05 & 2016-10-18 & 3            & 13                 & 5        \\
+			22     & 2016-10-19 & 2016-11-01 & 2            & 14                 & 1        \\
+			23     & 2016-11-02 & 2016-11-15 & 0            & 5                  & 5        \\
+			24     & 2016-11-16 & 2016-11-29 & 1            & 6                  & 10       \\
+			25     & 2016-11-30 & 2016-12-13 & 4            & 9                  & 11       \\
+			26     & 2016-12-14 & 2016-12-27 & 0            & 1                  & 12       \\
+			27     & 2016-12-28 & 2017-01-10 & 1            & 4                  & 18       \\
+			28     & 2017-01-11 & 2017-01-24 & 3            & 0                  & 14       \\
+			29     & 2017-01-25 & 2017-02-07 & 1            & 5                  & 12       \\
+			30     & 2017-02-08 & 2017-02-21 & 1            & 0                  & 14       \\
+			31     & 2017-02-22 & 2017-03-07 & 0            & 0                  & 10       \\
+			32     & 2017-03-22 & 2017-04-04 & 0            & 0                  & 8        \\
+			33     & 2017-04-05 & 2017-04-18 & 1            & 0                  & 11       \\
+			34     & 2017-04-19 & 2017-05-02 & 0            & 0                  & 9        \\
+			35     & 2017-05-03 & 2017-05-16 & 4            & 0                  & 5        \\ \bottomrule
+		\end{tabular}%
+	}
 \end{table}
-%
+
+

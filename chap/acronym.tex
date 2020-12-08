@@ -5,12 +5,23 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%% Springer %%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\extrachap{Acronyms}
+%\extrachap{Acronyms}
+%
 
-List of abbreviations used in this thesis.
+\setglossarypreamble[acronym]{List of abbreviations used in this thesis.}
 
-\begin{description}[CABR]
-\item[BPM]{Business Process Management}
-\item[XES]{eXtensible Event Stream}
-%\item[CABR]{Spelled-out abbreviation and definition}
-\end{description}
+%List of abbreviations used in this thesis.
+
+%\begin{description}[CABR]
+%\item[BPM]{Business Process Management}
+%\item[XES]{eXtensible Event Stream}
+%%\item[CABR]{Spelled-out abbreviation and definition}
+%\end{description}
+
+%\glsaddall
+\setglossarystyle{long}
+\setlength\LTleft{0pt}
+\setlength\LTright{0pt}
+\setlength\glsdescwidth{0.8\hsize}
+\renewcommand{\glsnamefont}[1]{\textbf{#1}}
+\printglossary[type=\acronymtype]
