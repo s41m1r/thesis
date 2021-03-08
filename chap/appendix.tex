@@ -8,22 +8,21 @@
 
 \appendix
 
-\motto{All's well that ends well}
-\chapter{Tables}
+%\motto{All's well that ends well}
+\chapter{Additional artifacts}
 \label{introA} % Always give a unique label
 % use \chaptermark{}
 % to alter or adjust the chapter heading in the running head
 
-\section{Dataset from Company A}
-
-Below is the aggregated dataset from company A describing frequency of activity types over the sprints.
+\section{Dataset from Industry Partner}
+\label{sec:dataset-sdm}
 
 % Please add the following required packages to your document preamble:
 % \usepackage{booktabs}
 % \usepackage{graphicx}
-\begin{table}[]
+\begin{table}[h]
 	\centering
-	\caption{Analyzed sprints}
+	\caption{Analyzed sprints in dataset from Industry Partner.}
 	\label{tab:sprints-counts}
 	\resizebox{\textwidth}{!}{%
 		\begin{tabular}{@{}llllll@{}}
@@ -68,4 +67,29 @@ Below is the aggregated dataset from company A describing frequency of activity 
 	}
 \end{table}
 
+
+\section{Guideline for Speech Act Annotation}
+\label{sec:sa-guideline}
+
+The frequent abbreviations used on GitHub (WDYT – What do you think?, IMO – In my opinion, ...)
+should be labelled based on their meaning (Question, Opinion)
+If a part of the comment is code ‘’’ code part ‘’’, it can not be any other speech act
+If a part of the comment is a citation, it can not be any other speech act
+Comments can have multiple speech acts. Each phrase can only have one speech act, but each
+sentence can have multiple speech acts.
+E.g.:
+I will look at your code, @user123 thank you for asking. (This sentence would include 3 Speech Acts)
+IMO this code looks difficult. (This sentence would only have one Speech Act)
+For simplification reasons, categories consisting of more than one speech act (statement/description)
+were named only as the first (statement).
+
+We enter the according speech acts in the provided excel file, providing either a 0 (no occurrence
+of this speech act) or the frequency a certain speech act appears in the comment.
+
+
+% Please add the following required packages to your document preamble:
+% \usepackage{booktabs}
+% \usepackage{graphicx}
+% \usepackage[table,xcdraw]{xcolor}
+% If you use beamer only pass "xcolor=table" option, i.e. \documentclass[xcolor=table]{beamer}
 

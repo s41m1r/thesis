@@ -1,89 +1,115 @@
-\section{Combining Questionnaire and Trace Data}
+\section{Software Process Evaluation from User Perceptions and Log Data}
 \label{sec:combining-questionnaier-and-trace}
 
-\todo[inline]{Damjan work. This work is to better understand resources. Do we need to put a subjective perspective in this thesis?}
+%\todo[inline]{Damjan work. This work is to better understand resources. Do we need to put a subjective perspective in this thesis?}
 
-This section proposes a new approach that combines two different perspectives on the same phenomenon. First, a questionnaire is used to gather user-subjective information from domain experts on specific items. Second, trace data are used which provide the ground truth to objectively analyze those items. Finally, inductive reasoning is used to draw conclusions and suggest recommendations.
+This section proposes a new approach that combines two different perspectives on the same phenomenon. We apply our methods in the context of our industry partner, an Austrian \gls{sme} which offers document management software solutions. We conducted mixed-method research. First, a questionnaire is used to gather user-subjective information from domain experts on specific items. Second, trace data are used which provide the ground truth to objectively analyze those items. Finally, inductive reasoning is used to draw conclusions and suggest recommendations. The following sections describe the approach itself and its results on a case study from an industry partner. 
+
+\subsection{Combined Approach for Evaluating the Software Process}
+
+The proposed approach builds on established SDM evaluation approaches. However, unlike existing approaches that base their SDM evaluation on stakeholder perceptions, the proposed approach complements stakeholder perceptions with data from development tools’ logs. An overview of the approach is shown in \Cref{fig:sdm-process}. Let us now describe each step of the process.
+
+\begin{figure}
+	\centering
+	\includegraphics[width=\linewidth]{figures/SDM-process}
+	\caption[Combined evaluation of trace and questionnaire data]{Combined evaluation of trace and questionnaire data in software development}
+	\label{fig:sdm-process}
+\end{figure}
+
+\begin{inparadesc}
+	\item[\bfseries Identification of SDM elements.] In this phase \gls{sdm} elements for evaluation are first identified and catalogued with the help of key stakeholders knowledgeable about their SDM (e.g. process managers, project managers, senior developers). After the SDM elements are catalogued the management has to identify the stakeholders importantly affected by specific SDM elements. This means that developers who perform certain SDM activity should be the ones to evaluate this SDM activity from a developer perspective. Likewise, managers responsible for certain SDM activity should be the ones to evaluate this SDM activity from managerial perspective. Similar logic is applied also to other stakeholders importantly affected by specific SDM elements. \\
+	
+	\item[\bfseries Perform questionnaire.] This activity starts starts with the creation of questionnaires based on the predefined template questions that are used to create more specific questions for each SDM element cataloged in the identification phase. Such questionnaire are answered by the stakeholders of the process. Subsequently, their results are collected and made available for further analyses. \\
+	
+	\item[\bfseries Collect Trace Data.] For each \gls{sdm} element, trace data are collected from information systems logs. This is a challenging task as organizations may adopt a multitude of tools to support their process. Typical tools include issue-trackers (e.g., Bugzilla, Microsoft Dynamics CRM), continuous integration (CI) managers (e.g. Jenkins), project management tools (e.g., Asana, JIRA), version control systems (Git, Subversion), and many more. 
+	
+	In the context of this we collected event logs from Jira from our industry. These event logs contain information about the users who worked in various tasks such as bug fixing, feature specification, and implementation. Considering the information gathered from the questionnaire, we noticed that these tasks represent elements on which were perceived differently from management and developers. As an example, bug was perceived as critical element by developers but was ranked low by managers. Thus, a dissonance of perceptions was in place. In this case, facts recorded in event logs such as time spent on bugs and productivity provide a further dimension for understanding the gap between perception and actual importance of the element. The output of this step is an event log. \\
+	
+	\item[\bfseries Perform Log Analysis.] The input of this phase is an event log. It applies process mining on the event logs, taking into account the mapping of the event log to the activities provided in the previous step. In order to perform this step, the event log may be sliced and filtered into several sub-logs, depending on the aspect of reality which is intended to be analyzed. As a result, several insights in the form of process models and statics are made available for further analysis. \\
+	
+	\item[\bfseries Combine perspectives and Provide Recommendations.] After the event logs have been analyzed, a 
+	 The input of this phase is an event log. It applies process mining on the event logs, taking into account the mapping of the event log to the activities provided in the previous step. In order to perform this step, the event log may be sliced and filtered into several sub-logs, depending on the aspect of reality which is intended to be analyzed. As a result, several insights in the form of process models and statics are made available for furtherThese insights are further used to analysis by the user. These insights, combined with the information from the questionnaire, can be used to provide recommendations (e.g., \emph{Element X is perceived as useful but it makes developers less efficient}).
+	
+\end{inparadesc}
 
 
 
-\subsection{Approach for evaluating SMEs}
-
-The proposed approach builds on the established SDM evaluation approaches. However, unlike existing approaches that base their SDM evaluation on stakeholder perceptions, the proposed approach complements stakeholder perceptions with data from development tools’ logs. The approach comprises four phases as shown in Figure $\ldots$ .  
-
-\todo[inline]{Add Figure: The proposed SDM evaluation approach}
-
-\paragraph{Phase 1 – Identification of SDM elements }
-
-In phase 1 SDM elements for evaluation are first identified and catalogued with the help of key stakeholders knowledgeable about their SDM (e.g. process managers, project managers, senior developers). After the SDM elements are catalogued the management has to identify the stakeholders importantly affected by specific SDM elements. This means that developers who perform certain SDM activity should be the ones to evaluate this SDM activity from a developer perspective. Likewise, managers responsible for certain SDM activity should be the ones to evaluate this SDM activity from managerial perspective. Similar logic is applied also to other stakeholders importantly affected by specific SDM elements. 
-
-\paragraph{Phase 2 – Survey and analysis }
-
-Phase 2 starts with the creation of questionnaires based on the predefined template questions that are used to create specific questions for each SDM element catalogued in phase 1. Different questioners are created for each stakeholder based on the predefined template questions. In line with the established measures from studies presented in the literature review the developers report their perceptions about their use and satisfaction concerning a certain SDM element. Similarly, management reports their perceptions about SDM impact on iron triangle measures of overall project success (cost, speed and quality) and process engineers report their perceptions about SDM element level of assimilation, relative advantage and compatibility. The questions are written in form of statements where answers are given on 7-point Likert scale. The template statements are presented in Figure 1. 
-
-To analyze stakeholder perceptions, we position SDM elements in a multidimensional space based on the average measurement of each stakeholder perception (dimension). It is typically difficult to further improve SDM elements that are considered highly beneficial by all stakeholders since they are all already satisfied with them. On the contrary, SDM elements that are considered unbeneficial by all stakeholders have high potential for improvement, since it is likely that most stakeholders will support their change. The SDM elements where perceptions of stakeholders greatly differ require further examination where log analysis (phase 3) has an important role to identify appropriate improvement actions. 
-
-\paragraph{Phase 3 – Analysis of SD logs for selected elements }
-
-In phase 3 log analysis is performed focusing on selected SDM elements. Log analysis helps to ascertain the objectiveness of different stakeholders’ perceptions and gain additional information about certain SDM elements like time spent on execution of this element by developers and quality of its execution.  
-
-First, relevant event logs are identified. Relevant event logs are those logs which store information about the actual SDM elements. A first manual inspection of the information contained in such logs is then performed in order to identify whether essential information are present. In this paper, we are interested in information about resources and activities.  
-
-Second, logs are often unstructured or not ready to be analyzed. Therefore, a preprocessing step is required in order to transform these logs into a format which can be further analyzed by process mining techniques. For instance, data can be transformed into a tabular format such a CSV. A useful event log must contain information about at least three aspects: case (i.e., which instance of the process is stored), activity (what activity is done in the instance), and timestamp (when is an activity performed).  
-
-Third, it is possible that the resulting table contains a high number of attributes. It is a challenge to find the adequate attributes that properly describe what activity was done by whom and at what time. Thus, it is important at this stage to define mappings between activities in the log and the exact aspects that are being studied. This mapping can then lead to selecting certain attributes over others. For instance, in the case of bug-fixing there are many attributes that can be selected as timestamp. However, it is important to select attributes about when the bug was assigned to an engineer and when this bug was fixed, ignoring intermediate updates.  
-
-Forth, a process analysis is performed on the log. This paper, focuses on analyzing event logs through process discovery algorithms. More specifically, it applies process mining on the event logs, taking into account the mapping of the event log to the activities. In order to perform this step, the event log may be sliced and filtered into several sub-logs, depending on the aspect of reality which is intended to be analyzed. As a result, several insights in the form of process models and statics are made available for further analysis by the user. 
-
-\paragraph{Phase 4 – Recommendations}
-
-This phase is concerned with the development of recommendations for improvements. Specifically, the results from the previous phase are analyzed and put into context. Particular attention is paid to outliers. For instance, significant deviations from Agile guidelines, might be a bad practice to follow. Recommendations would pinpoint such cases.  
+%\todo[inline]{Start working from here.}
+%
+%\paragraph{\bfseries Collect Trace Data}
+%
+%For each \gls{sdm} element, trace data are collected from information systems logs. This is a challenging task as organizations may adopt a multitude of tools to support their process. Typical tools include issue-trackers (e.g., Bugzilla, Microsoft Dynamics CRM), continuous integration (CI) managers (e.g. Jenkins), project management tools (e.g., Asana, JIRA), version control systems (Git, Subversion), and many more. 
+%
+%In the context of this we collected event logs from Jira from our industry. These event logs contain information about the users who worked in various tasks such as bug fixing, feature specification, and implementation. Considering the information gathered from the questionnaire, we noticed that these tasks represent elements on which were perceived differently from management and developers. As an example, bug was perceived as critical element by developers but was ranked low by managers. Thus, a dissonance of perceptions was in place. In this case, facts recorded in event logs such as time spent on bugs and productivity provide a further dimension for understanding the gap between perception and actual importance of the element. 
+%
+%\paragraph{Phase 4 – Recommendations}
+%
+%This phase is concerned with the development of recommendations for improvements. Specifically, the results from the previous phase are analyzed and put into context. Particular attention is paid to outliers. For instance, significant deviations from Agile guidelines, might be a bad practice to follow. Recommendations would pinpoint such cases.  
 
 \subsection{Case Study}
 
-This section describes the case study. 
+The proposed approach was tested in an Austrian \gls{sme} software development company located in Vienna. The company can be considered a typical central European \gls{sme}. The company develops software products for the field of Customer Communication Management paying special attention to the areas of document composition, workflow and document distribution. Their customers come from eight different central and southern European countries. 
 
-\subsubsection{Case study research methodology}
-
-The proposed approach was tested in an Austrian SME software development company located in Vienna. The company can be considered a typical central European SME. The company develops software products for the field of Customer Communication Management paying special attention to the areas of document composition, workflow and document distribution. Their customers come from eight different central and southern European countries. 
-
-A single case study design was employed to assess the proposed approach. Such design is appropriate when it captures the circumstances and conditions of an everyday or commonplace situation (Yin, 2008). The studied company represents a typical SME in the software development industry. To collect the data, we conducted interviews with management and process engineer, directly observed their workday, surveyed all the employees involved in company’s software development process and collected software development tool logs. 
+A single case study design was employed to assess the proposed approach. Such design is appropriate when it captures the circumstances and conditions of an everyday or commonplace situation \citep{yin2017case}. The studied company represents a typical \gls{sme} in the software development industry. To collect the data, we conducted interviews with management and process engineer, directly observed their workday, surveyed all the employees involved in company’s software development process and collected software development tool logs. 
 
 All participants of our study were experienced developers having worked as members of the same team for at least two years. 
 
-\subsubsection{Identification of SDM elements (phase 1)}
+In the following, after having identified the key \gls{sdm} elements with the help of domain experts, we divide the process from \Cref{fig:sdm-process} in three phases: 
+\begin{inparaenum}[\itshape i)]
+	\item conducting the survey;
+	\item performing log analysis; and
+	\item combining the outcomes.
+\end{inparaenum}
 
-\subsubsection{Survey and analysis of stakeholder perceptions of the identified SDM elements (phase 1)}
+\subsubsection{Conducting the Survey}
+
+Different questionnaires are created for each stakeholder based on the predefined template questions. In line with the established measures from studies presented in the literature review the developers report their perceptions about their use and satisfaction concerning a certain SDM element. Similarly, management reports their perceptions about SDM impact on iron triangle measures of overall project success (cost, speed and quality) and process engineers report their perceptions about SDM element level of assimilation, relative advantage and compatibility. The questions are written in form of statements where answers are given on 7-point Likert scale. The template statements are presented in \Cref{fig:surveymethod}. 
+
+\begin{figure}
+	\centering
+	\includegraphics[width=\linewidth]{figures/SurveyMethod}
+	\caption[Survey templates used for gathering stakeholders perceptions]{Template for survey and analysis of stakeholder perceptions of SDM elements}
+	\label{fig:surveymethod}
+\end{figure}
+
+To analyze stakeholder perceptions, we position SDM elements in a multidimensional space based on the average measurement of each stakeholder perception (dimension). It is typically difficult to further improve SDM elements that are considered highly beneficial by all stakeholders since they are all already satisfied with them. On the contrary, SDM elements that are considered unbeneficial by all stakeholders have high potential for improvement, since it is likely that most stakeholders will support their change. The SDM elements where perceptions of stakeholders greatly differ require further examination where log analysis has an important role to identify appropriate improvement actions.
+
+For the purpose of analysis, we visualize perceptions of two different stakeholders on a scatter chart. \Cref{fig:survey-scatter-plot} reports the results of the survey. In the x-axis (User) are reported the perception scores of the developers, in the y-axis (Process) are reported the perceptions of process engineers, colors represent the perceptions of management (green is high).
 
 
-For the purpose of analysis, we visualize perceptions of two different stakeholders on a scatter chart. 
+\begin{figure}
+	\centering
+	\includegraphics[width=\linewidth]{figures/survey-scatter-plot}
+	\caption[Survey results on user perceptions]{Results of questionnaire about the perceptions of stakeholders about the identified SDM elements}
+	\label{fig:survey-scatter-plot}
+\end{figure}
 
+This chart helps us to detect activities to investigate further with log analysis. Detailed analysis was performed on the activities: \emph{Bug fixing}, \emph{Implementing new code}, \emph{Assigning from backlog to sprint}, and \emph{Sprint planning}. We selected these activities based on conflicting stakeholder perceptions and availability of log data. Especially, the activities are characterized by either by low management perception and relatively high developers and process engineer perceptions or by high management perception and low developers and process engineer perceptions (e.g., \emph{Defining feature specifications}).
 
-
-\todo[inline]{Put chart here}
-
-1st level of analysis (perception level of analysis): 
-
-
-
-Helps us detect which activities to investigate further with log analysis. Interesting activities include: bug fixing, implementing new code, assigning from backlog to sprint, daily meetings, defining feature specifications. 
-
-\subsubsection{Dataset generation}
+\subsubsection{Performing log analysis}
 
 The company uses the JIRA issue tracking software to keep change of the various tasks being performed by the employees. Employees in this case are software engineers and developers. We collected all activities done by employees during the time period between the dates 2015-12-30 and 2017-05-16.  The JIRA log was further preprocessed to generate various tabular datasets and event logs that can be used by process mining tools. For what concerns the tabular datasets, we created specific attributes to keep count of the different activities performed. Focus activities were bug fixing, implementing new code and feature specification. As typical tasks in software engineering projects are part of sprints, we aggregated the information into two-week intervals. This helps us to shed light into tasks that were delayed or dragged along slowly. Furthermore, we kept included in our dataset the users who performed the various activities.  
+
+The output of this phase is to create an event log and analyze. To this end, we inspected manually all the event logs that contain information about the \gls{sdm} elements that we could obtain from our industry partner. Collected logs were unstructured or not ready to be analyzed. Therefore, a preprocessing step was required in order to transform these logs into a format which can be further analyzed by process mining techniques. More specifically, the data was transformed into a tabular format such a CSV. Out of the columns, we manually identified the three attributes required for process mining: case (i.e., which instance of the process is stored), activity (what activity is done in the instance), and timestamp (when is an activity performed). More specifically, with reference to the attributes from JIRA, we considered \emph{project identifier} as case id, the field \emph{typeText} (e.g., Bug, Feature, Improvement, etc) as activity type, \emph{assigneeUserName} as the human resource who did the task, and the fields \emph{created}, \emph{updated} and \emph{resolved} as timestamps. The other attributes present in the log, we used as auxiliary fields to perform more detailed analyses such as filtering of a particular resource, project and select only completed tasks. As a last step, we anonymized the event log by mapping the resource names to distinct symbols $p_1, ... p_n$.
+
 
 For what concerns process mining event logs, we did not apply any aggregation as different process mining techniques work with different levels of granularity. Thus, we focused on generating event logs for respectively bug fixing, implementing new code and feature specification. As a results we obtained XES files which are the input of our analyses from a process perspective. 
 
 Chosen elements were performed by six different resources. Such resources are reported anonymously as p1, p2, p3, p4, p5, p6. Some tasks were completed in the system without being assigned to any resource. To capture this, we included a special resource named “no resource”.  
 
-\subsubsection{Analysis of SD logs for the selected elements (phase 3)}
+We then imported the different event logs in the Disco tool for process mining and computed the efficiency of task burn-down by different users. In the following we report on this results and interpret them against the perceptions from the questionnaire.
 
-Part of analysis interpretation: 
+\subsubsection{Combining perceptions and log analyses}
 
-For feature specification it seems to be the case that specifications are being updated constantly throughout the project. Additionally, most feature specifications are “Unassigned” and interestingly "Unassigned" seems to be the best performer with (64% of cases completed in sprints 1-14). So the dissatisfaction between developers and process engineer might be the consequence of firstly, the inability of company to stabilize the requirements (which then affects the high bug fixing numbers where the changes to specifications are (most likely) implemented) and secondly, too informal specification gathering process (we can speculate that they do not have change control board) which results in frequent specification changes. 
+This phase provides insights on the performance of resources regarding the selected activities.  We analyzed the overall level of activity done by resources.  Our analyses showed that the activities of bug fixing and implementing new code were done according to sprints. One Sprint is considered as fourteen days, i.e., two full weeks including weekends. Table 1 shows the overall activity done in the first three sprints. More specifically, Sprint 1 refers to the amount of activity done in the first fourteen-day period. Sprint 2 refers to the second fourteen-day timeslot. Sprint 3 refers to the third fourteen-day period. Additionally, the count the number of activities performed beyond the sprints. Especially, we are interested in the amount of activities completed by a resource than three sprints.  
 
-Furthermore, based on the results in 1,2 and 3, we can speculate that assigning from backlog to sprint is seen as relatively good from developer and process engineer perspectives as it works for new code (94 of 112 activities are completed in sprint 1), however from management broader perspective most of the specifications are actually “reopened” later and resolved through bug fixing which is the cause of quality and speed issues.  
+\Cref{tab:outcome} summarizes the results of these results for bug-fixing, which scored high in developers and engineers perceptions but low in the managers perception. We organize the table by Sprint (i.e., the considered time windows). Column Activities represents how many times was activity performed by certain person on this project.
 
+\input{tables/sdm-pm-results}
 
-To demonstrate our approach, we take Bug fixing as it is one of the most extreme in perception differences between management, developers and process engineers. 
+We analyzed the performance of resources who work on bug fixing for a specific project. In order to compare the performance of the various resources, we considered their percentage of work over the total number of items completed in each sprint. That is, resource p1 has completed 13.24\% of the overall tasks that were completed in Sprint 1. This is an indicator of the share of work this resource has contributed with. Furthermore, p1 has completed relatively more tasks with delay. This information is visible under column ``Sprint: all except first three''. In this case, we observe 38.46\%. Thus, we can notice that p1 is underperforming in context of the analyzed project for the task of bug fixing. 
+
+Bug-fixing was the most demanding activity. Resource p1, p2, and p3 were active on this element, whereas resource p4, p5 and p6 were only seldom involved as their share of tasks is significantly lower than the previous three resources. Thus, we do not report their frequencies in this table. Out the active resources on this element, p1 is clearly underperforming. In fact, its completed tasks amount to less than one third of the tasks completed by p3, who appears to be the top performer. Furthermore, column "Sprint: all except first three´´ indicates that resource p1 is dragging tasks along sprints and its backlog keeps growing. 
+
+With these results at hand, we can look back at the questionnaire and compare the questions answered by each resource. For example, we can observe that some resources have stated that the specific element (e.g., bug-fixing) improves their speed. However, event log analyses showed a growing backlog of tasks. Therefore, we are able to pinpoint a dissonance between perceptions and reality. Such dissonance should be resolved by further analysis on the quality of the tasks themselves. Specifically, domain experts should use our results as a staring point to verify whether certain elements which are perceived positively are actually useful for the organization. At the same time, attention must be paid to find the reasons of underperformance. To this end, a more qualitative analysis is necessary in order to understand whether the poor performance is associated to the tool or to the complexity of the task itself.  
 

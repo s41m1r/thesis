@@ -1,0 +1,34 @@
+% Please add the following required packages to your document preamble:
+% \usepackage{booktabs}
+% \usepackage{multirow}
+% \usepackage{graphicx}
+\begin{table}[]
+\centering
+\caption{Speech acts used for analyzing pull requests}
+\label{tab:speech-act-types}
+\resizebox{!}{!}{%
+\begin{tabular}{@{}ll@{}}
+\toprule
+Main Category                & Sub-Categories            \\ \midrule
+Assertives                   & statement/description     \\ \hdashline
+\multirow{2}{*}{Commissives} & commit                    \\
+                             & offer                     \\ \hdashline
+\multirow{5}{*}{Directives}  & request                   \\
+                             & prescription/requirement  \\
+                             & question                  \\
+                             & instruction/suggestion    \\
+                             & summon                    \\ \hdashline
+\multirow{7}{*}{Expressives} & opinion/expression        \\
+                             & acknowledgement/agreement \\
+                             & disagreement              \\
+                             & exclamation/emoji         \\
+                             & apology                   \\
+                             & greeting                  \\
+                             & thank                     \\ \hdashline
+Performatives                & action                    \\ \hdashline
+\multirow{3}{*}{Others}      & code                      \\
+                             & welcome comment           \\
+                             & citation                  \\ \bottomrule
+\end{tabular}%
+}
+\end{table}

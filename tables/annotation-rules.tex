@@ -1,0 +1,81 @@
+% Please add the following required packages to your document preamble:
+% \usepackage{booktabs}
+% \usepackage{graphicx}
+% \usepackage[table,xcdraw]{xcolor}
+% If you use beamer only pass "xcolor=table" option, i.e. \documentclass[xcolor=table]{beamer}
+\begin{table}[]
+	\centering
+	\caption{Speech acts annotation rules}
+	\label{tab:annotation-rules}
+	\resizebox{!}{!}{%
+		\begin{tabular}{@{}lm{5.5cm}p{3cm}@{}}
+			\toprule
+			\multicolumn{1}{c}{\textbf{Speech Act Category}} &
+			\multicolumn{1}{c}{\textbf{Instruction}} &
+			\multicolumn{1}{c}{\textbf{Example}} \\ \midrule
+			\begin{tabular}[c]{@{}l@{}}Statement\\ Description\end{tabular} &
+			\textit{Something general, describing how something is (but not a procedure, this would be an instruction) referring to a different source closing a Pull Request,} &
+			This PR fixes bug \#213213 \\
+			\rowcolor[HTML]{EFEFEF} 
+			Commit &
+			\textit{Expresses a commitment of a user to doing something.  A promise is also a commitment.} &
+			I will, Let me try \\
+			Offer &
+			\textit{We a user offers something to another user (e.g., to do a task for him)} &
+			I can do, Happy to \\
+			\rowcolor[HTML]{EFEFEF} 
+			Request &
+			\textit{When a user asks another user to do something.} &
+			Do task A,  Can you please fix this \\
+			\begin{tabular}[c]{@{}l@{}}Requirement\\ Prescription\end{tabular} &
+			\textit{It describes how something should be, what is needed or what has to be done in order to fulfill a need, necessity or criteria} &
+			I need, This should be, must/needs to \\
+			\rowcolor[HTML]{EFEFEF} 
+			Question &
+			\textit{When a users poses a question} &
+			What do you think? Can I? How? \\
+			\begin{tabular}[c]{@{}l@{}}Suggestion\\ Instruction\end{tabular} &
+			\textit{Parts of texts that contain instructions about how to do something} &
+			Maybe you can try, I would suggest, First do A \\
+			\rowcolor[HTML]{EFEFEF} 
+			Summon &
+			\textit{When a user tags another user with @} &
+			@rails-bot \\
+			\begin{tabular}[c]{@{}l@{}}Opinion\\ Expression\end{tabular} &
+			\textit{When somebody expresses an opinion.} &
+			I think, As far as I am concerned, I believe \\
+			\rowcolor[HTML]{EFEFEF} 
+			\begin{tabular}[c]{@{}l@{}} {\cellcolor[HTML]{EFEFEF}Acknowledgment}\\ Agreement\end{tabular} &
+			\textit{When a user expresses positive feelings about a comment from another user} &
+			I like your idea, OK, Sounds good, Good job \\ 
+			Disagreement &
+			\textit{When a user expresses disagreement} &
+			No, I don’t think so, I am against \\
+			\rowcolor[HTML]{EFEFEF} 
+			\begin{tabular}[c]{@{}l@{}}\cellcolor[HTML]{EFEFEF}Emoji\\ Exclamation\end{tabular} &
+			\textit{When the comment contains and emoji, smiley or phrases expressing exclamation} &
+			:), \textless{}3 \\
+			Apology &
+			\textit{When a user apologizes for something} &
+			Sorry, My bad, forgive me \\
+			\rowcolor[HTML]{EFEFEF} 
+			Greeting &
+			\textit{Includes different types of greetings} &
+			Hi, Hello, Welcome \\
+			Thank &
+			\textit{When a user thanks someone} &
+			Thanks, Thank you \\
+			\rowcolor[HTML]{EFEFEF} 
+			Action &
+			\textit{When a part of the phrase means that the user did something. This only applies when the users talk in first person. If the users says that someone else did something, then it is not an action but rather a statement.} &
+			I did, We fixed, Done, I solved \\
+			Code &
+			\textit{A listing that represents code. They are enclosed in ```} &
+			```ruby\_x005F\_x000D\_``` \\
+			\rowcolor[HTML]{EFEFEF} 
+			Citation &
+			\textit{Citations include any quotation to existing message or its parts. In the extracted data the are always preceded by the symbol \textless{}} &
+			\textgreater So, I want an isolated plug-n-play \\ \bottomrule
+		\end{tabular}%
+	}
+\end{table}

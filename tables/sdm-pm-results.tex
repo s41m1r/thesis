@@ -1,0 +1,29 @@
+% Please add the following required packages to your document preamble:
+% \usepackage{booktabs}
+% \usepackage{graphicx}
+\begin{table}[]
+	\centering
+	\caption{Outcome of the process mining analyses}
+	\label{tab:outcome}
+	\resizebox{!}{!}{%
+		\begin{tabular}{@{}crrrrrrrrrr@{}}
+			\toprule
+			&
+			\multicolumn{2}{c}{Sprint 1} &
+			\multicolumn{2}{c}{Sprint 2} &
+			\multicolumn{2}{c}{Sprint 3} &
+			\multicolumn{2}{p{1.5cm}}{Sprint: all except first three} &
+			\multicolumn{2}{c}{Total} \\ \midrule
+			Resource &
+			\multicolumn{2}{c}{Activities} &
+			\multicolumn{2}{c}{Activities} &
+			\multicolumn{2}{c}{Activities} &
+			\multicolumn{2}{c}{Activities} &
+			\multicolumn{2}{c}{} \\ \cmidrule(lr){2-9}
+			p1         & 18  & 13.24\%  & 6  & 20.69\%  & 4  & 15.38\%  & 10 & 38.46\%  & 52  & 19.33\%  \\
+			p2         & 51  & 37.50\%  & 8  & 27.59\%  & 10 & 38.46\%  & 8  & 30.77\%  & 95  & 35.32\%  \\
+			p3         & 67  & 49.26\%  & 15 & 51.72\%  & 12 & 46.16\%  & 8  & 30.77\%  & 122 & 45.35\%  \\
+			Tot Sprint & 136 & 100.00\% & 29 & 100.00\% & 26 & 100.00\% & 26 & 100.00\% & 269 & 100.00\% \\ \bottomrule
+		\end{tabular}%
+	}
+\end{table}

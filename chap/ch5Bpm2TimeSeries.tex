@@ -1,9 +1,10 @@
 %\chapter{Uncovering the Hidden Co-Evolution in the Work History of Software Projects}
 \chapter{Discovering the Case Perspective}
 
+\todo[inline]{Polish the chapter}
+
 \todo[inline]{Link this solution to the existing problem. Say e.g. that the previous solution still lacks information about dependency. We would like to know what is inside a specific square in the BPM1 solution. As well, why some squares are connected.}
 
-\todo[inline]{rephrase}
 
 \abstract*{The monitoring of project-oriented business processes is difficult because their state is fragmented and represented by the progress
 	of different documents and artifacts being worked on. This observation
@@ -32,7 +33,7 @@ The monitoring of project-oriented business processes is difficult because their
 	
 	In this section, we focus on a specific class of project-oriented business processes,
 	namely software development processes. These processes share some common
-	characteristics. First, they involve various resources with different roles. In the
+	characteristics. First, they involve various resources with different roles. In the 
 	simplest case, we can distinguish project managers and project participants.
 	Project managers are responsible for managing the development process and
 	supervising the work of the project participants, who in turn are responsible for
@@ -47,23 +48,29 @@ The monitoring of project-oriented business processes is difficult because their
 	progress systematically.
 
 
+This chapter is structured as follows. Section~\ref{sec:bpm2017background} describes the research problem along with its requirements and summarizes insights from prior research. Section~\ref{sec:bpm2017approach} presents our approach in detail. Section~\ref{sec:bpm2017evaluation} shows a prototypical implementation and evaluates its applicability both in a use case scenario and on real world projects from GitHub. Section~\ref{sec:bpm2017conclusion} concludes the paper.
+
 \section{The Problem of Case Perspective Discovery}
 
 \todo[inline]{rephrase}
 
-
-
-This chapter is structured as follows. Section~\ref{sec:bpm2017background} describes the research problem along with its requirements and summarizes insights from prior research. Section~\ref{sec:bpm2017approach} presents our approach in detail. Section~\ref{sec:bpm2017evaluation} shows a prototypical implementation and evaluates its applicability both in a use case scenario and on real world projects from GitHub. Section~\ref{sec:bpm2017conclusion} concludes the paper.
-
 \todo[inline]{What has the state of the art done.}
-Software tools like \glspl{vcs} do not provide direct support for monitoring work histories, but they provide a good starting point by continuously collecting event data on successive versions of artifacts.
+
+The case perspective of a process focuses on properties of cases \citep{DBLP:books/sp/Aalst16}. There are several characteristics of the cases that are relevant for monitoring. For example in an purchase-to-pay process, along with the information about the order of activities executed to handle an order, it may also be relevant to observe which customer originated the order, the number of products order, the people who handled the order and what data objects were created and maintained to handle the case. In this thesis, extracting information about the characteristics of cases is referred to as \emph{case perspective discovery}.
+
+The problem of case perspective discovery in software development projects aims at uncovering hidden-work dependencies that may exist. They can be structural (e.g., a parent-child relationships between directory and file), functional (e.g., when a method calls an existing library function), or logical. Logical dependencies are complex. One type of such dependencies is when the status of two artifacts evolves similarly through time. These kind of dependencies are not explicit in the structure of the artifact as they are related to the overarching process. Yet, the discovery of such dependencies si vital in order to understand deviations in both planning and maintenance.  
+
+A starting point to detect the hidden work-dependencies is to study the evolution of the various artifacts that are produced. Such evolution is tracked in the history of the various files and other information that is recorded during development. One fundamental system that is used to keep track of the various changes of files is \gls{vcs}. Data from this system can be extracted as a semi-structured dataset. 
+
+%Software tools like \glspl{vcs} do not provide direct support for monitoring work histories.
 %A starting point for analyzing software projects is represented by events that are stored in \glspl{vcs}, which help keeping track of successive versions of artifacts.
-Table \ref{tab:vcs-log-data} shows an excerpt of log data, where the columns, from left to right, indicate the commit identifier, the project participant who committed the changes, the commit date, the comment written by the project participant and the files affected and the change performed\footnote{cf. unified diff format  \url{https://git-scm.com/docs/git-diff}}. In order to understand the work history and dependencies based upon such data, we identify three major requirements:
+%Table \ref{tab:vcs-log-data} shows an excerpt of log data, where the columns, from left to right, indicate the commit identifier, the project participant who committed the changes, the commit date, the comment written by the project participant and the files affected and the change performed\footnote{cf. unified diff format  \url{https://git-scm.com/docs/git-diff}}. 
+In order to understand the work history and dependencies based upon such data, we identify three major requirements:
 
 \begin{description}
-	\item [R1 (Extract the work history):] Discover the process of how artifacts evolve in the project as a \emph{labeled} set of steps. This requirement is difficult because the version changes of a commit in relation to a single file do not directly reveal which type of work has been done. Both commit messages and edit characteristics might inform the labeling.	
-	\item [R2 (Uncover Work-Related Dependencies):] Identify that certain work in one part of the project is connected with work in another part. This requirement is difficult because such dependencies might not only exist between files that reside in the same directory. For example, a change in a source code file might have the side effect of triggering work on a configuration file. We refer to this as \emph{co-evolution} of these files.
-	\item [R3 (Measure Dependencies):] Determine how strong the co-evolution of different artifacts is. This requirement is difficult because measures of \emph{strength} of dependencies and on the \emph{distance} of   dependent artifacts have to be devised.
+	\item [\bfseries R1 (Extract the work history):] Discover the process of how artifacts evolve in the project as a \emph{labeled} set of steps. This requirement is difficult because the version changes of a commit in relation to a single file do not directly reveal which type of work has been done. Both commit messages and edit characteristics might inform the labeling.	
+	\item [\bfseries R2 (Uncover Work-Related Dependencies):] Identify that certain work in one part of the project is connected with work in another part. This requirement is difficult because such dependencies might not only exist between files that reside in the same directory. For example, a change in a source code file might have the side effect of triggering work on a configuration file. We refer to this as \emph{co-evolution} of these files.
+	\item [\bfseries R3 (Measure Dependencies):] Determine how strong the co-evolution of different artifacts is. This requirement is difficult because measures of \emph{strength} of dependencies and on the \emph{distance} of   dependent artifacts have to be devised.
 \end{description}
 
 
