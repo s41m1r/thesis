@@ -1,8 +1,23 @@
 
 \todo[inline]{Describe the problem of discovering the time perspective}
 
+A relevant characteristic of development processes is the time it takes to perform certain key tasks of the process. For example, in order to monitor whether a new version of a software will be successfully released within a given deadline, a project manager needs to know what is the progress with respect to the estimated delivery. All information that concerns the timing of work is referred to as the \emph{time perspective} the process. 
+ 
 
-\section{Related work}
+To manage the time perspective, complex software development projects are often planned by the use of a Gantt chart. This chart consists of activities and work packages. Each work-package groups together similar types of activities. For example, all activities done in order to write the documentation of the project, will pertain to the work-package documentation.bpm2015background This inclusion also defines a hierarchy on the tasks. For example, the code of a feature \emph{A} may be located in a file \emph{F}. In turn, file \emph{F} may be in a folder \emph{D} which itself may be included on a super-folder \emph{Code}. This gives the hierarchy \emph{Code/D/F/A}. A typical way in which such hierarchy is organized in a file system is exactly through folder-in-folder and file-in-folder inclusions. 
+
+In order to perform the tasks of process monitoring, we need to gather meaningful time information from event logs. Resulting insights must be presented as a Gantt chart. This allows for comparing the actual Gantt chart of stemming from the data to planned one. Thus, possible deviations in terms of timing become easy to spot. Examples of deviations are related to the following questions: \emph{when did an activity start?} \emph{When did it finish?} \emph{How much work was performed in an time interval?} \emph{Are there any activities that are running late?} \emph{When did a bottleneck occur?} 
+%- The minimum unit of work is a change to a file
+
+In line with the above description, we define the following requirements of a solution. 
+\begin{itemize}
+	\item[\textbf{Aggregate events.}] The developed artifact must be able to aggregate low-level file changes onto work-activities. 
+	\item[\textbf{Organize activities into work-packages.}] The identified activities must be organized hierarchically organized within a work-package hierarchy. 
+	\item[\textbf{Compute KPIs.}] The developed artifact must provide quantitative measures of the characteristics of a work-package.
+\end{itemize}
+
+\section{Related work} 
+\label{sec:bpm2015related}
 
 The problem described has been addressed in the literature from different perspectives. The first category of related work tackles the problem by transforming it into a process mining problem. Consequently, approaches have been developed to preprocess VCS data such that process mining techniques can be applied, and hence, a business process can be derived from the log data.
 In this group, Kindler et al. \citep{Kindler2006,kindler2006incremental} developed an algorithm for extracting software processes that are mapped to Petri Nets. Activities, which are not explicit in the logs, are discovered from their input and output artifacts. However, strong assumptions are made on the filenames as well as on the software process lifecycle. %(always design, code, review, testres). Activities (which are not explicit in the logs, like in our case) are discovered from their input and output artifacts. Here defined as triples $<I,O,R>$ where I=input, O=Output, R=resouce who perfomed it.

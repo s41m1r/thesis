@@ -1,18 +1,16 @@
 %\subsection{Requirements}
 
-As mentioned in the previous section, the focus of this paper lies on mining and analyzing properties of the users of \gls{vcs}. Users belong to preset classes and they commit message styles. Based on this assumption, the following requirements are defined.
-
-\todo[inline]{Formulate them as requirements}
+As mentioned in the previous section, the focus of this section lies on mining and analyzing properties of the users of \gls{vcs}. Users belong to preset classes and they commit message styles. Based on this assumption, the following requirements are defined.
 
 \begin{itemize} %\IEEEsetlabelwidth{Z}
       
-\item[RQ1] \textit{Is it possible to classify resources from VCS log data?} 
-We want to scrutinize whether a classification of the users of a \gls{vcs} is possible by using the information contained in the log files. Comment messages and other data must be investigated for useful features. The classification must separate the users into clusters, and the most expressive features and their combinations must be identified.  These clusters can then be further analyzed by means of the next research question.
+\item[\textbf{RQ1. Cluster users from event log.}] 
+We want to provide a classification of the users of a \gls{vcs} by using the information contained in the log files. Comment messages and other data must be investigated for useful features. The classification must separate the users into clusters, and the most expressive features and their combinations must be identified.  These clusters can then be further analyzed by means of the next research question.
 
-\item[RQ2] \textit{To what extent can resources be assigned to classes?}
-Based on the created clusters, meaningful classes should be derived. The chosen features influence the types of classes that can be created. These classes must present an intelligible distinction among each other. This research question also inspects how detailed this distinction can become. Moreover, it aims at creating profiles for the class members reflecting behavior, based on the analyzed features.
+\item[\textbf{RQ2. Create user profiles.}]
+Based on the created clusters, meaningful classes should be derived. The chosen features influence the types of classes that can be created. These classes must present an intelligible distinction among each other. This requirement aims at making class distinctions clear-cut. Moreover, it aims at creating profiles for the class members reflecting behavior, based on the analyzed features.
 
-\item[RQ3] \textit{What are the main differences among these classes?}
+\item[\textbf{RQ3. Generalize approach.}]
 The last research question examines the differences among the created classes in detail. It compares the results from different log files and identifies the reasons for dissimilarities. Therefore, it evaluates the quality of the classification and its applicability for different version control systems.
 
 \end{itemize}

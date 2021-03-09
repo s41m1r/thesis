@@ -1,6 +1,6 @@
 %\section{Mining \acs{VCS} Event Data}
 \label{sec:bpm2015concept}
-Here, we first formalize the notions encountered in the project mining setting. Then we develop an approach to acquire a hierarchical overview on the project from a repository perspective.
+In the following, we first formalize the notions encountered in the project mining setting. Then we develop an approach to acquire a hierarchical overview on the project from a repository perspective.
 
 \subsection{Preliminaries}
 \glspl{vcs} are used in projects to ensure reliable collaboration. We build our approach on \gls{vcs}. Typically, the workflow in \gls{vcs} is that people work on files (e.g., text, source code, spread sheets) and commit them to the central repository. Project participants comment on their commits so that other participants can better understand the nature of the changes to the files.
@@ -127,9 +127,9 @@ Therefore, we have to identify the start and end times of activities and of work
 Note that assumption A1 can be seen as a strong assumption on the file tree structure. Nevertheless, we argue that even if A1 is not entirely met, the aggregation of work information on the file tree hierarchy provides a valuable view on the project.
 Figure~\ref{fig:project_discovery_technique} shows the different steps of the technique. We describe each of them in detail.
 
-\subsubsection{Step 1: Preprocessing.} The first step is to transform raw logs of version control systems (which might be grouped by commits) into a list of events as specified in Definition~\ref{def:bpm2015events}. This step is easily done by replicating the information on commit level to be contained in the events. The output is a set of events \Events.
+\subsubsection*{Step 1: Preprocessing.} The first step is to transform raw logs of version control systems (which might be grouped by commits) into a list of events as specified in Definition~\ref{def:bpm2015events}. This step is easily done by replicating the information on commit level to be contained in the events. The output is a set of events \Events.
 
-\subsubsection{Step 2: Aggregating events to activities.}
+\subsubsection*{Step 2: Aggregating events to activities.}
 Given the set of events \Events that we gathered from a version control system, the next step is to identify the activities to which the events belong. Note that we do not know the activities of the project in advance, but need to infer them based on the events. Each event affects a single file in the file hierarchy.
 
 \begin{figure}
@@ -173,7 +173,7 @@ We apply Step 2 to all files $\file$ in the file tree to get $\Activities_\file$
 % The abstraction function \abstractionFunction operates on a set of events
 
 
-\subsubsection{Steps 3 and 4: Mapping activities to work packages and aggregating.}
+\subsubsection*{Steps 3 and 4: Mapping activities to work packages and aggregating.}
 Once activities have been identified, we want to climb to the next abstraction layer: the work packages. Assumption A1 allows us to specify a one-to-one mapping $\kappa : \Files \rightarrow \WorkPackages$ between files in the file tree structure and work packages. More precisely, we construct the set of work packages $\WorkPackages$ isomorphic to the set of files $\Files$, such that the $\parent$ relation is preserved in the work package structure \Structure relationship. %This way, we assign the discovered activities of a selected file $\file'$ to the work package corresponding to $\file'$.
 
 The mapping $\MappingFunction$ of activities to work packages is simply $\MappingFunction(\activity) = \kappa (\fileToActivity(\activity))$. That is, the corresponding work package of the activity that was discovered for a file.
@@ -181,7 +181,7 @@ The mapping $\MappingFunction$ of activities to work packages is simply $\Mappin
 In this way, we provide an activity based view on work packages, and we can aggregate on each level in the file system to see active periods of the corresponding hierarchy level.
 
 
-\subsubsection{Step 5: Computing work package characteristics.} In this final step, we compute measures of interest for the discovered work packages. First, we obtain the temporal boundaries of a work package by the functions $\startTimeFunction$ and $\finishTimeFunction$ of the associated activities.
+\subsubsection*{Step 5: Computing work package characteristics.} In this final step, we compute measures of interest for the discovered work packages. First, we obtain the temporal boundaries of a work package by the functions $\startTimeFunction$ and $\finishTimeFunction$ of the associated activities.
 
 Let $\MappingFunction^{-1} : \WorkPackages \rightarrow 2^{\Activities}$ be the inverse of the mapping function $\MappingFunction$ of the project.
 The start and end time of a work package ($\startTimeFunction_{\WorkPackages}$ and $\finishTimeFunction_{\WorkPackages}$) are functions from work packages to timestamps. The start time is defined as $\startTimeFunction_{\WorkPackages}(\workPackage) = \min(\lbrace \startTimeFunction(\activity) \mid \activity \in \MappingFunction^{-1}(\workPackage)\rbrace )$, and the end time function of work packages $\finishTimeFunction_{\WorkPackages}$ is analogously defined using the maximum of the end times $\finishTimeFunction(\activity)$ of the activities.

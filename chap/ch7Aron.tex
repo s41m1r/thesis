@@ -24,7 +24,7 @@ In the following, we addresses the problem of freedom in open source development
 
 
 
-%\begin{inparadesc}
+%\begin{inparadesc}singh2020centrality
 %	\item[Generate dataset.] dsadsada
 %	
 %	\item[Create enriched dataset.] 
@@ -63,7 +63,7 @@ To annotate the various posts we proceed as follows. We scan all the sentences o
 \subsubsection{Performing log analysis and gathering insights}
 
 After the dataset is annotated with speech acts, the next step is to apply analyses tools in order to gather insights. 
-In order to do so, we exploit process mining tools like Disco and ProM. These tools enable us to perform several types of analyses, including basic statistics, trace and model-based. The input of these techniques is an event log in the \gls{xes} format. 
+In order to do so, we exploit process mining tools like Disco and ProM. These tools enable us to perform several types of analyses, including basic statistics, trace and model-based. The input of these techniques is an event log in the \gls{xes} or CSV format. 
 
 The outcome of this step is a set of insights about the conversational process. Especially, we are interested in the analyses that may unveil corporate bureaucracy aspects in \gls{oss}. In particular, we look into 
 \begin{inparaenum}[\itshape i)]
@@ -76,7 +76,7 @@ The outcome of this step is a set of insights about the conversational process. 
 
 \subsection{Results}
 
-In the following we describe the results of this approach on the Ruby on Rails repository. 
+In the following, we describe the results of this approach on the Ruby on Rails repository. 
 
 \subsubsection{Speech acts distribution and pull request process}
 
@@ -90,113 +90,72 @@ The manually annotated 2072 \glspl{pr} from the Ruby on Rails\footnote{https://g
 \end{figure}
 
 
-Other frequent categories are acknowledgment, action, code, opinion, question, requirement, suggestion, summon or thank. These categories were found in ten to twenty percent of the posts. There are also quite evenly distributed, suggesting that these categories are represent the types of speech which are actually used, while statement seems like a ``must-have'' speech act. The remaining categories occurred below ten percent and they may be considered as unusual speech acts. The category ``welcome'' is not reported in the plot as it only occurred three times. 
+Other frequent categories are acknowledgment, action, code, opinion, question, requirement, suggestion, summon or thank. These categories were found in ten to twenty percent of the posts. There are also quite evenly distributed, suggesting that these categories are represent the types of speech which are actually used, while statement seems like a \emph{must-have} speech act. The remaining categories occurred below ten percent and they may be considered as unusual speech acts. The category \emph{welcome} is not reported in the plot as it only occurred three times. 
 
 
-% TODO: Continue here
+Next, we are interested in understanding how the process of contributing to the code base works. Especially, we want to investigate whether there is any difference between \glspl{pr} which were merged and those which were not merged. To this end, we split the event log into two sub-logs $L_1$ and $L_2$, containing respectively the traces of the conversations which led to a merge and the traces of the conversations which were not accepted to be included the code-base. 
 
-Reducing the distinct number of activities for process mining was performed
-as follows. First, the categories citation, emoji, summon, greeting and were
-excluded as they were not considered relevant for process mining. As the
-category welcome per definition excludes other Speech Act annotations and
-can not occur in combined annotations, this category was not adapted.
-The remaining categories were combined iteratively to create a smaller set
-of annotations. Similar categories should be merged, showing the occurrence
-of either or both of the original categories. Then, these categories should be
-combined to activities, by listing and separating them with a comma. This
-should result in data sets for manual and automatic annotation, showing
-simplified annotations that can then be used for process mining.
-The simplified annotation framework consists of the categories, that can
-be seen in Table 10. The categories of statement and action were consid-ered similar enough to be merged. Whereas statement includes Speech Acts
-defining how something is, action defines a new state that was reached by
-doing an action. In addition to that, the distinction between statement and
-action of who did something was neglected for process mining. Question and
-request contain either asking something or asking someone to do something.
-As they contain similar phrases and distinction between them is less clear
-than for other categories, they are merged for process mining. Commit and
-offer both contain information about someone potentially doing something in
-future which also includes similar phrases. Therefore, these categories were
-also merged.
-Suggestion, opinion and requirement all include more or less subjective
-Speech Acts on how something should be or should be done. To a certain de-
-gree, the categories share the structure of suggesting future action or desired
-outcomes of future action, which was a reason to merge them. As disagree-
-ment was not found to be similar with other categories, only its name was
+However, simply applying any process discovery technique yields models which are too complex to analyze (aka \emph{Spaghetti}). \Cref{fig:notmerged-a100-p50} shows an example of such model. The model was obtain using the process discovery algorithm of the Disco tool. Moreover, the model shows all the activities contained in the event log and only the 50\% most frequent paths connecting any two activities. Yet, the model is not useful for analyses. Therefore, a further simplification step is needed. 
 
-simplified to Di. All of the above described simple categories should always
-be included in the combined activity used for process mining, if they occurred
-in a certain comment.
-The categories thank and acknowledgement were merged, as they share
-similar characteristics, both expressing agreement or positive feelings towards
-others, their actions or their work. In contrast to the other simplified cate-
-gories, ThaAck is considered less relevant and will therefore only be included
-in the activity, if there is no other annotation available for a certain com-
-ment. In addition to that, code will only show as the activity, if it is the only
-annotation available for a comment.
-The described simplification of categories resulted in 30 distinct activities
-in the manually annotated data set and 36 activities in the automatically
-annotated comments.
-To further explore if patterns of Speech Acts appear in cycles, the distinct
-activities that were created during simplification of annotations, were con-
-secutively numbered based on their appearance in the Pull Request. As the
-highest number of occurrences of certain categories is found to be 16, adding
-the number to the categories would again result in a very large amount of
-distinct activities. Therefore, only the numbers 2, 3 and 3+, for more than 3
-occurrences, were added to the activity. This was done with a Visual Basic
-script in Excel. Within each comment, it consecutively numbers equal com-
-binations of Speech Acts in a new column. Then, only 2, 3 and 3+ are joined
-with the annotations accordingly.
+\begin{figure}
+	\centering
+	\includegraphics[width=1\linewidth]{figures/not-merged-a100-p50}
+	\caption[A spaghetti model derived from the Ruby dataset]{A spaghetti model derived from the Ruby dataset, showing all the possible activities and the 50\% most frequent paths}
+	\label{fig:notmerged-a100-p50}
+\end{figure}
+
+
+In order to obtain a more useful model we perform simplification on two levels: event log and model. On the event log level we group the activities into groups with similar characteristics. For example, question and request can be grouped together because they ask something. \Cref{tab:aggregated-categories} reports the grouping. 
 
 \input{tables/speechActMacroCategories}
 
-\Cref{tab:aggregated-categories} shows the aggregation of similar categories. 
+On the model level, we use the \gls{gui} sliders offered by Disco. In this way we are able to further simplify the number of elements of the discovered process model. Finally, we apply process discovery on the event logs $L_1$ and $L_2$. \Cref{fig:speechActProcess} shows these processes. For both processes, we the \emph{activity} parameter to 25\% (i.e., we keep only the 25\% most frequent activities) and the \emph{path} parameter to zero (i.e., we discard alternative paths between any two activities).
 
-\begin{figure*}[h]
+\begin{figure}[h]
 	\centering
 	\begin{subfigure}[b]{\linewidth}
 		\includegraphics[width=.98\linewidth]{figures/merged-a25-p0}
-		\caption{Merged pull requests}
+		\caption{Merged pull requests ($L_1$)}
 	\end{subfigure}
 %
 	\begin{subfigure}[b]{\linewidth}
 		\includegraphics[width=.98\linewidth]{figures/not-merged-a25-p0}
-		\caption{Not merged pull requests}
+		\caption{Not merged pull requests ($L_2$)}
 	\end{subfigure}
+	\caption{The conversational process of merged and non merged pull requests}
 	\label{fig:speechActProcess}
-\end{figure*}
+\end{figure}
+
+In both processes, the macro activity \emph{StaAct} (statement, action) is frequent. Such activity is usually found as a starter of the pull request. In the case of merged \glspl{pr}, the process usually ends with a \emph{ThaAck} or \emph{QueRec}. Conversely, in the case of non merged pull requests, the process may end with four different activities. While \emph{ThaAck} and \emph{QueRec} are also present in this process, only \emph{ThaAck} is executed as a final activity. Moreover, a final activity that we see only in the case of non merged \glspl{pr} is \emph{Dis} (i.e., 
+Disagreement). This helps understanding why non merged \glspl{pr} take longer to close. 
 
 \subsubsection{Gate keepers in OSS}
 
-We use graphstream\footnote{https://graphstream-project.org/} a java library for representing and working with dynamic graphs \citep{DBLP:journals/corr/abs-0803-2093}. 
+Next, we analyze whether there are central user who act as quality controllers. Quality controllers are central points in the process where a decision is taken whether to proceed or kill the processes. Such processes are also known as stage-gate\textregistered  \citep{cooper2008perspective}. Decision points are known as \emph{gates}. In each gate it is decided whether the process should continue or be interrupted. People in charge of these decisions take the name of \emph{gatekeepers}. In the following, we identify gatekeepers in the Rails project.
+
+We implemented a prototype that takes as input the structured dataset generated in the previous steps and constructs a graph of the social network among users who participate in the project. The graph is constructed as follows. Each user is a vertex. For each pair of users, we draw and edge whether they have been involved in a conversation throughout the whole history of the input data. We enrich this graph with additional information as follows. Users who are core members are represented with a square, whereas other members with a circle. An edge connecting two users is thicker when users have been involved more with one another. If a pull request involving any two users has been successful, we color the edge in green, otherwise the edge is colored in gray. 
 
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=0.7\linewidth]{figures/socio-graph}
-	\caption[Subgraph of all the interactions in a group]{Subgraph of all the interactions that happened within a connected component in a social network}
+	\caption[Subgraph of all the interactions in a group]{Subgraph of all the interactions that happened within a connected component in a social network.}
 	\label{fig:socio-graph}
 \end{figure}
 
-\Cref{fig:socio-graph} shows this graph 
+\Cref{fig:socio-graph} shows a subgraph from the Rails project. To implement the prototype we used graphstream\footnote{https://graphstream-project.org}, a Java library for representing and working with dynamic graphs \citep{DBLP:journals/corr/abs-0803-2093}. In this subgraph, we can observe that there are five users who are represented by red squares. Those are core members of the Ruby on Rails project. Four of these members, are also the nodes with highest centrality. Thus, decisions about the destiny of a \gls{pr} depend rather on the people with high centrality \citep{singh2020centrality,DBLP:journals/snam/Doostmohammadian20} than on democratic coordination (e.g., voting). 
 
 \subsubsection{User specialization}
 
-\begin{figure}[h]
+Next, we investigate what speech acts are associated to the different users. To do so, we create a dataset that associations from each user to the speech acts used in the history of the \glspl{pr}. We include an attribute that indicates the type of user (i.e., core member, contributor or none of the two). Further, we also calculate the weight of each speech used by each user over the overall amount of times that speech act occurred. We can use this information to create the plot in \Cref{fig:speech-act-types-per-user}.
+
+We can now observe the distribution of the speech acts across the different user types in the repository. Users are represented on the x-axis. The y-axis shows how  many  times  a  user  uses  a  specific  speech act. Shapes indicate the different roles that a user covers. Colors indicate what type of speech act that was used. For example, the figure tells us that user \emph{kamipo} has used the speech act of type \emph{statement} about 90 times. It also tells us that this user is a core member. By crossing the information from this chart and the previous social-network, we can observe that user \emph{kaspth}, who is a core member with a high centrality in the social network, often uses the speech acts types \emph{question}, \emph{suggestion}, \emph{statement} and \emph{thank}. This is in line with studies on how leaders promote dialogic discussion \citep{lemmetty2020moment} and influence engagement \citep{rabiul2021leadership}. 
+
+\begin{figure}
 	\centering
 	\includegraphics[width=\linewidth]{figures/speechActTypesPerUser}
 	\caption{Speech act categories per user type}
 	\label{fig:speech-act-types-per-user}
 \end{figure}
 
-\Cref{fig:speech-act-types-per-user} shows the different kinds of user
 
-
-
-Whereas many Pull Requests finish after a few number of comments, others were found to take multiple years. On Rails/Rails repository on GitHub, the number of comments per Pull Request can range up to 155, considering all closed Pull Requests \cite{noauthor_pull_railsrails_nodate}. By analyzing a random selection of 6 short and 6 long Pull Requests, the following qualitative differences were found. Whereas in short Pull Requests, the described problem could be solved fast, long Pull Requests include more discussion on how to approach the task. However, this could also mean that it was clear very fast, that a certain problem needed more work. This could then result in a Pull Request being closed after a few comments, with the remark that the issue would be addressed in another Pull Request. This leads to the assumption that in short Pull Requests, the problem is defined more clearly and a decision whether to merge or not to merge can be reached faster, even if the decision is that the task should be performed in another way. 
-
-Consisting of 20 to 30 comments, longer Pull Requests were found to contain discussions between at least two users. An aspect resulting in more comments was found to be the initiating user repeatedly offering to adapt and improve their code. This could also include asking how to perform changes to fulfill the requirements and have their Pull Request merged. 
-
-Based on the work of Tötzl \cite{thesisgithub}, the speech acts found in the initial comments usually included statements, whereas later comments included more subjective speech acts like opinions and suggestions. The final comments were then found to contain thank and acknowledgments towards the participating users and their work. Despite the higher number of comments, there were few repetitions of the phases found. % means that once users started suggesting, they would not go back to posting only statements
-
-Another finding of longer Pull Requests was that if the initial comment did not include a final solution but contained suggestions on how to approach some issue, more comments usually followed, where users started discussing their ideas. In addition to that, Pull Requests could also be rejected after long discussions on whether the proposed feature was required and should be added. 
-
-
+Finally, combining insights from the quantitative analyses, the process analysis, the social network of users, and the distribution of the various users over the projects, we can gather insights that which show an hierarchy and imbalance of power in software projects. For instance, successfully merged pull requests mostly involved the same users. These users can be seen as quality controllers. Therefore, the do not contribute to the conversation as peers but rather as leaders, supervisors, or persons at a higher level of a hierarchy. Their actions are also decisive about the conversation (i.e., they can decide when the process is considered to be complete). 
