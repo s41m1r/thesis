@@ -3,26 +3,20 @@
 % use \chaptermark{}
 % to alter or adjust the chapter heading in the running head
 
-\abstract*{This chapter provides an introduction of this doctoral thesis. \Cref{sec:intro-motivation} provides the motivation
-\Cref{sec:intro-background} background ... 
-\Cref{sec:intro-research-paradigm} Research paradigm -- Peffers
-\Cref{sec:intro-structure} ... Structure
-}
-
-This chapter provides an introduction of this doctoral thesis. \Cref{sec:intro-motivation} motivates the research. \Cref{sec:problem-definition} defines the problem. \Cref{sec:intro-research-paradigm} gives an overview of the research methodology and defines the artifacts generated as outcome. \Cref{sec:data-collection} briefly discusses the data created and used in this thesis. \Cref{sec:intro-contributions} classifies the contributions of this thesis. \Cref{sec:intro-structure} provides an outlook of the structure, and \Cref{sec:intro-related-publications} lists the publications that have resulted from work on this thesis. 
+This chapter provides an introduction to this doctoral thesis. \Cref{sec:intro-motivation} motivates the research. \Cref{sec:problem-definition} defines the problem. \Cref{sec:intro-research-paradigm} gives an overview of the research methodology and defines the artifacts generated as outcome. \Cref{sec:data-collection} briefly discusses the data created and used in this thesis. \Cref{sec:intro-contributions} classifies the contributions of this thesis. \Cref{sec:intro-structure} provides an outlook of the structure, and \Cref{sec:intro-related-publications} lists the publications that have resulted from work on this thesis. 
 
 \section{Motivation}
 \label{sec:intro-motivation}
 
-\todo[inline]{Include references to support statements. Further elaborate including the four perspectives: time, case, orga, control-flow}
-
 Software development is a process that involves creativity (\citealp{DBLP:journals/jss/AldaveVGM19,DBLP:journals/jss/DingsoyrNBM12}). Yet, practical software development projects are executed with specific requirements on time, budget and quality. In order to fulfill these requirements the development process must be monitored. For example, it is important to know what type of work is being done at a certain moment in time and by whom. This is for instance the case for large development projects where coordination mechanisms emerge spontaneously among developers who want to contribute with their code.
 These type of projects are difficult to control for several reasons. First, there is no clear understanding in how far a certain piece of code advances the current status of the project. Second, a piece of code written by a developer goes through different stages of code-review and it is difficult to predict whether it will ever be merged with the main source. Third, coordination of work may involve a large number of message exchanges among many developers in forums. Hence, it is not feasible to manually oversee what work is going on at a particular point in time. 
 
-Literature has tackled this problem from different angles. In the area of process mining approaches exist that exploit event logs for abstracting a process model. In the area of software engineering, software repositories have been explicitly studied. These type of works provide several metrics that help with understanding various aspects of development. However, process mining approaches only work with event logs where activities are explicitly recorded in the log. This is not the case with software development where data is rather unstructured. Likewise, software engineering approaches lack a perspective about work patterns. 
+Literature has tackled this problem from different angles. In the area of process mining approaches exist that exploit event logs for abstracting a process model. In the area of software engineering, software repositories have been the a major interest. Contributions from this area provide several metrics that help with understanding various aspects of development. However, process mining approaches only work with event logs where activities are explicitly recorded in the log. This is not the case with software development where data is rather unstructured. Likewise, software engineering approaches lack a perspective about work patterns. 
 
 
-This study addresses the discovery of work patterns from software development event data. To this end, it defines concepts to capture work from software repositories. This allows to construct several discovery techniques that provide information about different aspects of the development process. In this sense, this work provides a bridge between process mining and software engineering. The findings of this work enable project managers as well as software developers to raise transparency about the actual development based on facts. As a result, it enables both understanding the current status and monitoring for potentially unwanted patterns of work.
+This study addresses the discovery of work patterns from software development event data. To this end, it defines concepts to capture work from software repositories. This allows to construct several discovery techniques that provide information about different perspectives of the development process. More specifically we categorize them into \emph{time}, \emph{case}, \emph{organizational} and \emph{control-flow}. The time perspective informs about temporal aspects of the process, such as when did an activity happen and for how long. The case perspective informs about characteristic of the different cases, such as the number of lines of code being produced at during the creation of each version of an artifact. The organizational perspective informs about the roles of the people in the context of the organization, such as developers, testers, etc. The control-flow perspective informs about the logical succession of activities, such as an artifact must first be implemented and then tested. 
+
+In this sense, this work provides a bridge between process mining and software engineering. The findings of this work enable project managers as well as software developers to raise transparency about the actual development based on facts. As a result, it enables both understanding the current status and monitoring for potentially unwanted patterns of work.
 
 %The rest of this proposal is organized as follows. \Cref{sec:problem-definition} describes the problem, the existing literature, and derives the solution requirements. \Cref{sec:state-of-field} provides background knowledge on the related fields of process mining, text mining, and mining software repositories. \Cref{sec:methods} explains the research method, the dataset and outlines the expected output of the thesis. \Cref{sec:preliminary-results} shows completed work so far. \Cref{sec:next-steps} outlines future steps towards the completion of this dissertation. \Cref{sec:dissertation-relevance} draws the implications for research and presents a dissemination plan.
 
@@ -30,9 +24,9 @@ This study addresses the discovery of work patterns from software development ev
 \section{Problem Definition}
 \label{sec:problem-definition}
 
-\todo[inline]{Here, too, include the four perspectives. Fig.1. can change: "4-perspectives of work" and include time, orga, control-flow, case. Include citations.}
+%\todo[inline]{Here, too, include the four perspectives. Fig.1. can change: "4-perspectives of work" and include time, orga, control-flow, case. Include citations.}
 
-\todo[inline]{Check overlap of information provided here versus info provided in the background section. E.g. details of VCS.}
+%\todo[inline]{Check overlap of information provided here versus info provided in the background section. E.g. details of VCS.}
 
 Software development processes are highly complex endeavors that require the coordination of multiple resources. Compared to standard business processes, they present the following characteristics. First, 
 %although there is a planning phase, 
@@ -46,20 +40,20 @@ they involve creativity when executing the tasks, i.e. there exists no strict pr
 \end{figure}
 
 
-Software development processes fall into the category of \emph{project-oriented business processes} \cite[]{Bala2015}. 
-That is, they are rather ad-hoc plans performed with limited resources and time, but with a clear goal: develop a software artifact. Unlike classic business processes which are best captured with notations such as Petri nets and \gls{bpmn}, software development processes are more akin to one-time plans, which are usually captured by models such as Gantt and PERT diagrams. The following example captures the essence of a typical software development process in practice, such as for instance in Google LLC~\cite[]{Henderson2017}.
+Software development processes fall into the category of \emph{project-oriented business processes} \citep{DBLP:conf/bpm/BalaCMRP15}. 
+That is, they are rather ad-hoc plans performed with limited resources and time, but with a clear goal: develop a software artifact. Unlike classic business processes which are best captured with notations such as Petri nets and \gls{bpmn}, software development processes are more akin to one-time plans, which are usually captured by models such as Gantt and PERT diagrams. The following example captures the essence of a typical software development process in practice, such as for instance in Google LLC \citep{Henderson2017}.
 
 
 \begin{quote}
 	A new software version or feature needs to be developed. Unquestionably, Google has know-how on software development. However, before starting the implementation phase, precise requirements for tasks must be formulated. These tasks are stored in \gls{its} and referred to as \emph{issues}. Usually effort estimation values are assigned to each of them. Subsequently time and resources are allocated to the tasks. This starts the implementation phase. During this phase, resources work on tasks in a creative way, choosing among available tasks according to their own skills and expertise. In order to save the progress, developers issue a so-called \emph{commit} command which creates a new version of the modified files on the \gls{vcs}. Likewise, every time a certain task (which may be carried out through by different commits) is completed, the corresponding issue is marked as done. Both commits and issues can be commented by the users, respectively to document the changes and raise a discussion for increasing understanding the problem.
 \end{quote}
 
-Several tools are used by software project participants to support their work. Therefore, traces about the overall process are typically available under different repositories and artifacts, e.g., spreadsheets, word processor documents, programming languages files, emails, etc. This makes it cumbersome to obtain knowledge about the overall business process through manual inspection. Also, it is a challenge to automatically \emph{extract} work information from unstructured data such as user comments when working on tasks. For instance, existing solutions (e.g., process mining algorithms) are not able to provide informative results when the data is not available as a structured single event log where activities are explicitly labeled. Likewise, other software tools (e.g. GitHub) limit themselves at providing only process-unaware statistical information (e.g., number of commits in a file).
+Several tools are used by software project participants to support their work. Therefore, traces about the overall process are typically available in different repositories and artifacts, e.g., spreadsheets, word processor documents, programming languages files, emails, etc. This makes it cumbersome to obtain knowledge about the overall business process through manual inspection. Also, it is a challenge to automatically \emph{extract} work information from unstructured data such as user comments when working on tasks. For instance, existing solutions (e.g., process mining algorithms) are not able to provide informative results when the data is not available as a structured single event log where activities are explicitly labeled. Likewise, other software tools (e.g. GitHub) limit themselves at providing only process-unaware statistical information (e.g., number of commits in a file).
 
 %Therefore, the overall challenge is to understand which are important events that track development work in the repository. 
 
 
-While obtaining an overarching view on software development is challenging, there are still repositories that we can be exploited to obtain process knowledge. One tool that provides important traces of the development work is \gls{vcs}. This tool is used to keep track of the different versions of files created by users and to manage their collaboration. Not only supports it keeping track of file versions, but also allows users to associate a textual comment that describe the changes made. Therefore, a new version of a particular file is created as the result of an activity done by a user. The evolution of these versions, along with information about the users and their comments can be retrieved from these type of tools in the form of semi-structured event logs. It is then a challenge how to discover the business process from events (e.g., lines of code changed, comments, user information) present in these logs.
+While obtaining an overarching view on software development is challenging, there are still repositories that can be exploited to obtain process knowledge. One tool that provides important traces of the development work is \gls{vcs}. This tool is used to keep track of the different versions of files created by users and to manage their collaboration. Not only supports it keeping track of file versions, but also allows users to associate a textual comment that describe the changes made. Therefore, a new version of a particular file is created as the result of an activity done by a user. The evolution of these versions, along with information about the users and their comments can be retrieved from these type of tools in the form of semi-structured event logs. It is then a challenge how to discover the business process from events (e.g., lines of code changed, comments, user information) present in these logs.
 
 %
 %\todo{JM: I think you have to develop much more clearly how it is difficult to extract certain pieces of information from version control systems.} 
@@ -77,7 +71,7 @@ While obtaining an overarching view on software development is challenging, ther
 \Gls{vcs} offers information about work traces, such as versions of the artifacts, number and content of commits done by developers, artifacts evolution, users and their comments, and timestamps of each action. 
 \input{tables/vcs-data2}
 
-Although different technologies exist in practice (e.g., Subversion, Mercurial, Git), the information contained in the logs can be roughly summarized by \Cref{tab:vcs-log-data}. The table displays an excerpt of a \gls{vcs} log, i.e., a set of user commits, after having extracted and structured the data according to five attributes. The semantics of the  attributes is a follows: 
+Although different technologies exist in practice (e.g., Subversion, Mercurial, Git), the information contained in the logs can be roughly summarized by \Cref{tab:vcs-log-data}. \todo{Maybe I can change this table with a more generic one that contains all information?}  The table displays an excerpt of a \gls{vcs} log, i.e., a set of user commits, after having extracted and structured the data according to five attributes. The semantics of the  attributes is a follows: 
 \begin{inparaenum}[\itshape i)]
 	\item \emph{Id} is a unique identifier;
 	\item \emph{Resource} is the resource that issued the commit;
@@ -91,7 +85,7 @@ Likewise, information about issues from \gls{its} can be extracted and presented
 Hence, studying the co-evolution of these two repositories can help extracting relevant knowledge about the software development process. 
 
 More precisely this work seeks answer to the following research question. \textbf{RQ}: \emph{How can we make use of project event data to gather insights about the software development process that are informative to managers?} 
-Because the project managers can benefit from a process view to better analyze hidden aspects of the software development process, this work takes a process mining stance on the problem. Therefore, the main research question is broken down into the following four subquestions. Each of them addresses \textbf{RQ} with respect to the four perspectives of a process that are useful to discover the event data~\cite[]{VanderAalst2016b}.
+Because the project managers can benefit from a process view to better analyze hidden aspects of the software development process, this work takes a process mining stance on the problem. Therefore, the main research question is broken down into the following four subquestions. Each of them addresses \textbf{RQ} with respect to the four perspectives of a process that are useful to discover the event data \citep{VanderAalst2016b}.
 
 %In the light of the above considerations, we derive the following requirements for extending process mining towards the analysis of software repositories.
 %Owing to \gls{pm} literature, the research question (\textbf{RQ}) can be further broken down to the four process mining perspectives. 
@@ -115,30 +109,31 @@ Because the project managers can benefit from a process view to better analyze h
 \section{Research Methodology and Generated Artifacts}
 \label{sec:intro-research-paradigm}
 
-%\todo[inline]{Here goes Peffers~\cite[]{Peffers2008}
+%\todo[inline]{Here goes Peffers \citep{Peffers2008}
 %	
 %	Make clear what type of contribution you are proposing. E.g., engineering: set of techniques, algorithms, etc.
 %	
 %	This section presents the research method. It also describes the dataset and outlines the expected research outcome.
 %}
 
-Information systems research is an interdisciplinary field of study that uses theories from social sciences, economics, and computer science. The field can be divided into two complementary paradigms: \emph{behavioral science} and \emph{design science}. Behavioral science aims at developing and justifying theories in order to explain or predict information systems phenomena \cite[]{Gregor2006}. Design science focuses on the creation and evaluation of innovative design \emph{artifacts} \cite[]{Hevner2004}. \Cref{fig:DS-process} illustrates the design science approach as a process~\cite[]{Peffers2008}. 
+This thesis is positioned as design science \citep{Hevner2004}.
+Information systems research is an interdisciplinary field of study that uses theories from social sciences, economics, and computer science. The field can be divided into two complementary paradigms: \emph{behavioral science} and \emph{design science}. Behavioral science aims at developing and justifying theories in order to explain or predict information systems phenomena \cite[]{Gregor2006}. Design science focuses on the creation and evaluation of innovative design \emph{artifacts} \cite[]{Hevner2004}. \Cref{fig:DS-process} illustrates the design science approach as a process \citep{Peffers2008}. 
 
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=\linewidth]{figures/DS-process}
-	\caption[The Design Science Research process]{The Design Science Research process, adapted from~\cite[]{Peffers2008}}
+	\caption[The Design Science Research process]{The Design Science Research process, adapted from \citep{Peffers2008}}
 	\label{fig:DS-process}
 \end{figure}
 
-%This doctoral thesis employs both design and behavioral science. Following the approach suggested by \cite[]{Berente2018}, real life data will be used for data-driven computationally-intensive theory development. \todoinline{JM: You really want to develop theory, or you aim to provide techniques? I think you work is more about providing technique - that are useful to inform the mentioned approach to theory building.} This approach can be seen as a combination between behavioral science and design science. The behavioral perspective is given by traditional theory development based on manual coding, e.g. \gls{gtm}. The design perspective is given by the creation of novel artifacts (e.g., software algorithms) that use trace data to automatically discover theory, e.g, \gls{ctd}. This thesis uses real world data gathered from the SHAPE project\footnote{\url{https://aic.ai.wu.ac.at/shape-project/}} and \gls{oss}. This data will be used both for generating propositions about process aspects and developing novel artifacts. These artifacts apply process mining methods to a new domain, also referred to as exaptation~\cite[]{Gregor2013}. 
+%This doctoral thesis employs both design and behavioral science. Following the approach suggested by \cite[]{Berente2018}, real life data will be used for data-driven computationally-intensive theory development. \todoinline{JM: You really want to develop theory, or you aim to provide techniques? I think you work is more about providing technique - that are useful to inform the mentioned approach to theory building.} This approach can be seen as a combination between behavioral science and design science. The behavioral perspective is given by traditional theory development based on manual coding, e.g. \gls{gtm}. The design perspective is given by the creation of novel artifacts (e.g., software algorithms) that use trace data to automatically discover theory, e.g, \gls{ctd}. This thesis uses real world data gathered from the SHAPE project\footnote{\url{https://aic.ai.wu.ac.at/shape-project/}} and \gls{oss}. This data will be used both for generating propositions about process aspects and developing novel artifacts. These artifacts apply process mining methods to a new domain, also referred to as exaptation \citep{Gregor2013}. 
 
 %With reference to \gls{dsr} process in \Cref{fig:DS-process}, next sections show the design and development of the dataset and artifacts for addressing the requirements posed in \Cref{sec:problem-definition}.
 %
 %
 %The following subsections explain the research method adopted in relation to \gls{dsr}. 
 
-This thesis develops four artifacts \textbf{A1}, \textbf{A2}, \textbf{A3}, \textbf{A4} respectively addressing the four research questions \textbf{RQ1}, \textbf{RQ2}, \textbf{RQ3}, \textbf{RQ4}. Each artifact is devised following the \gls{dsr} approach~\cite[]{Peffers2008}. These artifacts are interconnected to one another in that each of them tackles a different perspective of the overarching software development process. Their combinations enables a view on the \emph{real} Gantt chart of the project, as illustrated in \Cref{fig:big-solution}. Such techniques are also useful to inform the computationally-driven theory building~\cite[]{Berente2018}.
+This thesis develops four artifacts \textbf{A1}, \textbf{A2}, \textbf{A3}, \textbf{A4} respectively addressing the four research questions \textbf{RQ1}, \textbf{RQ2}, \textbf{RQ3}, \textbf{RQ4}. Each artifact is devised following the \gls{dsr} approach \citep{Peffers2008}. These artifacts are interconnected to one another in that each of them tackles a different perspective of the overarching software development process. Their combinations enables a view on the \emph{real} Gantt chart of the project, as illustrated in \Cref{fig:big-solution}. Such techniques are also useful to inform computationally-driven theory building~\citep{DBLP:journals/isr/BerenteSS19}.
 
 \begin{figure}[]
 	\centering
@@ -147,26 +142,30 @@ This thesis develops four artifacts \textbf{A1}, \textbf{A2}, \textbf{A3}, \text
 	\label{fig:big-solution}
 \end{figure}
 
-Research rigor and validity are ensured by evaluating the artifacts with the \gls{feds}~\cite[]{Venable2016}. \Gls{feds} provides strategies for evaluating \gls{dsr} artifacts. More specifically, it takes into account two dimensions
+Research rigor and validity are ensured by evaluating the artifacts with the \gls{feds} \citep{Venable2016}. \Gls{feds} provides strategies for evaluating \gls{dsr} artifacts. More specifically, it takes into account two dimensions
 \begin{inparaenum}[\itshape i)]
 	\item the functional purpose of the
 	evaluation (formative or summative); and 
 	\item the paradigm of the evaluation (artificial or naturalistic).
 \end{inparaenum} 
-Moreover, it provides four steps for choosing an appropriate evaluation strategy
+Moreover, it provides four steps for chinfinicaoosing an appropriate evaluation strategy
 \begin{inparaenum}[\itshape i)]
 	\item explicate the goals of the evaluation;
 	\item choose the evaluation strategy or strategies
 	\item determine the properties to evaluate; and
 	\item design the individual evaluation episode(s). 
-\end{inparaenum} The evaluation strategies for each designed artifact are as follows.
+\end{inparaenum} In the following, we describe each designed artifact and their evaluation. 
+
+\cite{Gregor2020} define a schema for defining \emph{design principles} so that they are understandable and useful in real world context. \todo{Shoud I define design principles according to their schema? This may be a good idea!}
+
+
 
 
 %\input{tables/artifacts-table.tex}
 
 \subsection{Discovering the Temporal Perspective of the Software Development Process (Artifact A1)} 
 %~\\\noindent\rule[1ex]{2.5cm}{2pt}~\\	
-Design objectives of \textbf{A1} are \begin{iiilist}
+Design objectives of \textbf{A1} aure \begin{iiilist}
 	\item has to be applicable, 
 	\item usable, 
 	\item simple and,
@@ -186,7 +185,7 @@ Evaluation goals are
 	\item ethics, and
 	\item efficiency.
 \end{iiilist}
-They are respectively addressed as follows. Rigor is assured by the design science approach. Uncertainty involves technical infeasibility and unavailability of the data. Infeasibility risk is reduced by starting from the design of small artifacts with basic features and incrementally improve. Unavailability risk is reduced by replication of the dataset locally. An ethics problem may regard the “big-brother is watching you” effect on people. This will be solved considering only data from partners and public repositories. Efficiency is evaluated by measuring whether all time patterns are found in a reasonably short time.
+They are respectively addressed as follows. Rigor is assured by the design science approach. Uncertainty involves technical infeasibility and unavailuability of the data. Infeasibility risk is reduced by starting from the design of small artifacts with basic features and incrementally improve. Unavailability risk is reduced by replication of the dataset locally. An ethics problem may regard the “big-brother is watching you” effect on people. This will be solved considering only data from partners and public repositories. Efficiency is evaluated by measuring whether all time patterns are found in a reasonably short time.
 
 This artifact is evaluated through a Quick \& Simple strategy \citep{Venable2016}, i.e., the technique is directly evaluated with real data. This will include three iteration episodes 
 \begin{iiilist}
@@ -269,7 +268,7 @@ This artifact is evaluated through a Technical risk \& Efficacy strategy (see \c
 %\begin{figure}
 %	\centering
 %	\includegraphics[width=0.7\linewidth]{figures/empirically-driven-theory-generation-1}
-%	\caption{Empirically driven theory generation~\cite[]{Berente2018}}
+%	\caption{Empirically driven theory generation \citep{Berente2018}}
 %	\label{fig:empirically-driven-theory-generation}
 %\end{figure}
 
@@ -279,18 +278,18 @@ This artifact is evaluated through a Technical risk \& Efficacy strategy (see \c
 %	
 %	\item[Guideline 2 -- Problem Relevance.] The objective of design-science research is to develop technology based solutions to important and relevant business problems. My research takes inspiration from real world needs which include human-centric safety-critical automated solutions in the railway domain.  
 %	
-%	\item[Guideline 3 -- Design Evaluation.] The utility, quality, and efficacy of a design artifact must be rigorously demonstrated via well-executed evaluation methods. The real world scenarios that I encounter in the SHAPE project require for novel solutions, which involve the design of new algorithms. Algorithms are converted to operational software. This operational software is an instantiated artifact~\cite[]{Gregor2013}, which is then tested against real data. 
+%	\item[Guideline 3 -- Design Evaluation.] The utility, quality, and efficacy of a design artifact must be rigorously demonstrated via well-executed evaluation methods. The real world scenarios that I encounter in the SHAPE project require for novel solutions, which involve the design of new algorithms. Algorithms are converted to operational software. This operational software is an instantiated artifact \citep{Gregor2013}, which is then tested against real data. 
 %	
-%	\item[Guideline 4 -- Research Contributions.] Effective design-science research must provide clear and verifiable contributions in the areas of the design artifact, design foundations, and/or design methodologies. The contribution of my research can be positioned as a set of \emph{exapted} methods (cf. \gls{dsr} knowledge contribution framework~\cite[]{Gregor2013}) from the fields of process mining and text mining, which contribute to a better understanding of projects. 
+%	\item[Guideline 4 -- Research Contributions.] Effective design-science research must provide clear and verifiable contributions in the areas of the design artifact, design foundations, and/or design methodologies. The contribution of my research can be positioned as a set of \emph{exapted} methods (cf. \gls{dsr} knowledge contribution framework \citep{Gregor2013}) from the fields of process mining and text mining, which contribute to a better understanding of projects. 
 %	
-%	\item[Guideline 5 -- Research Rigor.] Design-science research relies upon the application of rigorous methods in both the construction and evaluation of the design artifact. My research builds upon existing work from natural language processing~\cite[]{de2006generating,Corro2013,klein2003accurate}, a number of \gls{vcs} mining works~\cite[]{Banitaan2015,Allamanis2013,Vasilescu2015,Karimi2016,German2015}, and process mining.
+%	\item[Guideline 5 -- Research Rigor.] Design-science research relies upon the application of rigorous methods in both the construction and evaluation of the design artifact. My research builds upon existing work from natural language processing \citep{de2006generating,Corro2013,klein2003accurate}, a number of \gls{vcs} mining works \citep{Banitaan2015,Allamanis2013,Vasilescu2015,Karimi2016,German2015}, and process mining.
 %%	\cite[]{van2011process,rubin2007process,Rubin2014a,rubin2014agile}. 
 %I plan to adopt mature methods from the mentioned works and construct my artifacts upon existing ones. 
 %	
 %	\item[Guideline 6 -- Design as a Search Process.] 
-%	The search for an effective artifact requires utilizing available means to reach desired ends while satisfying laws in the problem environment. I plan to build my artifacts based on state-of-the-art methods and technology and follow both a rigorous process as the one described in~\cite[]{Peffers2008} (cf. \cref{fig:DS-process}). Given the nature of my data, an exploratory phase may be required in the initial activity of this process. This may involve exploratory data analysis, as described in the data science process~\cite[][p.~41]{Schutt2013}
+%	The search for an effective artifact requires utilizing available means to reach desired ends while satisfying laws in the problem environment. I plan to build my artifacts based on state-of-the-art methods and technology and follow both a rigorous process as the one described in \citep{Peffers2008} (cf. \cref{fig:DS-process}). Given the nature of my data, an exploratory phase may be required in the initial activity of this process. This may involve exploratory data analysis, as described in the data science process \citep[p.~41]{Schutt2013}
 %	
-%	\item[Guideline 7 -- Communication of Research.] Design-science research must be presented effectively both to technology-oriented as well as management-oriented audiences. I will use guidelines~\cite[]{Gregor2013,Recker2015} in order to properly position my work. The main target will be \gls{bpm} conferences and journals. 
+%	\item[Guideline 7 -- Communication of Research.] Design-science research must be presented effectively both to technology-oriented as well as management-oriented audiences. I will use guidelines \citep{Gregor2013,Recker2015} in order to properly position my work. The main target will be \gls{bpm} conferences and journals. 
 %	
 %\end{description}
 
@@ -298,7 +297,7 @@ This artifact is evaluated through a Technical risk \& Efficacy strategy (see \c
 \section{Generated Datasets}
 \label{sec:data-collection}
 
-\todo[inline]{Is this the best place for this section?}
+%\todo[inline]{Is this the best place for this section?}
 
 This thesis includes the collection of and generation of datasets from real life software projects. These project data were collected both from industrial partners and from \gls{oss}. \Cref{tab:dataset} summarizes the available data. Logs from industrial partner are concerned with specific development activities (e.g., building railway interlocking-system software) and include a sufficient number of events that cover one software release. Logs from \gls{oss} were manually extracted by GitHub repositories. A tool has then been devised to parse these data and use them to populate a database. An original dataset is represented by Github pull requests. This dataset contains a list of manually annotated pull requests using the coding scheme by \cite[]{Majchrzak2016}. An additional output of this thesis will be the creation of a larger dataset using a machine learning approach that is able to automatically categorize pull requests in the classes given by \cite[]{Majchrzak2016}.
 
@@ -306,7 +305,7 @@ This thesis includes the collection of and generation of datasets from real life
 
 %\subsection{Expected Outcome}
 %
-%In addition to an original dataset, this doctoral thesis is expected to produce outcomes that help the project manager analyze his software development processes. To this end new approaches in the form of artifacts~\cite[]{Peffers2008} will be devised. These artifacts will serve as proofs-of-concept for the applicability of the research. In particular, the artifacts must address each of the four process aspects. Therefore, the outcome is categorized according to the research questions derived in \Cref{sec:problem-definition} as follows.
+%In addition to an original dataset, this doctoral thesis is expected to produce outcomes that help the project manager analyze his software development processes. To this end new approaches in the form of artifacts \citep{Peffers2008} will be devised. These artifacts will serve as proofs-of-concept for the applicability of the research. In particular, the artifacts must address each of the four process aspects. Therefore, the outcome is categorized according to the research questions derived in \Cref{sec:problem-definition} as follows.
 %
 %\begin{itemize}	
 %	\item \textbf{Artifact A1: Mining the Time Perspective (RQ1)}. Novel technique that allows for gaining transparency on the time perspective of software development work.	For instance, and artifact that explicits what are the durations of tasks and when are actual tasks executed.
@@ -326,13 +325,13 @@ This thesis includes the collection of and generation of datasets from real life
 \section{Research Contributions}
 \label{sec:intro-contributions}
 
-\todo[inline]{Summarize contributions beyond the papers. E.g., visualisation, conceptualisation of process-oriented business processes, etc. Elaborate more and think of further contributions.}
+%\todo[inline]{Summarize contributions beyond the papers. E.g., visualisation, conceptualisation of process-oriented business processes, etc. Elaborate more and think of further contributions.}
 
 This doctoral thesis aims at bridging the gap between automatic analysis of software development data and process mining. It provides analyses techniques that help learning specific characteristics of the software process from its trace data. Beyond the publications, this thesis makes the following contributions.
 
 \begin{itemize}
 	
-	\item \textbf{Conceptualization of process-oriented business processes.} Processes have been seen so far as repeatable endeavors. However, there are processes which are not repeated exactly in the same way twice. This is the case with project-oriented business processes. Such processes, are conducted as projects, in that they are usually planned a priori and run under limited resources. 
+	\item \textbf{Conceptualization of project-oriented business processes.} Processes have been seen so far as repeatable endeavors. However, there are processes which are not repeated exactly in the same way twice. This is the case with project-oriented business processes. Such processes, are conducted as projects, in that they are usually planned a priori and run under limited resources. 
 	
 	\item \textbf{Visualization.} Existing techniques in the software engineering area are able to provide several possible views on the software development. Major visualization techniques can be divided into graph-based \citep{DBLP:journals/ijseke/GermanH06,DBLP:journals/smr/GreevyDG06}, notation-based \citep{DBLP:conf/wcre/McNairGW07}, matrix-based \citep{DBLP:conf/icsm/GirbaDL04} and metaphor-based \citep{DBLP:conf/vissoft/WettelL07}. These visualization techniques help in multiple ways, such as understanding code smells, refactoring, evolution, distribution of work etc. However, most of the works in software engineering area are not process-aware. Thus, this thesis aims at researching the most suitable visualization techniques that help understanding the work process that lays behind software development. 	
 
@@ -347,12 +346,12 @@ This doctoral thesis aims at bridging the gap between automatic analysis of soft
 \section{Thesis Structure}
 \label{sec:intro-structure}
 
-\todo[inline]{Elaborate more the description of what the sections provide.}
+%\todo[inline]{Elaborate more the description of what the sections provide.}
 
 This thesis is structured as follows. 
 
 \begin{itemize}
-	\item \textbf{Chapter 1: Introduction}  motivates research on the topic of mining processes from software repositories. 
+	\item \textbf{Chapter 1: Introduction} motivates research on the topic of mining processes from software repositories. This chapter also scopes the problem addressed by this dissertation and provides an overall guide to the content of this manuscript.
 	
 	\item \textbf{Chapter 2: Research Background} presents the body of knowledge which inform this thesis. 
 %	\item \textbf{Chapter 3: Data-Driven Approaches to Analyzing the Software Process} 
@@ -360,7 +359,7 @@ This thesis is structured as follows.
 	
 	\item \textbf{Chapter 3: Discovering the Temporal Perspective} tackles the problem of discovering the temporal aspect (RQ1) of the software development process. A visualization technique is presented that simplifies the managers' understanding of such perspective.
 	
-	\item \textbf{Chapter 4: Discovering the Case Perspective}  presents an approach that helps understanding how different artifacts co-evolve in software devRelatedelopment. With this approach, it is possible to compare how similarly different artifacts evolve and consequently cluster them into similar development cases (RQ2).  
+	\item \textbf{Chapter 4: Discovering the Case Perspective}  presents an approach that helps understanding how different artifacts co-evolve in software development. With this approach, it is possible to compare how similarly different artifacts evolve and consequently cluster them into similar development cases (RQ2).  
 	
 	\item \textbf{Chapter 5: Discovering the Organizational Perspective} tackles the problem of automatically identifying emerging roles in software development. Thus, a technique for classifying human-resources (RQ3) based on factual data is presented.
 	
@@ -378,15 +377,15 @@ This thesis is structured as follows.
 
 This dissertation has led to the publications listed below.\\
 
-\noindent {Mining the Time Perspective(\textbf{RQ1}):}~\cite[]{Bala2015}
+\noindent {Mining the Time Perspective(\textbf{RQ1}):}~\citep{DBLP:conf/bpm/BalaCMRP15}
 \begin{itemize}
 \item \textbf{Bala, S.}, Cabanillas, C., Mendling, J., Rogge-Solti, A., and Polleres, A.: \textit{Mining Project-Oriented Business Processes}. In Hamid Reza Motahari-Nezhad, Jan Recker, and Matthias Weidlich, editors, BPM 2015, Innsbruck, Austria, volume 9253 of Lecture Notes in Computer Science, pages 425--440. Springer, 2015. 
 \end{itemize}	
-\noindent {Mining the Case Perspective (\textbf{RQ2}):}~\cite[]{Bala2017a}.
+\noindent {Mining the Case Perspective (\textbf{RQ2}):}~\citep{DBLP:conf/bpm/BalaRGBMS17}.
 \begin{itemize}
 	\item \textbf{Bala, S.}, Revoredo, K., de A.R. Gonçalves, J.C., Baião, F., Mendling, J., Santoro, F.: \textit{Uncovering the Hidden Co-evolution in the Work History of Software Projects}. In: Carmona, J., Engels, G., and Kumar, A. (eds.) Business Process Management - 15th International Conference, BPM 2017, Barcelona, Spain, September 10-15, 2017, Proceedings. pp. 164--180. Springer (2017). 
 \end{itemize}
-\noindent {Mining the Organizational Perspective (\textbf{RQ3}):} \cite[]{Agrawal2016}.
+\noindent {Mining the Organizational Perspective (\textbf{RQ3}):} \citep{DBLP:conf/edoc/AgrawalATBRT16}.
 \begin{itemize}
 	\item Agrawal, K., Aschauer, M., Thonhofer, T., \textbf{Bala, S.}, Rogge-Solti, A., Tomsich, N.: \textit{Resource Classification from Version Control System Logs}. In: Proceedings - IEEE International Enterprise Distributed Object Computing Workshop, EDOC Workshop. pp. 249--258 (2016). 
 \end{itemize}
@@ -404,13 +403,13 @@ This dissertation has led to the publications listed below.\\
 	
 \end{itemize}
 
-\noindent Concepts of this research have been presented in doctoral consortium and as vision paper.
+\noindent Early stage concepts of this research (research proposal) have been presented in doctoral consortium and conference.
 \begin{itemize}
 	\item \textbf{Bala, S.}: \textit{Mining projects from structured and unstructured data}. In: CEUR Workshop Proceedings (2017). \cite[]{Bala2017b}
 
 	\item \textbf{Bala, S.}, Mendling, J.: \textit{Monitoring the Software Development Process
 		with Process Mining}. In Boris Shishkov, editor, Business Modeling and Software
-	Design, volume 319 of Lecture Notes in Business Information Processing, 2018 \cite[]{Bala2018b} 	
+	Design, volume 319 of Lecture Notes in Business Information Processing, 2018 \citep{Bala2018b} 	
 \end{itemize}	
 	
 
@@ -419,7 +418,7 @@ This dissertation has led to the publications listed below.\\
 \begin{itemize}
 	\item Woli\'nski, B., \textbf{Bala, S.}: \textit{Comprehensive Business Process Management at Siemens: Implementing Business Process Excellence}. In: vom Brocke, J. and Mendling, J. (eds.) Business Process Management Cases: Digital Innovation and Business Transformation in Practice. pp. 111--124. Springer International Publishing, Cham (2018). \cite[]{Wolinski2018}
 	
-	\item Bala, S., Mendling, J., Schimak, M. and Queteschiner, P., 2018, October. \textit{Case and activity identification for mining process models from middleware}. In IFIP Working Conference on The Practice of Enterprise Modeling (pp. 86-102). Springer, Cham. \citep{DBLP:conf/ifip8-1/BalaMSQ18}
+	\item \textbf{Bala, S.}, Mendling, J., Schimak, M. and Queteschiner, P., 2018, October. \textit{Case and activity identification for mining process models from middleware}. In IFIP Working Conference on The Practice of Enterprise Modeling (pp. 86-102). Springer, Cham. \citep{DBLP:conf/ifip8-1/BalaMSQ18}
 	
 	\item Azemi, E., \textbf{Bala, S.}: \textit{Exploring BPM adoption and strategic alignment of processes at Raiffeisen Bank Kosovo}. In: BPM (Industry Forum). pp. 37–48. CEUR-WS.org (2019). \cite[]{DBLP:conf/bpm/AzemiB19}
 	
@@ -432,15 +431,17 @@ This dissertation has led to the publications listed below.\\
 	
 	\item Azemi, E., \textbf{Bala, S.}: \textit{Exploring BPM adoption and strategic alignment of processes at Raiffeisen Bank Kosovo}. In: vom Brocke, J., Mendling, J., Rosemann, M. (eds.) Business Process Management Cases. Springer (2021). \citep{Azemi2021}
 	
+	\item Waibel, P., Novak, C., \textbf{Bala, S.}, Revoredo, K., Mendling, J.: \textit{Analysis of Business Process Batching Using Causal Event Models}. In: Leemans, S.J.J. and Leopold, H. (eds.) ICPM Workshops. pp. 1–13. Springer Nature Switzerland AG (2021). \citep{Waibel2021}
+	
 \end{itemize}
 
-\noindent From ongoing work the following publications are expected.
-\begin{itemize}
-	\item Case study on tool productivity. Collaboration with researchers from the University of Ljubljana to be submitted to an A-ranked journal on information systems. -- Related to \textbf{RQ1}, \textbf{RQ3} and \textbf{RQ4}.
-	
-	\item Process mining pull requests for identifying idea-creation patterns. Collaboration with researchers from Stevens Institute of Technology to be submitted to a class A journal on information systems -- Related to \textbf{RQ4}.
-	
-	\item Wurm, B., \textbf{Bala, S.}, Kremser, W., Mendling, J., Minaar, R., Strauss, E.: Working title: \textit{How holacratic organizations use information technology to prevent inertia of organizational rule networks}.  to submitted to Information Systems Research 
-		
-\end{itemize}
+%\noindent From ongoing work the following publications are expected.
+%\begin{itemize}
+%	\item Case study on tool productivity. Collaboration with researchers from the University of Ljubljana to be submitted to an A-ranked journal on information systems. -- Related to \textbf{RQ1}, \textbf{RQ3} and \textbf{RQ4}.
+%	
+%	\item Process mining pull requests for identifying idea-creation patterns. Collaboration with researchers from Stevens Institute of Technology to be submitted to a class A journal on information systems -- Related to \textbf{RQ4}.
+%	
+%	\item Wurm, B., \textbf{Bala, S.}, Kremser, W., Mendling, J., Minaar, R., Strauss, E.: Working title: \textit{How holacratic organizations use information technology to prevent inertia of organizational rule networks}.  to submitted to Information Systems Research 
+%		
+%\end{itemize}
 

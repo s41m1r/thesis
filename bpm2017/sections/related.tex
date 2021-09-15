@@ -1,5 +1,5 @@
-%\subsection{Related Work}
-%\label{subsec:related}
+\subsection{Related Work}
+\label{subsec:related}
 A solution addressing these requirements can partially build upon research in three main areas:
 \begin{inparaenum}[\itshape i)]
 	\item work on \gls{msr};
@@ -7,11 +7,11 @@ A solution addressing these requirements can partially build upon research in th
 	\item and software visualization.
 \end{inparaenum}
 
-\input{bpm2017/tables/related-work-table}
+\input{tables/related-work-table}
 
-Table~\ref{table:related-work} shows that these streams of research have mutual strengths, but no contribution covers the full spectrum. In general, methods from \gls{msr} have a strength in analyzing dependencies in the structure of the software artifact, but an explicit consideration of the type of work is missing. Contributions in this area focus on the users and the artifacts, mining co-evolution or co-change of project parts~\cite{zaidman2008mining,DAmbros2009} and network analysis of file dependency graph based on commit distance~\cite{Zimmermann2008,Abate2009,Weicheng2013}. Hidden work dependencies are mentioned as \emph{logical dependencies}~\cite{Oliva2011}. Also techniques for trend analysis~\cite{Ruohonen2015} and inter-dependencies between developers~\cite{lindberg2016coordinating} are proposed. However, none of these works considers the type of work being done in the process.
+Table~\ref{table:related-work} shows that these streams of research have mutual strengths, but no contribution covers the full spectrum. In general, methods from \gls{msr} have a strength in analyzing dependencies in the structure of the software artifact, but an explicit consideration of the type of work is missing. Contributions in this area focus on the users and the artifacts, mining co-evolution or co-change of project parts~\cite{zaidman2008mining,DAmbros2009} and network analysis of file dependency graph based on commit distance~\cite{Zimmermann2008,Abate2009,Weicheng2013}. Hidden work dependencies are mentioned as \emph{logical dependencies}~\cite{Oliva2011}. Also techniques for trend analysis~\cite{ruohonen2015time} and inter-dependencies between developers~\cite{lindberg2016coordinating} are proposed. However, none of these works considers the type of work being done in the process.
 
-In the area of \gls{pm}, research gives more emphasis to the different tasks of the process. Some works focus on applying process mining for software repositories~\cite{Poncin2011a,Mittal2014,Bala2015}. In this context, approaches have been defined that use various queries to extract artifact evolution and resources~\cite{Beheshti2016,Beheshti2013}. There is research on identifying the tasks of the process by elicitation from unstructured data of user comments~\cite{Goncalves2011}. There are also process mining applications that focus on repetitive steps in software engineering, but not on singular project-oriented processes, such as \cite{Kindler2006}. All these works only consider the dependencies between work tasks to a limited extend.
+In the area of \gls{pm}, research gives more emphasis to the different tasks of the process. Some works focus on applying process mining for software repositories~\cite{Poncin2011,Mittal2014,Bala2015}. In this context, approaches have been defined that use various queries to extract artifact evolution and resources~\cite{Beheshti2016,Beheshti2013}. There is research on identifying the tasks of the process by elicitation from unstructured data of user comments~\cite{Goncalves2011}. There are also process mining applications that focus on repetitive steps in software engineering, but not on singular project-oriented processes, such as \cite{Kindler2006}. All these works only consider the dependencies between work tasks to a limited extend.
 
 %, but they lack a concept of work dependency. On the other hand, \gls{pm} contributions can help understand the work reflected by the artifacts, although to the best of our knowledge, a solution for hidden artifact dependencies is not existing yet. Moreover, \gls{pm} techniques are limited to recurrent work patterns (e.g., the process of bug fixing) and do not generally apply to the whole software project.
 

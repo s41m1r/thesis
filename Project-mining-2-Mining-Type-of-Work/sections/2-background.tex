@@ -1,16 +1,15 @@
-%\section{Background}
-%\label{sec:background}
+\section{Background}
+\label{sec:background}
 
 % This section provides the problem description, derives the requirements of the solution and positions our work against the current state-of-the-art.
 
-\section{The Problem of Control-Flow Discovery}
+\subsection{Problem description}
 \label{sec:problem}
 
-Control-flow discovery consists of finding out a model of that displays ordering relations between activities of a process. This is useful when it comes to monitoring software engineering projects. Given software repository trace data, the goal is to automatically infer the type of work that is reflected by the change of the artifacts. 
+The problem discussed in this paper is the monitoring of software engineering projects. 
 % These type of processes have also been referred to as \glspl{pobp}~\cite{DBLP:conf/bpm/BalaCMRP}. In this paper we simply refer to them as \emph{projects}. 
-%These projects present the following characteristics. First, they are hardly repetitive. That is, while best practices learned from one project or can be reused, it is never the case that the project is rerun exactly in the same way. Second, they are worked on collaboratively by many participants who regularly document their progress in a semi-structured way. %They want to document progress is typically through semi-structured artifacts such as textual data or tables. 
-%Third, the work is performed under clear constraints in terms of time, budget and quality. Fourth, the workflow does not follow an imperative process model and is not managed by a process engine. Fifth, despite the aforementioned limitations, project managers require transparency of the process in terms of being able to distinguish what kind of work activities where done when and by which resource. 
-In the following, we consider the terms ``type-of-work'' and ``activity'' as synonyms.
+These projects present the following characteristics. First, they are hardly repetitive. That is, while best practices learned from one project endeavour can be reused, it is never the case that the project is rerun exactly in the same way. Second, they are worked on collaboratively by many participants who regularly document their progress in a semi-structured way. %They want to document progress is typically through semi-structured artifacts such as textual data or tables. 
+Third, the work is performed under clear constraints in terms of time, budget and quality. Fourth, the workflow does not follow an imperative process model and is not managed by a process engine. Fifth, despite the aforementioned limitations, project managers require transparency of the process in terms of being able to distinguish what kind of work activities where done when and by which resource. In this paper, we consider the terms ``type-of-work'' and ``activity'' as synonyms.
 
 % \todo[inline]{See the link I sent. Use Sebok and describe its major categories of ISD tasks. cite~\cite{bourque2014guide}.}
 
@@ -24,9 +23,9 @@ In the following, we consider the terms ``type-of-work'' and ``activity'' as syn
 % \item software maintenance.
 % \end{inparaenum} These activities are mostly seen as areas of software engineering. They contain sub-activities which vary based on the adopted methodology. For instance, agile software development might focus on the necessary activities required for releasing a new version of a software, such as development and testing. On the other hand, a more classic methodology such as waterfall, might allocate more time to the analyses and definition of the requirements. Although different methodologies may exist, software development work can be broken down into specific types of work that need to be performed at specific times as defined by the \gls{rup} model~\cite{kruchten2004rational}. 
 
-%Project managers need tools that help them understand where the project is currently standing and how they have performed in retrospect. Being able to see what work was done and when opens up possibilities to understand inefficiencies about how the process was conducted. Moreover, managers need to access information in a timely manner. Therefore, a representation of progress over time is important. Theoretical models of the development process, such as the \gls{rup}, are useful for planning software projects but they fall short when it comes to monitoring.
-%
-%Fortunately, software development projects store rich trace data. Participants (e.g., resources, users) use many tools for different purposes. A common tools is used in any professional software engineering project are \glspl{vcs}. These systems allow users to collaboratively work on the same project. They manage the different versions of files created by users at any point in time. As well, they keep track of all the changes done by resources at all times. These kind of systems represent a starting point for analyzing projects. As software projects may contain hundreds of thousands files, it becomes prohibitive to manually check what work was done in the project. This calls for automatic analyses and reporting. 
+Project managers need tools that help them understand where the project is currently standing and how they have performed in retrospect. Being able to see what work was done and when opens up possibilities to understand inefficiencies about how the process was conducted. Moreover, managers need to access information in a timely manner. Therefore, a representation of progress over time is important. Theoretical models of the development process, such as the \gls{rup}, are useful for planning software projects but they fall short when it comes to monitoring.
+
+Fortunately, software development projects store rich trace data. Participants (e.g., resources, users) use many tools for different purposes. A common tools is used in any professional software engineering project are \glspl{vcs}. These systems allow users to collaboratively work on the same project. They manage the different versions of files created by users at any point in time. As well, they keep track of all the changes done by resources at all times. These kind of systems represent a starting point for analyzing projects. As software projects may contain hundreds of thousands files, it becomes prohibitive to manually check what work was done in the project. This calls for automatic analyses and reporting. 
 % to understand how the work is distributed among project members. 
 
 % Let us show an example of how a version control is used to develop a software. 
@@ -45,7 +44,7 @@ Typical \emph{activities} (i.e., type of work) traced by \glspl{vcs} fall under 
 \item a list of files that were either modified (M), added (A) or deleted (D).
 \end{inparaenum}
 
-\input{Project-mining-2-Mining-Type-of-Work/listings/git-log}
+\input{listings/git-log}
 
 
 % Real-life software projects may account for hundreds of thousands of commits. Thus, the amount of data contained in these event logs is infeasibly large to be analyzed manually. Therefore, the type of work activities should be automatically inferred by these events. 
@@ -67,7 +66,7 @@ Therefore, the problem is how to exploit low-level trace data for extracting pro
 
 
 
-\section{Related work}
+\subsection{Related work}
 \label{subsec:requirements}
 
 Literature related to the aforementioned requirements can be classified into two main groups: \begin{inparaenum}[\itshape (i)]
@@ -93,4 +92,6 @@ In this paper, we focus on automatic identification of the activities based on f
 
 % \cite{DBLP:conf/msr/RodriguezTK18} study IDE data
 % \cite{DBLP:conf/msr/JoonbakhshS18} use IDE data to mine the Personal Software Process of developers. The result is similar to the Gantt chart by Bala et al., but shows only the amount of work for each developer. It does not provide any clue on the "type" of work the developer carried out. The user should know apriori what information is contained in the log (e.g., debugging logs --> debug activity), otherwise everything is "activity", mainly related to coding. 
+
+
 

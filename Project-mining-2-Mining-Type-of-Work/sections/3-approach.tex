@@ -1,4 +1,4 @@
-\section{Approach to Discover the Control-Flow Perspective}
+\section{Technique for discovering activities}
 \label{sec:approach}
 
 % In this section we illustrate the steps of the our technique for gathering insights on the software project (i.e., \gls{pobp}). Further, we discuss the design principles implemented by our prototype. 
@@ -20,7 +20,7 @@ First, an event log from \gls{vcs} is taken as an input. In this step, an \gls{e
 
 \begin{figure}[]
     \centering
-    \includegraphics[width=.9\textwidth]{Project-mining-2-Mining-Type-of-Work/figures/overview}
+    \includegraphics[width=.7\textwidth]{figures/overview}
     \caption{Overview of the approach}
     \label{fig:approach-overview}
 \end{figure}
@@ -30,7 +30,7 @@ First, an event log from \gls{vcs} is taken as an input. In this step, an \gls{e
 
 % This section presents the implementation of our technique to extract the type of work and several KPIs from a \gls{vcs} log.
 
-\subsection{Preprocess VCS log file}
+\paragraph{Preprocess VCS log file.}
 
 The input of this phase is a log in the unified diff format, which is supported
 by the major \glspl{vcs}, such as Git and Subversion. The information retrieved by the \gls{vcs} is configurable by the user. More specifically, it is possible to obtain the basic information shown in \Cref{lst:git-log} along with details on the differences among versions of the same file (i.e., which and how many lines changed from version 1 to version 2 of file X). In order to extract such information, the raw event log is parsed. We used the parser from \cite{DBLP:conf/bpm/BalaRGBMS17}. This parser generates events which are then stored into a \gls{dbms} for further processing. 
@@ -45,14 +45,14 @@ by the major \glspl{vcs}, such as Git and Subversion. The information retrieved 
 \end{figure}
 
 
-\subsection{Classify activities}
+\paragraph{Classify activities.}
 
 
 Having the data stored in a \gls{dbms}, enables us to run several analyzes already at this level by simply issuing SQL queries. For example, we can obtain all changes that happened to single files during their lifetime. For the scope of this work, we collect all the file paths, all the changes that happened to files, the amount of change in terms of \gls{loc}, the type of change (e.g., addition, modification, deletion), the commit identifier, and the user who did the change. 
 Next, we automatically categorize the type of change. For this, we apply regular expression on path attribute using the classes provided by literature~\cite{DBLP:journals/ese/VasilescuSGM14}. 
 Examples of classes are  \textsl{Documentation}, \textsl{Image}, \textsl{Testing}, \textsl{Coding}, \textsl{User interface}, etc. There are in total fourteen classes. When a type of change does not belong to any class, it is put under the category \textsl{Unknown}.
 
-\input{Project-mining-2-Mining-Type-of-Work/tables/regex}
+\input{tables/regex}
 
 We have adapted the regular expressions to our case and enriched the list of rules from literature. \Cref{tab:regex} shows the activity types and the main regular expressions we use to classify files onto specific types of work. For the sake of space, the majority of the regular expressions is left out. The reader can access the full list of regular expressions on our GitHub repository whose link is provided in the following section.
 
@@ -62,7 +62,7 @@ We have adapted the regular expressions to our case and enriched the list of rul
 For the categorization we consider both the extension of the file and its path. For example, a file with the path \lstinline{/test/file.java} is labelled as \textsl{Testing} rather than \textsl{Coding}. To achieve this, we sort the matching rules in order of specificity. 
 At a higher level, a commit involves multiple files. In order to fit the commit into a specific class, we rely on majority voting as follows. We iterate over the list of changes affected by the commit and sort the number of changes by their activity and the amount of change. We select the activity that is associated to the highest number of changes. With this step we fulfill \textbf{RQ2}.
 
-\subsection{Compute KPIs}
+\paragraph{Compute KPIs.}
 
 According to the process already presented in \Cref{fig:approach-overview}, we compute \glspl{kpi} with the help of the \gls{dbms}. This allows for a customized set of \glspl{kpi} to be implemented. In the scope of this paper, we reproduced some of the main \glspl{kpi} form literature~\cite{DBLP:journals/ese/VasilescuSGM14}. We divide them into basic (absolute and relative) and specialization metrics. Basic metrics focus on descriptive statistics such as frequency counts of how many times each user works on a file. Specialization metrics focus on the measuring imbalance of work towards a specific file or author. Imbalance is captured by the Gini inequality index~\cite{gini1921measurement}.
 We implemented the following basic project metrics: \gls{pw}, \gls{tw}, \gls{nap}, \gls{ntp}. Furthermore, we also implemented the following specialization metrics: \gls{pis}, \gls{rpis}, and \gls{rpws}. 
@@ -77,9 +77,9 @@ We adapted the definition of \glspl{kpi} from literature to support the extracti
 %\end{definition}
 Finally, using these definitions, we can present in \Cref{tab:kpis-computation} how the rest of the \glspl{kpi} is computed. With this step we fulfill \textbf{RQ3}.\\\hfill
 
-\input{Project-mining-2-Mining-Type-of-Work/tables/kpis-computation}
+\input{tables/kpis-computation}
 
-\subsection{Visualize results}
+\paragraph{Visualize results.}
 The last step of our technique deals with the presentation of the results. As our prototype needs to be informative to project managers, we chose to graphically display the results of the previous two steps on a friendly user interface. The user interface takes as input the results of the classification of the activities as well as the set of the computed \glspl{kpi}. 
 The main goal of the user interface is to show two fundamental aspects of the project at hand. First, it visualizes the evolution of each activity aggregated by customized periods of time (e.g., weeks, months). By doing so, our prototype helps at vizualing the general behaviour as \gls{rup} phases. This enables the project manager to compare the ideal project evolution to the actual one. Second, we display the various \glspl{kpi} in a dashboard (e.g., barchart). Further information, such as the commit identifiers, file names, amount of changes, and users who worked on the files are also made available. This allows the project manager to zoom into specific parts of the project for more detailed analyses. With this step we fulfill \textbf{RQ4}.
 

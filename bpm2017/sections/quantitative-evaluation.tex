@@ -1,12 +1,7 @@
 \subsection{Quantitative Evaluation}
 \label{subsec:quantitative-eval}
 
-We implemented our techniques as a prototype\footnote{The source code is available at \url{https://github.com/s41m1r/MiningVCS}} and used it on 10 real world software projects with different sizes. The input of our program is a \gls{vcs} log and the output is a set of analysis data with information about the evolution of the artifacts and their dependencies. We report the results in \Cref{table:evaluation-results-new}. The results are listed in increasing order of project size. The parameters $\chi$ and $d$ are the metrics of \emph{degree of co-evolution} and \emph{distance}, respectively. In this example, $\chi > 0.7$ signifies that the co-evolution is high ($\chi^{H}$) and $\chi < 0.3$ that the co-evolution is low ($\chi^{L}$). As previously mentioned, this is a user customizable threshold that can be set by the domain expert. Likewise, the distance is considered low ($d^{L}$) when $d<=2$ and high ($d^{H}$) when $d>2$. The parameter  $\overline{|p_f|}$ and {$max(|p_{f}|)$} are respectively the average and the maximum lengths of the path to the root (i.e. average tree depth of the files). The column {$|A_{evo}|$} shows the average number of activities in the process representing the artifact evolution. Lastly, the columns {$\overline{d}$} and {$max(d)$} report the average and maximum file distance, respectively. Next, we use these data for a quantitative evaluation of the projects.
-
-\input{bpm2017/tables/evaluation-table-new}
-
-
-Next, we address requirements R2 and R3. First, we compute project profiles. These profiles show the distribution of work-related dependencies in a project. Second, we evaluate whether the work on files can be predicted.
+Here we address requirements R2 and R3. First, we compute project profiles. These profiles show the distribution of work-related dependencies in a project. Second, we evaluate whether the work on files can be predicted.
 
 Before assessing project profiles, we make the following consideration. Our metrics define four classes:
 \begin{inparaenum}[\itshape i)]

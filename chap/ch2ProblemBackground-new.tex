@@ -1,16 +1,250 @@
 \chapter{Research Background}
 
-\todo[inline]{Talk about what is important for this thesis}
-\todo[inline]{Check for overlaps with text in chapters 4,5,6,7,8.}
+%\todo[inline]{Talk about what is important for this thesis}
+%\todo[inline]{Check for overlaps with text in chapters 4,5,6,7,8.}
 
-This chapter provides a background on the research streams related to this thesis. \Cref{sec:business-process} provides an overview on \gls{bpm} and its phases. \Cref{sec:software-development} gives an introduction on the main concepts of the software development process. \Cref{sec:project-oriented} illustrates a class of processes which belong to the intersection between software development and business process. 
-The remaining sections further introduce research streams upon which to draw solutions for data-driven analyses of software development processes. \Cref{sec:process-mining} briefly describes the area of process mining. \Cref{sec:msr} describes contributions from the area of mining software repositories. \Cref{sec:visualization} provides an overview on the area of software visualization. \Cref{sec:text-mining} shortly describes the area of text mining, used for extracting knowledge from unstructured data. Finally, \Cref{sec:summary-of-relevant-techniques} summarizes these solutions. 
+This dissertation is in the intersection between process mining and mining software repositories, respectively belonging to the broader contexts of \gls{bpm} and software development process. This chapter, hierarchically delves into the details of these fields as follows. \Cref{sec:software-development} gives an introduction on the main concepts of the software development process, elaborating on methodologies and repositories in which the data is stored.
+\Cref{sec:business-process} provides an overview on \gls{bpm} and introduces the \gls{bpm} lifecycle. \Cref{sec:process-mining} describes the specific area of process mining along with its requirements and limitations when analyzing software. \Cref{sec:msr} describes related work on mining data from these repositories. 
+
+%\Cref{sec:visualization} provides an overview on the area of software visualization. 
+
+%\Cref{sec:project-oriented} illustrates a class of processes which belong to the intersection between software development and business process. 
+%The remaining sections further introduce research streams upon which to draw solutions for data-driven analyses of software development processes. \Cref{sec:text-mining} shortly describes the area of text mining, used for extracting knowledge from unstructured data. Finally, \Cref{sec:summary-of-relevant-techniques} summarizes these solutions. 
  
 
 %This chapter is concerned with data-driven approaches used in literature to \emph{solutions}, which help tackling the problem of monitoring software development. Four disciplines provide the necessary theoretical and practical knowledge upon which this thesis is built. Thus, this chapter presents these four disciplines as follows. \Cref{sec:process-mining} briefly describes the area of process mining. \Cref{sec:msr} describes contributions from the area of mining software repositories. \Cref{sec:visualization} provides an overview on the area of software visualization. \Cref{sec:text-mining} shortly describes the area of text mining, used for extracting knowledge from unstructured data. Finally, \Cref{sec:summary-of-relevant-techniques} summarizes these solutions. 
 
+\section{Software Development Process}
+\label{sec:software-development}
 
-\section{Business Process Management}
+The software development process is a specific kind of process. Differently from standard business processes, it is run without referring to a process model (e.g., BPMN, Petri net). A common trait of both software development and business is the fact that they both describe and endeavor to organize work in such a way that should be measured and hence monitored and improved. Therefore, both areas rely on methods for managing their processes. Popular methodologies in software development are Waterfall, Spiral, and Agile. Agile methods further refine into branches such as Scrum and Kanban. In order to measure the effectiveness of these methodologies, we can analyze the underlying trace data that is generated in the various steps. In the following, we further elaborate on software development methodologies and the software repositories used to keep track of the development process. 
+
+\subsection{Overview on Software Development}
+
+\todo{How does software development work}
+The software development process is an practice of diving the creation of an artifact into smaller steps. The final goal is to create or improve an existing piece of software. Each step typically defines specifications about the input and output. The totality of the steps is also called software development life cycle. There are many existing methodologies, each with an specific life-cycle.
+Popular methodologies are agile, waterfall, spiral, rapid application development and extreme programming.
+
+
+\todo[inline]{Picture:
+	
+	software process
+	methodology (guidance over the process)
+	data genereated
+}
+
+
+
+
+
+\subsection{Software Development Methodologies}
+
+\todo[inline]{One paragraph describing what SDM is}
+
+
+
+Existing research shows that explicit knowledge defined by \glspl{sdm} improves productivity of software development enterprises and quality of the developed software. This is achieved by increasing enterprises’ ability to transfer knowledge between employees, systematically manage software development process, etc. \citep{avison2003information,DBLP:journals/iam/Fitzgerald98,hovelja2015exploring,DBLP:journals/tse/RiemenschneiderHD02}. However, it is not enough that an enterprise only describes its SDM in a document; the developers need to use it consistently in their everyday work. The use of SDM was often a topic of research in the last decades, since SDM adoption among software developers was relatively low and the developers often preferred different ad hoc approaches \citep{DBLP:journals/software/Aaen03,DBLP:journals/isj/Fitzgerald96,DBLP:journals/iam/HuismanI06}. 
+
+The use of SDMs in enterprises can be analyzed with the help of different existing approaches (\citealp{DBLP:journals/imds/Aboelmaged10,venkatesh2000theoretical,DBLP:journals/behaviourIT/WangLH13}). One of the grounding theories in the field of SDM evaluation is diffusion of innovations theory \citep{rogers2010diffusion} according to which SDM is considered as innovation that developers adopt \citep{DBLP:journals/iam/Gallivan03,DBLP:journals/infsof/GreenHC05,DBLP:conf/caise/IivariH01}. To obtain information about the studied SDM and/or its elements the aforementioned studies focused on perceptions of different stakeholders, namely developers, managers, users, etc. to measure characteristics like level of use, assimilation, social and technical suitability, developer satisfaction and impact on performance \citep{atkinson1999project,cooper1990information,rogers2010diffusion,DBLP:journals/infsof/VavpoticB09,DBLP:journals/comsis/VavpoticH12}. Even better insight into SDM and/or its elements can be gained by comparing the perceptions of different stakeholders regarding the same SDM and/or its element \citep{hovelja2015exploring}. 
+
+Another important theoretical development in the field was that SDM should be studied on the level of its constituent elements like activities, tools, roles, produced documents, etc. and not only as a whole. This improved the understanding of suitability of studied SDM elements for a certain development team and enabled comparison between the studied SDM elements. Thus, allowing enterprises to better pinpoint problematic elements of SDM, prepare focused improvements and examine the link between a specific SDM element and overall project success \citep{atkinson1999project,hovelja2015exploring}. Such development is in line with findings in the field of situational method engineering \citep{DBLP:journals/ejis/KarlssonA09,DBLP:conf/caise/RalyteDR03} that constructs a custom SDM from those SDM elements that fit with characteristics of certain development team and other situational factors (internal and external enterprise’s environment). 
+
+Another potential source of information regarding development process emerged in recent years with widespread use of tools that support software development activities like issue tracking, requirements management, test management etc. Such tools store valuable data about actual execution of the development process and give us additional information about SDM and its elements thus importantly complementing stakeholder perceptions \citep{DBLP:journals/ese/ChoetkiertikulD17,DBLP:conf/msr/MantylaADGO16,DBLP:conf/msr/OrtuMDTTMA16,DBLP:conf/icse/OrtuDKM15}. 
+
+
+
+\subsection{Software Repositories}
+
+
+\todo[inline]{what research has been doing around sw. repos. e.g, coordination, }
+
+A software repository is a location that stores data about software. 
+Generally software repositories serve the purposes of promoting and managing collaboration among developers. Data stored in a repository include source code, documentation, libraries, models and other digital artifacts that support a specific software. 
+
+Repository data can be structured and unstructured \citep{DBLP:books/el/16/Bacchelli16,DBLP:conf/wcre/Bavota16}. Data generated by systems are usually structured according to a preset schema. For example, the system may always record the number of changes to a file along with the version number and the user who last changed it. The purpose of these kind of data is to be processed by machines. Conversely, unstructured data are pieces of information that are used by developers to communicate. Examples of unstructured data are posts developer forums and emails. 
+
+Not all the data from software is stored in one single repository \citep{DBLP:journals/ese/KalliamvakouGBS16}. Thus, in order to gain a more complete understanding, integration of more repositories is considered. 
+This increases the chance of dealing with large volume of data \citep{DBLP:journals/tosem/0001NRN15,DBLP:journals/jossw/Boettiger18,DBLP:conf/wcre/BoldiPVZ20}.
+ 
+Software repositories are typically managed by \gls{scm}, a process to systematically organize and control the changes during the software development life-cycle \citep{DBLP:conf/icse/Estublier00}. \Gls{scm} relies on software such a \gls{vcs} to keep track of the evolution of files. 
+To manage the tasks of developers, software repositories may adopt an \glsfirst{its} \citep{DBLP:conf/cscw/BertramVGW10}. Popular \gls{its} include Jira\footnote{https://www.atlassian.com/software/jira}, Bugzilla\footnote{https://www.bugzilla.org}, Micosoft Dynamics CRM\footnote{http://dynamics.microsoft.com}, Trello\footnote{http://trello.com}, etc. 
+
+Version control systems are a part of \gls{scm} that are used for keeping track of the different versions of a file. 
+Tracking is required not only explicitly as part of some activities but also to comply with norms and regulations that may require some evidence of the actions being performed in the organization. Documents are usually free of format or contain tables, at best. The unstructuredness of data makes it difficult to monitor processes and check rules on them. A starting point for analysis of project-oriented processes can be data logs %generated for  %usually consist of subversion projects
+that are stored in Software Configuration Management (SCM) systems that help tracking the evolution of data and restore information if needed~\citep{voinea_open_2006}.
+However, hundreds of versions of thousands of files are common in a single project~\citep{voinea_multiscale_2006}, which makes it impractical to browse this data manually.
+
+%We focus on project mining motivated by a real case scenario in the scope of the SHAPE research project\footnote{\url{http://ai.wu.ac.at/shape-project/}}.
+%The data log is provided by a Version Control Systems (VCS) whose information is not subdivided into traces related to process instances but consists of a hierarchy of work streams associated with individual files being added, modified or deleted in a subversion repository.
+
+Search:
+\citep{DBLP:journals/spe/HuPZXGY20} provide an algorithm for code retrieval from the StackOverflow\footnote{stackoverflow.com} forum.
+
+\citep{DBLP:conf/vissoft/FeinerA18} develop a system that allows full text search and visualization of over a software repository. The tool supports 
+
+Let us see an example inspired by a real scenario of a process to write a project proposal that uses a Version Control System (VCS) to store the data. The project history, and hence, the data produced, starts when people begin to work on the proposal, which involves a description of the project goals and milestones, a division of tasks into work packages, an estimation of cost and resources required, etcetera. This information is spread in the repository over several folders containing different documents, which are later merged into a single file. If the proposal is accepted, the first step is to organize a kickoff meeting and assign specific resources to the work packages. A hierarchical set of folders is then created in the repository in order to store the information generated for each work package. As the project evolves over time, resources contribute by adding, removing or modifying information to the VCS repository. %\todo{Should answer point 3 on the review-list: Missing concrete examples of the need to “prove compliance to rules and regulations”. Which important rules and regulations will the analysis help comply with?} 
+Project evolution is guided by specific norms that impose the execution of predefined steps. For instance, the European norm EN5016 requires a preliminary \gls{ram} analysis to support targets. 
+%Data stored in the VCS can be used to prove compliance to rules and regulations of the domain. For instance, in the railway industry, 
+
+Table~\ref{tab:vcs-log-data} depicts an excerpt of the log data generated, where the first column (on the left hand side) indicates the commit identifier. The second column indicates the person who committed changes. The third column indicates the commit date. The fourth column shows a comment from the developer that describes the changes performed.
+The fifth column indicates the files affected and the type of action performed in terms of differences between the previous and current version. 
+For the sake of simplicity, the table shows the log data of a specific time period and the actions related to a specific task, namely, $\defineExample$. That task was assigned to resource \emph{John} % after a project meeting. %, when a part of project members asked for a toy example to better understand the problem domain.
+and was worked on by resource \emph{Mary} and, later on, also by resource \emph{Paul}.
+%An extract from the log concerning this period, that shows some crucial steps in the \emph{example} task, is reported on table \ref{tab:example}. Comments were left out from this representation, since at the current state we don't delve into them.
+
+\input{bpm2017/tables/vcs-data2}
+
+%\begin{table}[bt]
+%	\caption{Excerpt from VCS log data for the referenced time period }
+%	\label{tab:bpm2015example}
+%	%\scriptsize
+%	{
+%		%	\renewcommand{\arraystretch}{1.3}
+%		\centering
+%		%\fontfamily{phv}\fontseries{mc}\selectfont
+%		\begin{tabular}{m{.8cm} m{1.5cm} m{3cm} p{5.8cm}}
+%			%\hline\noalign{\smallskip}
+%			%\hline
+%			\toprule
+%			\textbf{CID}	 & \textbf{Resource} & \textbf{Date} & \textbf{List of changes} \\
+%			%\noalign{\smallskip}
+%			%\hline
+%			%\noalign{\smallskip}
+%			%\hline
+%			\midrule
+%			%\noalign{\smallskip}
+%			\multirow{2}{*}{1} & \multirow{2}{*}{Y} & \multirow{2}{*}{2014-11-12~11:57:46} & A /example \\
+%			& & & A \slash example\slash SHAPE\slash\-ToyStation\-Example.docx \\ \midrule %\hdashline
+%			
+%			%\multirow{2}{*}{205} & \multirow{2}{*}{X} & \multirow{2}{*}{2014-11-14 16:26:23} & A /example/ToyStation.bpmn \\
+%			%& & & A /example/ToyStation.png \\ \hline %\hdashline
+%			
+%			\ldots & \ldots & \ldots & \ldots \\ \midrule
+%			
+%			%\noalign{\smallskip}
+%			\multirow{2}{*}{3} & \multirow{2}{*}{X} & \multirow{2}{*}{2014-11-14 16:34:07} & M /example/ToyStation.bpmn\\
+%			& & & M /example/ToyStation.png \\ \midrule%\hdashline
+%			
+%			%\multirow{7}{*}{207} & \multirow{7}{*}{X} & \multirow{7}{*}{2014-11-27 14:18:59} & M /example/SHAPE-ToyStation-Example.docx \\
+%			%& & & D /example/ToyStation.bpmn \\
+%			%& & & M /example/ToyStation.png \\
+%			%& & & A /example/ToyStation\_0Loop.bpmn \\
+%			%& & & A /example/ToyStation\_1Loop.bpmn \\
+%			%& & & A /example/ToyStation\_nLoop.bpmn \\
+%			%& & & A/example/ToyStation\_old.bpmn\\ \hline
+%			
+%			%\ldots & \ldots & \ldots & \ldots \\ \hline
+%			
+%			%\noalign{\smallskip}
+%			4 & W & 2014-12-15 13:49:11 & D /example/Download \\ \midrule %\hdashline
+%			
+%			%\noalign{\smallskip}
+%			5 & W & 2015-01-08 16:06:41 & A /example/Download2\\ \midrule %\hdashline
+%			
+%			%\noalign{\smallskip}
+%			\multirow{2}{*}{6} & \multirow{2}{*}{X} & \multirow{2}{*}{2015-01-13 11:47:09} & M /example/ToyStation\_0Loop.bpmn\\
+%			& & & M /example/ToyStation\_nLoop.bpmn \\ \midrule %\hdashline
+%			
+%			%\noalign{\smallskip}
+%			\multirow{2}{*}{7} & \multirow{2}{*}{Z} & \multirow{2}{*}{2015-01-16 16:50:29} & A /example/ToyStation\_0Loop.pdf\\
+%			& & & A /example/ToyStation-feedbackZ.pdf\\ \bottomrule %\hdashline
+%		\end{tabular}\\ 
+%	}
+%\end{table}
+
+
+Existing frameworks, such as Subversion or Git, allow to access their logs in different ways. However, the covered information is limited to (roughly) that depicted in Table~\ref{tab:vcs-log-data}. Especially for big projects that are frequently updated over a large period of time, these logs are complex to analyze.
+Therefore, the problem to address is how to analyze and visualize the information produced in project-oriented business processes such that it can be represented in an understandable and manageable way by project experts and
+enable, a.o., the automation of mechanisms for compliance checking.
+The following properties of project-oriented process logs must be taken into account to achieve this goal: (i) VCS repositories consist of a hierarchy of folders and files which are logically organized such that work is grouped in a specific way; (ii) process activities are not registered in VCS log entries. Therefore, such information must be inferred by reasoning on the repository structure and/or the content of the log entries; (iii) the granularity of the events is unknown a priori and it needs to be defined before analyzing the data.
+
+
+\subsection{Mining Software Repositories}
+\label{sec:msr}
+
+\todo[inline]{Which sort of analyses techniques were used}
+
+Mining software repositories applies machine learning algorithms to data from software, with the goal of extracting knowledge. 
+This area is used as the base for providing techniques and algorithms as solutions to engineering problems. These problems revolve around questions aimed at understanding various performance and functionality issues with the software at several stages. Examples of knowledge are related to the problems "where-to-log", "who-did-what", "what-does-this-change-mean", "who can work on this bug"
+
+
+Data used for analyses come from a variety of systems such as version control, issue tracking, emails, log data from \gls{ide}, and project management.
+
+
+%Automatic capturing of events from software development. 
+%Gousios et al. provide a technique to extract events from GitHub and store them into a database. This involves defining a schema to capture the various entities that constitute an atomic change event in the software.
+
+For the analyses a variety of machine learning algorithms are used~\citep{bibid}. When the data is unstructured, \gls{nlp} is used for preprocessing. Also, visualization is a common technique to show results \citep{Lanzaetal} (e.g., software as cities).
+
+Most of the methods are quantitative. However there are also a number of empirical studies \citep{DBLP:journals/ese/KalliamvakouGBS16,dehghan2017predicting} 
+
+
+%\section{Software Visualization}
+%\label{sec:visualization}
+%
+%Software visualisation techniques include
+%
+%- HPI visual software analytics 
+%- Software as cities
+%- Graph visualisations (e.g., social network analyses, static and dynamic graphs, )
+%- Plots and charts (Dashboards)
+%- Kanban/Project management KPI visualisations
+
+%\section{Project-Oriented Business Process}
+%\label{sec:project-oriented}
+
+%Project-oriented business processes are a category of business processes which have the following characteristics. 
+%
+%They are usually one shot. When run twice, the second instance differs from the first. 
+%
+%These kind of processes have specific requirements for monitoring. 
+%
+%These processes are suited to describe plans. These plans can regard for example, the delivery of a software systems at a specified time and under specific restrictions of budget. 
+
+
+%Business process management plays an important role for improving the performance and compliance of various types of processes. In practice, many processes are executed with clear guidelines and regulatory rules, but without an explicit centralized control imposed by a process engine. In particular, it is often important to exactly know when which work was done. This is, for instance, the case for complex engineering processes in which different parties are involved. We refer to this class of processes as project-oriented business processes.
+%
+%Such project-oriented business processes are difficult to control due to the lack of a centralized process engine. However, there are various unstructured pieces of information available to analyze and monitor their progress. One type of data that are often available these processes is event data from version control systems (VCS). While process mining techniques provide a useful perspective on how such event data can be analyzed, they do not produce output that is readily organized according to the project orientation of these processes.
+%
+%In this thesis, we define formal concepts for capturing project-oriented processes. These concepts provide the foundation for us to develop an automatic discovery technique which we refer to as \emph{project mining}. The output of our project mining algorithm is organized according to the specific structure typically encountered in project-oriented business processes. With this work, we extend the field of process mining towards the coverage of this specific type of business process.
+
+%The class of processes that we discuss in this section are long-term engineering projects. These processes have specific requirements for monitoring. First, they are executed only once according to the specific needs of a particular project, and only partially according to recurring process descriptions. Second, they involve various actors that typically document their work in a semi-structured way using text and tables. Third, work in the project is usually subject to constraints regarding the start and end and the temporal order. Fourth, there is typically no process engine controlling the execution. Fifth, even though these limitations in terms of traceability exist, there are usually strong requirements in terms of tracking when which work was conducted.
+%
+%%Unlike other types of business processes, the processes we consider here
+%%representing such projects are specifically tailored to customer needs the specific needs of the project, and there is
+%
+%In line with these observations, a \textit{project-oriented business process} can be defined as an ad-hoc plan that specifies the tasks to be performed within a limited period of time and with a limited set of resources for achieving a specific goal. Unlike repetitive business processes for which notations such as \gls{bpmn}~\citep{bpmn2_stable} or \gls{epc}~\citep{vanderaalst_formalization_1999} are commonly used, project-oriented business processes may be properly represented with \gls{pert} or GANTT models. The concept is illustrated in Fig.~\ref{fig:bpm2015problem}.
+%
+%
+%\begin{figure}[htbp!]
+%	\centering
+%	\includegraphics[width=.8\textwidth]{bpm2015/imgs/ProjectMining.pdf}
+%	\caption{Gap between User-Generated Artifacts and Project-Activities}
+%	\label{fig:bpm2015problem}
+%\end{figure}
+%
+%
+%Software development processes can also be seen as project-oriented business processes. They share some common characteristics. First, they involve various resources with different roles. In the simplest case, we can distinguish \emph{project managers} and \emph{project participants}. Project managers are responsible for managing the development process and supervising the work of the project participants, who in turn are responsible for specific work tasks. Second, such processes are usually subject to constraints in terms of cost, time and quality, which is mostly associated with the performance of each of the work tasks. Third, the project participants work on a plethora of artifacts, which are logically organized in a hierarchical structure, with complex interdependencies among them.
+%Given these characteristics, it is the goal of the project manager to organize the software development process in such a way that the work on different files and tasks reflects the complex interdependencies, the constraints and the available participants. Therefore, it is important for the manager to understand the \emph{work history} of the process in order to monitor the progress systematically.
+
+%project specifies the tasks to be performed considering a hierarchy of files, within a limited period of time, and with a limited set of project participants, for achieving a specific goal, typically the release of a new version of a software. Best practices are often used to properly organize the work according, for instance, to good modularization principles. However, monitoring whether this or other guidelines are followed in the actual development process is not easy, due to the lack of an overarching process that defines the work.
+
+%Project managers are interested in an understanding of the running project from a macro level. Useful information is concerns:
+%\begin{inparaenum}[\itshape i)]
+%	\item project structure;
+%	\item profiles of users;
+%	\item and the work history.
+%\end{inparaenum} Existing tools in software development can help project managers to monitor and control these perspectives individually. For instance, CVS
+
+%Nevertheless, these tools lack on information considering the work process reflected in the artifacts, i.e. artifact evolution, and a dependency among them beyond the structural provided by the hierarchy. Moreover, it is common to have hundreds of versions of thousands of files in a single project, which makes it impractical to browse this data manually.
+
+
+
+
+\section{Business Process Analytics}
+
+
+\subsection{Business Process Management}
 \label{sec:business-process}
 
 \Glsfirst{bpm} is the discipline that oversees how work is performed in an organization to ensure consistent outcomes and exploit improvement opportunities~\citep{Dumas2018}. Rather than focusing on specific activities, events or decisions, \gls{bpm} focuses on how their interplay adds value to the organization and its customers. These chains of events are named \emph{processes}. More formally, a business process is set of activities that are performed in coordination in an organizational and technical
@@ -48,169 +282,70 @@ Coordination of work in business processes can be viewed from different perspect
 First, the \emph{control-flow perspective} aims at capturing the all the possible paths in which activities may follow one-another in a process. Second, the \emph{organizational perspective} captures which actors (e.g., people, organizational units, roles) participate in the business process and how they interact with each other. Third, the \emph{case-perspective} captures the properties of specific process instances such as the evolution of certain data-objects, originators of the case, specific values of process variables, etc. Fourth, the time-perspective captures temporal information about the process, like when and how often certain activities occurred and what was their duration.
 
 
-\section{Software Development Process}
-\label{sec:software-development}
+\subsection{Process Mining}
+\label{sec:process-mining}
 
-The software development process is a specific kind of process. Differently from standard business processes, it is run without referring to a process model. Rather in these cases, a methodology is followed. Popular methodologies in software development are Waterfall, Spiral, and Agile. Agile methods further refine into branches such as Scrum and Kanban. 
+%\subsection{Description of the field}
 
-Commonalities between software development processes and business are the fact that they both describe and endeavor to organize work in such a way that can be measured and hence monitored and improved.  
+Process mining (\gls{pm}) is a sub-field of \gls{bpm} that emerged in the last decade, with main focus on the monitoring and discovery phases of the lifecycle. The goal is to provide fact-based insights and support process improvement. On a broader context, \gls{pm} can be considered as the missing link between traditional model-based process analysis and data driven techniques such as data mining and machine learning~\citep{VanderAalst2016b}. Compared to existing \gls{bi} technologies, \gls{pm} techniques go beyond the calculation of simple \glspl{kpi}. Instead, by building on model-driven approaches, they provide means to gain transparency on several aspects of the end-to-end business process. More specifically \gls{pm} techniques can infer models from event logs, which inform about the diverse aspects of a business process.
+As defined in~\citep{VanderAalst2016b}, main \emph{perspectives}\footnote{Note that the different perspectives are partially overlapping. Yet, they are widely used in the \gls{bpm} community.} of a business process are the four. First, the \emph{time perspective} aims at analyzing time and frequency of process events. Second, the \emph{case perspective} aims at identifying properties of process cases. Third, the \emph{organizational perspective} aims at analyzing the event log to gain transparency on the resources involved in the process. Fourth, the \emph{control-flow perspective} aims at analyzing the different variations of the process, i.e., in which order its constituting activities are carried out in real life. 
 
+%These aspects can be, for example, related to the control flow (i.e., the various steps for used by the company for generating value), resources (i.e., handover of work among the different process participants), activities (i.e., how the work is broken down into several tasks), and data (i.e., which artifacts are produced and consumed by the process). 
 
-
-
-
-\subsection{Software Development Methodologies}
-
-Existing research shows that explicit knowledge defined by \glspl{sdm} improves productivity of software development enterprises and quality of the developed software. This is achieved by increasing enterprises’ ability to transfer knowledge between employees, systematically manage software development process, etc. \citep{avison2003information,DBLP:journals/iam/Fitzgerald98,hovelja2015exploring,DBLP:journals/tse/RiemenschneiderHD02}. However, it is not enough that an enterprise only describes its SDM in a document; the developers need to use it consistently in their everyday work. The use of SDM was often a topic of research in the last decades, since SDM adoption among software developers was relatively low and the developers often preferred different ad hoc approaches \citep{DBLP:journals/software/Aaen03,DBLP:journals/isj/Fitzgerald96,DBLP:journals/iam/HuismanI06}. 
-
-The use of SDMs in enterprises can be analyzed with the help of different existing approaches (\citealp{DBLP:journals/imds/Aboelmaged10,venkatesh2000theoretical,DBLP:journals/behaviourIT/WangLH13}). One of the grounding theories in the field of SDM evaluation is diffusion of innovations theory \citep{rogers2010diffusion} according to which SDM is considered as innovation that developers adopt \citep{DBLP:journals/iam/Gallivan03,DBLP:journals/infsof/GreenHC05,DBLP:conf/caise/IivariH01}. To obtain information about the studied SDM and/or its elements the aforementioned studies focused on perceptions of different stakeholders, namely developers, managers, users, etc. to measure characteristics like level of use, assimilation, social and technical suitability, developer satisfaction and impact on performance \citep{atkinson1999project,cooper1990information,rogers2010diffusion,DBLP:journals/infsof/VavpoticB09,DBLP:journals/comsis/VavpoticH12}. Even better insight into SDM and/or its elements can be gained by comparing the perceptions of different stakeholders regarding the same SDM and/or its element \citep{hovelja2015exploring}. 
-
-Another important theoretical development in the field was that SDM should be studied on the level of its constituent elements like activities, tools, roles, produced documents, etc. and not only as a whole. This improved the understanding of suitability of studied SDM elements for a certain development team and enabled comparison between the studied SDM elements. Thus, allowing enterprises to better pinpoint problematic elements of SDM, prepare focused improvements and examine the link between a specific SDM element and overall project success \citep{atkinson1999project,hovelja2015exploring}. Such development is in line with findings in the field of situational method engineering \citep{DBLP:journals/ejis/KarlssonA09,DBLP:conf/caise/RalyteDR03} that constructs a custom SDM from those SDM elements that fit with characteristics of certain development team and other situational factors (internal and external enterprise’s environment). 
-
-Another potential source of information regarding development process emerged in recent years with widespread use of tools that support software development activities like issue tracking, requirements management, test management etc. Such tools store valuable data about actual execution of the development process and give us additional information about SDM and its elements thus importantly complementing stakeholder perceptions \citep{DBLP:journals/ese/ChoetkiertikulD17,DBLP:conf/msr/MantylaADGO16,DBLP:conf/msr/OrtuMDTTMA16,DBLP:conf/icse/OrtuDKM15}. 
+There are three types of \gls{pm}, namely \begin{inparaenum}[\itshape i)]
+	\item process discovery;
+	\item conformance checking; and
+	\item enhancement.
+\end{inparaenum}
+Process mining is becoming widely adopted with considerable number of algorithms from academia and several industry tools such as Celonis\footnote{\url{https://www.celonis.com}}, Disco\footnote{\url{https://fluxicon.com/disco}}, minit\footnote{\url{https://www.minit.io}}, LANA Process Mining\footnote{\url{https://lana-labs.com/en}} and more\footnote{https://www.processmining-software.com/tools}. 
+%Mining algorithms are developed every year to deal to mine not only process workflow, but also other perspectives, i.e. organizational, data, etc. \Cref{fig:process-mining} illustrates process mining research and how it relates event data from real world and business process models.
+This proposal focuses more on the discovery part, i.e., take an event log as an input and abstract process patterns from it. 
 
 
-
-\subsection{Software Repositories}
-
-Software repositories store state data which reflect the work done on the software.
-
-Version control systems are one type of software repository that is used to track the different versions of a file. 
-
-
-Tracking is required not only explicitly as part of some activities but also to comply with norms and regulations that may require some evidence of the actions being performed in the organization. Documents are usually free of format or contain tables, at best. The unstructuredness of data makes it difficult to monitor processes and check rules on them. A starting point for analysis of project-oriented processes can be data logs %generated for  %usually consist of subversion projects
-that are stored in Software Configuration Management (SCM) systems that help tracking the evolution of data and restore information if needed~\citep{voinea_open_2006}.
-However, hundreds of versions of thousands of files are common in a single project~\citep{voinea_multiscale_2006}, which makes it impractical to browse this data manually.
-
-%We focus on project mining motivated by a real case scenario in the scope of the SHAPE research project\footnote{\url{http://ai.wu.ac.at/shape-project/}}.
-%The data log is provided by a Version Control Systems (VCS) whose information is not subdivided into traces related to process instances but consists of a hierarchy of work streams associated with individual files being added, modified or deleted in a subversion repository.
-
-Let us see an example inspired by a real scenario of a process to write a project proposal that uses a Version Control System (VCS) to store the data. The project history, and hence, the data produced, starts when people begin to work on the proposal, which involves a description of the project goals and milestones, a division of tasks into work packages, an estimation of cost and resources required, etcetera. This information is spread in the repository over several folders containing different documents, which are later merged into a single file. If the proposal is accepted, the first step is to organize a kickoff meeting and assign specific resources to the work packages. A hierarchical set of folders is then created in the repository in order to store the information generated for each work package. As the project evolves over time, resources contribute by adding, removing or modifying information to the VCS repository. %\todo{Should answer point 3 on the review-list: Missing concrete examples of the need to “prove compliance to rules and regulations”. Which important rules and regulations will the analysis help comply with?} 
-Project evolution is guided by specific norms that impose the execution of predefined steps. For instance, the European norm EN5016 requires a preliminary \gls{ram} analysis to support targets. 
-%Data stored in the VCS can be used to prove compliance to rules and regulations of the domain. For instance, in the railway industry, 
-
-Table~\ref{tab:bpm2015example} depicts an excerpt of the log data generated, where the first column (on the left hand side) indicates the commit identifier, the second column indicates the person who committed changes, the third column indicates the commit date, %the fourth column shows (optional) descriptive information to clarify the scope of the changes performed
-and the fourth column indicates the files affected and the type of action performed among added (A), modified (M) and deleted (D).
-For the sake of simplicity, the table shows the log data of a specific time period and the actions related to a specific task, namely, $\defineExample$. That task was assigned to resource X % after a project meeting. %, when a part of project members asked for a toy example to better understand the problem domain.
-and was supervised by resource Y and, later on, also by resource Z.
-%An extract from the log concerning this period, that shows some crucial steps in the \emph{example} task, is reported on table \ref{tab:example}. Comments were left out from this representation, since at the current state we don't delve into them.
-
-\begin{table}[bt]
-	\caption{Excerpt from VCS log data for the referenced time period }
-	\label{tab:bpm2015example}
-	%\scriptsize
-	{
-		%	\renewcommand{\arraystretch}{1.3}
-		\centering
-		%\fontfamily{phv}\fontseries{mc}\selectfont
-		\begin{tabular}{m{.8cm} m{1.5cm} m{3cm} p{5.8cm}}
-			%\hline\noalign{\smallskip}
-			%\hline
-			\toprule
-			\textbf{CID}	 & \textbf{Resource} & \textbf{Date} & \textbf{List of changes} \\
-			%\noalign{\smallskip}
-			%\hline
-			%\noalign{\smallskip}
-			%\hline
-			\midrule
-			%\noalign{\smallskip}
-			\multirow{2}{*}{1} & \multirow{2}{*}{Y} & \multirow{2}{*}{2014-11-12~11:57:46} & A /example \\
-			& & & A \slash example\slash SHAPE\slash\-ToyStation\-Example.docx \\ \midrule %\hdashline
-			
-			%\multirow{2}{*}{205} & \multirow{2}{*}{X} & \multirow{2}{*}{2014-11-14 16:26:23} & A /example/ToyStation.bpmn \\
-			%& & & A /example/ToyStation.png \\ \hline %\hdashline
-			
-			\ldots & \ldots & \ldots & \ldots \\ \midrule
-			
-			%\noalign{\smallskip}
-			\multirow{2}{*}{3} & \multirow{2}{*}{X} & \multirow{2}{*}{2014-11-14 16:34:07} & M /example/ToyStation.bpmn\\
-			& & & M /example/ToyStation.png \\ \midrule%\hdashline
-			
-			%\multirow{7}{*}{207} & \multirow{7}{*}{X} & \multirow{7}{*}{2014-11-27 14:18:59} & M /example/SHAPE-ToyStation-Example.docx \\
-			%& & & D /example/ToyStation.bpmn \\
-			%& & & M /example/ToyStation.png \\
-			%& & & A /example/ToyStation\_0Loop.bpmn \\
-			%& & & A /example/ToyStation\_1Loop.bpmn \\
-			%& & & A /example/ToyStation\_nLoop.bpmn \\
-			%& & & A/example/ToyStation\_old.bpmn\\ \hline
-			
-			%\ldots & \ldots & \ldots & \ldots \\ \hline
-			
-			%\noalign{\smallskip}
-			4 & W & 2014-12-15 13:49:11 & D /example/Download \\ \midrule %\hdashline
-			
-			%\noalign{\smallskip}
-			5 & W & 2015-01-08 16:06:41 & A /example/Download2\\ \midrule %\hdashline
-			
-			%\noalign{\smallskip}
-			\multirow{2}{*}{6} & \multirow{2}{*}{X} & \multirow{2}{*}{2015-01-13 11:47:09} & M /example/ToyStation\_0Loop.bpmn\\
-			& & & M /example/ToyStation\_nLoop.bpmn \\ \midrule %\hdashline
-			
-			%\noalign{\smallskip}
-			\multirow{2}{*}{7} & \multirow{2}{*}{Z} & \multirow{2}{*}{2015-01-16 16:50:29} & A /example/ToyStation\_0Loop.pdf\\
-			& & & A /example/ToyStation-feedbackZ.pdf\\ \bottomrule %\hdashline
-		\end{tabular}\\ 
-	}
-\end{table}
+%\begin{description}
+%	
+%	\item[Process discovery.] This type of process mining is concerned with the inference of process models from event logs. Process discovery algorithms are typically unsupervised techniques that produce models in various notations such as Petri nets, \gls{bpmn}, \gls{epc}, etc. A example of a process discovery algorithm is the so-called $\alpha$-algorithm~\citep{VanderAalst2004}.
+%	
+%	\item[Conformance checking.] This type of process mining compares the model and the log of the same process. The goal is to verify if the reality as recorded in the event log corresponds to the plan as defined by the model. Possible deviations are quantified making it possible to obtain important cues about bad performance in case the model is prescriptive or noncompliance in case the model is normative. 
+%	
+%	\item[Enhancement.] This type for process mining is focused on improving the existing process model by using information from past executions recorded in the log. Differently from conformance, the goal is to go beyond measuring the misalignment but actually correcting the process model. Main types of corrections are \emph{repair}, where a process model is repaired to better explain the data from the log, and \emph{extension}, where a new information is added to the process model that is found in the log, e.g., labeling activities with the resource names, labeling sequence flows with durations, and so on.
+%	
+%\end{description}
 
 
-Existing frameworks, such as Subversion or Git, allow to access their logs in different ways. However, the covered information is limited to (roughly) that depicted in Table~\ref{tab:bpm2015example}. Especially for big projects that are frequently updated over a large period of time, these logs are complex to analyze.
-Therefore, the problem to address is how to analyze and visualize the information produced in project-oriented business processes such that it can be represented in an understandable and manageable way by project experts and
-enable, a.o., the automation of mechanisms for compliance checking.
-The following properties of project-oriented process logs must be taken into account to achieve this goal: (i) VCS repositories consist of a hierarchy of folders and files which are logically organized such that work is grouped in a specific way; (ii) process activities are not registered in VCS log entries. Therefore, such information must be inferred by reasoning on the repository structure and/or the content of the log entries; (iii) the granularity of the events is unknown a priori and it needs to be defined before analyzing the data.
-
-
-\todo[inline]{Harmonize:}
-
-In this work, we focus on a specific class of project-oriented business processes, namely software development processes. These processes share some common characteristics. First, they involve various resources with different roles. In the simplest case, we can distinguish \emph{project managers} and \emph{project participants}. Project managers are responsible for managing the development process and supervising the work of the project participants, who in turn are responsible for specific work tasks. Second, such processes are usually subject to constraints in terms of cost, time and quality, which is mostly associated with the performance of each of the work tasks. Third, the project participants work on a plethora of artifacts, which are logically organized in a hierarchical structure, with complex interdependencies among them.
-Given these characteristics, it is the goal of the project manager to organize the software development process in such a way that the work on different files and tasks reflects the complex interdependencies, the constraints and the available participants. Therefore, it is important for the manager to understand the \emph{work history} of the process in order to monitor the progress systematically.
-
-%project specifies the tasks to be performed considering a hierarchy of files, within a limited period of time, and with a limited set of project participants, for achieving a specific goal, typically the release of a new version of a software. Best practices are often used to properly organize the work according, for instance, to good modularization principles. However, monitoring whether this or other guidelines are followed in the actual development process is not easy, due to the lack of an overarching process that defines the work.
-
-%Project managers are interested in an understanding of the running project from a macro level. Useful information is concerns:
-%\begin{inparaenum}[\itshape i)]
-%	\item project structure;
-%	\item profiles of users;
-%	\item and the work history.
-%\end{inparaenum} Existing tools in software development can help project managers to monitor and control these perspectives individually. For instance, CVS
-
-%Nevertheless, these tools lack on information considering the work process reflected in the artifacts, i.e. artifact evolution, and a dependency among them beyond the structural provided by the hierarchy. Moreover, it is common to have hundreds of versions of thousands of files in a single project, which makes it impractical to browse this data manually.
-
-\input{bpm2017/tables/vcs-data2}
-
-
-\section{Project-Oriented Business Process}
-\label{sec:project-oriented}
-
-Project-oriented business processes are a category of business processes which have the following characteristics. 
-
-They are usually one shot. When run twice, the second instance differs from the first. 
-
-These kind of processes have specific requirements for monitoring. 
-
-These processes are suited to describe plans. These plans can regard for example, the delivery of a software systems at a specified time and under specific restrictions of budget. 
-
-
-%Business process management plays an important role for improving the performance and compliance of various types of processes. In practice, many processes are executed with clear guidelines and regulatory rules, but without an explicit centralized control imposed by a process engine. In particular, it is often important to exactly know when which work was done. This is, for instance, the case for complex engineering processes in which different parties are involved. We refer to this class of processes as project-oriented business processes.
-%
-%Such project-oriented business processes are difficult to control due to the lack of a centralized process engine. However, there are various unstructured pieces of information available to analyze and monitor their progress. One type of data that are often available these processes is event data from version control systems (VCS). While process mining techniques provide a useful perspective on how such event data can be analyzed, they do not produce output that is readily organized according to the project orientation of these processes.
-%
-%In this thesis, we define formal concepts for capturing project-oriented processes. These concepts provide the foundation for us to develop an automatic discovery technique which we refer to as \emph{project mining}. The output of our project mining algorithm is organized according to the specific structure typically encountered in project-oriented business processes. With this work, we extend the field of process mining towards the coverage of this specific type of business process.
-
-The class of processes that we discuss in this paper are long-term engineering projects. These processes have specific requirements for monitoring. First, they are executed only once according to the specific needs of a particular project, and only partially according to recurring process descriptions. Second, they involve various actors that typically document their work in a semi-structured way using text and tables. Third, work in the project is usually subject to constraints regarding the start and end and the temporal order. Fourth, there is typically no process engine controlling the execution. Fifth, even though these limitations in terms of traceability exist, there are usually strong requirements in terms of tracking when which work was conducted.
-
-%Unlike other types of business processes, the processes we consider here
-%representing such projects are specifically tailored to customer needs the specific needs of the project, and there is
-
-In line with these observations, a \textit{project-oriented business process} can be defined as an ad-hoc plan that specifies the tasks to be performed within a limited period of time and with a limited set of resources for achieving a specific goal. Unlike repetitive business processes for which notations such as \gls{bpmn}~\citep{bpmn2_stable} or \gls{epc}~\citep{vanderaalst_formalization_1999} are commonly used, project-oriented business processes may be properly represented with \gls{pert} or GANTT models. The concept is illustrated in Fig.~\ref{fig:bpm2015problem}.
-
-
-\begin{figure}[htbp!]
+\begin{figure}
 	\centering
-	\includegraphics[width=.8\textwidth]{bpm2015/imgs/ProjectMining.pdf}
-	\caption{Gap between User-Generated Artifacts and Project-Activities}
-	\label{fig:bpm2015problem}
+	\includegraphics[width=0.9\linewidth]{figures/process-mining-big-picture}
+	\caption[The process mining framework]{The process mining framework. Adapted from \citep{VanderAalst2016b}.}
+	\label{fig:process-mining}
 \end{figure}
+
+
+
+%Nevertheless, process mining algorithms work with structured data~\citep{van2005prom, Verbeek2011}. 
+
+%\subsection{Contribution to the research questions} 
+
+In the context of mining the software development process, several works in the area of \gls{pm} have tackled the problem by transforming it into a \gls{pm} problem. 
+%These works enrich \gls{vcs} log data with case and activity information, and then use process mining to discover a model. In this category, Kindler et al.~\citep{kindler2006activity,kindler2006incremental} can discover a Petri net from a structured and enriched version control log. This approach was further improved by Rubin et al.~\citep{rubin2007process} and a ProM\footnote{\url{http://www.promtools.org}} plug-in was provided. Poncin et al.~\citep{Poncin2011a} provide the FRASR framework for preprocessing software repositories such that they can be used in ProM. Song et al.~\citep{Song2007} help addressing the time perspective by mining a dotted chart.
+Consequently, approaches have been developed to preprocess VCS data such that \gls{pm} techniques can be applied, and hence, a business process can be derived from the log data.
+In this group, \citep{DBLP:conf/se/KindlerRS06,kindler2006incremental} developed an algorithm for extracting software processes that are mapped to Petri Nets. Activities, which are not explicit in the logs, are discovered from their input and output artifacts. However, strong assumptions are made on the filenames as well as on the software process lifecycle. %(always design, code, review, testres). Activities (which are not explicit in the logs, like in our case) are discovered from their input and output artifacts. Here defined as triples $<I,O,R>$ where I=input, O=Output, R=resouce who perfomed it.
+\cite{rubin2007process} addressed the problem of engineering processes that are not well documented and are usually unstructured. They provided a bridge from Kindler et al.'s approach to ProM \citep{van2005prom} in order to mine different process perspectives, such as performance social network analyses. %but not from a project point of view.
+\cite{rubin2014agile} applied \gls{pm} to the touristic industry and obtained user processes from web client logs pursuing the goal of improving the software system by analyzing the underlying process.
+\cite{Poncin2011a} developed the FRASR framework for preprocessing software repositories to transform the VCS data to logs that conform to the \gls{pm} event log meta model~\citep{van2005meta} as utilized in ProM \citep{van2005prom}.
+However, these approaches disregard the single-instance nature of project-oriented business processes and treat them as procedures that can be repeated over time.
+Process mining techniques are related to all the research questions of this thesis. Especially, process discovery helps with addressing \textbf{RQ4}.
+
+%\subsection{Limitations} 
+While providing interesting insights, these contributions leave out many important aspects of software development projects, such as trying to understand whether the process was done according to the organization plan. Especially, they are limited to either simply display one perspective of the process~\citep{Song2007} or transform the events from software repositories into the standard \gls{xes} format which can be mined by tools like ProM. In this case, existing methods only take into account high level information (such as the type of file) to label events accordingly. Textual information is also taken into account \citep{rubin2007process} but often limited to use of a dictionary for identifying keywords. Moreover, fine granular information on the amount of change and the comments of commit messages have not been exploited enough by existing literature.
+
+%\todo[inline]{CHECK here! Below goes a summary that tells what process mining techniques are relevant}
+
+%ProcesManagements mining methods work with event logs. 
+
+To sum up, the analyses of software would benefit from a processes mining techniques, especially when it comes to uncovering behavioral patterns that are linked to the work of the developers. However, process mining techniques have not sufficiently been exploited with software development data, due to the fact that such data is not readily consumable by process mining techniques. Moreover, useful process mining techniques should provide insights that can be understood and enacted by software domain experts. Therefore, such techniques should not only look into the process but also be aware of the existing methods and performance indicators for software.  
+
+
 
 
 

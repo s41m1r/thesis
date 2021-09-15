@@ -1,4 +1,4 @@
-\section{Evaluation}
+\section{Results and discussion}
 \label{sec:results}
 
 Our prototype is called ActiVCS and it is built in Java, using Java FX for the user interface. We tested its performance on a laptop with Intel\textregistered Core\texttrademark~i5-6200U CPU @ 2.30GHz x 4 processor with 8 GB of DDR4 RAM and Linux kernel 4.15.0-88-generic 64-bit version. ActiVCS takes as input a Git event log generated via the command 
@@ -18,40 +18,38 @@ In the following, we present the graphical interface of our prototype.
 % Finally, we used the nested blocks and guidelines model (NBGM)~\cite{DBLP:journals/ivs/MeyerSQM15} to design the components of our software prototype. 
 % A \textsl{block} is described as the outcome of a step of the design process. Our prototype has three main blocks: the final user block, a technique block and a data block. The final user block incorporates concepts that we need to implement in order to interact with the final user. For instance, as we know that final user is a project manager, we provide him with visualization elements he is familiar with (i.e., visualization of the \gls{rup} model, \glspl{kpi} and dashboards). The technique block contains sub-blocks which implement existing techniques for classification of the type of work and computation of the \glspl{kpi}. The data block consists of sub-blocks from existing techniques to deal with raw data and the database to store these events. Another concept in the NBGM framework is that of \textsl{guideline}, which represents relationships between blocks. The blocks in our prototype are hierarchically organized. In our case, user blocks only have relationships with the technique blocks, as they need to display the results of the technique. Technique blocks have connections to all the other blocks (e.g., it is possible to analyze event log without necessarily storing them in a DB). Lastly, data blocks, besides being connected to the technique blocks,  are also connected to one anther because we may want to import/export event logs to/from the database. 
 
-%\begin{figure}[]
-%\centering
+\begin{figure}[]
+\centering
 % \begin{subfigure}[b]{0.5\textwidth}
-\begin{figure}
+\begin{subfigure}[b]{0.7\textwidth}
     \centering
-    \includegraphics[width=\textwidth]{Project-mining-2-Mining-Type-of-Work/figures/brew0-cut}
+    \includegraphics[width=\textwidth]{figures/brew0-cut}
     \caption{\gls{rup} phases mined from the \textsl{brew} project}
     \label{fig:rup-phases}
-\end{figure}
-
-\begin{figure}
+\end{subfigure}~
+\begin{subfigure}[b]{0.3\textwidth}
     \centering
-    \includegraphics[width=.6\textwidth]{Project-mining-2-Mining-Type-of-Work/figures/brew3-cut}
-    \caption{Detailed KPIs view of the \textsl{brew} project}
+    \includegraphics[width=\textwidth]{figures/brew3-cut}
+    \caption{KPIs in detail}
     \label{fig:brew3}
-\end{figure}
+\end{subfigure}
 
-\begin{figure}
+\begin{subfigure}[b]{0.7\textwidth}
     \centering
-    \includegraphics[width=\textwidth]{Project-mining-2-Mining-Type-of-Work/figures/brew2-cut}
-    \caption{Visualization of the effort distribution within the \textsl{brew} project}
+    \includegraphics[width=\textwidth]{figures/brew2-cut}
+    \caption{Effort distribution}
     \label{fig:brew2}
-\end{figure}
-
-\begin{figure}
+\end{subfigure}~
+\begin{subfigure}[b]{0.3\textwidth}
     \centering
-    \includegraphics[width=.7\textwidth]{Project-mining-2-Mining-Type-of-Work/figures/brew1-cut}
-    \caption{Details on file changes in the \textsl{brew} project}
+    \includegraphics[width=\textwidth]{figures/brew1-cut}
+    \caption{Details on file changes}
     \label{fig:brew1}
-\end{figure}
+\end{subfigure}
 
-%\caption{ActiVCS applied on the real-life event log of the \textsl{brew} project}
-%\label{fig:activcs-screenshots}
-%\end{figure}
+\caption{ActiVCS applied on the real-life event log of the \textsl{brew} project}
+\label{fig:activcs-screenshots}
+\end{figure}
 
 \Cref{fig:activcs-screenshots} shows the visualization tool in action. We extracted the \gls{vcs} log of the \textsl{brew} project from GitHub. ActiVCS has a \gls{gui} with four main frames. The main frame is depicted in \Cref{fig:rup-phases}. It allows the domain expert to execute a number of actions. These actions are the following: \begin{inparaenum}[\itshape i)] 
 \item load an event log; 
@@ -95,7 +93,7 @@ This resulted in the following projects.
 \textsl{Retrotfit (retro)}	is another HTTP client for Java and Android.
 \textsl{editor.js (editor)}	is a JavaScript based editor software for the creation of documents and the transformation into JSON format.
 
-\input{Project-mining-2-Mining-Type-of-Work/tables/kpi-table}
+\input{tables/kpi-table}
 
 \Cref{tab:kpis-results} shows the KPIs resulting from these projects. Columns contain the following information: number of commits (COM), \glsfirst{pw}, \glsfirst{tw}, \glsfirst{nap}, \glsfirst{ntp}, \glsfirst{pws}, \glsfirst{pis}, code (C) , documentation (D) , testing (T) and unknown (U). Entries have been sorted by the \gls{pws}.  This means that, for instance, resources of project \textsl{MP} are highly occupied. Therefore, load balancing should be considered if the managers want to improve the capacity of the team to handle new tasks in the near future. 
 
