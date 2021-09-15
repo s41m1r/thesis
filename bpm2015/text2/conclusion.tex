@@ -1,0 +1,16 @@
+\section{Conclusion}\label{sec:outro}
+
+In this paper we
+%identified a new a class of business processes that are executed according to planned data, resources and time constraints, to achieve predefined goals. We
+addressed the problem of mining and visualizing project-oriented business processes in a way that is informative to managers. We define an approach that takes VCS logs as input to generate Gantt charts.
+%provided a formal description to capture the project-oriented class of business processes. We presented an approach to mine them as Gantt charts from VCS logs.
+Our algorithm works under the assumptions that repositories reflect the hierarchical structure of the project, each work package is contained in a corresponding directory and project members commit their work regularly during active working times.
+The approach was implemented as a prototype and evaluated based on real-world data from open source projects.
+%We implemented our method as a prototype tool that can visualize the project hierarchy along with events and activities for each level, by aggregation or disaggregation.
+%Compared to classical process mining, our method offers a better overview on project structure and on the characteristics of work packages.
+%Tests on real-world data, both from open source projects and from SHAPE, show how our metric on work packages can help to better understand work how efficiently they utilize their time.
+
+In future work, we aim to extract further details of the VCS logs in order to calculate metrics that approximate the work effort. %\todo{Point 4 on the reviews: Add a discussion on how the project mining approach can is affected by different projects characteristics: number of commits, number of files, number of activities, duration of the project, number of participants, etc. } 
+We plan to investigate on how the project mining approach is affected by project characteristics. Furthermore, we want to utilize statistical methods to better estimate the boundaries of the activities and work packages. Finally, we have already incorporated feedback from managers and plan to extend these to full user studies.
+
+%from a more granular perspective, looking also into the parts of a file that were affected by a change. We also want to investigate ways that help us to better understand the boundaries of activities and work packages. We take into account using natural language processing techniques on the comments associated to commits and analyze their semantics. Furthermore, we want to consider clustering techniques in order to relax our assumptions on the directory structure.
