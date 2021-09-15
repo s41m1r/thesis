@@ -1,0 +1,26 @@
+\subsection{Evaluation on real projects}
+\label{subsec:eval-real-proj}
+
+We applied our approach on a random set of 10 real world project.
+%The projects analyzed are the following. 
+
+
+\begin{itemize}
+	\item \emph{Caret} is a sublime text editor for Chrome OS.
+	\item \emph{Big-list-of-naughty-strings} is a list of strings which have a high probability of causing issues when used as user-input data. 
+	\item \emph{camunda-resource-deployer-js-example} consist of examples of the Camunda javascript resource deployer. 
+	\item \emph{facebook-java-ads-sdk} is the java SDK for Facebook Ads APIs. 
+	\item \emph{gantt} is part of the dhtmlx library for building javascript Gantt charts. 
+	\item \emph{graphql} is a Facebook project that develops a query language and execution engine tied to any backend service. 
+	\item \emph{jgit-cookbook} provides examples and code snippets for the Java Git implementation. 
+	\item \emph{monolingual-word-aligner} is a project that in the context of Semantic Textual Similarity that implements a word aligner. 
+	\item \emph{mysqlclient-python} is a MySQL database connector for Python. 
+	\item \emph{operationcode} is an open source community dedicated to getting military veterans coding.
+\end{itemize}
+
+\Cref{table:evaluation-results} summarizes the results obtained when applying our approach to these projects. Table entries are sorted in increasing order of the number of artifacts. The attributes of the table were extracted according to the definitions in \Cref{subsec:prelim}. 
+It can be informative to managers to visualize work which is either particularly dependent or particularly independent, along with the total number of dependencies found. \Cref{table:evaluation-results} highlights this aspect both for dependencies within artifacts in the same containment and for those in different containments. Strong dependencies threshold was set at $\sigma=0.7$ of correlation, i.e. given a two files $f_1$, $f_2$, if their time series correlation value is $|\sigma| \geq 0.7$, then this is considered a strong dependency. When $|\sigma| \leq 0.3$, we assume a weak dependency. 
+Information about the file tree depth is also taken into account. We measure both the average tree depth and the maximum tree depth, as their difference can indicate to what extent the project is balanced in terms of folder organization.
+The average number of activities per process indicates how many steps are required by the average artifact to evolve from its first occurrence until its last version in the log. The average number of users per artifact is our workload measure, i.e. it represents how many users are involved in tasks within a given time window, which in this case is set at the whole project duration.
+
+\input{tables/evaluation-table}

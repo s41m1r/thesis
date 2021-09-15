@@ -1,0 +1,16 @@
+\subsection{Story Mining}
+\label{subsec:story-mining}
+
+%What is story mining and how we use it in our work
+Gon\c{c}alves et al.~\cite{Goncalves2011} proposed a story mining approach to extract process elements from stories, i.e. text descriptions written collaboratively by the process participants. A story is a natural way to transmit and share knowledge. Using both natural language (text) and contextual elements (categorization of parts of the story), storytellers can express their experience and viewpoints about the work processes they participate, interact with and/or perceive. Stories have the advantage of reproducing the situations associated with their contexts - the knowledge that is difficult to capture in interviews or mining from Information Systems logs. Since collectively told, a story incorporates a range of perspectives. Business processes instances can also be viewed as stories played by individuals who perform specific roles depending on the circumstances.
+
+Story Mining  \cite{Goncalves2011} receives as input a story freely written by the participants, describing their work in a particular business process. As an output, the \emph{actors} and the process \emph{activities} executed by them are extracted. To illustrate the approach consider the following story. The terms highlighted in {\bf bold} are the actors of the processes and the terms highlighted in {\color{gray} gray} the activities. 
+
+\begin{figure}[!h]
+{ \bf The system} {\color{gray} generates an estimating template consisting of the phases, activities and tasks} selected
+for the project or project phase. When planning complete projects the estimating is typically done at the activity level, using the
+list of tasks in the work breakdown as input to the estimating process. However {\bf estimators} will likely {\color{gray}add an itemized list of system functions and other deliverables}, to facilitate estimating the construction phase. {\bf Multiple estimators} {\color{gray} prepare estimates for each component}, {\color{gray}compare their estimates}, and {\color{gray}arrive at a final estimate} for each item.
+  \label{RB}
+\end{figure}
+
+A further step that we developed in our approach is the identification of the relationship between the activities, therefore defining the flow.

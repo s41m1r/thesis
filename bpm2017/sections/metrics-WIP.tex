@@ -1,0 +1,44 @@
+\subsection{Metrics}
+
+We are interested into measuring the hidden work dependencies among artifacts of the project-oriented business process. Therefore we define the metrics of \emph{degree of co-evolution} and \emph{file distance}. The degree of co-evolution is used to indicate dependency relations between files. We focus on the similarity of in the evolution between two files $f_a$ and $f_b$. We build the time series for each of the files as the vectors changes over time $\vec{X_{f_a}} = (c_1^a, ..., c_n^a)$ and $\vec{X_{f_b}} = (c_1^b, ..., ,c_n^b)$, where the indexes of $i \in [1,n]$ are of the corresponding aggregated time event in the time windows $tw_{agg} = [t_1,t_n]$, and $c_i^j$ are the changes in the aggregated period $t_i$ of the file $f_j$. We measure the co-evolution of two artifacts as the absolute value of the correlation $\sigma(f_a,f_b)$ of the respective time series.
+
+\begin{definition} {\bf (Degree of Co-Evolution)} 
+	\label{definition:degree-of-coevolution}
+	The \emph{degree of co-evolution} is a function $\chi: F \times F \rightarrow [0,1]$. 
+	\[
+	\chi(f_a,f_b) = |\sigma (\vec{X_{f_a}}, \vec{X_{f_b}})|
+	\]	
+\end{definition}
+
+
+Hidden work dependencies lie between artifacts that are distant in the file structure. We measure this distance as the length of the shortest route connecting two files in the file tree. We adapt the notion of path from~\cite{Gubichev2010} to our file tree. Given a file $f$ the path to another node can be obtained by navigating the $Parent$ relationship from both files. The path $p$ from $f_1$ to the parent $f_m$ is an ordered sequence of $m$ parents $(f_1, ..., f_k, f_{k+1}, ..., f_{m})$, i.e. for any index $k$, $(f_{k+1}, f_k) \in Parent$. We denote this path with $p(f_1,f_m)$ and its length with $|p| = m$. The \gls{lca} is a parent file $lca$ of both $f_1$ and $f_m$ that has the maximum distance from the root. 
+$\forall f_p \in $
+such that $\{(lca, f_1), lca, f_m)\} \in Parent$ and $max (p(f_p, root))$. 
+
+The file distance between two files $f_a$, $f_b$ in a tree is the shortest path that passes through the \gls{lca}~\cite{Bender2000} defined as follows.
+%from $f_a$ to the root $f_r$ is the set of parent files encountered along such route. i.e. $p(f_a,f_{r}) = \{(f_1, ..., f_k, f_{k+1}, ..., f_{r})\}$ such that for any $k$, $(f_{k+1},f_k) \in Parent $. The length of the path is the cardinality $|p|$ of the set.
+%%The shortest path between two files $f_a$, $f_b$ in a tree passes through the \gls{lca}~\cite{Bender2000}. This is equivalent to considering the paths from the single files to the root node $p_a = p(f_a,f_r)$ and $p_b=p(f_b, f_r)$ minus their intersection $I_{p_a,p_b}=\{p(f_a, f_r) \cap p(f_b, f_r)\}$. Thus, we define the artifact distance as the length of the shortest path between two files $f_a$ and $f_b$ as follows.
+%
+%\begin{definition} {\bf (File Distance)} 
+%	The distance $d : F \times F \rightarrow \mathbf{N} $ between two artifacts is defined as the number of steps in minimum path connecting the two artifacts in the file tree.
+%	\label{definition:artifact-distance}
+%	\[
+%	d(f_a,f_b) = |p_a| + |p_b| - 2*(|I_{p_a,p_b|})
+%	\]	
+%\end{definition}
+
+
+
+%This is equivalent to considering the paths from the single files to the root node $p_a = p(f_a,f_r)$ and $p_b=p(f_b, f_r)$ minus their intersection $I_{p_a,p_b}=\{p(f_a, f_r) \cap p(f_b, f_r)\}$. Thus, we define the artifact distance as the length of the shortest path between two files $f_a$ and $f_b$ as follows.
+
+\begin{definition} {\bf (File Distance)} 
+	The distance $d : F \times F \rightarrow \mathbf{N} $ between two artifacts is defined as the number of steps in minimum path connecting the two artifacts in the file tree.
+	That is $d(f_a, f_b) = d(f_a, f_{lca}) + d(f_b, f_{lca})$  
+	
+	\label{definition:artifact-distance}
+	\[
+		d(f_a, f_b) = d(f_a, f_{lca}) + d(f_b, f_{lca})
+	\]	
+\end{definition}
+
+%, i.e. two artifacts that belong to the same containment have distance 0, and the maximum distance possible between two artifacts is equal to twice the tree depth.

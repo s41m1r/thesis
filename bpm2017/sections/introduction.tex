@@ -1,0 +1,75 @@
+\section{Introduction}
+
+Project-oriented business processes play an important role in various industries like engineering, health care or software development~\cite{Bala2015}. Such processes are characterized by the fact that work towards a predefined outcome involves complex tasks executed by different parties. Typically, these processes are not supported by a process engine, but their status is fragmented over different documents and artifacts.
+%aim at a predefined outcome and involve complex tasks by different parties, but at the same time their execution is not supported by a process engine. Therefore these kind of processes are difficult to maintain and execute. 
+This is especially the case for software development processes: the expected outcome is the release of a new software version, but the different project members collaborate with tools like version control systems that are only partially aware of the work process. %is assisted by process unaware tools (e.g. issue and project tracking tools ) . As a result, several inefficiencies may occur in work conducted, such as duplication or causal dependencies.
+
+A key challenge for project-oriented business processes like software development is gaining transparency of the overall project status and work history. Literature has recognized that analyzing the evolution of business process artifacts in projects can help obtaining important clues about the project performance in terms of time~\cite{Beheshti2016}, cost~\cite{Voinea2007a} and quality~\cite{lindberg2016coordinating}. This is addressed by functionality of version control systems (VCS) to track versions and changes of informational artifacts like source code and configuration files. While prior research has presented various perspectives for analyzing software artifacts, e.g.~
+%While there is no engine for running project-oriented business processes, information from various supporting tools can be used to gather important insights on the work. One popular supporting tool for software projects are Version Control Systems (VCS) that allow the project members to coordinate and keep track of the artifacts being worked on over time. Existing literature provides useful perspectives on how event data from \gls{vcs} can be used to obtain important insights about the project~
+\cite{Bani2016,Robles:2014:EDE:2597073.2597107,Mittal2014,Weicheng2013}, there is a notable gap on the discovery of dependencies in the work history. For these reasons, project managers often lack insights into side effects of changes in large software processes.
+%However, to the best of our knowledge, they neither provide a way for discovering work dependency, nor produce output that is useful to understand the work history that is associated to the project in terms of steps required to the files towards a final product.
+
+In this paper, we address this research gap by building on partial solutions from the separate fields of mining software repositories and process mining. More specifically, we develop a technique that uncovers non-hierarchical work dependencies which we call \emph{hidden co-evolution}. This technique extracts the labeled work history from VCS repositories and identifies dependencies beyond simple hierarchical containment. In this way, we help the project manager to spot dependencies in the co-evolution of work histories of different information artifacts. Our technique has been implemented and evaluated using data from a diverse set of open source projects.
+
+%This paper defines formal concepts used to capture dependencies among artifacts in process-oriented business processes and presents an approach for mining these artifacts from \gls{vcs} event data. The technique consists of three main steps in through which the event data is elaborated in order to understand
+%\begin{inparaenum}[\itshape i)]
+%	\item history,
+%	\item containments,
+%	\item and dependencies
+%\end{inparaenum} among project artifacts. The results help to understand how artifacts which are apparently unrelated, can present similar trends of changes happening to them over time. We refer to this kind of relation as \emph{hidden co-evolution}. Mining these type of hidden dependencies from software repositories (e.g. \gls{vcs}) contributes to extending the process mining field towards covering these kind of event data.
+
+The paper is structured as follows. Section~\ref{sec:background} describes the research problem along with its requirements and summarizes insights from prior research. Section~\ref{sec:approach} presents our approach in detail. Section~\ref{sec:evaluation} shows a prototypical implementation and evaluates its applicability both in a use case scenario and on real world projects from GitHub. Section~\ref{sec:conclusion} concludes the paper.
+
+
+%Project-oriented business processes aim at a predefined outcome and involve complex tasks by different parties, but at the same time their execution is not supported by a process engine~\cite{Bala2015}. Therefore these kind of processes are difficult to maintain and execute. This is especially the case for software development projects which are executed with a clear goal, i.e. the release of a new version of a software, but the software development process and coordination of the different project members is assisted by process unaware tools (e.g. issue and project tracking tools ) . As a result, several inefficiencies may occur in work conducted, such as duplication or causal dependencies. 
+%
+%While there is no engine for running project-oriented business processes, information from various supporting tools can be used to gather important insights on the work. One popular supporting tool for software projects are Version Control Systems (VCS) that allow the project members to coordinate and keep track of the artifacts being worked on over time. Existing literature provides useful perspectives on how event data from \gls{vcs} can be used to obtain important insights about the project~\cite{Bani2016,Robles:2014:EDE:2597073.2597107,Mittal2014,DBLP:conf/apsec/YangSX13}. However, to the best of our knowledge, they neither provide a way for discovering work dependency, nor produce output that is useful to understand the work history that is associated to the project in terms of steps required to the files towards a final product.
+%
+%This paper defines formal concepts used to capture dependencies among artifacts in process-oriented business processes and presents an approach for mining these artifacts from \gls{vcs} event data. The technique consists of three main steps in through which the event data is elaborated in order to understand 
+%\begin{inparaenum}[\itshape i)]
+%	\item history,
+%	\item containments, 
+%	\item and dependencies
+%\end{inparaenum} among project artifacts. The results help to understand how artifacts which are apparently unrelated, can present similar trends of changes happening to them over time. We refer to this kind of relation as \emph{hidden co-evolution}. Mining these type of hidden dependencies from software repositories (e.g. \gls{vcs}) contributes to extending the process mining field towards covering these kind of event data.
+%
+%The paper is structured as follows. Section~\ref{sec:background} describes the research problem along with its requirements and summarizes insights from prior research. Section~\ref{sec:approach} presents our approach int detail. Section~\ref{sec:evaluation} shows a prototypical implementation and evaluates it applicability both in a use case scenario and on real world projects from GitHub. Section~\ref{sec:conclusion} concludes the paper.
+%
+%%This paper defines an approach for mining software development projects towards extracting and representing the work processes from a combination of three perspectives: 
+%%\begin{inparaenum}[\itshape i)]
+%%	\item files working history;
+%%	\item files containment;
+%%	\item and files dependencies.
+%%\end{inparaenum}
+%%For the first, a story mining \cite{Goncalves2011} approach is considered, in which descriptions of the changes performed in the file (story) are used to learn a Business Process describing the evolution of the file. For the second the file hierarchy is used to explicit a structural dependency through containments of files. And for the third, the amount of change performed over time to the files define time series, one for each file, and then a correlation function is used to established the dependency among files.
+%%
+%%These three perspectives, combined together, allow to gain insights on the work done from the point of view of the steps taken during the evolution of the files, their containment relations (i.e. hierarchical dependencies among files), and dependencies that exist among files in terms of similar effort to be maintained. The extraction and representation of these three perspectives provide project managers with insights within how well the project is modularized, how well the effort is distributed, and whether files evolve in an acceptable way. %\todo[inline]{here there should be a concluding statement about what specifically we find out with the technique.}
+%
+%
+%%In large software projects, uncovering files evolution and finding dependencies among them are not easy tasks. Nevertheless, software files reflect the work of project participants, and therefore this data can be exploited in order to infer where dependencies lie and how the work is done. Existing approaches in the literature provide useful perspectives on using data to gather knowledge about software development \cite{DBLP:journals/smr/RuohonenHL15,Robles:2014:EDE:2597073.2597107,Mittal:2014:PMS:2591062.2591152,DBLP:conf/apsec/YangSX13}.
+%%%the evolution of software artifacts. \todo[inline]{it would be good to add two exemplary references.}
+%%%KR - Here is only motivating the evolution of the file. However the previous paragraph started discussing dependencies. 
+%%However, they neither provide a way for discovering files dependency, nor produce output that is useful to understand the work history that is associated to the project in terms of steps required to the files towards a final product.
+%
+%%Software development project managers are increasingly using data analytics to gain insights into their development processes. These insights are of high value to the project managers, who need to know how the work is being conducted. This can highlight several problems regarding the adequacy of the project structure to the actual software development process. In particular, software files may not evolve in a desirable way and dependencies among them may not be in-line with dependencies among the work done by project participants. Such dependency misalignment, or improper software files evolution, may be indicators of bad project structure or misuse of the good modularity principles, thus creating highly coupled components in terms of work that are not necessarily interdependent in the software development process structure. 
+%%
+%%In large software projects, uncovering files evolution and finding dependencies among them are not easy tasks. Nevertheless, software files reflect the work of project participants, and therefore this data can be exploited in order to infer where dependencies lie and how the work is done. Existing approaches in the literature provide useful perspectives on using data to gather knowledge about software development \cite{DBLP:journals/smr/RuohonenHL15,Robles:2014:EDE:2597073.2597107,Mittal:2014:PMS:2591062.2591152,DBLP:conf/apsec/YangSX13}.
+%%%the evolution of software artifacts. \todo[inline]{it would be good to add two exemplary references.}
+%%%KR - Here is only motivating the evolution of the file. However the previous paragraph started discussing dependencies. 
+%%However, they neither provide a way for discovering files dependency, nor produce output that is useful to understand the work history that is associated to the project in terms of steps required to the files towards a final product.
+%%
+%%This paper defines an approach for mining software development projects towards extracting and representing the work processes from a combination of three perspectives: 
+%%\begin{inparaenum}[\itshape i)]
+%%	\item files working history;
+%%	\item files containment;
+%%	\item and files dependencies.
+%%\end{inparaenum}
+%%For the first, a story mining \cite{Goncalves2011} approach is considered, in which descriptions of the changes performed in the file (story) are used to learn a Business Process describing the evolution of the file. For the second the file hierarchy is used to explicit a structural dependency through containments of files. And for the third, the amount of change performed over time to the files define time series, one for each file, and then a correlation function is used to established the dependency among files.
+%%
+%%These three perspectives, combined together, allow to gain insights on the work done from the point of view of the steps taken during the evolution of the files, their containment relations (i.e. hierarchical dependencies among files), and dependencies that exist among files in terms of similar effort to be maintained. The extraction and representation of these three perspectives provide project managers with insights within how well the project is modularized, how well the effort is distributed, and whether files evolve in an acceptable way. %\todo[inline]{here there should be a concluding statement about what specifically we find out with the technique.}
+%%
+%%The paper is structured as follows. Section~\ref{sec:background} describes the research problem and some background knowledge. 
+%%%\todo[inline]{write exactly one sentence per section description}
+%%Section~\ref{subsec:related} summarizes insights from prior research %upon which our visualization approach is built.
+%%Section~\ref{sec:approach} defines the preliminaries of our work and presents our approach.
+%%Section~\ref{sec:evaluation} shows the implementation of our method both in a use case scenario and its application to real projects from GitHub. Thus, results and their implications are discussed. Section~\ref{sec:conclusion} concludes the paper.
+%%

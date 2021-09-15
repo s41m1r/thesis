@@ -1,0 +1,62 @@
+\subsection{Discussion}
+\label{subsec:discussion}
+
+Next, we show how our approach is able to identify interesting work dependencies which represent high coupling of pieces of work among different parts of the project (e.g. work packages, software components). Usually three types of dependencies exist among artifacts. 
+\begin{inparaenum}[\itshape i)]
+	\item \label{item:i} hierarchical (i.e. parent relationships among files) 
+	\item \label{item:ii} functional (i.e. files use functions defined in other files); and 
+	\item work dependency (i.e., work on some artifacts implies work on other artifacts).
+\end{inparaenum} 
+
+Because we interested in showing work dependency (e.g. maintenance effort), we rule out the other types of dependencies (\ref{item:i} and \ref{item:ii}). For example, it is no surprise that files belonging the same folder may be checked in together often (i.e. change together over time). That is, hierarchical dependency can influence the work done in the related artifacts. Moreover, we have assumed locality of work (cf. assumption \textbf{A1} in  \Cref{subsec:proj-vis}), which is often the case also in real projects. Likewise, it is no surprise that the functional dependencies may highly correlate. Therefore, they are not particularly interesting. Thus, we focus on showing artifacts which are related only by \emph{work} dependency.
+
+Let us focus on one of the projects analyzed in \Cref{table:evaluation-results}. For example, the \emph{Caret} project has 432 artifacts in total and 43 participants. Its maximum tree depth is 4 and it nodes are located in average at tree depth is 3.02. This hints at \emph{Caret} being quite balanced in the directory structure with expected length of 3 files being in a parent relationship among each other. The average number of project participants per artifact suggests that in average an artifact is modified by three different project participants and the average number of activities per process indicates that the evolution process of each artifact in the project consists of 3.15 steps on average. While the number of containments is more than 27K, the number of dependencies is a consequence of the chosen threshold $\sigma$. 
+
+
+To filter out the most interesting work dependencies from \emph{Caret}, we first set a very high correlation threshold $\sigma > 0.9$. This results into a subset of highly correlated artifacts that can be manually checked. From this set, we consider the files 
+\texttt{css/menus.less} ($f_1$),  \texttt{js/ui/cli.js} ($f_2$), \texttt{js/util/i18n.js} ($f_3$), \texttt{\_locales/en/messages.json} ($f_4$), where the pairs \{($f_1$,$f_2$),($f_3$,$f_4$)\} have high inter-containment correlations (i.e., they belong to different atomic containments and have a high correlation). By \Cref{def_containment}, these artifacts belong to separate atomic containments (i.e. no hierarchical dependency). By manual inspection we verified that indeed no interfaces or parts of code are called by other files (i.e. no functional dependency). Therefore, we were able to point out that work in $f_1$ is highly dependent on work done in $f_2$ and likewise for $f_3$ and $f_4$. 
+
+The work dependency can be better understood by looking at the artifacts evolution process. We report below the file stories of the selected files in a textual form. Note that using time series similarity goes beyond simply checking whether the files appeared together in the same commit. In fact files being checked in together does necessarily mean that they are work-dependent. We can find this by inspecting the stories of the first pair ($f_1$,$f_2$). By looking at the file stories of the second pair ($f_3$,$f_4$) we can observe that $f_3$ shares a considerable part of its story with $f_4$. This means that the files not only are work dependent but they also appear often in the same commits. This was not explicit by simply observing their path names or their content. In similar cases the project manager can decide whether this is a case work organization (e.g., bad modularization).
+
+\begin{figure}[!ht]
+\begin{subfigure}[t]{\textwidth}
+	\caption*{Story of $f_1$:}
+	{\scriptsize 	Move menus out, add command line styles. Added white-space for menu items. Added white-space for menu items. Match menus to keys under new system. Material-ish design. Material-ish design. Material-ish design. Material-ish design. Fix bright hover background on top menu items for dark theme.}
+\end{subfigure}
+\begin{subfigure}[t]{\textwidth}
+	\caption*{Story of $f_2$:}
+	{\scriptsize Add a debug command line for issuing Caret commands. Fixes \#292. Fixes \#292.}
+\end{subfigure}
+%\end{figure}
+
+%\begin{figure}[!ht]
+	\begin{subfigure}[ht]{\textwidth}
+		\caption*{Story of $f_3$:}
+	{\scriptsize \textbf{Started localization work}.
+	Successful retention, paradoxically, never called the openFromLaunchData callback. Fixes \#268.
+	\textbf{Localization for menus and palette mostly done}. \textbf{Move dialog text into i18n}. \textbf{Localization for menus and palette mostly done}.
+	Some ES6 updates. Some ES6 updates}
+	\end{subfigure}
+	
+	\begin{subfigure}[!ht]{\textwidth}
+		\caption*{Story of $f_4$:}
+		{\scriptsize \textbf{Started localization work}.
+		Move word count and other toasts to i18n. \textbf{Localization for menus and palette mostly done}. \textbf{Move dialog text into i18n}.
+		Shorten Wrap Paragraph to Print Margin menu text.
+		Localize the edit project error.
+		Added join lines to menu.
+		Localize some leftover palette messages.
+		Add menu items for theme.
+		Opening files now works, but is buggy (opens files twice).
+		Adds a "no updates" message if checking and nothing is found.
+		Fixes \#379.
+		add save-all.
+		Link correction.
+		Search bar tweaks. Search bar tweaks. Clean up some i18n I missed.
+		Add a changelog, and send people to it on upgrade. Move sequences out of keys, into custom commands.
+		Remove custom theme code. Remove custom theme code. Remove custom theme code. Remove custom theme code. Remove custom theme code.}
+	\end{subfigure}
+\end{figure}
+
+
+
