@@ -1,0 +1,45 @@
+\lstset{frame=tb,
+  aboveskip=3mm,
+  belowskip=3mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\scriptsize\ttfamily},
+  numbers=none,
+  xleftmargin=.05\textwidth,
+  xrightmargin=.05\textwidth,
+ % linewidth = 0.7\textwidth,
+  numberstyle=\tiny\color{gray},
+  keywordstyle=\color{blue},
+  commentstyle=\color{dkgreen},
+  stringstyle=\color{mauve},
+  breaklines=true,
+  breakatwhitespace=true,
+  tabsize=3
+}
+\renewcommand{\thelstlisting}{\arabic{lstlisting}}
+
+\begin{lstlisting}[caption={Excerpt from VCS log data from git},label={lst:git-log}]
+commit b0346a47df142394da820e1e5d0f7e31b41a70d3
+Author: s41m1r 
+Date:   Wed Feb 4 13:05:14 2015 +0100
+
+    Deleted TODOs
+
+D	MiningSVN/TODOs
+M	MiningSVN/src/reader/GITLogReader.java
+
+commit 30c5e536e88501295aa3f226645953c69e8f3947
+Author: s41m1r 
+Date:   Wed Feb 4 15:31:05 2015 +0100
+
+    Works with GIT (hopefully)
+
+M	MiningSVN/src/model/git/GITLogEntry.java
+M	MiningSVN/src/reader/GITLogReader.java
+M	MiningSVN/src/reader/LogReader.java
+M	MiningSVN/src/test/TestReadDate.java
+A	MiningSVN/src/test/TestReadGIT.java
+M	MiningSVN/src/test/TestReadSVNLog.java
+\end{lstlisting}
+
+

@@ -1,0 +1,127 @@
+\subsection{Preliminaries}
+\label{subsec:prelim}
+
+%1. How we define/capture software processes\\
+
+%2. How we define containment\\
+
+%3. How we define dependencies\\
+
+%Version control systems (VCSs) are used in projects to ensure reliable collaboration. We build our technique on \gls{vcs}. Typically, people work in VCS on files (e.g., text, source code, spread sheets) and commit them to the central repository. Project participants comment on their commits so that other participants can better understand the nature of the changes performed to the files.
+
+As the objective of our technique is to uncover hidden work dependencies, we define the fundamental concepts required to capture them. Work is reflected by \emph{artifacts}, e.g., word documents, spreadsheets, code, etc. Artifacts are leaves in the file tree hierarchy (with directories being special type of non-leaf files). %Each directory in the file system groups together one or more files into a so-called \emph{containment}. 
+Artifacts evolve over time, while project participants contribute their changes. Each change is an \emph{event} that happens to an artifact in a single point in time. Events can be abstracted into \emph{aggregated events} that allow a coarser grained view on the history. The history of the changes of an artifact over a time interval at a given level of abstraction is referred to as \emph{artifact evolution}. Similar artifact co-evolution establishes a \emph{dependency} between two artifacts. %In the following, we formally define the aforementioned concepts.
+
+A software product is subdivided into files and directories. In this work, we consider directories as special type of files which are parents of other files. Formally, let $F$ be the universe of files in a software development project. Files are organized in a file tree. Therefore, each file $f \in F$ has one parent file. The only file without a parent file is the \emph{root} file. We capture this information in the parent relation $Parent: F \times F$. For example, let $f_p \in F$ be the parent of file $f_c \in F$, then $(f_p, f_c) \in Parent$. %Every file in $Parent$ defines a so-called \emph{containment}. For example, let $Parent = \{(f_{p_1} , f_{c_1})$, $(f_{p_1},f_{c_2})$, $(f_{p_2},f_{c_3})$, $(f_{p_3},f_{p_1})$,$(f_{p_3},f_{p_2})\}$, then files $f_{p_1}$, $f_{p_2}$ and $f_{p_3}$ define containments. Let $C$ be the set of containments. In our example $C=\{f_{p_1}, f_{p_2}, f_{p_3}\}$.
+An \emph{artifact} is a file that is not a parent file, i.e. a file $f_a$ is an artifact if $\forall_{f \in F} (f_a, f) \notin Parent$.
+
+%In this work, we are interested in describing the work progress related to a specific file, that we henceforth call \emph{artifact} and describe as follows:
+
+%\begin{definition}
+%	\label{def_artifact}
+%	{\bf (Artifact)} An \emph{artifact} is a file that it is not a parent file, i.e. a file $f_a$ is an artifact if $\forall_{f \in F} (f_a, f) \notin Parent$.
+%\end{definition}
+%
+%The files are grouped considering their organization in the tree file. We call each of these groups \emph{containments} and they are defined as follows:
+%\begin{definition}
+%\label{def_containment}
+%{\bf (Containment)} A \emph{containment} is a file that is a parent of at least one other file. For example, let $Parent = \{(f_{p_1} , f_{c_1})$, $(f_{p_1},f_{c_2})$, $(f_{p_2},f_{c_3})$, $(f_{p_3},f_{p_1})$,$(f_{p_3},f_{p_2})\}$, then files $f_{p_1}$, $f_{p_2}$ and $f_{p_3}$ are containments. Let $C$ be the set of containments. In our example $C=\{f_{p_1}, f_{p_2}, f_{p_3}\}$.
+%\end{definition}
+
+%\begin{definition}
+%	\label{def_artifact}
+%	{\bf (File Containment)} An \emph{artifact} is a file that it is not a parent file, i.e. a file $f_a$ is an artifact if $\forall_{f \in F} (f_a, f) \notin Parent$.
+%\end{definition}
+
+
+%Containments can be either \emph{atomic} or \emph{composite}. An \emph{atomic containment} is a file which is parent of artifacts. In our example, containments $f_{p_1}$ and  $f_{p_2}$ are atomic containments.
+%%\Cref{fig:containment} shows the visual symbol for an atomic containment.
+%A \emph{composite containment} is a containment which is not atomic, i.e. it involves files which are parents of parents. In our example, containment $f_{p_3}$ is a \emph{composite containment}.  Therefore, the set $C$ of containments is partitioned in two subsets $C=C_1 \cup C_2$. In our example, $C=\{\{f_{p_1}, f_{p_2}\},\{f_{p_3}\}\}$.
+
+
+% are defined, $C_1 = \{f_{c_1},f_{c_2}\}$ and $C_2=\{f_{c_3}\}$. A \emph{containment} $C$ is a set of files with the same parent file. For example, let $Parent = \{(f_{p_1} , f_{c_1}), (f_{p_1},f_{c_2}), (f_{p_2},f_{c_3})\}$, then two containments are defined, $C_1 = \{f_{c_1},f_{c_2}\}$ and $C_2=\{f_{c_3}\}$.
+
+When project participants do a certain amount of work and want to save their current progress, they commit the changes to the \gls{vcs}. We define changes on artifacts as the \emph{events} of interest on the lowest granularity.
+
+\begin{definition} {\bf(Event)}
+\label{def_event}
+Let $E$ be the set of events. An \emph{event} $e \in E$ is a five-tuple $(f, ac, ts, k,u)$, where
+\begin{itemize}
+\item $f \in F$ is the affected artifact of the event.
+%\item $o \in O$ = \{added, modified, deleted\} is the change operation on the artifact with obvious meaning.
+\item $ac \in AC =  \mathbb{N}$ is the amount of change done in the artifact.
+\item $ts \in TS = \mathbb{N}$ represents a unix time stamp marking the time of the event occurrence.
+\item $k \in \Sigma ^* $ is a comment in natural language text.
+\item $u \in U$ is the project participant responsible for the change.
+\end{itemize}
+\end{definition}
+
+For event $e = (f, ac, ts, k,u)$ we overload $f$, $ac$, $ts$, $k$ and $u$ to be used as accessor functions. For example, $f$ is the function $f : E \rightarrow F$ mapping an event to its affected artifact.
+
+In some situations, it can be interesting to have a higher level overview of the changes done to a particular artifact. In this case, an aggregation of events related to this artifact in an interval of time can be performed. The time window for the aggregation, henceforth denoted as $tw_{agg}$, must be defined, i.e. the size of the time interval. For instance, a time window for aggregation can be a day. Thus, all events occurring for an artifact in the same day will be aggregated. An \emph{aggregated event} is defined as follows:
+
+\begin{definition} {\bf (Aggregated Event)}
+\label{def_aggregateEvent}
+An \emph{Aggregated Event} for $tw_{agg}$ ($AE_{tw_{agg}}$) is a five-tuple $(f, aac, ats, ak,au)$, where
+\begin{itemize}
+\item $f \in F$ is the affected artifact in the set of events being aggregated.
+%\item $ao \in O$ = \{added, modified, deleted\} is the aggregated change operation on the artifact. If the only change operation performed in $tw_{agg}$ was \emph{added} or \emph{deleted} then the aggregated change operation is the same, otherwise it is \emph{modified}.
+\item $aac \in AAC =  \mathbb{N}$ is the aggregate amount of change done in the artifact for $tw_{agg}$. It is calculated by summing the amount of changes done in each of the time aggregated.
+\item $ats \in ATS = \mathbb{N}$ represents an aggregate time of the unix time stamp of the events being aggregated.
+\item $ak \in \Sigma ^* $ is the concatenation of the comments presented in the events being aggregated.
+\item $au \subseteq U$ are the project participants responsible for the changes in $tw_{agg}$ being aggregated.
+\end{itemize}
+\end{definition}
+%\todo[inline]{We consider a $tw$ but do not use it in the definition.}
+
+The set of aggregated events for a particular artifact defines how this artifact evolves over time. Considering an interval of analysis, henceforth denoted as $ia$, we define artifact evolution as follows.
+
+\begin{definition} {\bf (Artifact Evolution)}
+%Let $EA_f$ be the set of all aggregated events related to artifact $f$.
+\emph{Artifact evolution} is the process describing how the file $f$ changed over an interval of time $ia$, i.e., a set of labeled tuples $A_{evo}(f) = \{ (t,a,l) | e \in AE_{ia}, f=f(e), t=ats(e), a=aac, l=ak(e)\}$ chronologically ordered.
+
+%The comments associated to the aggregated events in $EA_f$ define the activities executed. The time of the aggregated events in $EA_f$ establishes the order of the activities and then the flow of evolution. Each activity is associated with the user that executed it.
+\end{definition}
+
+%Project participants can commit a number of changes to different artifacts at one step. Therefore, we define the notion of commits as follows.
+%
+%\begin{definition} {\bf (Commit)}
+%\label{def_commit}
+%A \emph{commit} $Com$ is a set of events sharing the same time stamp and comment, i.e., $\forall e, e'\in Com : ts(e) = ts(e')\wedge k(e) = k(e')$. Additionally, each event in a commit affects different artifact, i.e., $\forall e, e' \in Com : e \neq e' \rightarrow f(e) \neq f(e')$.
+%\end{definition}
+
+%For example, a dependency is established if the two artifacts require a similar effort to be maintained. The effort of maintenance is measured through the amount of changes done to the artifact.
+
+%\begin{definition} {\bf (Dependency)}
+%\label{def_dependency}
+%A \emph{dependency} between two artifacts within $ia$ is a similarity function $\sigma : X_{evo} \times X_{evo} \rightarrow \mathbb{Z}$, where the artifact evolution set in which the labels are projected out, i.e $X_{evo} = \{(t,a) | \exists l : (t,a,l) \in A_{evo}\}$.
+%%Thus, each artifact defines a time series of the amount of change. If the correlation between two time series is significant then a dependency between the correspondent artifacts is established. The strength of the dependency is defined by the correlation value.
+%\end{definition}
+%
+%
+%
+%\subsection{Metrics} 
+
+Note that artifact evolution represents the changes that happened to a file over time. Thus, we can build the time series of a file $f$ as the vectors of changes $\vec{X_{f}} = (a_1, ..., a_n)$ in the time window $tw_{agg} = [t_1,t_n]$, with $a_i$ being the sum of the changes of $f$ in of the aggregated intervals $t_i$ of the time window $tw_{agg}$.
+
+%The file system establishes a structural tree-based relationship among files. However, other types of dependencies can emerge between two files. In this paper, we define dependency between two files in terms of their \emph{degree of co-evolution}.
+%In this paper, we are interested in measuring the hidden work-dependencies among artifacts of the project-oriented business process. That is, we want to capture dependencies that are created among files that go beyond functional (e.g. interface-implementing class) or structural (e.g., parent-child in the file tree structure).
+
+%We define the metrics of \emph{degree of co-evolution} and \emph{file distance}. 
+
+We measure the dependency between two files $f_a$ and $f_b$ in terms of their \emph{degree of co-evolution} as follows.
+\begin{definition} {\bf (Degree of Co-Evolution)} 
+	\label{definition:degree-of-coevolution}
+	Given two files $f_a$ and $f_b$, the \emph{degree of co-evolution} $\chi: F \times F \rightarrow [0,1]$ is a similarity function of the respective time series.
+\end{definition}
+In this paper, we fix $\chi(f_a,f_b) = |\sigma (\vec{X_{f_a}}, \vec{X_{f_b}})|$, where $\sigma$ is the correlation function of the two vectors $\vec{X_{f_a}}$ and $ \vec{X_{f_b}}$.
+
+The way files are kept in the directory structure establishes an inherent relationship among files being stored close to each other in the hierarchy. For instance, files serving the same purpose are stored close to each other in the file system. 
+Hidden work dependencies are expected to happen between artifacts that are distant in the file structure. We measure this distance as the length of the shortest route connecting two files in the file tree. We adapt the notion of path from~\citep{Gubichev2010} to our file tree. Given a file $f$, the path to the root node can be obtained by navigating the $Parent$ relationship up to the root file. The path $p$ from $f_a$ to the root $f_r$ is the set of parent files encountered along such route. i.e. $p(f_1,f_{r}) = \{(f_1, ..., f_k, f_{k+1}, ..., f_{r})\}$ such that for any $k$, $(f_{k+1},f_k) \in Parent $. The length of the path is the cardinality $|p|$ of the set. 
+The shortest path between two files $f_a$, $f_b$ in a tree passes through the \gls{lca}~\citep{Bender2000}. This is equivalent to considering the paths from the single files to the root node $p_a = p(f_a,f_r)$ and $p_b=p(f_b, f_r)$ minus their intersection $I_{p_a,p_b}=\{p(f_a, f_r) \cap p(f_b, f_r)\}$. Thus, we define the \emph{file distance} as the length of the shortest path between two files $f_a$ and $f_b$ as follows. 
+
+\begin{definition} {\bf (File Distance)} 
+	\label{definition:artifact-distance}
+	The distance $d : F \times F \rightarrow \mathbb{N} $ between two files belonging to the same directory structure is defined as the number of nodes in the minimum path connecting the two files in the project file tree: $d(f_a,f_b) =  |p_a| + |p_b| - 2*(|I_{p_a,p_b}|)$.
+\end{definition}
+ 

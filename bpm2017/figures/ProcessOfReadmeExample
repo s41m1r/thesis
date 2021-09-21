@@ -1,0 +1,21 @@
+\usetikzlibrary{positioning, calc}
+\tikzstyle{activity} = [rectangle, anchor=west, rounded corners, minimum width=1.5cm, minimum height=1.5cm,text centered, draw=black, fill=white!30, text width=3.3cm]
+\tikzstyle{arrow} = [thick,->,-latex, minimum width = 1cm]
+\tikzstyle{event} = [circle,scale=.5, minimum width=1cm, minimum height=1cm,draw,fill=white, text width=1cm]
+\tikzstyle{end event} = [event,ultra thick]
+
+	\begin{tikzpicture}[scale=.3]
+	\begin{scope}[auto, every node/.style={draw}, anchor=west, node distance=4.1cm]
+	\node (start) [event] {};
+	\node (add) [activity, right of=start, xshift=-1.5cm] {\large Create readme\\file};
+	\node (update) [activity, right of=add, xshift=0cm] {\large Add\\licence};
+	\node (mod) [activity, right of=update, xshift=0cm] {\large Update\\requirements};
+	\node (end) [end event, right of=mod,  xshift=1cm] {};
+
+	\draw [arrow]  (start) -- (add);
+	\draw [arrow]  (add) -- (update);
+	\draw [arrow]  (update) -- (mod);
+	\draw [arrow]  (mod) -- (end);
+
+	\end{scope}
+	\end{tikzpicture}

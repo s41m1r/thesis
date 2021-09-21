@@ -1,0 +1,76 @@
+%\IncMargin{-1em}
+%\setlength{\textfloatsep}{0pt}% Remove \textfloatsep
+\begin{algorithm}
+\SetKwData{Left}{left}\SetKwData{This}{this}\SetKwData{Up}{up}
+\SetKwData{Views}{desiredviews}
+\SetKwData{ViewType}{queries}
+\SetKwFunction{PreprocessLog}{PreprocessLog}
+\SetKwFunction{RetrieveView}{RetrieveView}
+\SetKwFunction{ComputeDependencies}{ComputeDependencies}
+\SetKwFunction{ComputeContainments}{ComputeContainments}
+\SetKwFunction{ComputeEvolution}{ComputeEvolution}
+\SetKwFunction{StoryMining}{StoryMining}
+
+\SetKwInOut{Input}{Input}\SetKwInOut{Output}{Output}
+\SetKwInOut{Data}{Data} \SetKwInOut{Data}{Data}
+\Input{A VCS log $\mathcal{L}$}
+\Output{A set of triples $\{(Dist,Stories,D_{co-evo})\}$, artifact evolutions, and dependencies}
+\Data{$E$ event set, $\mathcal{V}$ views set, $AnalysisData = \{(Dist,Stories,D_{co-evo})\}$, degree of co-evolution threshold $\gamma$, file distance threshold $\delta$, user defined queries \ViewType }
+\BlankLine
+$Files \leftarrow \emptyset $, $Stories \leftarrow \emptyset$, $TimeSeries \leftarrow \emptyset$, $AnalysisData \leftarrow \emptyset$, $\mathcal{V} \leftarrow \emptyset$, $A_{evo}(f) \leftarrow \emptyset$\;
+\tcc{Preprocess VCS log}
+$E \leftarrow $ \PreprocessLog{$\mathcal{L}$}\;\label{step:preprocess}
+\tcc{Retrieve views on the project}
+\lFor{$i$ from $1$ \KwTo $|\ViewType|$}{
+	$\mathcal{V} \leftarrow \mathcal{V} ~\cup $ \RetrieveView{$E$, $\ViewType\mathit{[i]}$}}\label{step:retrieve-view}
+\tcc{Analyze project data}
+%$C \leftarrow$ \ComputeContainments{$\mathcal{V}$}\; \label{step:contaiments}
+%$A_{evo} \leftarrow $ \ComputeEvolution{$\mathcal{V}$}\; \label{step:evolution}
+\ForEach{view $V \in \mathcal{V}$}{\label{step:evolution}
+	\ForEach{aggreagated event $ae \in V$}{\label{step:forall-ae}
+		\ForEach{$f=f(ae), t = ats(ae), a=aac(ae), l=aak(ae) \in ae$}{
+			\tcc{Construct the artifact evolution set for the file}
+			$A_{evo}(f) \leftarrow A_{evo}(f) \cup \{(t,a,l)\}$\;\label{step:a-evo}
+			\tcc{Construct the process using story mining}
+			$Stories \leftarrow Stories ~\cup (f,$ \StoryMining{$l$}$)$)\;\label{step:story-mining}
+			\tcc{Collect files and time series}
+			$Files \leftarrow Files \cup \{f\}$\;
+			$TimeSeries(f) \leftarrow$ construct time series from $A_{evo}(f)$\; \label{step:timeseries}
+		}
+	}\label{step:forall-ae-end}
+	\ForEach{pair of files $i, j \in Files$}{\label{step:metric-start}
+		\tcc{Compute degree of co-evolution}\label{step:dependencies}
+		$coEvoDegree \leftarrow \chi(TimesSeries(i), TimeSeries(j)) $\;
+		\tcc{Compute file distances}\label{step:distances}
+		$distance \leftarrow d(i,j)$\;
+		\tcc{Select based on user defined thresholds}
+		\lIf{$coEvoDegree > \gamma$}{$D_{co-evo} \leftarrow D_{co-evo} \cup \{coEvoDegree\}$}\label{step:threshold-co-evo}
+		\lIf{$distance > \delta$}{$Dist \leftarrow Dist \cup \{distance\}$}\label{step:threshold-co-dist}
+	}\label{step:metric-end}
+	$AnalysisData \leftarrow AnalysisData \cup \{Dist,Stories,D_{co-evo}\}$\;\label{step:analysis-data}
+}
+\Return $AnalysisData$\;\label{step:analysis-data-return}
+\caption{Generate project analysis data}
+\label{algorithm:all}
+\end{algorithm}%\DecMargin{1em}
+
+%
+%
+%\For{$i\leftarrow 2$ \KwTo $l$}{
+%\emph{special treatment of the first element of line $i$}\;
+%\For{$j\leftarrow 2$ \KwTo $w$}{\label{forins}
+%\Left$\leftarrow$ \FindCompress{$Im[i,j-1]$}\;
+%\Up$\leftarrow$ \FindCompress{$Im[i-1,]$}\;
+%\This$\leftarrow$ \FindCompress{$Im[i,j]$}\;
+%\If(\tcp*[h]{O(\Left,\This)==1}){\Left compatible with \This}{\label{lt}
+%\lIf{\Left $<$ \This}{\Union{\Left,\This}}
+%\lElse{\Union{\This,\Left}}
+%}
+%\If(\tcp*[f]{O(\Up,\This)==1}){\Up compatible with \This}{\label{ut}
+%\lIf{\Up $<$ \This}{\Union{\Up,\This}}
+%\tcp{\This is put under \Up to keep tree as flat as possible}\label{cmt}
+%\lElse{\Union{\This,\Up}}\tcp*[h]{\This linked to \Up}\label{lelse}
+%}
+%}
+%\lForEach{element $e$ of the line $i$}{\FindCompress{p}}
+%}

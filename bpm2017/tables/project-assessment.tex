@@ -1,0 +1,16 @@
+% Please add the following required packages to your document preamble:
+% \usepackage{multirow}
+%\setlength{\textfloatsep}{0.1cm}
+\begin{table}[h]
+\centering
+%\caption{Project assessment schema}
+\label{tab:project-assessment-schema}
+\begin{tabular}{cccc}
+\multirow{4}{*}{\rot{Distance $d$}} & \multicolumn{3}{c}{Degree of co-evolution $\chi$}                                 \\
+&                           & \textit{low}        & \textit{high}                                      \\ \cline{3-4} 
+& \multicolumn{1}{c|}{\textit{low}}  & irrelevant & \multicolumn{1}{c|}{orderly}              \\
+& \multicolumn{1}{c|}{\textit{high}} & orderly    & \multicolumn{1}{c|}{\textbf{interesting}} \\ \cline{3-4} 
+\end{tabular}
+\end{table}
+
+%\rot{Distance $d$}

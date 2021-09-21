@@ -1,0 +1,59 @@
+\section{The Problem of Organizational Perspective Discovery}\label{sec:problemDescription}
+
+The problem we address in this section is the discovery of the roles that members of a software project may actually play in a collaborative setting. Each member is assigned to at least one role in the project. Roles are decided in the project planning phase. This phase also involves the definition of project tasks and the assignment of suitable tasks to the various roles. 
+
+Projects follow clear guidelines. Guidelines may come from internal policies or from rules and regulations of the working domain. For example, software systems in the railway domain must make sure that their development process and resources comply with safety requirements imposed by the European standard EN50128. This is why project managers need to track how they distribute work to different people and whether the project members effectively contribute according to their role and their task. 
+
+\Gls*{scm} systems are a valuable source of information to investigate on the behavior of project members. These systems are used for tracking and controlling changes in the software. If a change produces a wrong or undesired outcome, it is always possible to revert to an older configuration of the system. Artifacts' versions are automatically managed by \glspl*{vcs}. It is always possible to follow the evolution of each artifact, along with information about the resources who changed it and their comments, by looking into the \gls*{vcs} logs.
+
+\Cref{fig:big-picture} illustrates how people work in a project. People are assigned to defined roles and contribute to shared tasks or perform tasks alone. Their contributions are part of generated artifacts. As the project is enacted, the number and the content of the artifacts in a project grows. Changes in the artifacts themselves and in the structure of the project reflect the development process that project workers follow. The evolution of the repository mirrors the progress of the project.
+
+\begin{figure}
+   \centering
+
+   \includegraphics[width=.7\columnwidth]{ResourceClassification/figures/vcs3-crop.pdf}      
+   \caption{Software project and resources}
+   \label{fig:big-picture}
+\end{figure}
+
+\Gls*{vcs} logs provide rich and fine grained information about the changes in the project. 
+A change may consist of a file being modified or new files being added to or removed from the repository. When changes are complete, it is possible to store them in the repository through a commit. Each commit contains a unique revision number, the identity of the resource who issued the commit, a timestamp, statistical information about the changes for each affected file, and a comment from the person who committed.
+
+%A new commit moves forward the version of the files them were affected by the action of the user.
+%Popular \glspl{vcs} are Git~\cite{torvalds2010git}, Mercurial~\cite{OSullivan2009} and SVN~\cite{pilato2008version}.
+
+%Kushal's text
+Let us consider the following example of how people use a \gls*{vcs} to collaborate in a project. Alice is a software engineer at Abc. ltd, and works on a project with her colleagues Bob and Claire. Alice is mainly assigned to the role \emph{developer}, but she can also be a \emph{tester}. Her tasks include the development of new features and fixing of related bugs. When a feature is ready she performs a commit and adds a new message where she describes her work, e.g. ``added new module to demo". At the same time she updates a file named ``rule''. This is reflected in the \gls{vcs} log, like in the first row of \Cref{tab:log-table-kushal}, identified by commit id 1. Bob is a \emph{tester} whose task is to ensure that the code submitted by Alice works properly. He discovers a bug in the ``setup'' interface file. Bob fixes those minor bugs and informs Alice of further work needed on the feature. Meanwhile, he commits his changes with commit id 2 and comments ``Modified the setup interface". Consequently, Alice reworks her code and commits a new version as reported in row 3 of \Cref{tab:log-table-kushal}, commenting her work with ``Update application interface". As a \emph{technical writer}, Claire takes over and starts to work on the documentation. She commits part of her work as in row 4. As the project continues, the work is accordingly stored in the log as in \Cref{tab:log-table-kushal}.
+
+%\todo[inline]{\Cref{tab:log-table-kushal}: fill in with data from the running example}
+%\input{tables/log-example}
+\input{ResourceClassification/tables/log-example-kushal}
+
+As we can see from the example, user work is tracked in a fine granular way by the \gls{vcs}. The challenge is to use log information for getting insights into the roles of project members. The following section discusses related literature that has addressed role discovery.
+
+%\subsection{Version Control Systems}
+%
+%A VCS is an application with the purpose of tracking changes in documents. The most common example of such a document is source code of software, but it can also be natural language text, structured text content or any other kind of information. Each change of a file creates a new version or revision of this file.
+%
+%
+%All versions are stored in a repository and can be accessed for different purposes, for example to switch to an older version, to find out which user made a certain change or to revert the document to a previous state. A commit is a collection of file changes passed to the VCS at once by a single user. Usually users provide a message for each commit, which describes the contributed changes. A VCS log is a chronological history of commits. The information included in these logs depends on the VCS and can be configured. It usually includes for each commit some kind of identifier, the author, a timestamp, the commit message and the number of added, modified and deleted files. The most commonly used systems for software development are Git~\cite{torvalds2010git}, Mercurial~\cite{OSullivan2009} and SVN~\cite{pilato2008version}.
+%
+%
+%Version control systems can be used within companies to enable the individual employees to work together on projects. Tasks are distributed and the results then have to be merged to create the product. This can be done via commits in a VCS. It documents the current status of the project and changes have to be committed into the repository. Conflicts, due to multiple users working on the same resource, have to be resolved and the VCS creates a history, where every change can be tracked. Additionally, the users can try out their ideas on their own systems without breaking the whole project.
+%
+%
+%The VCS also keeps a history of all versions. Customers receive a certain product version and for bug fixes for this specific version only the version id is required, instead of maintaining a copy for each customer. For open source projects it enables users to work around the world at any time, while enabling new workflows. Additionally, the entry barrier for new users is lowered. Downloading the repository, applying changes and committing them, even if he /she only once advances the project, can be done by anyone. 
+%
+%
+%\subsection{User Classes}
+%
+%There are various types of user classes. The most apparent interpretation are classes corresponding to typical official or implicit roles within a software project (e.g. developer, tester...). But there are also other possible ways of classification, such as by individual experience, age of users, distinction in supervisor, subordinate relationships commitment, commitment and various demographics or personality traits. This research focuses on the project roles but additional classifications are not excluded.
+%
+%There is a large number of roles in software development
+%
+%proposed and analyzed by literature. Roles relevant for this context have to be identified, meaning that these roles create commits at all and that they provide some kind of characteristics to identify them. The identified roles which fulfill these conditions are: developer (can be split up into backend, frontend or web developers), tester, designer, technical writer, architect, toolsmith, database expert and (VCS or build) administrator (Acua \& Juristo, 2004) (Shore, 2007).
+%
+%However, especially in smaller teams and projects it is quite common that a single user has multiple roles.  In some cases these roles are formally defined, in others they are just reflected by the tasks and responsibilities of the user. Especially in open source projects there is often no explicit separation of roles.
+
+\input{ResourceClassification/sections/reserach-questions}
+\input{ResourceClassification/sections/related-work}

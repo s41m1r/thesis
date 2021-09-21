@@ -1,0 +1,42 @@
+\subsection{Case Perspective Discovery}
+
+We are focused on finding interesting hidden work dependencies. These dependencies are typically reflected by changes that happen to couples of allegedly unrelated files during their evolution. This section details the procedure that implements the technique outlined in \Cref{fig:visualization-process}.
+
+\Cref{algorithm:all} presents the steps required to explicate such hidden dependencies. The procedure $\mathtt{PreprocessLog(\mathcal{L})}$ in line~\ref{step:preprocess} takes as input a VCS log $\mathcal{L}$ structured as in \Cref{tab:vcs-log-data} and parses out work events at the granularity of line changes. These events are then stored into an event data storage. Events parsed from \gls{vcs} logs contain rich information about multiple aspects of the work they reflect. In order to represent all these different aspects, we devised the entity-relationship data model. Hence, we are able to store all the information that is possible to obtain after parsing the \gls{vcs} log. Furthermore, this step allows the user to obtain simple information, such as statistics on the project, already at an early stage of the procedure. The output of the $\mathtt{PreprocessLog(\mathcal{L})}$ step results in the storage of all the events $E$ into a database.
+%Further on, we will show a possible implementation that uses a database to store the parsed events, but in principle any type of repository that allows to store the preprocessed events can be considered.
+
+%\begin{figure}
+%	\centering
+%	\includegraphics[width=.8\textwidth]{figures/CommitLogER3.pdf}
+%	\caption{Entity-Relationship model used to store events extracted from VCS logs}
+%	\label{fig:data-model}
+%\end{figure}
+
+
+Next, the iterative call of the procedure $\mathtt{RetrieveView(\mathit{E}, \mathsf{query})}$ in line \ref{step:retrieve-view} performs several querying the data storage containing the set $E$. For example, a possible query can obtain all the comments associated to each change of a specific file. To obtain information on the evolution of files, we query the database for the changes of all the files within a user defined time interval $tw_{agg}$. In general several time frames can be chosen, each of them producing a \emph{view} $V$ on the data, i.e., a set of aggregated events chronologically sorted within $tw_{agg}$. For example, users may be interested in artifact-views aggregated by day, by month, etc. Multiple \emph{views} are possible by defining them in the {\textsf{queries}} parameter. We collect these views into a set $\mathcal{V} = \bigcup_{\textsf{queries}} V$. 
+
+%Step~\ref{step:contaiments} extracts the structural relationships among the file paths contained in each view $V$, i.e., it recreates the file tree from the artifacts.
+
+
+\input{bpm2017/algorithms/all}%\input{algorithms/RetrieveView}
+%\Cref{algorithm:compute-containments} computes the containments. Note that both atomic and composite containments are computed.
+
+%\input{algorithms/ComputeContainments}
+
+The step in line~\ref{step:evolution} starts an iteration over the views set $\mathcal{V}$. Here is where we collect the analysis data that are returned by the algorithm. For each of the aggregated artifacts contained in a view $V$, we retrieve the information necessary to compute the \emph{degree of co-evolution} between pairs of files and their \emph{file distance}. First, we construct the artifact evolution of all the artifacts present in $ae \in V$. 
+Note that an aggregated event $ae \in V$ is a record obtained from a view on the project which is composed, among other attributes (e.g., file, time, amount of change), by the comment associated to the specific change. Comments describe multiple changes executed on the file, i.e. they describe a \emph{story} of the artifact. 
+Stories associated to each file are collected and the corresponding labels are chronologically ordered. These file stories are then input to the StoryMining technique~\cite{Goncalves2011}. Story Mining was designed to receive as input a story freely written by the participants, describing their work in a particular business process. As an output, the \emph{actors} and the process \emph{activities} executed by them are extracted. Our technique is concerned with the stories of the files. Therefore, they are the actors of the story mining, and the resulting business process consists of the steps describing their evolution process. We collect the resulting processes in the step in line~\ref{step:story-mining}.
+The step in line~\ref{step:timeseries} is concerned with the construction of a time series from the set of artifact evolutions $A_{evo}$ computed in line~\ref{step:a-evo}. Specifically, this step gathers the values of the changes of each of the artifact $f$ in $A_{evo}$ and records them in $TimeSeries(f)$. 
+
+After all the aggregated events $ae$ have been explored, the algorithm moves on to computing the metrics (lines~\ref{step:metric-start}--\ref{step:metric-end}). In this loop, the algorithm iterates through all the pairs of files. For each pair, the \emph{degree of co-evolution} and \emph{artifact-distance}  metrics are computed according the \Cref{definition:degree-of-coevolution} and \Cref{definition:artifact-distance}, respectively. These two measures are collected only if their values are above the user defined thresholds $\gamma$ and $\delta$. After the loop is over, the two measurements and the stories mined with the StoryMiner are stored in $AnalysisData$.
+
+Finally, after iterating over all the user defined views, the algorithm returns the $AnalysisData$ collection which can now be further inspected and analyzed in more detail, as we show next with an example.
+
+%\input{algorithms/ComputeEvolution}
+
+
+
+%\input{algorithms/ComputeDependencies}
+%
+%The algorithm iterates over the views and creates the time series from the aggregated events $v$ in each of the views $V$ of the view collections $\mathcal{V}$. A time series is captured by a set $X_{f_i}$, recording the trend of the changes of file $f_i$ over the time. Next, the dependencies are calculated by using the similarity function $\sigma$ (cf. \Cref{def_dependency}) pairwise over the time series of the different artifacts. We do not enforce a determined similarity function between time series. The user can adopt a customized time series similarity function or use an existing method from literature (e.g.~\cite{ruohonen2015time}). Because the time series must have equal length, we add missing times $t$ with couples $(t,0)$. These couples denote that the amount of change in $f$ at time $t$ was 0. Finally, we collect the results in the dependencies set $D$ if they are stronger than the threshold $\delta$.
+

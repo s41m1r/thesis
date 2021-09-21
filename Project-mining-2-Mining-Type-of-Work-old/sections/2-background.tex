@@ -1,0 +1,96 @@
+%\section{Background}
+%\label{sec:background}
+
+% This section provides the problem description, derives the requirements of the solution and positions our work against the current state-of-the-art.
+
+\section{The Problem of Control-Flow Discovery}
+\label{sec:control-flow-background}
+
+Control-flow discovery consists of finding out a model of that displays ordering relations between activities of a process. This is useful when it comes to monitoring software engineering projects. Given software repository trace data, the goal is to automatically infer the type of work that is reflected by the change of the artifacts. 
+% These type of processes have also been referred to as \glspl{pobp}~\cite{DBLP:conf/bpm/BalaCMRP}. In this paper we simply refer to them as \emph{projects}. 
+%These projects present the following characteristics. First, they are hardly repetitive. That is, while best practices learned from one project or can be reused, it is never the case that the project is rerun exactly in the same way. Second, they are worked on collaboratively by many participants who regularly document their progress in a semi-structured way. %They want to document progress is typically through semi-structured artifacts such as textual data or tables. 
+%Third, the work is performed under clear constraints in terms of time, budget and quality. Fourth, the workflow does not follow an imperative process model and is not managed by a process engine. Fifth, despite the aforementioned limitations, project managers require transparency of the process in terms of being able to distinguish what kind of work activities where done when and by which resource. 
+In the following, we consider the terms ``type-of-work'' and ``activity'' as synonyms.
+
+% \todo[inline]{See the link I sent. Use Sebok and describe its major categories of ISD tasks. cite~\cite{bourque2014guide}.}
+
+%Kate: is the following necessary? Do you need to talk about RUP?
+% According to the \gls{swebok}~\cite{bourque2014guide} guide software engineering consists of the following main activities: 
+% \begin{inparaenum}[\itshape i)]
+% \item software requirements;
+% \item software design;
+% \item software construction;
+% \item software testing; and
+% \item software maintenance.
+% \end{inparaenum} These activities are mostly seen as areas of software engineering. They contain sub-activities which vary based on the adopted methodology. For instance, agile software development might focus on the necessary activities required for releasing a new version of a software, such as development and testing. On the other hand, a more classic methodology such as waterfall, might allocate more time to the analyses and definition of the requirements. Although different methodologies may exist, software development work can be broken down into specific types of work that need to be performed at specific times as defined by the \gls{rup} model~\cite{kruchten2004rational}. 
+
+%Project managers need tools that help them understand where the project is currently standing and how they have performed in retrospect. Being able to see what work was done and when opens up possibilities to understand inefficiencies about how the process was conducted. Moreover, managers need to access information in a timely manner. Therefore, a representation of progress over time is important. Theoretical models of the development process, such as the \gls{rup}, are useful for planning software projects but they fall short when it comes to monitoring.
+%
+%Fortunately, software development projects store rich trace data. Participants (e.g., resources, users) use many tools for different purposes. A common tools is used in any professional software engineering project are \glspl{vcs}. These systems allow users to collaboratively work on the same project. They manage the different versions of files created by users at any point in time. As well, they keep track of all the changes done by resources at all times. These kind of systems represent a starting point for analyzing projects. As software projects may contain hundreds of thousands files, it becomes prohibitive to manually check what work was done in the project. This calls for automatic analyses and reporting. 
+% to understand how the work is distributed among project members. 
+
+% Let us show an example of how a version control is used to develop a software. 
+
+%\input{tables/background-table}
+%\todo{if we are short of space, this can be shortened. This text should not be more than something like a quarter of a page.}
+
+\lstset{
+  basicstyle={\normalsize\ttfamily}}
+  
+Typical \emph{activities} (i.e., type of work) traced by \glspl{vcs} fall under the categories \textsl{Code}, \textsl{Documentation}, \textsl{Test}, etc. Major \glspl{vcs} like Git and Subversion, do not provide direct support for understanding the activities executed by developers. However, these tools provide rich event logs which record all the changes made to any file. %\Cref{tab:example}
+\Cref{lst:git-log} presents an excerpt of trace data from a publicly available GitHub repository. Specifically, the trace data shows information about two commits, which are activities performed by developers to save their work progress. These commits have a unique identifier and provide information about \begin{inparaenum}[\itshape i)]
+\item the author (i.e., the human resource who issued the commit);
+\item the date (i.e., a timestamp recording the instant when the commit was made);
+\item a natural-language textual description filled in by the author; and
+\item a list of files that were either modified (M), added (A) or deleted (D).
+\end{inparaenum}
+
+\input{Project-mining-2-Mining-Type-of-Work/listings/git-log}
+
+
+% Real-life software projects may account for hundreds of thousands of commits. Thus, the amount of data contained in these event logs is infeasibly large to be analyzed manually. Therefore, the type of work activities should be automatically inferred by these events. 
+As real-life event logs may contain a large amount of commits, it is imperative to use automatic tools to discover the activities. 
+While it is possible to take into account the commit messages and apply \gls{nlp} techniques to classify the various changes~\cite{DBLP:conf/edoc/AgrawalATBRT16}, \Cref{lst:git-log} suggests that there are no guarantees that the textual descriptions are informative about the activity. For this reason, this work focuses on the type of file
+that was modified rather than relying of the commit comments. 
+
+% \subsection{Requirements}
+Therefore, the problem is how to exploit low-level trace data for extracting project knowledge that is informative to the manager. We translate this problem into the following requirements.
+% which must be fulfilled by an artifact to be useful to a project manager.
+
+\noindent
+\begin{inparadesc}
+\item[R1. (Processing of \gls{vcs} event logs).] The prototype must extract valuable information from\gls{vcs} data. \\
+\item[R2. (Identification of the activities).] The prototype shall classify what activity is done and when.\\
+\item[R3. (Computation of KPIs).] The prototype shall provide \glspl{kpi} that are understandable by project managers.\\
+\item[R4. (Visualization of project status).] The prototype shall provide a high level overview of the project.
+\end{inparadesc}
+
+
+
+\section{Related work}
+\label{subsec:requirements}
+
+Literature related to the aforementioned requirements can be classified into two main groups: \begin{inparaenum}[\itshape (i)]
+\item software engineering; and 
+\item business process management.
+\end{inparaenum} 
+% \Cref{tab:literature} gives an overview of this categorization against the identified requirements. 
+
+% \input{tables/literature-comparison}
+
+% In the software engineering area there is a dedicated conference aimed at working on this topic, namely \gls{msr}. 
+Contributions in \textit{(i)} focus on event data generated by systems like \gls{vcs}, issue tracking, bug tracking, mail archives, etc. They mainly aim at either finding correlations between activities performed by resources and the artifacts in the repositories~\cite{DBLP:conf/iwpse/OlivaSGS11} or at analyzing the evolution of changes over time~\cite{DBLP:journals/tse/ZimmermannWDZ05}. These works typically provide powerful techniques that help with processing events~\cite{DBLP:conf/msr/0001W04} from software data and further abstracting them into coarse-grained activities~\cite{DBLP:conf/iwpse/OlivaSGS11,DBLP:conf/icst/ZaidmanRDD08,DBLP:conf/msr/RodriguezTK18} and 
+ understanding type of work (i.e., activites) and \glspl{kpi}~\cite{DBLP:journals/ese/VasilescuSGM14,DBLP:conf/msr/JoonbakhshS18}.
+While these works are fundamental in dealing with software repositories, they are typically process unaware. Therefore, do not provide a process representation.
+
+Contributions in \textit{(ii)} fall under the \emph{process mining} umbrella. 
+% Process mining helps discovering processes from log data. 
+% However, all process mining techniques have specific requirements on the format about these event logs. That is, these techniques cannot be readily applied to data from software development~\cite{DBLP:conf/er/TsourySR18}. 
+Typical approaches focus on transforming software development data in process-mining compatible event-logs~\cite{DBLP:conf/se/KindlerRS06,DBLP:conf/csmr/PoncinSB11}, by making assumptions on what to consider as a case identifier. Other works focus on enabling process analytics on top of fine-grained events from evolving artifacts~\cite{DBLP:conf/caise/BeheshtiBN13}. Finally, there are process-aware works that deal with software repositories. In particular, the work from~\cite{DBLP:conf/wecwis/MarquesSF18} analyses bug resolution processes and the work from~\cite{DBLP:conf/bpm/JookenCJ19} uses \gls{vcs} data to analyse teams. Most of the techniques in the process mining area have specific requirements about their input (i.e., an event log with defined case, activity, and timestamp attributes). These works cannot be readily applied to data from software development~\cite{DBLP:conf/er/TsourySR18}. 
+In this paper, we focus on automatic identification of the activities based on file types as described in~\cite{DBLP:journals/ese/VasilescuSGM14}. Moreover, this work is process aware and presents the data from a perspective which is more targetted towards project managers.
+
+% \textbf{RQ:} How can we make use of project trace data to gather insights about the software development process that are informative to managers?
+
+% \cite{DBLP:conf/msr/RodriguezTK18} study IDE data
+% \cite{DBLP:conf/msr/JoonbakhshS18} use IDE data to mine the Personal Software Process of developers. The result is similar to the Gantt chart by Bala et al., but shows only the amount of work for each developer. It does not provide any clue on the "type" of work the developer carried out. The user should know apriori what information is contained in the log (e.g., debugging logs --> debug activity), otherwise everything is "activity", mainly related to coding. 
+

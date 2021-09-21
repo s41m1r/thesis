@@ -1,0 +1,28 @@
+%\IncMargin{1em}
+\begin{algorithm}[H]
+	\SetKwData{Left}{left}\SetKwData{This}{this}\SetKwData{Up}{up}
+	\SetKwData{Views}{desiredviews}
+	\SetKwFunction{PreprocessLog}{PreprocessLog}
+	\SetKwFunction{RetrieveView}{RetrieveView}
+	\SetKwFunction{ComputeDependencies}{ComputeDependencies}
+	\SetKwFunction{ComputeContainments}{ComputeContainments}
+	\SetKwFunction{ComputeEvolution}{ComputeEvolution}
+	
+	\SetKwInOut{Input}{Input}\SetKwInOut{Output}{Output}
+	\SetKwInOut{Data}{Data}
+	\Input{A VCS log $\mathcal{L}$}
+	\Output{A set of triples $\{(C,A_{evo},D)\}$, respectively containments, artifact evolutions, and dependencies}
+	\Data{$E$ event set, $V$ views set, $AD = \{(C,A_{evo},D)\}$ }
+	\BlankLine
+	
+	$E \leftarrow $ \PreprocessLog{$\mathcal{L}$}\;
+	\For{$i\leftarrow 1$ \KwTo \Views}{
+		$V \leftarrow V \cup $ \RetrieveView{$E$}\;
+	}
+	$C \leftarrow$ \ComputeContainments{$V$}\;
+	$D \leftarrow $ \ComputeDependencies{$V$}\;
+	$A_{evo} \leftarrow $ \ComputeEvolution{$V$}\;
+	$AD \leftarrow (C,A_{evo},D)$
+	\caption{Retrieve view on data}
+	\label{algorithm:retrieve-view}
+\end{algorithm}

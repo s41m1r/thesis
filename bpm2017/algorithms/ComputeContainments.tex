@@ -1,0 +1,32 @@
+%\IncMargin{1em}
+\begin{algorithm}[H]
+\SetKwData{Left}{left}\SetKwData{This}{this}\SetKwData{Up}{up}
+\SetKwData{Views}{desiredviews}
+\SetKwData{ViewType}{query}
+\SetKwFunction{PreprocessLog}{PreprocessLog}
+\SetKwFunction{RetrieveView}{RetrieveView}
+\SetKwFunction{ComputeDependencies}{ComputeDependencies}
+\SetKwFunction{ComputeContainments}{ComputeContainments}
+\SetKwFunction{ComputeEvolution}{ComputeEvolution}
+
+\SetKwInOut{Input}{Input}\SetKwInOut{Output}{Output}
+\SetKwInOut{Data}{Data}
+\Input{A set of views $\mathcal{V}$}
+\Output{A set of containments $C$}
+%\Data{$E$ event set, $\mathcal{V}$ views set, $Parent$ }
+\BlankLine
+$Parent \leftarrow \{(\emptyset, \emptyset)\} $, $C \leftarrow \emptyset$\;
+\ForAll{$V \in \mathcal{V}$}{
+	\lForEach{$f \in getFiles(V) $}{
+		$Parent \leftarrow Parent \cup getParents(f)$}
+}
+
+\ForEach{$(f_p,f_{c_1}) \in Parent$}{
+	\ForEach{$(f_p,f_{c_2}) \in Parent$}{
+		\lIf{$f_{c_1} \neq f_{c_2} $}{$C \leftarrow C \cup \{f_{p}\}$}   
+	}
+}
+\Return $C$\;
+\caption{Compute artifact containments}
+\label{algorithm:compute-containments}
+\end{algorithm}

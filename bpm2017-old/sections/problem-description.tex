@@ -1,0 +1,27 @@
+\subsection{Problem Description}
+\label{subsec:prob-desc}
+In this work, we focus on a specific class of project-oriented business processes, namely software development processes. These processes share some common characteristics. First, they involve various resources with different roles. In the simplest case, we can distinguish \emph{project managers} and \emph{project participants}. Project managers are responsible for managing the development process and supervising the work of the project participants, who in turn are responsible for specific work tasks. Second, such processes are usually subject to constraints in terms of cost, time and quality, which is mostly associated with the performance of each of the work tasks. Third, the project participants work on a plethora of artifacts, which are logically organized in a hierarchical structure, with complex interdependencies among them.
+Given these characteristics, it is the goal of the project manager to organize the software development process in such a way that the work on different files and tasks reflects the complex interdependencies, the constraints and the available participants. Therefore, it is important for the manager to understand the \emph{work history} of the process in order to monitor the progress systematically.
+
+%project specifies the tasks to be performed considering a hierarchy of files, within a limited period of time, and with a limited set of project participants, for achieving a specific goal, typically the release of a new version of a software. Best practices are often used to properly organize the work according, for instance, to good modularization principles. However, monitoring whether this or other guidelines are followed in the actual development process is not easy, due to the lack of an overarching process that defines the work.
+
+%Project managers are interested in an understanding of the running project from a macro level. Useful information is concerns:
+%\begin{inparaenum}[\itshape i)]
+%	\item project structure;
+%	\item profiles of users;
+%	\item and the work history.
+%\end{inparaenum} Existing tools in software development can help project managers to monitor and control these perspectives individually. For instance, CVS
+
+%Nevertheless, these tools lack on information considering the work process reflected in the artifacts, i.e. artifact evolution, and a dependency among them beyond the structural provided by the hierarchy. Moreover, it is common to have hundreds of versions of thousands of files in a single project, which makes it impractical to browse this data manually.
+
+\input{bpm2017/tables/vcs-data2}
+
+Software tools like \glspl{vcs} do not provide direct support for monitoring work histories, but they provide a good starting point by continuously collecting event data on successive versions of artifacts.
+%A starting point for analyzing software projects is represented by events that are stored in \glspl{vcs}, which help keeping track of successive versions of artifacts.
+Table \ref{tab:vcs-log-data} shows an excerpt of log data, where the columns, from left to right, indicate the commit identifier, the project participant who committed the changes, the commit date, the comment written by the project participant and the files affected and the change performed\footnote{cf. unified diff format  \url{https://git-scm.com/docs/git-diff}}. In order to understand the work history and dependencies based upon such data, we identify three major requirements:
+
+\begin{description}
+	\item [R1 (Extract the work history):] Discover the process of how artifacts evolve in the project as a \emph{labeled} set of steps. This requirement is difficult because the version changes of a commit in relation to a single file do not directly reveal which type of work has been done. Both commit messages and edit characteristics might inform the labeling.	
+	\item [R2 (Uncover Work-Related Dependencies):] Identify that certain work in one part of the project is connected with work in another part. This requirement is difficult because such dependencies might not only exist between files that reside in the same directory. For example, a change in a source code file might have the side effect of triggering work on a configuration file. We refer to this as \emph{co-evolution} of these files.
+	\item [R3 (Measure Dependencies):] Determine how strong the co-evolution of different artifacts is. This requirement is difficult because measures of \emph{strength} of dependencies and on the \emph{distance} of   dependent artifacts have to be devised.
+\end{description}

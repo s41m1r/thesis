@@ -1,0 +1,211 @@
+% Declare and Target-Branched Declare
+\def\btarget {Target-Branched}
+\def\btargetdeclare {{\btarget} Declare}
+\def\btargetdeclarecon {{\btargetdeclare} constraint}
+\def\declare {Declare}
+\def\reldeclare {Relation Declare}
+\def\btargetdeclarecontem {{\btargetdeclare} constraint template}
+\def\branchfactor {branching factor}
+\def\ltlf {LTL$_f$}
+
+% MINERful stuff
+\def\minerfulKB {\ensuremath{\mathcal{KB}}}
+\def\parakappa {\ensuremath{k^{||}}}
+\def\paraqu {\ensuremath{q^{||}}}
+\def\kbSum {\ensuremath{\oplus}}
+
+%
+\def\GenericTmp {\ensuremath{\mathcal{C}}}
+\def\GenericPrimeTmp {\ensuremath{\mathcal{C}'}}
+\def\GenericSecondTmp {\ensuremath{\mathcal{C}''}}
+%
+\newcommand{\GenericRelCns}[2] {\ensuremath{\mathcal{C}(#1,#2)}}
+\newcommand{\GenericPrimeRelCns}[2] {\ensuremath{\mathcal{C}'(#1,#2)}}
+\newcommand{\GenericSecondRelCns}[2] {\ensuremath{\mathcal{C}''(#1,#2)}}
+
+\def\PartTxt {Participation}
+\def\UniqTxt {AtMostOne}
+\def\InitTxt {Init}
+\def\EndTxt {End}
+\def\ResExTxt {RespondedExistence}
+\def\RespTxt {Response}
+\def\AltRespTxt {AlternateResponse}
+\def\ChaRespTxt {ChainResponse}
+\def\PrecTxt {Precedence}
+\def\AltPrecTxt {AlternatePrecedence}
+\def\ChaPrecTxt {ChainPrecedence}
+\def\CoExiTxt {CoExistence}
+\def\SuccTxt {Succession}
+\def\AltSuccTxt {AlternateSuccession}
+\def\ChaSuccTxt {ChainSuccession}
+\def\NotCoExiTxt {NotCoExistence}
+\def\NotSuccTxt {NotSuccession}
+\def\NotChaSuccTxt {NotChainSuccession}
+
+\def\PartTmp {$\mathit{\PartTxt}$}
+\def\UniqTmp {$\mathit{\UniqTxt}$}
+\def\InitTmp {$\mathit{\InitTxt}$}
+\def\EndTmp {$\mathit{\EndTxt}$}
+\def\ResExTmp {$\mathit{\ResExTxt}$}
+\def\RespTmp {$\mathit{\RespTxt}$}
+\def\AltRespTmp {$\mathit{\AltRespTxt}$}
+\def\ChaRespTmp {$\mathit{\ChaRespTxt}$}
+\def\PrecTmp {$\mathit{\PrecTxt}$}
+\def\AltPrecTmp {$\mathit{\AltPrecTxt}$}
+\def\ChaPrecTmp {$\mathit{\ChaPrecTxt}$}
+\def\CoExiTmp {$\mathit{\CoExiTxt}$}
+\def\SuccTmp {$\mathit{\SuccTxt}$}
+\def\AltSuccTmp {$\mathit{\AltSuccTxt}$}
+\def\ChaSuccTmp {$\mathit{\ChaSuccTxt}$}
+\def\NotCoExiTmp {$\mathit{\NotCoExiTxt}$}
+\def\NotSuccTmp {$\mathit{\NotSuccTxt}$}
+\def\NotChaSuccTmp {$\mathit{\NotChaSuccTxt}$}
+
+\newcommand{\Part}[1] {\ensuremath{\mathit{\PartTxt}(#1)}}
+\newcommand{\Uniq}[1] {\ensuremath{\mathit{\UniqTxt}(#1)}}
+\newcommand{\Init}[1] {\ensuremath{\mathit{\InitTxt}(#1)}}
+\newcommand{\End}[1] {\ensuremath{\mathit{\EndTxt}(#1)}}
+\newcommand{\ResEx}[2] {\ensuremath{\mathit{\ResExTxt}(#1,#2)}}
+\newcommand{\Resp}[2] {\ensuremath{\mathit{\RespTxt}(#1,#2)}}
+\newcommand{\AltResp}[2] {\ensuremath{\mathit{\AltRespTxt}(#1,#2)}}
+\newcommand{\ChaResp}[2] {\ensuremath{\mathit{\ChaRespTxt}(#1,#2)}}
+\newcommand{\Prec}[2] {\ensuremath{{\mathit{\PrecTxt}}(#1,#2)}}
+\newcommand{\AltPrec}[2] {\ensuremath{\mathit{\AltPrecTxt}(#1,#2)}}
+\newcommand{\ChaPrec}[2] {\ensuremath{\mathit{\ChaPrecTxt}(#1,#2)}}
+\newcommand{\CoExi}[2] {\ensuremath{\mathit{\CoExiTxt}(#1,#2)}}
+\newcommand{\Succ}[2] {\ensuremath{\mathit{\SuccTxt}(#1,#2)}}
+\newcommand{\AltSucc}[2] {\ensuremath{\mathit{\AltSuccTxt}(#1,#2)}}
+\newcommand{\ChaSucc}[2] {\ensuremath{\mathit{\ChaSuccTxt}(#1,#2)}}
+\newcommand{\NotCoExi}[2] {\ensuremath{\mathit{\NotCoExiTxt}(#1,#2)}}
+\newcommand{\NotSucc}[2] {\ensuremath{\mathit{\NotSuccTxt}(#1,#2)}}
+\newcommand{\NotChaSucc}[2] {\ensuremath{\mathit{\NotChaSuccTxt}(#1,#2)}}
+
+\newcommand{\ResExNoMath}[2] { \ResExTmp$($\textit{#1},\textit{#2}$)$ }
+\newcommand{\RespNoMath}[2] { \RespTmp$($\textit{#1},\textit{#2}$)$ }
+\newcommand{\AltRespNoMath}[2] { \AltRespTmp(\textit{#1},\textit{#2}) }
+\newcommand{\ChaRespNoMath}[2] { \ChaRespTmp(\textit{#1},\textit{#2}) }
+\newcommand{\PrecNoMath}[2] { \PrecTmp(\textit{#1},\textit{#2}) }
+\newcommand{\AltPrecNoMath}[2] { \AltPrecTmp(\textit{#1},\textit{#2}) }
+\newcommand{\ChaPrecNoMath}[2] { \ChaPrecTmp(\textit{#1},\textit{#2}) }
+
+\newcommand{\BranchedTargetNoMath}[1] {$\lbrace$#1$\rbrace$}
+\newcommand{\BranchedTarget}[1] { \ensuremath{\lbrace#1\rbrace} }
+
+\def\DistFunctor { \ensuremath{ \delta } }
+\def\OccuFunctor { \ensuremath{ \gamma } }
+
+\newcommand{\DistFunc}[3] { \ensuremath{\DistFunctor_{#1,#2}(#3)} }
+\newcommand{\OccuFunc}[2] { \ensuremath{\OccuFunctor_{#1}(#2)} }
+
+\def\NoAfterFunctor { \overset{\nrightarrow}{\delta_0} }
+\def\NoBeforeFunctor { \overset{\nleftarrow}{\delta_0} }
+\def\NoEverFunctor { \overset{\nleftrightarrow}{\delta_0} }
+\def\OneAfterFunctor { \overset{\rightarrow}{\delta_1} }
+\def\OneBeforeFunctor { \overset{\leftarrow}{\delta_1} }
+\def\RepeatBetweenNextFunctor { \overset{\looparrowright}{\beta} }
+\def\RepeatBetweenPrevFunctor { \overset{\looparrowleft}{\beta} }
+
+% \newcommand{\NoAfterFunc}[2] { \ensuremath{ \NoAfterFunctor \left( #1, \widehat{#2} \right) } }
+\newcommand{\NoAfterFunc}[2] { \ensuremath{ \NoAfterFunctor \left( #1, #2 \right) } }
+\newcommand{\NoBeforeFunc}[2] { \ensuremath{ \NoBeforeFunctor \left( #1, #2 \right) } }
+\newcommand{\NoEverFunc}[2] { \ensuremath{ \NoEverFunctor \left( #1, #2 \right) } }
+\newcommand{\OneAfterFunc}[2] { \ensuremath{ \OneAfterFunctor \left( #1, #2 \right) } }
+\newcommand{\OneBeforeFunc}[2] { \ensuremath{ \OneBeforeFunctor \left( #1, #2 \right) } }
+% \newcommand{\RepeatBetweenNextFunc}[2] { \ensuremath{ \RepeatBetweenNextFunctor \left( #1, \widecheck{#2} \right) } }
+\newcommand{\RepeatBetweenNextFunc}[2] { \ensuremath{ \RepeatBetweenNextFunctor \left( #1, #2 \right) } }
+\newcommand{\RepeatBetweenPrevFunc}[2] { \ensuremath{ \RepeatBetweenPrevFunctor \left( #1, #2 \right) } }
+
+\newcommand{\RepeatFlagNext}[2] { \ensuremath{ \beta^?_{#1, #2} } }
+\newcommand{\RepeatCountNext}[2] { \ensuremath{ \mathtt{N}^{\beta}_{#1, #2} } }
+\newcommand{\RepeatTargetNext}[2] { \ensuremath{ \beta^{\odot}_{#1, #2} } }
+\newcommand{\NevermoreCount}[2] { \ensuremath{ \mathtt{N}^{\nrightarrow}_{#1, #2} } }
+\def\DiffSetNevermoreCountFunctor { \mathtt{{\Delta}N}^{\nrightarrow} }
+\newcommand{\DiffSetNevermoreCount}[2] { \ensuremath{ \mathtt{{\Delta}N}^{\nrightarrow}_{#1, #2} } }
+\newcommand{\NewDiffSetNevermoreCount}[2] { \ensuremath{ \mathtt{{\Delta}N}^{'\nrightarrow}_{#1, #2} } }
+\newcommand{\NeverbeforeCount}[2] { \ensuremath{ \mathtt{N}^{\nleftarrow}_{#1, #2} } }
+\def\DiffSetNeverbeforeCountFunctor { \mathtt{{\Delta}N}^{\nleftarrow} }
+\newcommand{\DiffSetNeverbeforeCount}[2] { \ensuremath{ \mathtt{{\Delta}N}^{\nleftarrow}_{#1, #2} } }
+\newcommand{\NewDiffSetNeverbeforeCount}[2] { \ensuremath{ \mathtt{{\Delta}N}^{'\nleftarrow}_{#1, #2} } }
+\newcommand{\NeveratallCount}[2] { \ensuremath{ \mathtt{N}^{\nleftrightarrow}_{#1, #2} } }
+\def\DiffSetNeveratallCountFunctor { \mathtt{{\Delta}N}^{\nleftrightarrow} }
+\newcommand{\DiffSetNeveratallCount}[2] { \ensuremath{ \mathtt{{\Delta}N}^{\nleftrightarrow}_{#1, #2} } }
+\newcommand{\NewDiffSetNeveratallCount}[2] { \ensuremath{ \mathtt{{\Delta}N}^{'\nleftrightarrow}_{#1, #2} } }
+\newcommand{\RepeatBetweenNextCount}[2] { \ensuremath{ \mathtt{N}^{\looparrowright}_{#1, #2} } }
+\def\DiffSetRepeatBetweenNextCountFunctor { \mathtt{{\Delta}N}^{\looparrowright} }
+\newcommand{\DiffSetRepeatBetweenNextCount}[2] { \ensuremath{ \mathtt{{\Delta}N}^{\looparrowright}_{#1, #2} } }
+\newcommand{\NewDiffSetRepeatBetweenNextCount}[2] { \ensuremath{ \mathtt{{\Delta}N}^{'\looparrowright}_{#1, #2} } }
+\newcommand{\NewNewDiffSetRepeatBetweenNextCount}[2] { \ensuremath{ \mathtt{{\Delta}N}^{''\looparrowright}_{#1, #2} } }
+\newcommand{\RepeatBetweenPrevCount}[2] { \ensuremath{ \mathtt{N}^{\looparrowleft}_{#1, #2} } }
+\def\DiffSetRepeatBetweenPrevCountFunctor { \mathtt{{\Delta}N}^{\looparrowright} }
+\newcommand{\DiffSetRepeatBetweenPrevCount}[2] { \ensuremath{ \mathtt{{\Delta}N}^{\looparrowleft}_{#1, #2} } }
+\newcommand{\NewDiffSetRepeatBetweenPrevCount}[2] { \ensuremath{ \mathtt{{\Delta}N}^{'\looparrowleft}_{#1, #2} } }
+\newcommand{\NewNewDiffSetRepeatBetweenPrevCount}[2] { \ensuremath{ \mathtt{{\Delta}N}^{''\looparrowleft}_{#1, #2} } }
+\newcommand{\OneAfterCount}[2] { \ensuremath{ \mathtt{N}^{1\shortrightarrow}_{#1, #2} } }
+\newcommand{\OneBeforeCount}[2] { \ensuremath{ \mathtt{N}^{\shortleftarrow 1}_{#1, #2} } }
+
+\newcommand{\NoAppFunc}[1] { \ensuremath{ \overset{\nsim}{\gamma_0} \left( #1 \right) } }
+\newcommand{\CounterFunc}[1] { \ensuremath{ \Gamma \left( #1 \right) } }
+
+\newcommand{\taskize}[1] {\ensuremath{\textsf{#1}}}
+
+\def\taska {\taskize{a}}
+\def\taskf {\taskize{f}}
+\def\taskc {\taskize{c}}
+\def\taskn {\taskize{n}}
+\def\taskp {\taskize{p}}
+\def\taski {\taskize{i}}
+\def\taskr {\taskize{r}}
+\def\tasks {\taskize{s}}
+\def\taskv {\taskize{v}}
+
+\def\taskb {\taskize{b}}
+\def\taskx {\taskize{x}}
+\def\tasky {\taskize{y}}
+\def\taskz {\taskize{z}}
+
+
+\def\nicksclass {\ensuremath{\mathcal{NC}} }
+
+\def\superscalar {\ensuremath{\mathcal{\mathit{on}}} \xspace }
+\def\nosuperscalar {\ensuremath{\mathcal{\mathit{off}}}\xspace }
+
+
+\def\SupportFunctor {\mathcal{S}}
+\def\ConfidenceFunctor {\mathcal{L}}
+
+\newcommand{\SupportFunc}[1] { \ensuremath{\SupportFunctor\left( #1 \right)} }
+\newcommand{\ConfidenceFunc}[1] { \ensuremath{\ConfidenceFunctor\left( #1 \right)} }
+
+\def\BranchingFactor { \ensuremath{ \rho } }
+
+% LTL
+\def\LTLnext {\ensuremath{\bigcirc}}
+\def\LTLfut {\ensuremath{\Diamond}}
+\def\LTLglob {\ensuremath{\Box}}
+\def\LTLuntil {\ensuremath{\;\mathcal{U}\,}}
+\def\LTLwntil {\ensuremath{\;\mathcal{W}\,}}
+
+
+\newcommand{\Next}{\raisebox{-0.27ex}{\LARGE$\circ$}}
+\newcommand{\Wnext}{\raisebox{-0.27ex}{\LARGE$\bullet$}}
+%%\newcommand{\Next}{\raisebox{0.4ex}{\tiny$\bigcirc$}}
+\newcommand{\Until}{\mathop{\U}}
+\newcommand{\Release}{\mathop{\R}}
+\newcommand{\Wuntil}{\mathop{\W}}
+\newcommand{\true}{\mathit{true}}
+\newcommand{\false}{\mathit{false}}
+\newcommand{\temptrue}{\mathit{temp\_true}}
+\newcommand{\tempfalse}{\mathit{temp\_false}}
+%%\newcommand{\ttrue}{\mathtt{true}}
+%%\newcommand{\ffalse}{\mathtt{false}}
+\newcommand{\Last}{\mathit{Last}}
+\newcommand{\Ended}{\mathit{Ended}}
+\newcommand{\length}{\mathit{length}}
+\newcommand{\last}{\mathit{last}}
+\newcommand{\nnf}{\mathit{nnf}}
+\newcommand{\CL}{\mathit{CL}}
+\newcommand{\MU}[2]{\mu #1.#2}
+\newcommand{\NU}[2]{\nu #1.#2}
+\newcommand{\BOX}[1]{ [#1]}
+\newcommand{\DIAM}[1]{\langle #1 \rangle}
+

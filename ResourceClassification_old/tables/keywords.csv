@@ -1,0 +1,20 @@
+"Test","Development","Web","Backend","Maintenance","Refactor","Documentation","Design"
+"test tested testing tests testcase testcases test case test cases unittest unit test integrationtest integration test fitnesse","implement implemented implementation implementing implements improved improving update updated updating script scripting","web spring http https rest html css servlet","engine","bugfix bugfixes fix fixed fixes fixing patch patched cleanup cleanups clean up clean cleaned cleaning","refactor refact refactored refactoring' refactorings rename renamed renaming move moved revert reverted reverting","documentation documented javadoc readme userguide user guide tutorial faq translation translate translated translating doc i18n' file types txt doc docx text tex pdf","style styles styling icon icons font layout layouts layouted layouting file types: 'png svg jpg"
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+"Build","Data","Tool","Addition","Removal","vcsManagement","Automated","Merge"
+"build 'build building compile compiled compiling release","data database sql postgres postgre postgresql","tool library libraries framework dependency dependencies upgrade upgrade to","added add adding new create created","delete deleted deleting remove removed removing","svn git mercurial","(starts with) Automated Release Automated Nightly","(starts with) Merge merge #merge'"

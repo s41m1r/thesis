@@ -1,12 +1,37 @@
-%\chapter{Resource Classification from Version Control System Logs}
-\chapter{Discovering the Organizational Perspective}
+\chapter{Article 3: Resource Classification from Version Control System Logs}
+%\chapter{Discovering the Organizational Perspective}
 \label{chap:resource-classfication}
 
-%\todo[inline]{Polish the chapter}
+{\bfseries \Large Authors: \medskip}
+
+Kushal Agrawal,
+Michael Aschauer,
+Thomas Thonhofer,
+Nico Tomsich, 
+Saimir Bala, and 
+Andreas~Rogge-Solti \hfill
+
+\bigskip
+
+{\noindent\bfseries \Large Published in: \medskip}
+
+20th {IEEE} International Enterprise Distributed Object Computing
+Workshop, {EDOC} Workshops 2016, Vienna, Austria, September 5-9, 2016
+
+\bigskip
+
+{\noindent\bfseries \Large Abstract: \medskip}
+
 
 Collaboration in business processes and projects requires a division of responsibilities among the participants. Version control systems allow us to collect profiles of the participants that hint at participants' roles in the collaborative work. The goal of this paper is to automatically classify participants into the roles they fulfill in the collaboration. Two approaches are proposed and compared in this paper. The first approach finds classes of users by applying k-means clustering to users based on attributes calculated for them. The classes identified by the clustering are then used to build a decision tree classification model. The second approach classifies individual commits based on commit messages and file types. The distribution of commit types is used for creating a decision tree classification model. The two approaches are implemented and tested against three real datasets, one from academia and two from industry. Our classification covers 86\% percent of the total commits. The results are evaluated with actual role information that was manually collected from the teams responsible for the analyzed repositories.
 
-%\input{ResourceClassification/sections/Introduction}
+\pagebreak
+
+
+%\todo[inline]{Polish the chapter}
+
+
+\input{ResourceClassification/sections/Introduction}
 \input{ResourceClassification/sections/Background}
 \input{ResourceClassification/sections/Concept}
 \input{ResourceClassification/sections/Implementation}
@@ -26,5 +51,5 @@ While our algorithms and models work well for describing our three data sets, it
 
 A current limitation of analyzing VCS logs is that commit messages are used differently between users, repositories and teams. We have to assume that it is challenging to find one classification model that produces valid results for any VCS repository, because there are ambiguities in what certain statements mean. In the worst case, users omit commit messages, which renders classification based on text impossible.
 
-\section{Summary}\label{sec:conclusion}
+%\section{Summary}\label{sec:conclusion}
 \input{ResourceClassification/sections/Conclusion}

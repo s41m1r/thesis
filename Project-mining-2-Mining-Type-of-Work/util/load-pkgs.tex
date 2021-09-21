@@ -1,0 +1,124 @@
+% For language-specific hyphenations etc.
+\usepackage[english]{babel}
+\usepackage[T1]{fontenc}
+% To determine characteristics of float environments
+\usepackage{floatrow}
+% For subfigures
+\usepackage{subcaption}
+% For nice links
+\usepackage{url}
+% For playing with colors in tabular environments
+\usepackage{colortbl}
+% For math symbols, such as \nexists
+\usepackage{amssymb}
+% For more math symbols, such as \mapsfrom
+\usepackage{stmaryrd}
+% For advanced graphics
+%% For including figures, graphicx.sty has been loaded in
+%% elsarticle.cls. If you prefer to use the old commands
+%% please give \usepackage{epsfig}
+% For equations, arrays of equations, defining operator names, etc.
+% \usepackage{amsmath}
+% For cursive math
+\usepackage{mathrsfs}
+% For math symbols, such as \nexists
+\usepackage{amssymb}
+% For enumerating the line numbers
+\usepackage[left]{lineno}
+% For diagonally-split fractions (\sfrac)
+\usepackage{xfrac}
+% For side notes, missing figures and inline to-do's
+\usepackage[textsize=scriptsize,backgroundcolor=yellow!40]{todonotes}
+% Resize the width of todo-notes on the margins
+\setlength{\marginparwidth}{1.25cm}
+% For specifying kewords and acronyms
+\usepackage[nonumberlist,acronym]{glossaries}
+\glsdisablehyper
+% For commenting out some parts of the text
+\usepackage{comment}
+% For building hyperlinks
+\usepackage[pdftex, colorlinks=true, hyperfootnotes=true, hyperindex=true,
+            plainpages=false, pagebackref=false, pdfpagelabels=true, pdfstartview=FitH,
+            linkcolor=blue, citecolor=blue, urlcolor=blue,
+            bookmarks, bookmarksopen, bookmarksdepth=3]{hyperref}
+% If you use the hyperref package, please uncomment the following line
+% to display URLs in blue roman font according to Springer's eBook style:
+\renewcommand\UrlFont{\color{blue}\rmfamily}
+% For smart references
+\usepackage[capitalise,nameinlink]{cleveref}
+% To have "Figure 3(a)" in place of "Figure 3a" and  "Table 3(a)" in place of "Table 3a"
+% \captionsetup[subtable]{subrefformat=simple,labelformat=simple}
+    % \renewcommand\thesubtable{(\alph{subtable})}
+\crefname{algocf}{alg.}{algs.}
+\Crefname{algocf}{Algorithm}{Algorithms}
+\Crefname{definition}{Definition}{Definitions}
+\crefname{definition}{Def.}{Defs.}
+\crefname{lstlisting}{listing}{listings}
+\Crefname{lstlisting}{Listing}{Listings}
+% TikZ/Pgf advanced graphics
+% \usepackage{tkz-base}
+% \usetikzlibrary{decorations.pathmorphing,trees,decorations,arrows,shapes,automata}
+% To use inline and other fancy list-like environments (e.g., inparaenum)
+\usepackage{paralist}
+% To divide a text line into multiple columns
+\usepackage{multicol}
+% To create good-looking book-style tables
+\usepackage{booktabs}
+% To play around with list environments
+\usepackage{enumitem}
+% To create multirow cells in tables
+\usepackage{multirow}
+% To create rotated cells in tables
+\usepackage{rotating}
+% To create enumerated lists, whose numbering is reversed
+\usepackage{etaremune}
+% To make algorithmic nice-looking pseudocode
+\usepackage[ruled,linesnumbered]{algorithm2e}
+%% For creating side-notes
+% \usepackage{marginnote}
+% For superimposing symbols over one another within math env.
+\usepackage{mathtools}
+% For strange math symbols like \Dashv
+\usepackage{mathabx}
+% For LaTeX if/then statements
+\usepackage{ifthen}
+% For strike-through cancellations
+\usepackage[normalem]{ulem}
+%% The lineno packages adds line numbers. Start line numbering with
+%% \begin{linenumbers}, end it with \end{linenumbers}. Or switch it on
+%% for the whole article with \linenumbers.
+\usepackage{lineno}
+% For highlighted text
+\usepackage{soul}
+% To put table environments and co. side by side
+\usepackage{floatrow}
+\floatsetup[table]{style=plaintop}
+% To add dummy text
+\usepackage{lipsum} 
+% To have newlines in cells, with commands such as \makecell or \thead
+\usepackage{makecell}
+% For diagonal lines in tables
+\usepackage{diagbox}
+% For adjusting the size of tables to the text width, if necessary: \begin{adjustbox}{max width=\textwidth}
+\usepackage{adjustbox}
+% For scientific notation numbers
+\usepackage[scientific-notation=true]{siunitx}
+% Microtype
+\usepackage{microtype}
+% checkmark
+\usepackage{pifont}% http://ctan.org/pkg/pifont
+\newcommand{\cmark}{$\checkmark$}%
+\newcommand{\xmark}{$\times$}%
+%\newcommand{\tilde}{\textasciitilde{}}
+%\usepackage{bm}
+\usepackage{listings}
+\usepackage{color}
+% \usepackage[section]{placeins}
+
+\definecolor{mygreen}{rgb}{0,0.6,0}
+\definecolor{mygray}{rgb}{0.5,0.5,0.5}
+\definecolor{mymauve}{rgb}{0.58,0,0.82}
+
+\usepackage[belowskip=-3pt,aboveskip=-2pt]{caption}
+\setlength{\intextsep}{8pt plus 2pt minus 2pt}
+\setlength{\textfloatsep}{10pt} 

@@ -20,7 +20,7 @@ First, an event log from \gls{vcs} is taken as an input. In this step, an \gls{e
 
 \begin{figure}[]
     \centering
-    \includegraphics[width=.7\textwidth]{figures/overview}
+    \includegraphics[width=.7\textwidth]{Project-mining-2-Mining-Type-of-Work/figures/overview}
     \caption{Overview of the approach}
     \label{fig:approach-overview}
 \end{figure}
@@ -52,7 +52,7 @@ Having the data stored in a \gls{dbms}, enables us to run several analyzes alrea
 Next, we automatically categorize the type of change. For this, we apply regular expression on path attribute using the classes provided by literature~\cite{DBLP:journals/ese/VasilescuSGM14}. 
 Examples of classes are  \textsl{Documentation}, \textsl{Image}, \textsl{Testing}, \textsl{Coding}, \textsl{User interface}, etc. There are in total fourteen classes. When a type of change does not belong to any class, it is put under the category \textsl{Unknown}.
 
-\input{tables/regex}
+\input{Project-mining-2-Mining-Type-of-Work/tables/regex}
 
 We have adapted the regular expressions to our case and enriched the list of rules from literature. \Cref{tab:regex} shows the activity types and the main regular expressions we use to classify files onto specific types of work. For the sake of space, the majority of the regular expressions is left out. The reader can access the full list of regular expressions on our GitHub repository whose link is provided in the following section.
 
@@ -77,7 +77,7 @@ We adapted the definition of \glspl{kpi} from literature to support the extracti
 %\end{definition}
 Finally, using these definitions, we can present in \Cref{tab:kpis-computation} how the rest of the \glspl{kpi} is computed. With this step we fulfill \textbf{RQ3}.\\\hfill
 
-\input{tables/kpis-computation}
+\input{Project-mining-2-Mining-Type-of-Work/tables/kpis-computation}
 
 \paragraph{Visualize results.}
 The last step of our technique deals with the presentation of the results. As our prototype needs to be informative to project managers, we chose to graphically display the results of the previous two steps on a friendly user interface. The user interface takes as input the results of the classification of the activities as well as the set of the computed \glspl{kpi}. 

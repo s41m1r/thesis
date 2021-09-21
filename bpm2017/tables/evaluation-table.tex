@@ -1,0 +1,25 @@
+% Please add the following required packages to your document preamble:
+% \usepackage{booktabs}
+% \usepackage{graphicx}
+\begin{table*}[h]
+	\centering
+	\caption{Evaluation of real world projects, using a threshold of $k=0.7$}
+	\label{table:evaluation-results}
+	\resizebox{\textwidth}{!}{%
+		\setlength{\tabcolsep}{4pt}
+		\begin{tabular}{@{}lrrrrrrrrrrrrrrrr@{}}
+			Project                              & \rot{\#Commits} & \rot{\#Project Participants} & \rot{\#Artifacts} & \rot{\#Containments} & \rot{\#Strong Dependencies} & \rot{\#Weak Dependencies} & \rot{\#Intra-Cont. Dep.} & \rot{\#Weak Intra-Cont. Dep.} & \rot{\#Strong Intra-Cont. Dep.} & \rot{\#Inter-Cont. Dep.} & \rot{\#Weak Inter-Cont. Dep.} & \rot{\#Strong Inter-Cont. Dep.} & \rot{AvgTreeDepth} & \rot{MaxTreeDepth} & \rot{\#Avg.Activities$\times$Process} & \rot{\#AvgUsersPerArtifact} \\ \midrule
+		\textit{monolingual-word-aligner}    & 21        & 1       & 10        & 36           & 46                   & 8                  & 46                   & 7                          & 38                           & 9                    & 1                       & 8                         & 1.10             & 2                & 2.31                    & 2.31                \\
+		\textit{camunda-resource-deployer}   & 11        & 2       & 15        & 11           & 74                   & 26                 & 26                   & 0                          & 25                           & 94                   & 26                      & 49                        & 2.00             & 3                & 2.05                    & 2.05                \\
+		\textit{Big-list-of-naughty-strings} & 202       & 60      & 15        & 40           & 21                   & 93                 & 55                   & 34                         & 18                           & 65                   & 59                      & 3                         & 1.47             & 3                & 3.02                    & 3.04                \\
+		\textit{graphql}                     & 256       & 50      & 30        & 199          & 89                   & 357                & 229                  & 121                        & 89                           & 236                  & 236                     & 0                         & 1.40             & 2                & 3.18                    & 3.40                \\
+		\textit{jgit-cookbook}               & 135       & 7       & 89        & 774          & 773                  & 2866               & 863                  & 505                        & 289                          & 3142                 & 2361                    & 484                       & 6.93             & 8                & 1.33                    & 1.33                \\
+		\textit{mysqlclient-python}          & 749       & 28      & 168       & 1253         & 2288                 & 11571              & 1421                 & 742                        & 591                          & 12775                & 10829                   & 1697                      & 2.65             & 7                & 1.65                    & 1.73                \\
+		\textit{gantt}                       & 23        & 3       & 228       & 4140         & 7006                 & 14343              & 4368                 & 386                        & 3480                         & 21738                & 13957                   & 3526                      & 3.30             & 4                & 1.71                    & 1.82                \\
+		\textit{facebook-ads-java-sdk}       & 38        & 8       & 293       & 18501        & 16478                & 26092              & 18794                & 2017                       & 16311                        & 24277                & 24075                   & 167                       & 6.29             & 8                & 4.78                    & 5.28                \\
+		\textit{Caret}                       & 864       & 43      & 432       & 27527        & 15366                & 60874              & 27959                & 9538                       & 14785                        & 65569                & 51336                   & 581                       & 3.02             & 4                & 3.15                    & 3.29                \\
+		\textit{operationcode}               & 1114      & 78      & 1053      & 7200         & 84024                & 444605             & 8253                 & 2291                       & 5537                         & 546678               & 442314                  & 78487                     & 4.24             & 8                & 2.01                    & 2.10                \\ \bottomrule
+		\end{tabular}%
+	}
+
+\end{table*}

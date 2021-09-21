@@ -1,0 +1,34 @@
+\section{Introduction}\label{sec:introduction}
+
+%Big data is one of the current business trends, but it is not an overnight phenomenon. Companies have always collected immense quantities of data. With technological improvements it is now possible to extract and analyze this new frontier in an efficient way \cite{minelli2012}. This data is created and collected by industry giants as well as the small enterprises and even individual persons via software systems. 
+In the field of software engineering, \gls{vcs} such as Git or \gls{svn} have become an indispensable tool and are used for the majority of collaborative development projects. The repositories of these systems store data about projects and their contributors, beyond the raw source code they committed~\cite{Yu.LiguoRamaswamy.2007}.
+From a management perspective, it is interesting to analyze repository data for compliance purposes. From an academic perspective, repositories hold valuable information about the way people work and collaborate.
+%\todo[inline]{TODO: add more of "why we need this" to this section and add some citations to works that also claim that this is relevant.}
+
+%The increasing popularity of open source software projects and the emergence of VCS repository hosting services such as GitHub or SourceForge has made this data publicly available. 
+%For open source projects, anyone can fetch a log file of their revision histories, containing meta information in the form of author names, commit messages, timestamps and lists of added, modified and deleted files. This easily accessible information is just waiting to be analyzed and contains valuable and useful information.
+%There are certainly multiple directions to go in, when applying data mining to VCS logs. 
+
+In this paper the focus lies on mining and analyzing properties of the users. More specifically, it aims at classifying the users which appear in the logs. This idea is based on the assumption that different types of users utilize the system in different ways and that these differences are reflected in their commits and subsequently in the logs. More precisely, we are interested in the following research questions:
+%For this task we formulated three research questions:
+
+
+\begin{enumerate}
+
+%\item Is it possible to do a classification based on VCS logs?
+\item Is it possible to classify resources from VCS log data?
+
+%\item What classes can be assigned?
+\item To what extent can resources be assigned to classes?
+
+%\item What are the main differences found for these classes?
+\item What are the main differences among these classes?
+
+\end{enumerate}
+
+
+The main objective is to find a way of classifying users automatically, using an algorithm built on common data mining and machine learning methods. The devised algorithm answers these research questions.
+
+
+This paper is structured as follows: Section 2 provides the basis for this paper, links it to related work and formulates the research questions. Section 3 presents two approaches on how users can be classified in version control systems. In Section 4 the implementation of two algorithmic solutions is described, followed by an analysis of the results. Section 5 concludes the paper.
+

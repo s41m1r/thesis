@@ -1,0 +1,22 @@
+% Please add the following required packages to your document preamble:
+% \usepackage{booktabs}
+% \usepackage{graphicx}
+\begin{table}[]
+\centering
+% \scriptsize
+\caption{\glspl{kpi} computation details}
+\label{tab:kpis-computation}
+% \resizebox{\textwidth}{!}{%
+\begin{tabular}{@{}m{1.5cm}m{6cm}m{4cm}@{}}
+\toprule
+\textbf{KPI} & \textbf{Description}                           & \textbf{Calculation}                     \\ \midrule
+\gls{pw}     & (absolute) project workload                    & $\sum_{t \in T, u \in U} \gls{utw}(t,u)$ \\
+\gls{tw} (t) & workload of a specific activity  & $\sum_{u \in U} \gls{utw}(t,u) $         \\
+\gls{nap}    & number of authors in the project               & $\sum_{u_j \in U} j$                     \\
+\gls{ntp}    & number of activities in the project         & $\sum_{t_j \in T} j$                     \\
+\gls{pis}  & specialization of user involvement the activities of the project               & $Gini_{{t_k} \in T} (\sum_{u \in U}\gls{uti}(u, t_k))$                \\
+\gls{rpis} & specialization of relative user involvement over the activities of the project & $Gini_{{t_k} \in T} ( \frac{\sum_{u \in U} \gls{uti}(u, t_k)}{ \gls{nap}} ) $ \\
+\gls{rpws} & specialization of relative workload across all activities in the project       & $Gini_{{t_k} \in T} ( \frac {\sum_{u \in U} \gls{utw}(u, t_k) } { \gls{tw}})$  \\ \bottomrule
+\end{tabular}%
+% }
+\end{table}

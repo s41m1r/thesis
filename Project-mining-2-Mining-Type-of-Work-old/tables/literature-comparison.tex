@@ -1,0 +1,37 @@
+% Please add the following required packages to your document preamble:
+% \usepackage{booktabs}
+% \usepackage{multirow}
+\begin{table}[htbp]
+\caption{Positioning this contribution against existing literature. Symbols semantics: requirement \cmark addressed; $\sim$ partially addressed; \xmark~not addressed}
+\label{tab:literature}
+\begin{tabular}{@{}llllll@{}}
+\toprule
+\textbf{\begin{tabular}[c]{@{}l@{}}Research \\ area\end{tabular}} &
+  \textbf{Approaches} &
+  \textbf{\begin{tabular}[c]{@{}l@{}}Process \\ VCS event \\ logs\end{tabular}} &
+  \textbf{\begin{tabular}[c]{@{}l@{}}Visualize \\ project \\ status\end{tabular}} &
+  \textbf{\begin{tabular}[c]{@{}l@{}}Visualize \\ type of \\ work\end{tabular}} &
+  \textbf{\begin{tabular}[c]{@{}l@{}}Compute \\ KPIs\end{tabular}} \\ \midrule
+\multirow{4}{*}{MSR} & Zimmermann~\cite{DBLP:journals/tse/ZimmermannWDZ05}      & \cmark & {{$\mathbb \sim$}} & \cmark & {{$\mathbb \sim$}} \\
+& Zaidman et al.~\cite{DBLP:conf/icst/ZaidmanRDD08}        & \cmark & {{$\mathbb \sim$}} & \xmark & \xmark \\
+                     & Oliva et al.~\cite{DBLP:conf/iwpse/OlivaSGS11}           & \cmark & \xmark & \xmark & \xmark \\
+                     & Vasilescu et al.~\cite{DBLP:journals/ese/VasilescuSGM14} & \cmark & {{$\mathbb \sim$}} & \xmark & \cmark \\ 
+                     & Rodriguez et al.~\cite{DBLP:conf/msr/RodriguezTK18}      & \cmark & {{$\mathbb \sim$}} & \cmark & {{$\mathbb \sim$}} \\
+                     & Joonbakhsh \& Sami~\cite{DBLP:conf/msr/JoonbakhshS18}      & \cmark & {{$\mathbb \sim$}} & \cmark & {{$\mathbb \sim$}} \\
+                     \midrule
+\multirow{7}{*}{\begin{tabular}[c]{@{}l@{}}Process /\\ Project Mining\end{tabular}} &
+  Bala et al.~\cite{DBLP:conf/bpm/BalaCMRP} &
+  \cmark &
+  \cmark &
+  \xmark &
+  \cmark \\
+                     & Kindler et al.~\cite{DBLP:conf/se/KindlerRS06}           & \cmark & \xmark & {{$\mathbb \sim$}} & \xmark \\
+                     & Poncin et al.~\cite{DBLP:conf/csmr/PoncinSB11}           & \cmark & {{$\mathbb \sim$}} & {{$\mathbb \sim$}} & \xmark \\
+                     & Bentallah et al.~\cite{DBLP:conf/caise/BeheshtiBN13}     & \cmark & {{$\mathbb \sim$}} & {{$\mathbb \sim$}} & \xmark \\
+                     & Marques et al.~\cite{DBLP:conf/wecwis/MarquesSF18}       & {{\xmark}} & {{$\mathbb \sim$}} & {{$\mathbb \sim$}} & {{$\mathbb \sim$}} \\
+                     & Jooken et al.~\cite{DBLP:conf/bpm/JookenCJ19}            & \cmark & {{$\mathbb \sim$}} & {{$\mathbb \sim$}} & {{$\mathbb \sim$}} \\
+                    %  & ActiVCS                                                  & \cmark & \cmark & \cmark & \cmark \\ 
+                    \bottomrule
+\end{tabular}
+\end{table}
+

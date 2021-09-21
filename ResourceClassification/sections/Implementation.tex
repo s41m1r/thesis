@@ -1,11 +1,11 @@
-\subsection{Implementation}
+\section{Implementation}
 \label{sec:impl}
 
 We implemented the outlined solution concept in a Python script. This script automatically fetches, processes and analyses the log files and creates a classification model that is based on the extracted information. The following tools are used for implementation:
 
 \begin{description}
 
-\item[\textbf{Technology.}] Python is a general-purpose, high-level programming language. It is open source, easy to use and offers various third party modules\footnote{https://www.python.org/}.
+\item[Technology.] Python is a general-purpose, high-level programming language. It is open source, easy to use and offers various third party modules\footnote{https://www.python.org/}.
 
 \item[\textbf{Machine Learning.}] The Scikit Learn module is used for machine learning\footnote{http://scikit-learn.org/stable/}. We used \glspl*{dt} for classification and regression. \Glspl*{dt} are a supervised learning method whose goal is to create a model that predicts a target feature of variable by inferring existing rules from the data.
 
@@ -17,15 +17,15 @@ Next, we discuss the data selection criteria. While there are many accessible co
 
 \begin{description}
 
-\item[\textbf{Diversity}.] Classification on a single repository might not produce a generally applicable result, whereas using more repositories increases complexity.
+\item[Diversity.] Classification on a single repository might not produce a generally applicable result, whereas using more repositories increases complexity.
 
-\item[\textbf{Size}.] Individual repositories' size is determined by the number of commits.
+\item[Size.] Individual repositories' size is determined by the number of commits.
 
-\item[\textbf{Roles}.] The real roles of the contributors of a repository is required for certain classification steps and the verification of results.
+\item[Roles.] The real roles of the contributors of a repository is required for certain classification steps and the verification of results.
 
-\item[\textbf{Type}.] Differences in organizational aspects of the projects: the type of the development team (e.g. professional or hobby), type of software (e.g. proprietary or open-source), and type of platform (e.g. private server or public repository hosting service) can influence the way repositories are used.
+\item[Type.] Differences in organizational aspects of the projects: the type of the development team (e.g. professional or hobby), type of software (e.g. proprietary or open-source), and type of platform (e.g. private server or public repository hosting service) can influence the way repositories are used.
 
-\item[\textbf{Backend}.] There exists a plethora of version control systems, each with their unique characteristics and formats. The approach should be able to handle popular systems including Subversion (SVN), Git, and Mercurial.
+\item[Backend.] There exists a plethora of version control systems, each with their unique characteristics and formats. The approach should be able to handle popular systems including Subversion (SVN), Git, and Mercurial.
 
 \end{description}
 
@@ -108,7 +108,7 @@ The classification task was done in two ways: 1. Manual analysis of the table an
 The final algorithm including retrieval, processing and analysis of data as well as classification and verification, consists of roughly 700 lines of code. The results for the two approaches are discussed below.
 
 
-\section{Evaluation}
+\subsection{Results}
 
 In the first step of the user-based approach, the most expressive features of the Infinica data set were identified. The solution was tested on the Infinica data set due to the immediate availability of detailed information about the log file. The best results were achieved with the combination of the commit frequency and the occurrence numbers of test related keywords.
 
@@ -127,13 +127,13 @@ While the user profiles were originally intended as an intermediary step and a m
    \centering
    \begin{subfigure}[t]{.5\textwidth}
       \centering
-      \includegraphics[width=\linewidth]{ResourceClassification/figures/infinica_developer.pdf}
+      \includegraphics[width=\linewidth]{figures/infinica_developer.pdf}
       \caption{User profile for a backend developer}
       \label{fig:developer} 
    \end{subfigure}%
    \begin{subfigure}[t]{.5\textwidth}
       \centering
-      \includegraphics[width=\linewidth]{ResourceClassification/figures/infinica_tester.pdf}
+      \includegraphics[width=\linewidth]{figures/infinica_tester.pdf}
       \caption{User profile for a tester}
       \label{fig:tester} 
    \end{subfigure}
@@ -163,7 +163,7 @@ The Infinica dataset is divided successfully into expressive classes with k-mean
 
 \Cref{tab:user-profiles2} shows an excerpt of the user profiles and role assignments for the Infinica data set. The commit types development, backend, maintenance and refactor have been merged to a single type development, as the other, more specific types provided no additional value in this case. Also the types "addition", "removal" and "merge" have been omitted due to a lack of semantic meaning. The data visible in the table was used for the manual classification as well as the creation of the decision tree model.
 
-\input{ResourceClassification/tables/user-profiles2.tex}
+\input{ResourceClassification_old/tables/user-profiles2.tex}
 
 We identified 4 role-based classes which were visible from the Infinica data. Those were testers, with more than 20\% of their commits being of type test and between 30\% and 50\% of type development, developers with above 50\% development commits, web developers with more than 40\% of type web, and 20\% of other development and non-technical users with less than 20\% development. In addition to those, we found some less obvious hints for additional classes, represented by minor, secondary roles of users. These were not represented as actual existing roles in our data, so we could not verify our assumptions. The corresponding classes we suggest for those are technical writer with more than 40\% documentation commits, designers with above 30\% design commits, users with various administration tasks, represented by high numbers of the types build, vcsManagment and toolManagement and database experts with a large percentage of data commits.
 
@@ -218,16 +218,16 @@ For the user-based approach no further distinction can be made based on expertis
 \end{figure}
 
 
-Decision trees are an effective tool to display the formation and partitioning of clusters in a tree-like model. The corresponding decision trees for the previous presented k-means clustering shown in \Cref{fig:trees} display the boundaries of the clusters. Due to the differences in the structure of the projects, business vs open source, the data sets share only little similarities.
+Decision trees are an effective tool to display the formation and the partitioning of clusters in a tree-like model. The corresponding decision trees for the previous presented k-means clustering shown in \Cref{fig:trees} display the boundaries of the clusters. Due to the differences in the structure of the projects, business vs open source, the data sets share only little similarities.
 
-The Infinica decision tree initially splits the developers and the testers apart based on the commit frequency with a border value of 20.92\%. The developers are split again into subclasses based on the commit frequency, which now separates them at 55.49\% into frequent committers and heavy commits. The testers are split based on test related word occurrences at 0.14\%, where the non technical testers use these words less often than their technical counterparts. On the contrary, the other two trees start separating the subsets right away in different orders without displaying a clean separation between developers and testers from the beginning.
+The Infinca decision tree initially splits the developers and the testers apart based on the commit frequency with a border value of 20.92\%. The developers are split again into sublcasses based on the commit frequency, which now seperates them at 55.49\% into frequent committers and heavy commits. The testers are split based on test related word occurances at 0.14\%, where the non technical testers use these words less often than their technical counterparts. On the contrary, the other two trees start separating the subsets right away in different orders without displaying a clean seperation between developers and testers from the beginning.
 
 The decision tree model for the commit-based approach is depicted in \Cref{fig:tree}. When comparing its rules with those of our manual classification there are some clear parallels. In the tree the differentiation between web developers and other developers is done with a border value of 36\% for web commits, close to the 40\% threshold of the manual table. Testers are identified having more than 17\% test commits, similar to the 20\% boundary. The decision tree separates the support users from the rest using the vcsManagement type. Looking at the data, this rule is definitely valid for the Infinica data, however as we were not able to provide a definite explanation for this class having higher percentages for that particular type, we can not say if this rule would also apply to other data sets. One possible explanation is that all users have a similar number of vcsManagement commits within a given timeframe, but because the support role has on average a significantly lower number of commits, they account for a higher percentage in the distribution, however this is only an assumption.
 
 \begin{figure}
 	\centering
-	\includegraphics[width=0.6\columnwidth]{ResourceClassification/figures/commit_tree.png}
-	\caption{Decision tree, commit based model}
+	\includegraphics[width=0.6\columnwidth]{figures/commit_tree.png}
+	\caption{Decision tree, commit based model}\
 	\label{fig:tree}
 \end{figure}
 
@@ -265,3 +265,21 @@ For ProM (\Cref{fig:infinica-predict} left) the trained classes are less represe
 Because of the missing designated testers in both test data sets, the initial differentiation between technical and non-technical testers is not possible. Due to the moderate results of user based approach the commit based approach was initiated.
 
 
+
+
+\subsection{Discussion}
+
+Throughout this project we discovered a number of research directions to follow, methods to use and features to analyze, which made our research much more exploratory than originally planned. For our research we picked from a vast selection of potential methods and tools, a small set which seemed promising to us. %Considering the experimental character of the project and the fact that we did not really have an idea of what our findings would look like up front, we achieved quite good results. 
+The user-based approach, which was our initial plan, provided a useful insight into the data but fell short of providing generally applicable results in terms of a classification algorithm. The commit-based approach seems more valuable to us, due to its results and the much larger spectrum of information it delivers for analyzing users. The commit classification method seems quite robust and could with some extensions and refinements become a useful tool for analyzing arbitrary VCS repositories. The user profiles created based on this classification are definitely an interesting source of information and building a classification model on top of them has proven to be a legitimate approach. 
+
+Our first research question (RQ1) can be answered with: Yes, it is possible to classify users based on the information usually found in VCS logs. Our results show that at least for some typical roles in software development there can be enough information in commit messages and file types, to make certain statements about the users who created them. However this is not true for all users, especially when their commit styles and frequencies are very different.
+
+The other two questions are more difficult to answer. The classes to be found can differ between repositories. From our experience, developers can be distinguished from other roles quite easily due to high numbers of commits and/or modified files as well as the usage of certain words and phrases. Testers can also be set apart in most cases, mainly through key words. Looking at the file types of added, modified and deleted files also reveals users in the field of web development. Beyond that there are certainly more differences and classes to be found but they are less obvious and require more research.
+
+What do these results mean for the practical use of resource classification using VCS logs as discussed in \Cref{sec:problemDescription}? One clear finding of our work is that any project team trying to use this kind of classification, should specify and enforce some guidelines for how VCS should be used. They should at least make the usage of commit messages mandatory, ideally also define a structure and vocabulary for them. While the models we created are probably not applicable for an arbitrary team or project, a team could follow our approach to create their own individual model using specific knowledge. For a more generally applicable classification model, additional research and improvements to our solution would be necessary. 
+
+\subsubsection{Limitations}
+
+While our algorithms and models work well for describing our three data sets, it still needs to be tested for other repositories, especially from other domains. This would require testing with more data sets, more verification information and more manual analysis. While fetching more VCS repositories and running them through our algorithms could be done in a short amount of time, obtaining the necessary role information is challenging and the manual analysis time consuming.
+
+A current limitation of analyzing VCS logs is that commit messages are used differently between users, repositories and teams. We have to assume that it is challenging to find one classification model that produces valid results for any VCS repository, because there are ambiguities in what certain statements mean. In the worst case, users omit commit messages, which renders classification based on text impossible.

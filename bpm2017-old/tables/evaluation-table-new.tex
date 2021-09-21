@@ -1,0 +1,24 @@
+% Please add the following required packages to your document preamble:
+% \usepackage{graphicx}
+\begin{table}[t]
+\centering
+\caption[Evaluation on project metric on real world projects.]{Evaluation of real world projects. Respectively the thresholds are: $\chi^{L}$ if $\chi < 0.3$,  $\chi^{H}$ if $\chi > 0.7$  low and high degree of co-evolution; $d^{L}$ if $d \leq 2$,  $d^{H}$ if $d > 2$ respectively low and high distance.}
+\label{table:evaluation-results-new}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{rrrrrrrrrrrrrr}
+Project                 & \rot{Commits} & \rot{Files} & \rot{$\chi^{H}$} & \rot{$\chi^{L}$} & \begin{tabular}[b]{@{}r@{}}{\rot{$(d^{L},\chi^{L})$}}\end{tabular} & \begin{tabular}[b]{@{}r@{}}{\rot{$(d^{L},\chi^{H})$}}\end{tabular} & \begin{tabular}[b]{@{}r@{}}{\rot{$(d^{H},\chi^{L},)$}}\end{tabular} & \begin{tabular}[b]{@{}r@{}}{\rot{$(d^{H},\chi^{H})$}}\end{tabular} & \rot{$\overline{|p_f|}$} & \rot{$max(|p_{f}|)$} & \rot{$|A_{evo}|$} & \rot{$\overline{d}$} & \rot{$max(d)$} \\ \midrule
+%smsr                    & 21        & 6         & 22                   & 6                  & 0                          & 9                            & 6                       & 13                        & 2.71             & 5             & 1.82                    & 1.43                & 6                  \\
+mwaligner  & 21      & 9     & 37                   & 7                 & 6                               & 30                                 & 1                                          & 7                                             & 1.11              & 2           & 2.40         & 0.94                 & 3                 \\
+Biglist                 & 202     & 15    & 22                   & 90                & 31                              & 18                                 & 59                                         & 4                                             & 1.47              & 3            & 2.76         & 1.20                 & 5                 \\
+camundaRD & 11      & 15    & 74                   & 26                & 0                               & 25                                 & 26                                         & 49                                            & 2.18              & 4            & 2.05         & 2.03                 & 7                 \\
+graphql                 & 256     & 30    & 89                   & 357               & 121                             & 89                                 & 236                                        & 0                                             & 1.40              & 2            & 3.18         & 1.11                 & 4                 \\
+jgitcookbook            & 135     & 89    & 773                  & 2866              & 505                             & 289                                & 2361                                       & 484                                           & 6.93              & 8            & 1.33         & 2.68                 & 14                \\
+mysqlpython             & 749     & 168   & 2288                 & 11571             & 742                             & 591                                & 10829                                      & 1697                                          & 2.59              & 7            & 1.65         & 2.52                 & 11                \\
+gantt                   & 23      & 228   & 7006                 & 14343             & 386                             & 3480                               & 13957                                      & 3526                                          & 3.30              & 4            & 1.71         & 2.16                 & 7                 \\
+facebookjavasdk         & 38      & 293   & 16478                & 26092             & 2017                            & 16311                              & 24075                                      & 167                                           & 6.21              & 8            & 4.78         & 5.58                 & 13                \\
+caret                   & 864     & 432   & 15366                & 60874             & 9538                            & 14785                              & 51336                                      & 581                                           & 3.01              & 4            & 3.15         & 1.60                 & 7                 \\
+operationcode           & 1114    & 1053  & 84024                & 444605            & 2291                            & 5537                               & 442314                                     & 78487                                         & 4.27              & 8            & 2.01         & 4.85                 & 15               \\ \bottomrule
+\end{tabular}%
+}
+\end{table}
+%\vspace*{1cm} 

@@ -1,0 +1,59 @@
+% Please add the following required packages to your document preamble:
+% \usepackage{booktabs}
+% \usepackage{graphicx}
+\begin{table}[!htbp]
+\centering
+\caption{Set of activities that are discovered and main regular expressions}
+\label{tab:regex}
+\resizebox{\textwidth}{!}{%
+% \scriptsize
+\begin{tabular}{@{}p{2.2cm}p{2.1cm}p{7cm}@{}}
+\toprule
+\multicolumn{1}{c}{\textbf{Activity}} &
+  \multicolumn{1}{c}{\textbf{Abbreviation}} &
+  \multicolumn{1}{c}{\textbf{Regular Expression}} \\ \midrule
+  Unknown &
+  unknown &
+  .* \\
+Documentation &
+  doc &
+  .*\textbackslash{}/doc(-?)book(s?)\textbackslash{}/.* .*\textbackslash{}/info .*\textbackslash{}.txt((\textbackslash{}.bak)?) .*\textbackslash{}.man .*\textbackslash{}.tex \\
+Image &
+  img &
+  .*\textbackslash{}.jpeg .*\textbackslash{}.bmp .*\textbackslash{}.chm .*\textbackslash{}.vdx .*\textbackslash{}.gif \\
+Localization &
+  loc &
+  .*\textbackslash{}/locale(s?)\textbackslash{}/.* .*\textbackslash{}.po($\sim$?) .*\textbackslash{}.charset($\sim$?) \\
+User interface &
+  ui &
+  .*\textbackslash{}.ui .*\textbackslash{}.gladep(\textbackslash{}\textbackslash{}d?)((\textbackslash{}.bak)?)($\sim$?) .*\textbackslash{}.theme \\
+Multimedia &
+  media &
+  .*\textbackslash{}.mp3 .*\textbackslash{}.mp4 .*\textbackslash{}/media(s?)\textbackslash{}/.* .*\textbackslash{}.ogg \\
+Code &
+  code &
+  .*\textbackslash{}.jar($\sim$?) .*\textbackslash{}/src\textbackslash{}/.* .*\textbackslash{}.r((\textbackslash{}.swp)?)($\sim$?)) .*\textbackslash{}.py((\textbackslash{}.swp)?)($\sim$?) .*\textbackslash{}.php((\textbackslash{}.swp)?)(\textbackslash{}\textbackslash{}d?)($\sim$?) \\
+Meta &
+  meta &
+  .*\textbackslash{}.svn(.*) .*\textbackslash{}.git(.*) .*\textbackslash{}.cvs(.*) \\
+Configuration &
+  config &
+  .*\textbackslash{}.conf .*\textbackslash{}.cfg .*\textbackslash{}.project .*\textbackslash{}.ini .*\textbackslash{}.prefs \\
+Build &
+  build &
+  .*\textbackslash{}.cmake .*\textbackslash{}/install-sh .*\textbackslash{}/build\textbackslash{}/.* .*makefile.* \\
+Development documentation &
+  devdoc &
+  .*readme.* .*\textbackslash{}/changelog.* .*\textbackslash{}/devel(-?)doc(s?)\textbackslash{}/.* \\
+Database &
+  db &
+  .*\textbackslash{}.sql .*\textbackslash{}.sqlite .*\textbackslash{}.mdb .*\textbackslash{}.db \\
+Test &
+  test &
+  .*\textbackslash{}.test(s?)\textbackslash{}/.* .*\textbackslash{}/.*test\textbackslash{}..* .*/test.*\textbackslash{}..* \\
+Library &
+  lib &
+  .*\textbackslash{}/library\textbackslash{}/.* .*\textbackslash{}/libraries\textbackslash{}/.* \\ \bottomrule
+\end{tabular}%
+ }
+\end{table}

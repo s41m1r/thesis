@@ -1,0 +1,46 @@
+%\IncMargin{1em}
+\setlength{\textfloatsep}{0pt}% Remove \textfloatsep
+\begin{algorithm}[H]
+\SetKwData{Left}{left}\SetKwData{This}{this}\SetKwData{Up}{up}
+\SetKwData{Views}{desiredviews}
+\SetKwData{ViewType}{query}
+\SetKwFunction{PreprocessLog}{PreprocessLog}
+\SetKwFunction{RetrieveView}{RetrieveView}
+\SetKwFunction{ComputeDependencies}{ComputeDependencies}
+\SetKwFunction{ComputeContainments}{ComputeContainments}
+\SetKwFunction{ComputeEvolution}{ComputeEvolution}
+
+\SetKwInOut{Input}{Input}\SetKwInOut{Output}{Output}
+\SetKwInOut{Data}{Data}
+\Input{A set of views $\mathcal{V}$, a similarity function $\sigma$, a filter parameter $\delta$}
+\Output{A set of dependencies $D$}
+%\Data{$E$ event set, $V$ views set, $AD = \{(C,A_{evo},D)\}$ }
+\BlankLine
+
+$X_f \leftarrow \emptyset$, $D \leftarrow \emptyset$\;
+\ForEach{$V \in \mathcal{V}$}{
+	\ForEach{$ae \in V$}{
+		$t \leftarrow getTime(ae)$\;
+		$c \leftarrow getChangeAmount(ae)$\;
+		$f_i \leftarrow getFile(ae)$\;
+		$X_{f_i} \leftarrow \{(t,c)\} \cup X_{f_i}$\;
+	}
+	$X_f \leftarrow X_f \cup \{X_{f_i}\}$\;
+}
+
+\ForEach{$i, j \in range(1:|X_f|) \wedge i \neq j $}{ \label{algo:comparison}
+	$X_{f_i} \leftarrow get(X_f, i)$, $X_{f_j} \leftarrow get(X_f, j)$\;
+	$T \leftarrow \{getTimes(X_{f_i})\} \cup \{getTimes(X_{f_j})\} $\;
+	\ForEach{$t \in T$}{
+		\lIf{$t \notin getTimes(X_{f_i}) $}{
+			$X_{f_i} \leftarrow X_{f_i} \cup \{(t,0)\}$}
+		\lIf{$t \notin getTimes(X_{f_j}) $}{
+			$X_{f_j} \leftarrow X_{f_j} \cup \{(t,0)\}$}
+	}
+	\lIf{$|\sigma(X_{f_i}, X_{f_j})| > \delta $}{
+		$D \leftarrow D \cup \{{(X_{f_i}, X_{f_j}, \sigma(X_{f_i}, X_{f_j}}))\} $}
+}
+
+\caption{Compute dependencies}
+\label{algorithm:compute-dependencies}
+\end{algorithm}

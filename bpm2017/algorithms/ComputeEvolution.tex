@@ -1,0 +1,32 @@
+%\IncMargin{1em}
+\setlength{\textfloatsep}{0pt}% Remove \textfloatsep
+\begin{algorithm}[H]
+\SetKwData{Changes}{changeAmount}\SetKwData{This}{this}\SetKwData{Up}{up}
+\SetKwData{Time}{time}
+\SetKwData{Labels}{labels}
+\SetKwData{Stories}{Stories}
+\SetKwFunction{StoryMining}{StoryMining}
+
+\SetKwInOut{Input}{Input}\SetKwInOut{Output}{Output}
+
+\Input{A set $\mathcal{V}$ of views}
+\Output{A set of processes $A_{evo}$, A file stories collection $Stories$}
+%\Data{$E$ event set, $\mathcal{V}$ views set, $Parent$ }
+\BlankLine
+$A_{evo} \leftarrow \emptyset$, $Stories \leftarrow \emptyset$\; 
+\ForEach{$V \in \mathcal{V}$}{
+	\ForEach{$ae \in V$}{
+		$f \leftarrow getFile(ae)$\;
+		$t \leftarrow getTime(ae)$\;
+		$c \leftarrow getChangeAmount(ae)$\;
+		$Labels \leftarrow getComments(ae)$\;
+		$S \leftarrow S \cup (f, Labels) $\;
+		\lForEach{$l \in Label$}{
+			$A_{evo} \leftarrow A_{evo} \cup \{(t,c,l)\}$}
+	}
+	\lForEach{$(f,l) \in S$}{		
+		$Stories \leftarrow Stories ~\cup (f,$ \StoryMining{$l$}$)$)}
+}
+\caption{Compute artifact evolution}
+\label{algorithm:compute-evolution}
+\end{algorithm}

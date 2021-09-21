@@ -1,0 +1,22 @@
+% Please add the following required packages to your document preamble:
+% \usepackage{booktabs}
+% \usepackage{graphicx}
+%\begin{table}[]
+\centering
+%\caption{The correlations matrix for the 6 artifacts.}
+%\caption{}
+\label{table:correlations}
+%\resizebox{\textwidth}{!}{%
+\begin{tabular}{@{}crrrrrr@{}}
+\toprule
+$\sigma(f_1,f_2)$ & ${f_2}$ & ${f_5}$ & ${f_7}$ & ${f_8}$ & ${f_{11}}$ & ${f_{12}}$ \\ \midrule 
+${f_2}$      & 1.00    &         &         &         &            &            \\
+${f_5}$      & 0.96    & 1.00    &         &         &            &            \\
+${f_7}$      & 0.64    & 0.71    & 1.00    &         &            &            \\
+${f_8}$      & 0.58    & 0.67    & 0.99    & 1.00    &            &            \\
+${f_{11}}$   & 0.10    & -0.13   & -0.24   & -0.26   & 1.00       &            \\
+${f_{12}}$   & 0.98    & 0.99    & 0.69    & 0.64    & -0.10      & 1.00       \\ \bottomrule
+\end{tabular}%
+%}
+
+%\end{table}

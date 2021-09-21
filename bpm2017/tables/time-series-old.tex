@@ -1,0 +1,29 @@
+% Please add the following required packages to your document preamble:
+% \usepackage{booktabs}
+\begin{table}[]
+	\centering
+%	\setlength{\tabcolsep}{6pt}
+	\resizebox{\columnwidth}{!}{%
+	\begin{tabular}{@{}rccccccr@{ }r}
+	\toprule
+	\multicolumn{1}{c}{Day} & ${f_2}$ & ${f_5}$ & ${f_7}$ & ${f_8}$ & ${f_{11}}$ & ${f_{12}}$ & \multicolumn{2}{c}{Correlations}      \\ \midrule
+	2017-01-31              & 5       & 16      & 37      & 24      & 0          & 2          & corr(${f_7}$,${f_2}$) =       & 0.64  \\
+	2017-02-01              & 0       & 0       & 0       & 0       & 0          & 0          & corr(${f_7}$,${f_5}$) =       & 0.71  \\
+	2017-02-02              & 0       & 2       & 5       & 5       & 0          & 0          & corr(${f_7}$,${f_{11}}$) =    & -0.24 \\
+	2017-02-03              & 0       & 0       & 4       & 4       & 0          & 0          & corr(${f_7}$,${f_8}$) =       & 0.99  \\
+	2017-02-04              & 0       & 0       & 0       & 0       & 0          & 0          & corr(${f_7}$,${f_{12}}$) =    & 0.69  \\
+	2017-02-05              & 0       & 0       & 0       & 0       & 0          & 0          & corr(${f_2}$,${f_5}$) =       & 0.96  \\
+	2017-02-06              & 0       & 1       & 25      & 20      & 0          & 0          & corr(${f_2}$,${f_{11}}$) =    & 0.10  \\
+	2017-02-07              & 0       & 1       & 10      & 9       & 0          & 0          & corr(${f_2}$,${f_8}$) =       & 0.58  \\
+	2017-02-08              & 0       & 0       & 0       & 0       & 0          & 0          & corr(${f_2}$,${f_{12}}$) =    & 0.98  \\
+	2017-02-09              & 0       & 0       & 25      & 15      & 0          & 0          & corr(${f_5}$,${f_{11}}$) =    & -0.13 \\
+	2017-02-10              & 1       & 0       & 0       & 0       & 6          & 0          & corr(${f_5}$,${f_8}$) =       & 0.67  \\
+	&         &         &         &         &            &            & corr(${f_5}$,${f_{12}}$) =    & 0.99  \\
+	&         &         &         &         &            &            & corr(${f_{11}}$,${f_8}$) =    & -0.26 \\
+	&         &         &         &         &            &            & corr(${f_{11}}$,${f_{12}}$) = & -0.10 \\
+	&         &         &         &         &            &            & corr(${f_8}$,${f_{12}}$) =    & 0.64  \\ \bottomrule
+\end{tabular}%
+}
+\caption{Amount of change time series for each of the 6 artifacts in our scenario of use. The correlations pairwise for the 6 artifacts are depicted on last column.}
+\label{table:time-series}
+\end{table}
