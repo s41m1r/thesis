@@ -1,0 +1,26 @@
+% Please add the following required packages to your document preamble:
+% \usepackage{booktabs}
+% \usepackage{multirow}
+% \usepackage{graphicx}
+\begin{table}[]
+\centering
+\caption{Bugs and tasks completed in a single sprint and in more than one sprint for each developer\\
+* = Developer 1 was performing only Bug fixing (bugs), while the other four developers were performing Implementation of new code (tasks) and Bug fixing.}
+\label{tab:bug-and-tasks-completed}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{@{}llllllll@{}}
+\toprule
+\multicolumn{2}{l}{}                                                      & Developer 			1 & Developer 			2 & Developer 			3 & Developer 			4 & Developer 			5 & Total  \\ \midrule
+\multirow{3}{*}{Number 			of bugs}  & Completed 			in a single sprint      & 22     & 22     & 17     & 39     & 30     & 130    \\
+                                    & Completed 			in more than one sprint & 12     & 16     & 17     & 33     & 9      & 87     \\
+                                    & Total                                & 34     & 38     & 34     & 72     & 39     & 217    \\
+\multirow{2}{*}{Percentage 			of bugs}  & Completed 			in a single sprint & 64,7\%         & 57,9\%         & 50,0\%         & 54,2\%         & 76,9\%         & 59,9\% \\
+                                    & Completed 			in more than one sprint & 35,3\% & 42,1\% & 50,0\% & 45,8\% & 23,1\% & 40,1\% \\
+\multirow{3}{*}{Number 			of tasks} & Completed 			in a single sprint      & *      & 78     & 18     & 16     & 19     & 131    \\
+                                    & Completed 			in more than one sprint & *      & 10     & 15     & 8      & 18     & 51     \\
+                                    & Total                                & *      & 88     & 33     & 24     & 37     & 182    \\
+\multirow{2}{*}{Percentage 			of tasks} & Completed 			in a single sprint & *              & 88,6\%         & 54,5\%         & 66,7\%         & 51,4\%         & 72,0\% \\
+                                    & Completed 			in more than one sprint & *      & 11,4\% & 45,5\% & 33,3\% & 48,6\% & 28,0\% \\ \bottomrule
+\end{tabular}%
+}
+\end{table}
