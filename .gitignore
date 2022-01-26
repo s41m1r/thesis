@@ -16,3 +16,4 @@
 *.slg
 *.thm
 *.toc
+.Rhistory
