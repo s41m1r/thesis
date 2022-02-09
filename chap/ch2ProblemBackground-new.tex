@@ -153,10 +153,10 @@ and was worked on by resource \emph{Mary} and, later on, also by resource \emph{
 %\end{table}
 
 
-Existing frameworks, such as Subversion or Git, allow to access their logs in different ways. However, the covered information is limited to (roughly) that depicted in Table~\ref{tab:vcs-log-data}. Especially for big projects that are frequently updated over a large period of time, these logs are complex to analyze.
+Existing frameworks, such as Subversion or Git, allow to access their logs in different ways. However, the covered information is limited to (roughly) that depicted in Table~\ref{tab:vcs-log-data1}. Especially for big projects that are frequently updated over a large period of time, these logs are complex to analyse.
 Therefore, the problem to address is how to analyze and visualize the information produced in project-oriented business processes such that it can be represented in an understandable and manageable way by project experts and
 enable, a.o., the automation of mechanisms for compliance checking.
-The following properties of project-oriented process logs must be taken into account to achieve this goal: (i) VCS repositories consist of a hierarchy of folders and files which are logically organized such that work is grouped in a specific way; (ii) process activities are not registered in VCS log entries. Therefore, such information must be inferred by reasoning on the repository structure and/or the content of the log entries; (iii) the granularity of the events is unknown a priori and it needs to be defined before analyzing the data.
+The following properties of project-oriented process logs must be taken into account to achieve this goal: (i) VCS repositories consist of a hierarchy of folders and files which are logically organized such that work is grouped in a specific way; (ii) process activities are not registered in VCS log entries. Therefore, such information must be inferred by reasoning on the repository structure and/or the content of the log entries; (iii) the granularity of the events is unknown a priori and it needs to be defined before analysing the data.
 
 
 \subsection{Mining Software Repositories}
@@ -332,7 +332,7 @@ Consequently, approaches have been developed to preprocess VCS data such that \g
 In this group, \citep{DBLP:conf/se/KindlerRS06,kindler2006incremental} developed an algorithm for extracting software processes that are mapped to Petri Nets. Activities, which are not explicit in the logs, are discovered from their input and output artifacts. However, strong assumptions are made on the filenames as well as on the software process lifecycle. %(always design, code, review, testres). Activities (which are not explicit in the logs, like in our case) are discovered from their input and output artifacts. Here defined as triples $<I,O,R>$ where I=input, O=Output, R=resouce who perfomed it.
 \cite{rubin2007process} addressed the problem of engineering processes that are not well documented and are usually unstructured. They provided a bridge from Kindler et al.'s approach to ProM \citep{van2005prom} in order to mine different process perspectives, such as performance social network analyses. %but not from a project point of view.
 \cite{rubin2014agile} applied \gls{pm} to the touristic industry and obtained user processes from web client logs pursuing the goal of improving the software system by analyzing the underlying process.
-\cite{Poncin2011a} developed the FRASR framework for preprocessing software repositories to transform the VCS data to logs that conform to the \gls{pm} event log meta model~\citep{van2005meta} as utilized in ProM \citep{van2005prom}.
+\cite{DBLP:conf/csmr/PoncinSB11} developed the FRASR framework for preprocessing software repositories to transform the VCS data to logs that conform to the \gls{pm} event log meta model~\citep{van2005meta} as utilized in ProM \citep{van2005prom}.
 However, these approaches disregard the single-instance nature of project-oriented business processes and treat them as procedures that can be repeated over time.
 Process mining techniques are related to all the research questions of this thesis. Especially, process discovery helps with addressing \textbf{RQ4}.
 

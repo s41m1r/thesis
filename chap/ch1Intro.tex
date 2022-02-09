@@ -11,16 +11,19 @@ This chapter provides an introduction to this doctoral thesis. \Cref{sec:intro-m
 Software development is a process that involves creativity (\citealp{DBLP:journals/jss/AldaveVGM19,DBLP:journals/jss/DingsoyrNBM12}). Yet, practical software development projects are executed with specific requirements on time, budget and quality \citep{DBLP:journals/jss/ChowC08}. In order to fulfill these requirements the development process must be monitored. For example, it is important to know what type of work is being done at a certain moment in time and by whom. This is for instance the case for large development projects where coordination mechanisms emerge spontaneously among developers who want to contribute with their code \citep{Crowston2005}.
 These type of projects are difficult to control for several reasons. First, there is no clear understanding in how far a certain piece of code advances the current status of the project \citep{DBLP:books/daglib/0029843}. Second, a piece of code written by a developer goes through different stages of code-review and it is difficult to predict whether it will ever be merged with the main source \citep{DBLP:conf/icse/SadowskiSCSB18}. Third, software development may involve big coordination efforts (e.g., a large number of message exchanges among many developers in forums) \citep{DBLP:conf/icse/KalliamvakouDBS15}. Hence, it is not feasible to manually oversee what work is going on at a particular point in time. 
 
-Literature has tackled this problem from different angles. In the area of process mining approaches exist that exploit event logs for abstracting a process model \citep{Zerbino2021,vanZelst2021,DBLP:journals/tkde/AugustoCDRMMMS19,Rojas2016}. 
-\todo[inline]{Example here}
-In the area of software engineering, a major focus has been on the study of repositories in which the software is stored and worked on \citep{Farias2016,Matthies2020,Barros2021}. Contributions from this area provide several metrics that help with understanding various aspects of development. 
-\todo[inline]{Example here}
-However, process mining approaches only work with event logs where activities are explicitly recorded in the log. This is not the case with software development where data is rather unstructured. Likewise, software engineering approaches lack a perspective about work patterns. 
+Literature has tackled this problem from different angles. In the area of process mining approaches exist that exploit event logs for abstracting a process model.  \citep{Zerbino2021,vanZelst2021,DBLP:journals/tkde/AugustoCDRMMMS19,Rojas2016}. 
+Such works look into data of different granularity levels and provenance and develop techniques to first map fine-grained events into process activities and further apply a mining technique (e.g., process discovery) in order to produce a visual representation of the underlying process. 
+
+In the area of software engineering, a major focus has been on the study of repositories in which the software is stored and worked on \citep{Farias2016,Matthies2020,Barros2021}. Contributions from this area provide useful knowledge that help with understanding various aspects of development. This includes, for example, knowledge about the behaviour of the software at different stages (e.g., runtime, testing, debugging), the users, software evolution and prediction, maintenance-relevant information (e.g., code smells, bugs, technical debt), and other information that is relevant for improving and planning future development.
+
+However, process mining approaches only work with event logs where activities are explicitly recorded in the log. More specifically, these event logs are defined by formats such as the IEEE 1849-2016 \gls{xes} standard \citep{xes-standard:2015}.
+Unfortunately, data from software development is rather unstructured and does not easily fit into the designed standard. Therefore, approaches are needed to bring these data into a format that can be digested by process analyses techniques. 
+On the other hand, the limitation of software engineering approaches is their lack a perspective about work patterns. Usually, works from this area strive to improve their existing techniques by, for instances, presenting every year new methods to best extract knowledge from the repositories. By now, only a few approaches exist that apply process analysis to software. Notable works are the ones from \citet{DBLP:conf/csmr/PoncinSB11} and \citet{Mittal2014}.
 
 
-This study addresses the discovery of work patterns from software development event data. To this end, it defines concepts to capture work from software repositories. This allows to construct several discovery techniques that provide information about different perspectives of the development process. More specifically we categorize them into \emph{time}, \emph{case}, \emph{organizational} and \emph{control-flow}. The time perspective informs about temporal aspects of the process, such as when did an activity happen and for how long. The case perspective informs about characteristic of the different cases, such as the number of lines of code being produced at during the creation of each version of an artifact. The organizational perspective informs about the roles of the people in the context of the organization, such as developers, testers, etc. The control-flow perspective informs about the logical succession of activities, such as an artifact must first be implemented and then tested. 
+This study addresses the discovery of work patterns (i.e., the process which generated the data) from software development event data. To this end, it defines concepts to capture work from software repositories. This allows to construct several discovery techniques that provide information about different perspectives of the development process. More specifically we categorize them according to the four perspectives \citep{DBLP:books/sp/Aalst16} of \emph{time}, \emph{case}, \emph{organizational} and \emph{control-flow}. The time perspective informs about temporal aspects of the process, such as when did an activity happen and for how long. The case perspective informs about characteristic of the different cases, such as the number of lines of code being produced at during the creation of each version of an artifact. The organizational perspective informs about the roles of the people in the context of the organization, such as developers, testers, etc. The control-flow perspective informs about the logical succession of activities, such as an artifact must first be implemented and then tested. 
 
-In this sense, this work provides a bridge between process mining and software engineering. The findings of this work enable project managers as well as software developers to raise transparency about the actual development based on facts. As a result, it enables both understanding the current status and monitoring for potentially unwanted patterns of work.
+All considered, this work provides a bridge between process mining and software engineering. The findings of this work enable project managers as well as software developers to raise transparency about the actual development based on facts. As a result, it enables both understanding the current status and monitoring for potentially unwanted patterns of work.
 
 %The rest of this proposal is organized as follows. \Cref{sec:problem-definition} describes the problem, the existing literature, and derives the solution requirements. \Cref{sec:state-of-field} provides background knowledge on the related fields of process mining, text mining, and mining software repositories. \Cref{sec:methods} explains the research method, the dataset and outlines the expected output of the thesis. \Cref{sec:preliminary-results} shows completed work so far. \Cref{sec:next-steps} outlines future steps towards the completion of this dissertation. \Cref{sec:dissertation-relevance} draws the implications for research and presents a dissemination plan.
 
@@ -34,7 +37,7 @@ In this sense, this work provides a bridge between process mining and software e
 
 Software development processes are highly complex endeavours that require the coordination of multiple resources \citep{Kraut1995,Crowston2005}. Compared to standard business processes, they present the following characteristics. First, 
 %although there is a planning phase, 
-they involve creativity \citep{DeLaBarra2013,DBLP:journals/corr/abs-1305-6045,Aldave2019} when executing the tasks, i.e. there exists no strict process model that is followed by the developers to produce a new piece of code. Second, they are driven by methodologies \citep{Wynekoop1997}, e.g., \gls{rup}, Scrum\footnote{\url{https://www.scrum.org}}, Waterfall, etc. These methodologies constitute guidelines and best practices for project success. Third, they typically make use of software tools \citep{DBLP:books/daglib/0022944} such as \gls{its} \index{its}, \gls{vcs} \index{version control system} and \gls{ide} \index{integrated development environment}. Such tools typically record work activities into log files. Fourth, there is in general no process engine to control the execution \citep{Zahran1998}. Rather than that, a project manager or a Scrum master has to make sure that tasks are made available to the respective resources \citep{DBLP:books/daglib/001480}. Fifth, it is not trivial to obtain high level information on performance measures such as the burn-down rate, which are resource bottlenecks, what are time requirements for certain tasks, what type of work is actually being done, and how productive are people working in certain tasks, etc \citep{DBLP:journals/csur/MeidanGRE18}. Hence, there is the need for algorithms and tools that help extracting this knowledge.
+they involve creativity \citep{DeLaBarra2013,DBLP:journals/corr/abs-1305-6045,Aldave2019} when executing the tasks, i.e. there exists no strict process model that is followed by the developers to produce a new piece of code. Second, they are driven by methodologies \citep{Wynekoop1997}, e.g., \gls{rup}, Scrum\footnote{\url{https://www.scrum.org}}, Waterfall, etc. These methodologies constitute guidelines and best practices for project success. Third, they typically make use of software tools \citep{DBLP:books/daglib/0022944} such as \gls{its} \index{its}, \gls{vcs} \index{version control system} and \gls{ide} \index{integrated development environment}. Such tools typically record work activities into log files. Fourth, there is in general no process engine to control the execution \citep{Zahran1998}. Rather than that, a project manager or a Scrum master has to make sure that tasks are made available to the respective resources \citep{DBLP:books/daglib/0014800}. Fifth, it is not trivial to obtain high level information on performance measures such as the burn-down rate, which are resource bottlenecks, what are time requirements for certain tasks, what type of work is actually being done, and how productive are people working in certain tasks, etc \citep{DBLP:journals/csur/MeidanGRE18}. Hence, there is the need for algorithms and tools that help extracting this knowledge.
 
 \begin{figure}
 	\centering
@@ -71,9 +74,9 @@ While obtaining an overarching view on software development is challenging, ther
 	\label{fig:big-picture-sd}
 \end{figure}
 
-\Cref{fig:big-picture-sd} illustrates such problem scenario. Software development relies on tools like \gls{its} (e.g., JIRA, GitHub Issues) and \gls{vcs} (e.g. Subversion, Git). \Gls{its} is used for tracking the project management aspect. This aspect offers plan related information, such as issues, features, bugs, text, planned and executed tasks, timestamps, stories, and effort estimation (e.g., story points in JIRA).
+\Cref{fig:big-picture-sd} illustrates the problem scenario. Software development relies on tools like \gls{its} (e.g., JIRA, GitHub Issues) and \gls{vcs} (e.g. Subversion, Git). \Gls{its} is used for tracking the project management aspect. This aspect offers plan related information, such as issues, features, bugs, text, planned and executed tasks, timestamps, stories, and effort estimation (e.g., story points in JIRA).
 \Gls{vcs} offers information about work traces, such as versions of the artifacts, number and content of commits done by developers, artifacts evolution, users and their comments, and timestamps of each action. 
-\input{tables/vcs-data2}
+
 
 Although different technologies exist in practice (e.g., Subversion, Mercurial, Git), the information contained in the logs can be roughly summarized by \Cref{tab:vcs-log-data1}. \todo{Maybe I can change this table with a more generic one that contains all information?}  The table displays an excerpt of a \gls{vcs} log, i.e., a set of user commits, after having extracted and structured the data according to five attributes. The semantics of the  attributes is a follows: 
 \begin{inparaenum}[\itshape i)]
@@ -83,6 +86,9 @@ Although different technologies exist in practice (e.g., Subversion, Mercurial, 
 	\item \emph{Comment} is a user comment on the changes made;
 	\item \emph{Diff} is low-level information on the difference between the current and the previous version, for each file.
 \end{inparaenum} 
+
+\input{tables/vcs-data2}
+
 Likewise, information about issues from \gls{its} can be extracted and presented in a tabular way. In this case, other attributes are more important. These attributes can be, for example, the status of issues and the conversations that take place around them. %As the relation between \gls{its} and \gls{vcs} about requirements-implementation, we can narrow down our research question to the following. \emph{\textbf{RQ:} How does the specification of user stories influence software development work?} 
 %In the more specific case, \gls{vcs} logs consist of an ordered set of \emph{commits} bearing information about users, files, timestamp, comments and type of change that were stored at particular moment in time. \Gls{its} typically come with richer information, most importantly they inform about users, task, type of task (e.g., bug, new feature, requirement, etc), timestamps, related issues, etc. 
 %Many types of analyses can be performed on such feature rich data once they have been properly correlated and structured. 
@@ -137,7 +143,7 @@ Information systems research is an interdisciplinary field of study that uses th
 %
 %The following subsections explain the research method adopted in relation to \gls{dsr}. 
 
-This thesis develops four artifacts \textbf{A1}, \textbf{A2}, \textbf{A3}, \textbf{A4} respectively addressing the four research questions \textbf{RQ1}, \textbf{RQ2}, \textbf{RQ3}, \textbf{RQ4}. Each artifact is devised following the \gls{dsr} approach \citep{Peffers2008}. These artifacts are interconnected to one another in that each of them tackles a different perspective of the overarching software development process. Their combinations enables a view on the \emph{real} Gantt chart of the project, as illustrated in \Cref{fig:big-solution}. Such techniques are also useful to inform computationally-driven theory building~\citep{DBLP:journals/isr/BerenteSS19}.
+This thesis develops four artifacts \textbf{A1}, \textbf{A2}, \textbf{A3}, \textbf{A4} respectively addressing the four research questions \textbf{RQ1}, \textbf{RQ2}, \textbf{RQ3}, \textbf{RQ4}. Each artifact is devised following the \gls{dsr} approach \citep{DBLP:books/sp/Wieringa14}. These artifacts are interconnected to one another in that each of them tackles a different perspective of the overarching software development process. Their combinations enables a view on the \emph{real} Gantt chart of the project, as illustrated in \Cref{fig:big-solution}. Such techniques are also useful to inform computationally-driven theory building~\citep{DBLP:journals/isr/BerenteSS19}.
 
 \begin{figure}[]
 	\centering
@@ -152,7 +158,7 @@ Research rigor and validity are ensured by evaluating the artifacts with the \gl
 	evaluation (formative or summative); and 
 	\item the paradigm of the evaluation (artificial or naturalistic).
 \end{inparaenum} 
-Moreover, it provides four steps for chinfinicaoosing an appropriate evaluation strategy
+Moreover, it provides four steps for choosing an appropriate evaluation strategy
 \begin{inparaenum}[\itshape i)]
 	\item explicate the goals of the evaluation;
 	\item choose the evaluation strategy or strategies
@@ -160,9 +166,11 @@ Moreover, it provides four steps for chinfinicaoosing an appropriate evaluation 
 	\item design the individual evaluation episode(s). 
 \end{inparaenum} In the following, we describe each designed artifact and their evaluation. 
 
-\cite{Gregor2020} define a schema for defining \emph{design principles} so that they are understandable and useful in real world context. \todo{Shoud I define design principles according to their schema? This may be a good idea!}
 
 
+\cite{Gregor2020} define a schema for defining \emph{design principles} so that they are understandable and useful in real world context. 
+\todoinline{Jan's comment: "Mind your reviewers https://aisel.aisnet.org/jais/vol21/iss6/2/"}
+\todoinline{Saimir's comment: In the linked paper, the authors propose a new way of describing design principles. Q: should I make an instance of their schema for each of my articles? Or would it be sufficient to include them in the discourse (e.g., one or two sentences recognizing their contribution)}
 
 
 %\input{tables/artifacts-table.tex}
@@ -361,15 +369,15 @@ This thesis is structured as follows.
 %	\item \textbf{Chapter 3: Data-Driven Approaches to Analyzing the Software Process} 
 	This chapter also elaborates on existing solutions and techniques that are present in the literature which are used as a base to develop new artifacts for mining the software process. 
 	
-	\item \textbf{Chapter 3: Discovering the Temporal Perspective} tackles the problem of discovering the temporal aspect (RQ1) of the software development process. A visualization technique is presented that simplifies the managers' understanding of such perspective.
+	\item \textbf{Chapter 3: Article 1 -- Mining Project-Oriented Business Processes} tackles the problem of discovering the temporal aspect (RQ1) of the software development process. A visualization technique is presented that simplifies the managers' understanding of such perspective.
 	
-	\item \textbf{Chapter 4: Discovering the Case Perspective}  presents an approach that helps understanding how different artifacts co-evolve in software development. With this approach, it is possible to compare how similarly different artifacts evolve and consequently cluster them into similar development cases (RQ2).  
+	\item \textbf{Chapter 4: Article 2 -- Uncovering the Hidden Co-Evolution in the Work History of Software Projects}  presents an approach that helps understanding how different artifacts co-evolve in software development. With this approach, it is possible to compare how similarly different artifacts evolve and consequently cluster them into similar development cases (RQ2).  
 	
-	\item \textbf{Chapter 5: Discovering the Organizational Perspective} tackles the problem of automatically identifying emerging roles in software development. Thus, a technique for classifying human-resources (RQ3) based on factual data is presented.
+	\item \textbf{Chapter 5: Article 3 -- Resource Classification from Version Control System Logs} tackles the problem of automatically identifying emerging roles in software development. Thus, a technique for classifying human-resources (RQ3) based on factual data is presented.
 	
-	\item \textbf{Chapter 6: Discovering the Control-Flow Perspective} complements the techniques presented in previous chapter with the information about which activities were executed by resources. These activity labels along with the temporal help understanding the control-flow (RQ4) of the development process.
+	\item \textbf{Chapter 6: Article 4 -- Discovering Activities in Software Development Processes} complements the techniques presented in previous chapter with the information about which activities were executed by resources. These activity labels along with the temporal help understanding the control-flow (RQ4) of the development process.
 	
-	\item \textbf{Chapter 7: Case Study in an Austrian Enterprise} presents an approach which uses a mixed-method to gather insights on the process. This approach aims at evaluating the existing status of the software development process by analysing the \gls{sdm} of the company. This is achieved by considering the constituting elements of the methodolody. In this approach, trace data analysis of software repositories is combined with subjective information from questionnaire. Mixing these methods helps to better identify issues in and suggest interventions based on facts. In this sense, this chapter provides a practical application of the concepts presented in this thesis on a real world company (RQ 1--4).
+	\item \textbf{Chapter 7: Article 5 -- Software Process Evaluation from User Perceptions and Log Data} presents a case study in an Austrian enterprise, which uses a mixed-method to gather insights on the process. This approach aims at evaluating the existing status of the software development process by analysing the \gls{sdm} of the company. This is achieved by considering the constituting elements of the methodology. In this approach, trace data analysis of software repositories is combined with subjective information from questionnaire. Mixing these methods helps to better identify issues in and suggest interventions based on facts. In this sense, this chapter provides a practical application of the concepts presented in this thesis on a real world company (RQ 1--4).
 	
 	\item \textbf{Chapter 8: Conclusion} summarizes the main findings. Further more, it discusses their implications along with future research. 
 	 	
