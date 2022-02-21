@@ -35,9 +35,9 @@ All considered, this work provides a bridge between process mining and software 
 
 %\todo[inline]{Check overlap of information provided here versus info provided in the background section. E.g. details of VCS.}
 
-Software development processes are highly complex endeavours that require the coordination of multiple resources \citep{Kraut1995,Crowston2005}. Compared to standard business processes, they present the following characteristics. First, 
+Software development processes describe highly complex endeavours that require the coordination of multiple resources \citep{Kraut1995,Crowston2005}. Compared to standard business processes, they present the following characteristics. First, 
 %although there is a planning phase, 
-they involve creativity \citep{DeLaBarra2013,DBLP:journals/corr/abs-1305-6045,Aldave2019} when executing the tasks, i.e. there exists no strict process model that is followed by the developers to produce a new piece of code. Second, they are driven by methodologies \citep{Wynekoop1997}, e.g., \gls{rup}, Scrum\footnote{\url{https://www.scrum.org}}, Waterfall, etc. These methodologies constitute guidelines and best practices for project success. Third, they typically make use of software tools \citep{DBLP:books/daglib/0022944} such as \gls{its} \index{its}, \gls{vcs} \index{version control system} and \gls{ide} \index{integrated development environment}. Such tools typically record work activities into log files. Fourth, there is in general no process engine to control the execution \citep{Zahran1998}. Rather than that, a project manager or a Scrum master has to make sure that tasks are made available to the respective resources \citep{DBLP:books/daglib/0014800}. Fifth, it is not trivial to obtain high level information on performance measures such as the burn-down rate, which are resource bottlenecks, what are time requirements for certain tasks, what type of work is actually being done, and how productive are people working in certain tasks, etc \citep{DBLP:journals/csur/MeidanGRE18}. Hence, there is the need for algorithms and tools that help extracting this knowledge.
+they involve creativity \citep{DeLaBarra2013,DBLP:journals/corr/abs-1305-6045,DBLP:journals/jss/AldaveVGM19} when executing the tasks, i.e. there exists no strict process model that is followed by the developers to produce a new piece of code. Second, they are driven by methodologies \citep{Wynekoop1997}, e.g., \gls{rup}, Scrum\footnote{\url{https://www.scrum.org}}, Waterfall, etc. These methodologies constitute guidelines and best practices for project success. Third, they typically make use of software tools \citep{DBLP:books/daglib/0022944} such as \gls{its} \index{its}, \gls{vcs} \index{version control system} and \gls{ide} \index{integrated development environment}. Such tools typically record work activities into log files. Fourth, there is in general no process engine to control the execution \citep{Zahran1998}. Rather than that, a project manager or a Scrum master has to make sure that tasks are made available to the respective resources \citep{DBLP:books/daglib/0014800}. Fifth, it is not trivial to obtain high level information on performance measures such as the burn-down rate, which are resource bottlenecks, what are time requirements for certain tasks, what type of work is actually being done, and how productive are people working in certain tasks, etc \citep{DBLP:journals/csur/MeidanGRE18}. Hence, there is the need for algorithms and tools that help extracting this knowledge.
 
 \begin{figure}
 	\centering
@@ -177,7 +177,7 @@ Moreover, it provides four steps for choosing an appropriate evaluation strategy
 
 \subsection{Discovering the Temporal Perspective of the Software Development Process (Artifact A1)} 
 %~\\\noindent\rule[1ex]{2.5cm}{2pt}~\\	
-Design objectives of \textbf{A1} aure \begin{iiilist}
+Design objectives of \textbf{A1} are \begin{iiilist}
 	\item has to be applicable, 
 	\item usable, 
 	\item simple and,
@@ -205,6 +205,20 @@ This artifact is evaluated through a Quick \& Simple strategy \citep{Venable2016
 	\item evaluation of successful identification events, their duration and project structure; and 
 	\item run of the tool on real projects and provide a visualization (summative).
 \end{iiilist}
+
+\todo[inline]{Design principle:
+
+e.g.
+
+1. (aim) To enable the project manager (user) to verify compliance to project constraints (aim) \\
+
+2. (context) when monitoring software development projects with the help of trace data, which are not structured and cannot be used with process mining \\
+
+3. (mechanism) "apply project-mining (infer process activities from commit data) \\
+
+4. (rationale) because the work progress is tracked in commits and the time in which certain files are worked on is indicative of what kind of work was done in the project. 
+
+}
 
 
 
