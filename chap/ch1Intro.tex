@@ -60,7 +60,7 @@ Several tools are used by software project participants to support their work. T
 %Therefore, the overall challenge is to understand which are important events that track development work in the repository. 
 
 
-While obtaining an overarching view on software development is challenging, there are still repositories that can be exploited to obtain process knowledge. One tool that provides important traces of the development work is \gls{vcs}. This tool is used to keep track of the different versions of files created by users and to manage their collaboration. Not only supports it keeping track of file versions, but also allows users to associate a textual comment that describe the changes made. Therefore, a new version of a particular file is created as the result of an activity done by a user. The evolution of these versions, along with information about the users and their comments can be retrieved from these type of tools in the form of semi-structured event logs. It is then a challenge how to discover the business process from events (e.g., lines of code changed, comments, user information) present in these logs.
+While obtaining an overarching view on software development is challenging, there are still repositories that can be exploited to obtain process knowledge. One tool that provides important traces of the development work is \gls{vcs}. This tool is used to keep track of the different versions of files created by users and to manage their collaboration. Not only it supports keeping track of file versions, but also allows users to associate a textual comment that describe the changes made. Therefore, a new version of a particular file is created as the result of an activity done by a user. The evolution of these versions, along with information about the users and their comments can be retrieved from these type of tools in the form of semi-structured event logs. It is then a challenge how to discover the business process from events (e.g., lines of code changed, comments, user information) present in these logs.
 
 %
 %\todo{JM: I think you have to develop much more clearly how it is difficult to extract certain pieces of information from version control systems.} 
@@ -234,7 +234,9 @@ Design objectives of \textbf{A2} include applicability, simplicity and providing
 \end{iiilist}
 Evaluation goals are as follows. Rigor is assured by the iterations. Uncertainty and risk reduction consist in: technical infeasibility -- addressed through development by smaller iterations, data unavailability -- addressed by local replication of data, and simplicity of results -- addressed by exploiting user comments and derive informative process labels. Ethics problems do not arise as the data for this artifact is already public on GitHub. Efficiency is evaluated by finding all work dependencies in a reasonable time. 
 
-This artifact is evaluated through a Technical risk \& Efficacy strategy (see \cite{Venable2016}), i.e., the technique is firstly evaluated with a toy example, then revised and applied to a large number of software development projects. Five iteration episodes are included: 
+\input{tables/case-principle}
+
+\Cref{tab:case-principle} summarises the guiding principle that should be followed in order to mine the case-perspective from the history of changes in the artifacts of a software. This artifact is evaluated through a Technical risk \& Efficacy strategy (see \cite{Venable2016}), i.e., the technique is firstly evaluated with a toy example, then revised and applied to a large number of software development projects. Five iteration episodes are included: 
 \begin{iiilist}
 	\item initial design of artifact and results  visualizations(formative);
 	\item revision and choice of final visualization;
@@ -255,7 +257,9 @@ Design objectives of \textbf{A3} include applicability and correct classificatio
 \end{iiilist}
 Evaluation goals are as follows. Rigor is assured by the iterations. Uncertainty and risk reduction regard classification. Incorrect resource classification risk is reduced by using different training set data from industry partners and obtaining feedback. An ethics risk is about obtaining information about people's work. This is mitigated by NDAs signed by the parties involved. Efficiency is evaluated in terms of precision and recall. 
 
-This artifact is evaluated through a Quick \& Simple strategy (\cite{Venable2016}), i.e., the technique is evaluated with real data from industry partners. Three iteration episodes are included: 
+\input{tables/orga-principle}
+
+\Cref{tab:orga-principle} summarises the guiding principle that should be followed in order to mine the case-perspective from the history of changes in the artifacts of a software. This artifact is evaluated through a Quick \& Simple strategy (\cite{Venable2016}), i.e., the technique is evaluated with real data from industry partners. Three iteration episodes are included: 
 \begin{iiilist}
 	\item initial design of the artifact voted to a simple and structured representation of the data (formative)
 	\item exploration and selection of the best features and classifiers.
@@ -277,7 +281,9 @@ Evaluation goals are considered as follows. Rigor is assured by the iterations. 
 	\item the resulting model is not informative -- mitigated by statistical techniques voted to cluster traces into significant groups.
 \end{iiilist} Ethics problems do not arise because only data from open source repositories will be used. Efficiency is measured by the extent to which the artifact can deal with complex projects quickly.
 
-This artifact is evaluated through a Technical risk \& Efficacy strategy (see \cite{Venable2016}), i.e., the technique is firstly evaluated with an initial well-known dataset, then revised and evaluated with other projects. Three iteration episodes are included: 
+\input{tables/control-flow-principle}
+
+\Cref{tab:control-flow-principle} summarises the guiding principle that should be followed in order to mine the case-perspective from the history of changes in the artifacts of a software. This artifact is evaluated through a Technical risk \& Efficacy strategy (see \cite{Venable2016}), i.e., the technique is firstly evaluated with an initial well-known dataset, then revised and evaluated with other projects. Three iteration episodes are included: 
 \begin{iiilist}
 	\item initial exploratory analysis on the applicability of \gls{pm} techniques on pull requests (formative);
 	\item evaluation of \gls{pm} methods and assessment of statistical significance of results; and
