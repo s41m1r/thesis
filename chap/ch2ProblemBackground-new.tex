@@ -17,61 +17,66 @@ This dissertation is in the intersection between process mining and mining softw
 \section{Software Development Process}
 \label{sec:software-development}
 
-It was in the late 1960s when many software projects failed.
-Many software became over budget. Output was an unreliable software which is expensive to maintain.
-Larger software was difficult and quite expensive to maintain.
-Lots of software not able to satisfy the growing requirements of the customer.
-Complexities of software projects increased whenever its hardware capability increased.
-Demand for new software increased faster compared with the ability to generate new software.
 
---> 
-
-Software engineering 
-
-What software engineering brings to the creation of software. 
-
-Large software – In our real life, it is quite more comfortable to build a wall than a house or building. In the same manner, as the size of the software becomes large, software engineering helps you to build software.
-Scalability- If the software development process were based on scientific and engineering concepts, it is easier to re-create new software to scale an existing one.
-Adaptability: Whenever the software process was based on scientific and engineering, it is easy to re-create new software with the help of software engineering.
-Cost- Hardware industry has shown its skills and huge manufacturing has lower the cost of the computer and electronic hardware.
-Dynamic Nature– Always growing and adapting nature of the software. It depends on the environment in which the user works.
-Quality Management: Offers better method of software development to provide quality software products.
+Software is the set of instructions in the form of programs to govern the computer system and to process the hardware components. To produce a software product, a set of systematic activities are undertaken. This set is called a \emph{software development process}. 
+Good software should deliver the required functionality and performance to the user and should be maintainable, dependable and usable \citep{sommerville2011software}. All aspects of software production are managed by the discipline of \emph{software engineering}. 
+Key activities of software engineering can be grouped into four macro phases: 
+\begin{inparaenum}[\itshape i)]
+	\item Requirements, 
+	\item Desing and Implementation, 
+	\item Validation and 
+	\item Evolution. 
+\end{inparaenum}
 
 
-The software product should have some characteristics: 
+Generally accepted knowledge about the software engineering discipline is defined in the \gls{swebok} \citep{borque2014guide}. In particular, the aforementioned phases are defined as follows. 
+Requirements is concerned with the elicitation, analysis and specification of the what is need for the software product to fulfill desired goals. Goals can be functional requirements (i.e., how the software must work, given its inputs and outputs ),  non-functional requirements (i.e., portability, re-usability, flexibility, performance, etc), and domain requirements (i.e., other aspects imposed by the specific domain).
 
-Maintainability	The software should evolve to meet the changing demands of the clients.
-Dependability	Dependability includes various characteristics. Dependable software should never cause any physical or economic damage at the time of system failure.
-Efficiency	The software application should overuse system resources like memory and processor cycle.
-Usability	The software application should have specific UI and documentation.
+Design and Implementation are respectively the phases in which a general architecture of the software is defined and the phase in which the software is developed. Design includes that definition of what the software should do at different levels of abstraction: interface, system, and detailed design. Interface design is concerned with the interaction between software and surrounding environment. System design defines the major softaware components, their interfaces and the interaction among them. Detailed design delves into the details of the aforementioned systems and defines their internal properties such as the specific algorithms or data structures. Finally, software implementaion is the actual task of programming (i.e., writing the code, bug fixing, testing, debugging, documenting, etc).
 
+Software Validation is the sub-process in which the produces software artifact is tested against the business requirements and end user needs. Software evolution is the process that concerns both the maintenance and the update of the software product. 
 
-%\subsection{Overview on Software Development}
-
-\todo{How does software development work}
-The software development process is an practice of diving the creation of an artifact into smaller steps. 
-
-The final goal is to create or improve an existing piece of software. Each step typically defines specifications about the input and output. The totality of the steps is also called software development life cycle. There are many existing methodologies, each with an specific life-cycle.
-Popular methodologies are agile, waterfall, spiral, rapid application development and extreme programming.
+%It was in the late 1960s when many software projects failed.
+%Many software became over budget. Output was an unreliable software which is expensive to maintain.
+%Larger software was difficult and quite expensive to maintain.
+%Lots of software not able to satisfy the growing requirements of the customer.
+%Complexities of software projects increased whenever its hardware capability increased.
+%Demand for new software increased faster compared with the ability to generate new software.
 
 
 \begin{figure}
 	\centering
-    \includegraphics[width=0.7\linewidth]{figures/soft-eng}
+	\includegraphics[width=\linewidth]{figures/SoftwareBigPic2}
 	\caption{Software production as an engineering discipline}
 	\label{fig:soft-eng}
 \end{figure}
- \todoinline{change or integrate with own figure}
-
-\todo[inline]{Picture:
-	
-	software process
-	methodology (guidance over the process)
-	data genereated
-}
 
 
-The software development process is a specific kind of process. Differently from standard business processes, it is run without referring to a process model (e.g., BPMN, Petri net). A common trait of both software development and business is the fact that they both describe and endeavor to organize work in such a way that should be measured and hence monitored and improved. Therefore, both areas rely on methods for managing their processes. Popular methodologies in software development are Waterfall, Spiral, and Agile. Agile methods further refine into branches such as Scrum and Kanban. In order to measure the effectiveness of these methodologies, we can analyze the underlying trace data that is generated in the various steps. In the following, we further elaborate on software development methodologies and the software repositories used to keep track of the development process. 
+%\subsection{Overview on Software Development}
+
+
+\Cref{fig:soft-eng} gives an overview on software development (i.e., the practice of diving the creation of a software artifact into smaller steps). It is possible to observe the overall practice of software development under three main dimensions: 
+\begin{inparaenum}[\itshape i)]
+	\item the type of activities or processes involved (i.e., \emph{what} work is being done);
+	\item the methodology used (i.e., \emph{how} the work is conducted); and 
+	\item the supporting tools and frameworks (i.e., \emph{which} software facilities developed by \emph{whom} and stored \emph{where} are being used). 
+\end{inparaenum}
+
+
+The software development dimension captures and defines at different level of detail, all the activities that concern software development. Typical activities here are the ones defined in \gls{swebok} \citep{borque2014guide} such as Requirements, Design, Implementation, Validation, and Evolution. 
+
+Naturally, there are many possible approaches to software production by changing the way, time, and frequency these activities and in how many smaller steps they are performed.
+The totality of the steps is also called \gls{sdlc}.  There are many existing methodologies, each with an specific life-cycle.
+The Software Development Methodology phase is concerned with what \gls{sdlc} was followed. Typical methodologies include Waterfall, V-Model, Incremental, \gls{rad}, Agile, Iterative,  Spiral, and Prototype.
+%The final goal is to create or improve an existing piece of software. Each step typically defines specifications about the input and output. The totality of the steps is also called software development life cycle. There are many existing methodologies, each with an specific life-cycle.
+%Popular methodologies are agile, waterfall, spiral, rapid application development and extreme programming.
+
+
+
+Finally, as the produced software grows, so do the number of tools used to support the software process. Under the supporting tools and methods dimension fall all existing hardware, software and management techniques that are used as scaffold to develop more advanced software pieces. Key elements in this dimension are version control systems and the repositories on which the data is stored. Other examples of supporting tools and methods include \glspl{ide}, frameworks and libraries, project management software, issue tracker, etc. Details about software development methodologies, and supporting tools and methods follow in the next sections.
+
+
+%The software development process is a specific kind of process. Differently from standard business processes, it is run without referring to a process model (e.g., BPMN, Petri net). A common trait of both software development and business is the fact that they both describe and endeavor to organize work in such a way that should be measured and hence monitored and improved. Therefore, both areas rely on methods for managing their processes. Popular methodologies in software development are Waterfall, Spiral, and Agile. Agile methods further refine into branches such as Scrum and Kanban. In order to measure the effectiveness of these methodologies, we can analyze the underlying trace data that is generated in the various steps. In the following, we further elaborate on software development methodologies and the software repositories used to keep track of the development process. 
 
 
 
@@ -80,9 +85,27 @@ The software development process is a specific kind of process. Differently from
 \subsection{Software Development Methodologies}
 
 \todo[inline]{One paragraph describing what SDM is}
-A software development methodology is a process or a series of processes used in software development \citep{elliott2004global}. It generally takes the form of defined phases such as design, testing, etc. It is used to describe the life-cycle of a piece of software (how it came to be and how it will evolve further). It can be used for communication (i.e., how information is passed between collaborators and when). Notorious development methodologies are Lean, Agile, Waterfall, etc. 
+A software development methodology is a process or a series of processes used in software development \citep{elliott2004global}. It generally takes the form of defined phases \citep{kruchten2004rational} such as design, testing, etc. It is used to describe the life-cycle of a piece of software (how it came to be and how it will evolve further). It can be used for communication (i.e., how information is passed between collaborators and when).  \Cref{fig:soft-eng} defines some popular software development methodologies. Even though in practice it is common to use adaptations or combinations of these methodologies, the most popular characterization is as follows \begin{inparaenum} [\itshape i)]
+	\item Waterfall, 
+	\item V model,
+	\item Incremental model,
+	\item \gls{rad} model,
+	\item Agile model,
+	\item Iterative model,
+	\item Spiral model, and
+	\item Prototype model.
+\end{inparaenum} 
 
-Existing research shows that explicit knowledge defined by \glspl{sdm} improves productivity of software development enterprises and quality of the developed software. This is achieved by increasing enterprises’ ability to transfer knowledge between employees, systematically manage software development process, etc. \citep{avison2003information,DBLP:journals/iam/Fitzgerald98,hovelja2015exploring,DBLP:journals/tse/RiemenschneiderHD02}. However, it is not enough that an enterprise only describes its SDM in a document; the developers need to use it consistently in their everyday work. The use of SDM was often a topic of research in the last decades, since SDM adoption among software developers was relatively low and the developers often preferred different ad hoc approaches \citep{DBLP:journals/software/Aaen03,DBLP:journals/isj/Fitzgerald96,DBLP:journals/iam/HuismanI06}. 
+Waterfall \citep{DBLP:conf/icse/BellT76} breaks down the software development activities into sequential steps, typically Requirements, 
+Software design,  Implementation, Testing, Integration, Deployment,  and Maintenance. Each depends on the outcome of the previous step. The spirit of waterfall is that the process keeps flowing forward (similar to the flow of water in a waterfall) without ever going back to a previous phase. Waterfalls provides advantages when it comes to project control 
+and proper documentation. However, its long time to deliver a finite product makes this \gls{sdlc} model not suitable for long lasting projects or project in which requirements may change often \citep{DBLP:conf/profes/PetersenWB09}. 
+
+V-Model \citep{ForsbergMooz1992} is considered as an extension of Waterfall. In the case of the V-Model the development process is done sequentially until the development phase, after which it runs backwards across each phase and performs testing. It is also known as Verification and Validation model. That is, there is an associated testing to each development step. A sequence in the process is as follows:  \textit{Requirement Analysis} (1) $\rightarrow$ \textit{System Design} (2) $\rightarrow$ \textit{Architecture Design} (3) $\rightarrow$ \textit{Module Design} (4) $\rightarrow$ \textit{Coding} (5) $\rightarrow$ \textit{Unit Testing} (validate  4) $\rightarrow$ \textit{Integration Testing} (validate 3) $\rightarrow$ \textit{System Testing} (validate 2) $\rightarrow$ \textit{Acceptance Testing} (validate 1). While the V-Model is easy to learn and use, and enables a priori planning of the tests to be executed for each phase, it's limitations remain the same as Waterfall (i.e., rigid model not suitable to changing requirements and fast delivery) \citep{marick1999new}.
+
+
+
+
+Existing research shows that making explicit the knowledge defined by \glspl{sdm} improves productivity of software development enterprises and quality of the developed software. This is achieved by increasing enterprises’ ability to transfer knowledge between employees, systematically manage software development process, etc. \citep{avison2003information,DBLP:journals/iam/Fitzgerald98,hovelja2015exploring,DBLP:journals/tse/RiemenschneiderHD02}. However, it is not enough that an enterprise only describes its SDM in a document; the developers need to use it consistently in their everyday work. The use of SDM was often a topic of research in the last decades, since SDM adoption among software developers was relatively low and the developers often preferred different ad hoc approaches \citep{DBLP:journals/software/Aaen03,DBLP:journals/isj/Fitzgerald96,DBLP:journals/iam/HuismanI06}. 
 
 The use of SDMs in enterprises can be analyzed with the help of different existing approaches (\citealp{DBLP:journals/imds/Aboelmaged10,venkatesh2000theoretical,DBLP:journals/behaviourIT/WangLH13}). One of the grounding theories in the field of SDM evaluation is diffusion of innovations theory \citep{DBLP:books/daglib/0012785} according to which SDM is considered as innovation that developers adopt \citep{DBLP:journals/iam/Gallivan03,DBLP:journals/infsof/GreenHC05,DBLP:conf/caise/IivariH01}. To obtain information about the studied SDM and/or its elements the aforementioned studies focused on perceptions of different stakeholders, namely developers, managers, users, etc. to measure characteristics like level of use, assimilation, social and technical suitability, developer satisfaction and impact on performance \citep{atkinson1999project,cooper1990information,DBLP:books/daglib/0012785,DBLP:journals/infsof/VavpoticB09,DBLP:journals/comsis/VavpoticH12}. Even better insight into SDM and/or its elements can be gained by comparing the perceptions of different stakeholders regarding the same SDM and/or its element \citep{hovelja2015exploring}. 
 
