@@ -90,9 +90,9 @@ A software development methodology is a process or a series of processes used in
 	\item V model,
 	\item Incremental model,
 	\item \gls{rad} model,
+	\item Spiral model,
 	\item Agile model,
-	\item Iterative model,
-	\item Spiral model, and
+	\item Iterative model, and
 	\item Prototype model.
 \end{inparaenum} 
 
@@ -101,6 +101,26 @@ Software design,  Implementation, Testing, Integration, Deployment,  and Mainten
 and proper documentation. However, its long time to deliver a finite product makes this \gls{sdlc} model not suitable for long lasting projects or project in which requirements may change often \citep{DBLP:conf/profes/PetersenWB09}. 
 
 V-Model \citep{ForsbergMooz1992} is considered as an extension of Waterfall. In the case of the V-Model the development process is done sequentially until the development phase, after which it runs backwards across each phase and performs testing. It is also known as Verification and Validation model. That is, there is an associated testing to each development step. A sequence in the process is as follows:  \textit{Requirement Analysis} (1) $\rightarrow$ \textit{System Design} (2) $\rightarrow$ \textit{Architecture Design} (3) $\rightarrow$ \textit{Module Design} (4) $\rightarrow$ \textit{Coding} (5) $\rightarrow$ \textit{Unit Testing} (validate  4) $\rightarrow$ \textit{Integration Testing} (validate 3) $\rightarrow$ \textit{System Testing} (validate 2) $\rightarrow$ \textit{Acceptance Testing} (validate 1). While the V-Model is easy to learn and use, and enables a priori planning of the tests to be executed for each phase, it's limitations remain the same as Waterfall (i.e., rigid model not suitable to changing requirements and fast delivery) \citep{marick1999new}.
+
+Incremental model \citep{pressman2005software} is a variation of Waterfall in which the requirements are broken down into multiple modules. Each of module is addressed performing all the \gls{sdlc} steps: requirement analysis, design, code and test. The release of each module is an increment (i.e., addresses more requirements and contains more features). However, the software is deployed already after the first increment has been delivered. This speeds up the generation of a first core product which can be used by the customer. Clients can then analyse and participate in planning of the next increment. Critics to this model concern the long duration of the overall project, the low flexibility of each iteration phase, and the fact that possible architectural limitations only emerge at a later stage when the complexity grows \citep{mishra2013comparative}.
+
+\Glsfirst{rad} \citep{martin1991rapid} is a methodology that puts more emphasis on the rapid construction of prototypes rather than upfront planning. It is organized around four phases: Requirements planning, User design, construction and cutover. Requirements planning includes both planning and analysis of the requirements. User design has user communicate with developers in a continuos and interactive fashion until the model meets their needs. Construction is concerned with the programming task, although users can still contribute with suggestions of changes. Cutover phase put together the final activities of traditional \glspl{sdlc} (i.e., delivery, deployment, maintenance, user training, etc.). Advantages of \gls{rad} are its short development cycle, and, thanks to user involvement, risk control and better quality.
+Disadvantages of \gls{rad} include ineffective communication, confusion of roles and responsibilities and less project control as users can interact directly with developers rather than business analysts \citep{gerber2007practical}.
+
+Spiral model \citep{DBLP:journals/computer/Boehm88} combines aspects of traditional \glspl{sdlc} and \gls{rad} by iterating over various phases a number of times. In this way this model mitigates the risk by delivering early and planning the next release after a cycle is complete. However, this development model turns not be viable for smaller projects due to high costs and the high expertise needed to assess risk analyses after each phase \citep{sarker2015survey}.
+
+Agile model \citep{beck2001manifesto} is an umbrella term for several methodologies like Scrum, Kanban, Lean, etc. Agile approaches help people involved in software development by empowering the teams to quickly react to changes as requirements evolve. Advantages of agile include customer satisfaction due to quick releases and quick responses to a change. As well, agile puts an emphases on people rather than processes, giving the participants better means of communication and interaction. Disadvantages of agile emerge when projects become more complex, especially due to less focus on design and documentation. Another disadvantage is that, although being empowered, only expert programmers are capable of making the right decisions as the project grows more complex \citep{DBLP:journals/jss/DingsoyrNBM12}.
+
+Iterative model \citep{goldberg1995succeeding} applies the philosophy of starting small and iteratively increasing the set of features. In this sense, the approach is similar to the incremental methodology. However, differently from the incremental approach, requirements are not worked on in an isolated fashion but rather categorized and sorted by priority. Advantages of iterative development include early delivery, risk mitigation and adaptability to changes. Disadvantages include the need for a priori knowledge of all the requirements, hard to make new developed parts work together as the project grows more complex \citep{benediktsson2003cocomo}.
+
+
+Prototype model \citep{pressman2005software} starts with building a toy example before carrying out the actual development. This toy example (prototype) is used to test the capabilities and reason about the software to-be. In this way, customer requirements and expectations can better align with the teams skills and capabilities. Other advantages include early support and early identification of errors. Disadvantages of prototyping include risk of unstable prototype becoming part of the final product, time-consuming development of prototypes and difficult project planning \citep{DBLP:conf/cicsyn/OsmaniAI14}. 
+
+
+
+\todoinline{Cut the following?}
+
+
 
 
 
