@@ -5,6 +5,7 @@
 
 This dissertation is in the intersection between process mining and mining software repositories, respectively belonging to the broader contexts of \gls{bpm} and software development process. This chapter, hierarchically delves into the details of these fields as follows. \Cref{sec:software-development} gives an introduction on the main concepts of the software development process, elaborating on methodologies and repositories in which the data is stored.
 \Cref{sec:business-process} provides an overview on \gls{bpm} and introduces the \gls{bpm} lifecycle. \Cref{sec:process-mining} describes the specific area of process mining along with its requirements and limitations when analyzing software. \Cref{sec:msr} describes related work on mining data from these repositories. 
+\todoinline{update this}
 
 %\Cref{sec:visualization} provides an overview on the area of software visualization. 
 
@@ -84,7 +85,6 @@ Finally, as the produced software grows, so do the number of tools used to suppo
 
 \subsection{Software Development Methodologies}
 
-\todo[inline]{One paragraph describing what SDM is}
 A software development methodology is a process or a series of processes used in software development \citep{elliott2004global}. It generally takes the form of defined phases \citep{kruchten2004rational} such as design, testing, etc. It is used to describe the life-cycle of a piece of software (how it came to be and how it will evolve further). It can be used for communication (i.e., how information is passed between collaborators and when).  \Cref{fig:soft-eng} defines some popular software development methodologies. Even though in practice it is common to use adaptations or combinations of these methodologies, the most popular characterization is as follows \begin{inparaenum} [\itshape i)]
 	\item Waterfall, 
 	\item V model,
@@ -116,34 +116,34 @@ Iterative model \citep{goldberg1995succeeding} applies the philosophy of startin
 
 Prototype model \citep{pressman2005software} starts with building a toy example before carrying out the actual development. This toy example (prototype) is used to test the capabilities and reason about the software to-be. In this way, customer requirements and expectations can better align with the teams skills and capabilities. Other advantages include early support and early identification of errors. Disadvantages of prototyping include risk of unstable prototype becoming part of the final product, time-consuming development of prototypes and difficult project planning \citep{DBLP:conf/cicsyn/OsmaniAI14}. 
 
+Independently of the methodology used, modern software development increasingly relies on tool and method support. For example, in order to build a new piece of software, libraries containing existing solutions, \glspl{ide} helping with structuring the codebase, and repositories offering reliable options for storing and tracking the work, enable development teams to deliver software of better quality quicker and cheaper. All these tools generate event logs which are stored in \emph{software repositories} for posthumous analysis. Next section provides a background on software repositories. 
 
-
-\todoinline{Cut the following?}
-
-
-
-
-
-
-Existing research shows that making explicit the knowledge defined by \glspl{sdm} improves productivity of software development enterprises and quality of the developed software. This is achieved by increasing enterprises’ ability to transfer knowledge between employees, systematically manage software development process, etc. \citep{avison2003information,DBLP:journals/iam/Fitzgerald98,hovelja2015exploring,DBLP:journals/tse/RiemenschneiderHD02}. However, it is not enough that an enterprise only describes its SDM in a document; the developers need to use it consistently in their everyday work. The use of SDM was often a topic of research in the last decades, since SDM adoption among software developers was relatively low and the developers often preferred different ad hoc approaches \citep{DBLP:journals/software/Aaen03,DBLP:journals/isj/Fitzgerald96,DBLP:journals/iam/HuismanI06}. 
-
-The use of SDMs in enterprises can be analyzed with the help of different existing approaches (\citealp{DBLP:journals/imds/Aboelmaged10,venkatesh2000theoretical,DBLP:journals/behaviourIT/WangLH13}). One of the grounding theories in the field of SDM evaluation is diffusion of innovations theory \citep{DBLP:books/daglib/0012785} according to which SDM is considered as innovation that developers adopt \citep{DBLP:journals/iam/Gallivan03,DBLP:journals/infsof/GreenHC05,DBLP:conf/caise/IivariH01}. To obtain information about the studied SDM and/or its elements the aforementioned studies focused on perceptions of different stakeholders, namely developers, managers, users, etc. to measure characteristics like level of use, assimilation, social and technical suitability, developer satisfaction and impact on performance \citep{atkinson1999project,cooper1990information,DBLP:books/daglib/0012785,DBLP:journals/infsof/VavpoticB09,DBLP:journals/comsis/VavpoticH12}. Even better insight into SDM and/or its elements can be gained by comparing the perceptions of different stakeholders regarding the same SDM and/or its element \citep{hovelja2015exploring}. 
-
-Another important theoretical development in the field was that SDM should be studied on the level of its constituent elements like activities, tools, roles, produced documents, etc. and not only as a whole. This improved the understanding of suitability of studied SDM elements for a certain development team and enabled comparison between the studied SDM elements. Thus, allowing enterprises to better pinpoint problematic elements of SDM, prepare focused improvements and examine the link between a specific SDM element and overall project success \citep{atkinson1999project,hovelja2015exploring}. Such development is in line with findings in the field of situational method engineering \citep{DBLP:journals/ejis/KarlssonA09,DBLP:conf/caise/RalyteDR03} that constructs a custom SDM from those SDM elements that fit with characteristics of certain development team and other situational factors (internal and external enterprise’s environment). 
-
-Another potential source of information regarding development process emerged in recent years with widespread use of tools that support software development activities like issue tracking, requirements management, test management etc. Such tools store valuable data about actual execution of the development process and give us additional information about SDM and its elements thus importantly complementing stakeholder perceptions \citep{DBLP:journals/ese/ChoetkiertikulD17,DBLP:conf/msr/MantylaADGO16,DBLP:conf/msr/OrtuMDTTMA16,DBLP:conf/icse/OrtuDKM15}. 
+%\todoinline{Cut the following?}
+%
+%
+%
+%
+%
+%
+%Existing research shows that making explicit the knowledge defined by \glspl{sdm} improves productivity of software development enterprises and quality of the developed software. This is achieved by increasing enterprises’ ability to transfer knowledge between employees, systematically manage software development process, etc. \citep{avison2003information,DBLP:journals/iam/Fitzgerald98,hovelja2015exploring,DBLP:journals/tse/RiemenschneiderHD02}. However, it is not enough that an enterprise only describes its SDM in a document; the developers need to use it consistently in their everyday work. The use of SDM was often a topic of research in the last decades, since SDM adoption among software developers was relatively low and the developers often preferred different ad hoc approaches \citep{DBLP:journals/software/Aaen03,DBLP:journals/isj/Fitzgerald96,DBLP:journals/iam/HuismanI06}. 
+%
+%The use of SDMs in enterprises can be analyzed with the help of different existing approaches (\citealp{DBLP:journals/imds/Aboelmaged10,venkatesh2000theoretical,DBLP:journals/behaviourIT/WangLH13}). One of the grounding theories in the field of SDM evaluation is diffusion of innovations theory \citep{DBLP:books/daglib/0012785} according to which SDM is considered as innovation that developers adopt \citep{DBLP:journals/iam/Gallivan03,DBLP:journals/infsof/GreenHC05,DBLP:conf/caise/IivariH01}. To obtain information about the studied SDM and/or its elements the aforementioned studies focused on perceptions of different stakeholders, namely developers, managers, users, etc. to measure characteristics like level of use, assimilation, social and technical suitability, developer satisfaction and impact on performance \citep{atkinson1999project,cooper1990information,DBLP:books/daglib/0012785,DBLP:journals/infsof/VavpoticB09,DBLP:journals/comsis/VavpoticH12}. Even better insight into SDM and/or its elements can be gained by comparing the perceptions of different stakeholders regarding the same SDM and/or its element \citep{hovelja2015exploring}. 
+%
+%Another important theoretical development in the field was that SDM should be studied on the level of its constituent elements like activities, tools, roles, produced documents, etc. and not only as a whole. This improved the understanding of suitability of studied SDM elements for a certain development team and enabled comparison between the studied SDM elements. Thus, allowing enterprises to better pinpoint problematic elements of SDM, prepare focused improvements and examine the link between a specific SDM element and overall project success \citep{atkinson1999project,hovelja2015exploring}. Such development is in line with findings in the field of situational method engineering \citep{DBLP:journals/ejis/KarlssonA09,DBLP:conf/caise/RalyteDR03} that constructs a custom SDM from those SDM elements that fit with characteristics of certain development team and other situational factors (internal and external enterprise’s environment). 
+%
+%Another potential source of information regarding development process emerged in recent years with widespread use of tools that support software development activities like issue tracking, requirements management, test management etc. Such tools store valuable data about actual execution of the development process and give us additional information about SDM and its elements thus importantly complementing stakeholder perceptions \citep{DBLP:journals/ese/ChoetkiertikulD17,DBLP:conf/msr/MantylaADGO16,DBLP:conf/msr/OrtuMDTTMA16,DBLP:conf/icse/OrtuDKM15}. 
 
 
 
 \subsection{Software Repositories}
 
 
-\todo[inline]{what research has been doing around sw. repos. e.g, coordination, }
+\todo[inline]{Organize this! }
 
 A software repository is a location that stores data about software. 
 Generally software repositories serve the purposes of promoting and managing collaboration among developers. Data stored in a repository include source code, documentation, libraries, models and other digital artifacts that support a specific software. 
 
-Repository data can be structured and unstructured \citep{DBLP:books/el/16/Bacchelli16,DBLP:conf/wcre/Bavota16}. Data generated by systems are usually structured according to a preset schema. For example, the system may always record the number of changes to a file along with the version number and the user who last changed it. The purpose of these kind of data is to be processed by machines. Conversely, unstructured data are pieces of information that are used by developers to communicate. Examples of unstructured data are posts developer forums and emails. 
+Repository data can be structured (e.g., remote databases, distributed spreadsheets) and unstructured (e.g., forums, software review tools) \citep{DBLP:books/el/16/Bacchelli16,DBLP:conf/wcre/Bavota16}. Data generated by systems are usually structured according to a preset schema. For example, the system may always record the number of changes to a file along with the version number and the user who last changed it. The purpose of these kind of data is to be processed by machines. Conversely, unstructured data are pieces of information that are used by developers to communicate. Examples of unstructured data are posts developer forums and emails. 
 
 Not all the data from software is stored in one single repository \citep{DBLP:journals/ese/KalliamvakouGBS16}. Thus, in order to gain a more complete understanding, integration of more repositories is considered. 
 This increases the chance of dealing with large volume of data \citep{DBLP:journals/tosem/0001NRN15,DBLP:journals/jossw/Boettiger18,DBLP:conf/wcre/BoldiPVZ20}.
