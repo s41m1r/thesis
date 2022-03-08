@@ -158,99 +158,22 @@ To access trace data contained in repositories, a number of approaches are avail
 \label{sec:msr}
 
 \todoinline{Organize this!}
-\todo[inline]{Which sort of analyses techniques were used}
+\todo[inline]{What is it}
 
 In literature, mining software repositories refers to the area of software engineering that applies machine learning algorithms to data from software with the goal of extracting knowledge \citep{DBLP:journals/smr/KagdiCM07,hassan2008road}. This area is used as the base for providing techniques and algorithms as solutions to engineering problems. Such problems typically revolve around questions aimed at understanding various performance \citep{Chen2016} and functionality issues \citep{Farias2016} with the software at several stages. Examples of knowledge are related to the problems \emph{where-to-log} \citep{DBLP:conf/msr/CandidoHAD21}, \emph{who-did-what} \citep{DBLP:conf/msr/YoungCMTHB21}, \emph{what-does-this-change-mean} \citep{DBLP:conf/iwpc/FluriG06} , \emph{who-can-work-on-this-bug} \citep{DBLP:conf/iwpc/KagdiP09}, etc. 
 
-
-Data used for analyses come from a variety of systems such as version control, issue tracking, emails, log data from \gls{ide}, and project management.
-
-For the analyses a variety of machine learning algorithms are used~\citep{bibid}. When the data is unstructured, \gls{nlp} is used for preprocessing. Also, visualization is a common technique to show results \citep{Lanzaetal} (e.g., software as cities).
-
-Most of the methods are quantitative. However there are also a number of empirical studies \citep{DBLP:journals/ese/KalliamvakouGBS16,dehghan2017predicting} 
+\todoinline{topics}
+The main focus of research on mining software repositories has been on applying machine learning to discover patterns that may be used for improving the software process. \cite{DBLP:journals/smr/KagdiCM07} provided a taxonomy of approaches used in the area. According to their study, evolution of software was a key topic in the literature. More specifically, the field's focus has been on studying change and evolution, defect classification and analysis, comparing versions of the source code, reusability, development process, contribution analysis and various metrics. More recent studies \citep{DBLP:journals/pai/Guemes-PenaNSR18} confirm the focus on evolution, listing topics such as software degradation, dependencies between co-changes, bug prediction and causes, interaction between developers, software methodologies, and various aspects of software development.
 
 
-Let us see an example inspired by a real scenario of a process to write a project proposal that uses a Version Control System (VCS) to store the data. The project history, and hence, the data produced, starts when people begin to work on the proposal, which involves a description of the project goals and milestones, a division of tasks into work packages, an estimation of cost and resources required, etcetera. This information is spread in the repository over several folders containing different documents, which are later merged into a single file. If the proposal is accepted, the first step is to organize a kickoff meeting and assign specific resources to the work packages. A hierarchical set of folders is then created in the repository in order to store the information generated for each work package. As the project evolves over time, resources contribute by adding, removing or modifying information to the VCS repository. %\todo{Should answer point 3 on the review-list: Missing concrete examples of the need to “prove compliance to rules and regulations”. Which important rules and regulations will the analysis help comply with?} 
-Project evolution is guided by specific norms that impose the execution of predefined steps. For instance, the European norm EN5016 requires a preliminary \gls{ram} analysis to support targets. 
-%Data stored in the VCS can be used to prove compliance to rules and regulations of the domain. For instance, in the railway industry, 
+\todoinline{What is there to show "process" information: mining relations, visualisation, explicit "process mining"}
 
-Table~\ref{tab:vcs-log-data} depicts an excerpt of the log data generated, where the first column (on the left hand side) indicates the commit identifier. The second column indicates the person who committed changes. The third column indicates the commit date. The fourth column shows a comment from the developer that describes the changes performed.
-The fifth column indicates the files affected and the type of action performed in terms of differences between the previous and current version. 
-For the sake of simplicity, the table shows the log data of a specific time period and the actions related to a specific task, namely, $\defineExample$. That task was assigned to resource \emph{John} % after a project meeting. %, when a part of project members asked for a toy example to better understand the problem domain.
-and was worked on by resource \emph{Mary} and, later on, also by resource \emph{Paul}.
-%An extract from the log concerning this period, that shows some crucial steps in the \emph{example} task, is reported on table \ref{tab:example}. Comments were left out from this representation, since at the current state we don't delve into them.
+From the point of view of which this thesis is concerned (i.e., process insights on software development), all various approaches can be categorized into two main groups: mining approaches and visualisation . 
 
-\input{bpm2017/tables/vcs-data2}
+Mining approaches provide various metrics and patterns that emerge from the raw data. They can be further divided into two sub-categories depending whether they work with structured or unstructured data. Approaches that work with structured data typically gives as output coupling patterns \citep{DBLP:conf/msr/SouzaM13,DBLP:journals/smr/KirbasCHCBSB17,DBLP:journals/ese/WenNLB22}, change classification \citep{kaur2018gcc,DBLP:journals/ese/HerzigJZ16}, code quality issues \citep{DBLP:conf/msr/KieferBT07,DBLP:conf/msr/ChenTNH12,DBLP:conf/icse/WangLT16}, and various software metrics \citep{DBLP:conf/icst/ZaidmanRDD08,DBLP:conf/icse/Thomas11,DBLP:conf/scam/SokolAG13}. Approaches that work with unstructured data typically apply \gls{nlp} to the information retrieved from forums such Stackoverflow \citep{DBLP:conf/msr/PonzanelliBPOL14}, code-review comments \citep{DBLP:conf/msr/OmranT17}, and other textual information contained in the repositories \citep{DBLP:journals/ese/BaruaTH14,DBLP:journals/jss/YanFZYXK16}. The final output in both cases is about producing quantitative analysis to uncover relations or patterns from trace data.
 
-%\begin{table}[bt]
-%	\caption{Excerpt from VCS log data for the referenced time period }
-%	\label{tab:bpm2015example}
-%	%\scriptsize
-%	{
-	%		%	\renewcommand{\arraystretch}{1.3}
-	%		\centering
-	%		%\fontfamily{phv}\fontseries{mc}\selectfont
-	%		\begin{tabular}{m{.8cm} m{1.5cm} m{3cm} p{5.8cm}}
-		%			%\hline\noalign{\smallskip}
-		%			%\hline
-		%			\toprule
-		%			\textbf{CID}	 & \textbf{Resource} & \textbf{Date} & \textbf{List of changes} \\
-		%			%\noalign{\smallskip}
-		%			%\hline
-		%			%\noalign{\smallskip}
-		%			%\hline
-		%			\midrule
-		%			%\noalign{\smallskip}
-		%			\multirow{2}{*}{1} & \multirow{2}{*}{Y} & \multirow{2}{*}{2014-11-12~11:57:46} & A /example \\
-		%			& & & A \slash example\slash SHAPE\slash\-ToyStation\-Example.docx \\ \midrule %\hdashline
-		%			
-		%			%\multirow{2}{*}{205} & \multirow{2}{*}{X} & \multirow{2}{*}{2014-11-14 16:26:23} & A /example/ToyStation.bpmn \\
-		%			%& & & A /example/ToyStation.png \\ \hline %\hdashline
-		%			
-		%			\ldots & \ldots & \ldots & \ldots \\ \midrule
-		%			
-		%			%\noalign{\smallskip}
-		%			\multirow{2}{*}{3} & \multirow{2}{*}{X} & \multirow{2}{*}{2014-11-14 16:34:07} & M /example/ToyStation.bpmn\\
-		%			& & & M /example/ToyStation.png \\ \midrule%\hdashline
-		%			
-		%			%\multirow{7}{*}{207} & \multirow{7}{*}{X} & \multirow{7}{*}{2014-11-27 14:18:59} & M /example/SHAPE-ToyStation-Example.docx \\
-		%			%& & & D /example/ToyStation.bpmn \\
-		%			%& & & M /example/ToyStation.png \\
-		%			%& & & A /example/ToyStation\_0Loop.bpmn \\
-		%			%& & & A /example/ToyStation\_1Loop.bpmn \\
-		%			%& & & A /example/ToyStation\_nLoop.bpmn \\
-		%			%& & & A/example/ToyStation\_old.bpmn\\ \hline
-		%			
-		%			%\ldots & \ldots & \ldots & \ldots \\ \hline
-		%			
-		%			%\noalign{\smallskip}
-		%			4 & W & 2014-12-15 13:49:11 & D /example/Download \\ \midrule %\hdashline
-		%			
-		%			%\noalign{\smallskip}
-		%			5 & W & 2015-01-08 16:06:41 & A /example/Download2\\ \midrule %\hdashline
-		%			
-		%			%\noalign{\smallskip}
-		%			\multirow{2}{*}{6} & \multirow{2}{*}{X} & \multirow{2}{*}{2015-01-13 11:47:09} & M /example/ToyStation\_0Loop.bpmn\\
-		%			& & & M /example/ToyStation\_nLoop.bpmn \\ \midrule %\hdashline
-		%			
-		%			%\noalign{\smallskip}
-		%			\multirow{2}{*}{7} & \multirow{2}{*}{Z} & \multirow{2}{*}{2015-01-16 16:50:29} & A /example/ToyStation\_0Loop.pdf\\
-		%			& & & A /example/ToyStation-feedbackZ.pdf\\ \bottomrule %\hdashline
-		%		\end{tabular}\\ 
-	%	}
-%\end{table}
+Visualisation approaches aim at taming the complexity of information contained in repositories by providing visual aids to navigate through them. Such navigation is rendered using various representations. Notable representations here are software as cities \cite{Lanza} , graph-based visualisations \cite{bibid} and various charts \cite{dambros,etc}. In this class fall also various attempts to apply process mining \cite{process mining can be applied to software too, marquez, jooken}. 
 
-
-Existing frameworks, such as Subversion or Git, allow to access their logs in different ways. However, the covered information is limited to (roughly) that depicted in Table~\ref{tab:vcs-log-data1}. Especially for big projects that are frequently updated over a large period of time, these logs are complex to analyse.
-Therefore, the problem to address is how to analyze and visualize the information produced in project-oriented business processes such that it can be represented in an understandable and manageable way by project experts and
-enable, a.o., the automation of mechanisms for compliance checking.
-The following properties of project-oriented process logs must be taken into account to achieve this goal: (i) VCS repositories consist of a hierarchy of folders and files which are logically organized such that work is grouped in a specific way; (ii) process activities are not registered in VCS log entries. Therefore, such information must be inferred by reasoning on the repository structure and/or the content of the log entries; (iii) the granularity of the events is unknown a priori and it needs to be defined before analysing the data.
-
-
-
-%\section{Software Visualization}
-%\label{sec:visualization}
-%
 %Software visualisation techniques include
 %
 %- HPI visual software analytics 
@@ -258,6 +181,20 @@ The following properties of project-oriented process logs must be taken into acc
 %- Graph visualisations (e.g., social network analyses, static and dynamic graphs, )
 %- Plots and charts (Dashboards)
 %- Kanban/Project management KPI visualisations
+
+Visualizing co-change information with the evolution radar \citep{DAmbros2009}
+ 
+Most of the methods are quantitative. However there are also a number of empirical studies \citep{DBLP:journals/ese/KalliamvakouGBS16,dehghan2017predicting} 
+
+
+\todoinline{This thesis focuses on ...}
+Relevant topics and techniques for this dissertation are those which work with version control, that is, historical trace data about the evolution of artifacts. This thesis falls into the category of works which try to bridge process mining with mining software repositories. 
+Especially, the techniques developed in this thesis are inspired from the approaches to extract information from repositories \citep{DBLP:conf/msr/GousiosS12,DBLP:journals/ese/VasilescuSGM14} and visualisation approaches \citep{DAmbros2009} as well as approaches that explicitly target business processes \citep{DBLP:conf/csmr/PoncinSB11,DBLP:conf/oopsla/PoncinSB11} in order to develop new applications targetted at managers. 
+
+
+%\section{Software Visualization}
+%\label{sec:visualization}
+%
 
 %\section{Project-Oriented Business Process}
 %\label{sec:project-oriented}
