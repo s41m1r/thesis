@@ -4,9 +4,7 @@
 %\todo[inline]{Check for overlaps with text in chapters 4,5,6,7,8.}
 
 This dissertation is in the intersection between process mining and mining software repositories, respectively belonging to the broader contexts of \gls{bpm} and software development process. This chapter, hierarchically delves into the details of these fields as follows. \Cref{sec:software-development} gives an introduction on the main concepts of the software development process, elaborating on methodologies and repositories in which the data is stored.
-\Cref{sec:business-process} provides an overview on \gls{bpm} and introduces the \gls{bpm} lifecycle. \Cref{sec:process-mining} describes the specific area of process mining along with its requirements and limitations when analyzing software. \Cref{sec:msr} describes related work on mining data from these repositories. 
-\todoinline{update this}
-
+\Cref{sec:bpa} provides an overview on \gls{bpm} and introduces the \gls{bpm} lifecycle, and describes the specific area of process mining along with its requirements and limitations when analysing software. \Cref{sec:ch2-summary} summarizes they key concepts presented in this chapter. 
 %\Cref{sec:visualization} provides an overview on the area of software visualization. 
 
 %\Cref{sec:project-oriented} illustrates a class of processes which belong to the intersection between software development and business process. 
@@ -136,7 +134,7 @@ Independently of the methodology used, modern software development increasingly 
 
 
 \subsection{Software Repositories}
-
+\label{sec:software-repositories}
 
 A software repository is a location that stores information about software \citep{oinas1999two,yamada2015classification} in a way that is centrally accessible and available for reuse \citep{DBLP:conf/sigsoft/MarcusM10}. Generally, software repositories serve the purposes of enabling \citep{DBLP:conf/itqm/SrinivasRR14} and keeping track of the collaboration among participants in a sotware project. Data stored in a repository include source code, documentation, libraries, models and other digital artifacts \citep{li2010measurement,DBLP:journals/infsof/SunLLLL15} that support the software development. Examples of software repositories are Maven\footnote{https://maven.apache.org} for Java source code and documentation, CRAN\footnote{https://cran.r-project.org} for R libraries, CTAN\footnote{https://ctan.org} for LaTeX, etc. 
 
@@ -157,22 +155,17 @@ To access trace data contained in repositories, a number of approaches are avail
 \subsection{Mining Software Repositories}
 \label{sec:msr}
 
-\todoinline{Organize this!}
-\todo[inline]{What is it}
+In literature, mining software repositories refers to the area of software engineering that applies machine learning algorithms to data from software with the goal of extracting knowledge \citep{DBLP:journals/smr/KagdiCM07,hassan2008road}. This area is used as the base for providing techniques and algorithms as solutions to engineering problems. Such problems typically revolve around questions aimed at understanding various performance \citep{Chen2016} and functionality issues \citep{Farias2016} with the software at several stages. Examples of knowledge are related to the problems \emph{where-to-log} \citep{DBLP:conf/msr/CandidoHAD21}, \emph{who-did-what} \citep{DBLP:conf/msr/YoungCMTHB21}, \emph{what-does-this-change-mean} \citep{DBLP:conf/iwpc/FluriG06}, \emph{who-can-work-on-this-bug} \citep{DBLP:conf/iwpc/KagdiP09}, etc. 
 
-In literature, mining software repositories refers to the area of software engineering that applies machine learning algorithms to data from software with the goal of extracting knowledge \citep{DBLP:journals/smr/KagdiCM07,hassan2008road}. This area is used as the base for providing techniques and algorithms as solutions to engineering problems. Such problems typically revolve around questions aimed at understanding various performance \citep{Chen2016} and functionality issues \citep{Farias2016} with the software at several stages. Examples of knowledge are related to the problems \emph{where-to-log} \citep{DBLP:conf/msr/CandidoHAD21}, \emph{who-did-what} \citep{DBLP:conf/msr/YoungCMTHB21}, \emph{what-does-this-change-mean} \citep{DBLP:conf/iwpc/FluriG06} , \emph{who-can-work-on-this-bug} \citep{DBLP:conf/iwpc/KagdiP09}, etc. 
 
-\todoinline{topics}
 The main focus of research on mining software repositories has been on applying machine learning to discover patterns that may be used for improving the software process. \cite{DBLP:journals/smr/KagdiCM07} provided a taxonomy of approaches used in the area. According to their study, evolution of software was a key topic in the literature. More specifically, the field's focus has been on studying change and evolution, defect classification and analysis, comparing versions of the source code, reusability, development process, contribution analysis and various metrics. More recent studies \citep{DBLP:journals/pai/Guemes-PenaNSR18} confirm the focus on evolution, listing topics such as software degradation, dependencies between co-changes, bug prediction and causes, interaction between developers, software methodologies, and various aspects of software development.
 
-
-\todoinline{What is there to show "process" information: mining relations, visualisation, explicit "process mining"}
 
 From the point of view of which this thesis is concerned (i.e., process insights on software development), all various approaches can be categorized into two main groups: mining approaches and visualisation . 
 
 Mining approaches provide various metrics and patterns that emerge from the raw data. They can be further divided into two sub-categories depending whether they work with structured or unstructured data. Approaches that work with structured data typically gives as output coupling patterns \citep{DBLP:conf/msr/SouzaM13,DBLP:journals/smr/KirbasCHCBSB17,DBLP:journals/ese/WenNLB22}, change classification \citep{kaur2018gcc,DBLP:journals/ese/HerzigJZ16}, code quality issues \citep{DBLP:conf/msr/KieferBT07,DBLP:conf/msr/ChenTNH12,DBLP:conf/icse/WangLT16}, and various software metrics \citep{DBLP:conf/icst/ZaidmanRDD08,DBLP:conf/icse/Thomas11,DBLP:conf/scam/SokolAG13}. Approaches that work with unstructured data typically apply \gls{nlp} to the information retrieved from forums such Stackoverflow \citep{DBLP:conf/msr/PonzanelliBPOL14}, code-review comments \citep{DBLP:conf/msr/OmranT17}, and other textual information contained in the repositories \citep{DBLP:journals/ese/BaruaTH14,DBLP:journals/jss/YanFZYXK16}. The final output in both cases is about producing quantitative analysis to uncover relations or patterns from trace data.
 
-Visualisation approaches aim at taming the high amount of information contained in repositories by providing visual aids to navigate through it. Such navigation is rendered using various representations \citep{DBLP:journals/scp/TorresGSP16}. Notable representations here are software as cities \cite{DBLP:conf/vissoft/WettelL07} , graph-based visualisations \cite{DAmbros2009} and various charts \cite{dambros,etc}. In this class fall also various attempts to apply process mining \cite{process mining can be applied to software too, marquez, jooken}. 
+Visualisation approaches aim at taming the high amount of information contained in repositories by providing visual aids to navigate through it. Such navigation is rendered using various representations \citep{DBLP:journals/scp/TorresGSP16}. Notable representations here are software as cities \cite{DBLP:conf/vissoft/WettelL07} , graph-based visualisations \cite{DBLP:conf/icse/BhattacharyaINF12} and various charts \cite{DAmbros2009,DBLP:conf/msr/BirdGDGS06}. In this class fall also various attempts to apply process mining \cite{rubin2014process, DBLP:conf/indiaSE/GuptaS14,DBLP:conf/wecwis/MarquesSF18,DBLP:conf/bpm/JookenCJ19}. 
 
 %Software visualisation techniques include
 %
@@ -182,12 +175,10 @@ Visualisation approaches aim at taming the high amount of information contained 
 %- Plots and charts (Dashboards)
 %- Kanban/Project management KPI visualisations
 
-Visualizing co-change information with the evolution radar \citep{DAmbros2009}
- 
-Most of the methods are quantitative. However there are also a number of empirical studies \citep{DBLP:journals/ese/KalliamvakouGBS16,dehghan2017predicting} 
+%Visualizing co-change information with the evolution radar \citep{DAmbros2009}
+% 
+%Most of the methods are quantitative. However there are also a number of empirical studies \citep{DBLP:journals/ese/KalliamvakouGBS16,dehghan2017predicting} 
 
-
-\todoinline{This thesis focuses on ...}
 Relevant topics and techniques for this dissertation are those which work with version control, that is, historical trace data about the evolution of artifacts. This thesis falls into the category of works which try to bridge process mining with mining software repositories. 
 Especially, the techniques developed in this thesis are inspired from the approaches to extract information from repositories \citep{DBLP:conf/msr/GousiosS12,DBLP:journals/ese/VasilescuSGM14} and visualisation approaches \citep{DAmbros2009} as well as approaches that explicitly target business processes \citep{DBLP:conf/csmr/PoncinSB11,DBLP:conf/oopsla/PoncinSB11} in order to develop new applications targetted at managers. 
 
@@ -248,7 +239,7 @@ Especially, the techniques developed in this thesis are inspired from the approa
 
 
 \section{Business Process Analytics}
-
+\label{sec:bpa}
 
 \subsection{Business Process Management}
 \label{sec:business-process}
