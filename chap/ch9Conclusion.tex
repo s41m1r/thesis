@@ -80,32 +80,32 @@ RQ1 is addressed by Artifact A1. The context of in which this artifact was devel
 
 There are several ways in which current research can be improved. 
 
-\begin{enumerate}
-	\item[\bfseries Develop more advanced visualisation techniques.]\\
+\begin{itemize}
+	\item {\bfseries Develop more advanced visualisation techniques.}
 	Visualisation is key to process understanding \citep{DBLP:journals/corr/abs-2202-07941}. An interesting follow-up of this research would be to provide an integrated visualization that brings all four perspectives together in a way that would be beneficial to the managers. This would give a clear bigger picture of the impact of each perspective and let the manager decide which of these to prioritize when it comes to improvement. Therefore, the manager has more control over the project and capacity to react to potential issues. 
 	
-	\item[\bfseries User studies.]\\
-	
+	\item{\bfseries User studies.}
 	Qualitative analyses of the impact of the proposed artifacts in an industrial context. User studies should be conducted for each of the artifacts in order to investigate their perceived usefulness and ease of use \citep{DBLP:journals/misq/VenkateshMDD03}. With this feedback the already developed artifacts can be improved. 
 	
-	\item[\bfseries Integrate different datasets.]\\
-	 
+	\item{\bfseries Integrate different datasets.}
 	Another point concerns the data used for the analysis. This thesis used data from one source at a time such \gls{vcs} or Jira. However, data present in these systems only store part of the overall end-to-end software development methodology. Integrating data from diverse systems \citep{DBLP:conf/icse/TrautschTHLG20}, such as project planning systems, emails, documents, etc, would enable for learning more about the overarching software process (e.g., the end-to-end process from idea-inception to software-product release). This, in turn, would open up chances for process redesign or innovation. 
 	
-	\item[\bfseries Coordination studies]\\
+	\item{\bfseries Coordination studies.}
+	Coordination is an important topic when it comes to software development. Future work shall investigate how control happens in \gls{oss}. Especially, it should aim at shedding light on the how collaborative processes unfold when several users are free to join existing software projects as contributors. \Gls{floss} projects have been brought as an example of innovative ways of self-organizing \citep{DBLP:journals/mansci/KroghH06,DBLP:journals/misq/HowisonC14}. Works in literature have emphasized iterations (\citealp{Berente2005,Berente2007}), self-organization \citep{DBLP:journals/infsof/CrowstonLWEH07,DBLP:journals/jss/HodaM16} and free-speech \citep{DBLP:conf/chiir/ThomasCMCM18,Gibson2019}. However, it has been shown that control mechanisms (be there social or institutional) are present in the area \citep{Lindberg2016}. In particular, online collaborative work that generates knowledge goes through ``negotiation'' actions which ``pull'' the trajectory and shape its movement in the feature space \citep{Arazy2020}. Therefore, it remains under-explored to what extent \gls{oss} is institutionalized and what are its similarities to corporate bureaucracy.
 	
-	We want to compare the software development in OSS to bureaucratic organisations (Gate-Keeping Process). The work analyses speech acts from pull-requests. It connects people who interacted on the same comments of the pull request by building a social network. This allows us to identify the type of user by means of the speech-acts they use and gate-keepers because they are probably at the centre of the network. 
-	
-	\item[\bfseries New forms of organising: Holacracy.]\\ 
-	This work applies mining concepts to data from a Holacratic organization. Build social network of users. Find the most influential ones. 
-	
-	\item[\bfseries Process mining on source code (modules, where-to-log)]\\
-	This work applies process mining on the "where-to-log" problem in the \gls{msr} field. More specifically, it gets the source code from GitHub and parses its Abstract Syntax Tree (AST). Differently from other works, we apply process mining analyses (e.g., variant analyses) in order to characterize how developers have chosen where to put logging statements. 
+	A possible way to approach the problem of freedom in open source development is to compare it with institutionalised practices, such as corporate bureaucracy. Future work shall analyse pull requests from a real-world open source repository using speech act theory \citep{searle1985expression}. This, in combination with data analysis techniques and process mining, would allows us to untangle interesting insights about OSS development and point out relevant resemblance to corporate processes (e.g., stage-gate  \citep{cooper2008perspective}). 
 	
 	
-\end{enumerate}
+	\item{\bfseries New forms of organising: Holacracy.}
+	Another future direction is to apply principles developed in this thesis to data from new forms of organisations  such as Holacracy. An initial dataset of a real-world Holacratic organisation has already been constructed (see \citep{Wurm2021}) which contains five years of trace data. These data can be used to mine various patterns of collaboration and division of influence partially exploiting approaches of the already presented artifacts A1 – A4 and including further analyses such as dynamic networks \citep{DBLP:journals/csur/RossettiC18,DBLP:journals/corr/abs-0803-2093}. Possible outcomes would be community discovery and their comparison to the actual communities (circles) that are defined in the organisation.
+	
+	\item{\bfseries Process mining on source code.}
+	As logs are highly relevant to maintenance and post-mortem analyses of software, it is of utmost importance that developers place the correct logging commands within methods. This issue is referred to as the  \emph{where-to-log} problem in the \gls{msr} field.  While many approaches have tackled such problem \citep{DBLP:conf/icse/FuZHLDLZX14,DBLP:conf/icse/ChenJ17,DBLP:conf/msr/CandidoHAD21}, not many approaches exist that apply process mining to source code. More specifically, approach shall get as input the source code from GitHub and parse its \gls{ast}. Different commands used in the programming language shall be mapped to process activities. By analysing different variant of these activities, possible patterns of logging choices shall emerge. 
+	
+	
+\end{itemize}
 
-
+This thesis has implications for academia and industry as follows. 
 For industry, the results of this thesis provide the basis for developing a monitoring tool that allows the manager to obtain insights on software development from a process perspective. The four artifacts can be combined together into a dashboard which gives rich information on the various perspectives of the process. Furthermore, existing and new performance indicators can be included to the ones already presented in this thesis, according to the specific needs of the domain. Such dashboard would provide new insights to help managers in making informed decisions based on facts. 
 
 For academia, this work informs both areas of business process management and software engineering, in particular their sub-fields of process mining and mining software repositories, respectively. Process mining researchers can use data from a new domain, such as software. Researchers from the mining software repositories area can exploit a new lens on analysing their data, i.e., a process point of view. 
