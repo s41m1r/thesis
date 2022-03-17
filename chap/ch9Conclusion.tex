@@ -21,89 +21,92 @@ This doctoral thesis aims at bridging the gap between automatic analysis of soft
 \end{itemize}
 
 
-\section{Discussion} 
+\section{Research Questions Revisited} 
 \label{sec:8-discussion}
 
 This section revisits the research questions introduced in \Cref{sec:problem-definition} and discusses how this thesis addressed each of them. More specifically the general question this thesis aims at answering is the following.
-\begin{question}{Main research question}
-	\textbf{RQ}: \emph{How can we make use of project event data to gather insights about the software development process that are informative to managers?} 
+\begin{question}{Main Research Question}
+	\textbf{RQ}: \emph{How can we make use of project event data to gather insights about the software development process that are informative to managers?}\\
+	 
+	
+	
+	Trace data can be exploited to obtain a more realistic evaluation of the current state of the software project. Among the articles presented in this thesis, Article 5 presents a case-study where the importance of trace data is highlighted. While there have been many approaches that try to assess the software process (e.g., \citep{DBLP:journals/bise/VavpoticRH20,hovelja2015exploring,atkinson1999project}) with various methods, there was no approach that exploits both \emph{subjective} data gathered from questionnaire and \emph{objective} data from software development. Thus, the case study presented in Article 5 implements a one-of-a-kind data-driven computationally-intensive approach \citep{DBLP:journals/isr/BerenteSS19} to gather insights the software process. 
+	In particular, key difficulties in the performance of the \gls{sdlc} of the analysed company were discovered. These results were only possible thanks to the combination of the subjective views of process participants and the analyses of the event logs. The latter served to confirm or dis-confirm the importance of certain \gls{sdm} elements with regards to performance.
+	
 \end{question}
 
-This question is addressed by applying mining techniques to event data from software projects. In particular, this thesis applies the four-perspectives view on processes defined in the work of \cite{DBLP:books/sp/Aalst16}. Consequently the main research question is divided into four sub-question, each addressing one specific perspective.  In the following, each research sub-question \textbf{RQ1} – \textbf{RQ4} is discussed. 
+This question is addressed in detail by applying mining techniques to event data from software projects. In particular, this thesis applies the four-perspectives view on processes defined in the work of \cite{DBLP:books/sp/Aalst16}. Consequently the main research question is divided into four sub-questions, each addressing one specific perspective.  In the following, each research sub-question \textbf{RQ1} – \textbf{RQ4} is discussed.\\
 
-\begin{question}{Mining the time perspective}
-\textbf{RQ1.} \emph{How can we use project event data to extract information about the \textbf{temporal} perspective of activities?}
+
+\begin{question}{Mining the Time Perspective}
+\textbf{RQ1.} \emph{How can we use project event data to extract information about the \textbf{temporal} perspective of activities?}\\
+
+
+RQ1 is addressed by Artifact A1. The context of in which this artifact was developed is that of large engineering software development projects. These projects need to be monitored in detail to understand what work was done \emph{when}. This is particularly relevant when it comes to checking compliance with rules and regulations such as ISO/IEC/IEEE 15288 \citep{international2015iso}. A typical problem of these processes is coordination as it is difficult to tract the actual course of work, even if the data is recorded in \glsfirst{vcs}. Artifact A1 addresses this problem by defining a mining technique that is able to handle data from \gls{vcs}. Furthermore, Artifact A1 provides a time-based visualisation that allows to cluster together periods of work that were done in the different parts of the software directory structure. The models are rendered as Gantt charts in order to best address project managers, as these are directly comparable to projects plans. The artifact was implemented as a prototype, which gives the user both aggregated information in the form of Gantt chart activities and detailed information on the single events. This improves the information gives by similar process mining software such as the Dotted Chart Miner \citep{Song2007}. Moreover, no existing process mining tool gives Gantt chart support.
 \end{question}
 
-RQ1 is addressed by ....
 
 
-\begin{question}{Mining the time perspective}
-	\textbf{RQ1.} \emph{How can we use project event data to extract information about the \textbf{temporal} perspective of activities?}
+\begin{question}{Mining the Case Perspective}
+	\textbf{RQ2.} \emph{How can we use project event data to extract information about the \textbf{case} perspective?}\\
+	
+	
+	Mining the case perspective in the software development process signifies to uncover characteristics of cases (i.e., the different ways in which files are worked on). This is difficult because work in such process is fragmented between different modules which are developed concurrently. Prior contributions in the areas of \glsfirst{msr} and process mining have proposed a plethora of techniques that analyse and visualize the current state of a software as a product. Surprisingly, a process view (i.e., what type of work is conducted at different stages and what are activity dependencies) was still lacking. Artifact A2 addresses such gap via a technique that can extract the evolution of each file as a time series (i.e., it provides a characterisation of the changes of the file as a process case) and it further classifies the type of work (i.e., the process activities) based on \gls{nlp} techniques. Efficacy of the devised Artifact A2 is demonstrated by applying the technique on various open-source projects. 
 \end{question}
 
-RQ1 is addressed by ....
 
-\begin{question}{Mining the time perspective}
-	\textbf{RQ1.} \emph{How can we use project event data to extract information about the \textbf{temporal} perspective of activities?}
+
+
+
+\begin{question}{Mining the Organisational Perspective}
+	\textbf{RQ3.} \emph{How can we use project event data to extract information about the \textbf{organizational} perspective?}\\
+	
+	
+	Collaboration in business processes and projects requires a division of responsibilities among the participants who are then expected to perform specific tasks based on their role in the organisation. However, in practice process participants are free to perform software developments tasks. The type and amount of tasks that are done by the participants define a so-called \emph{profile}. Profiles are \emph{de-facto} roles may differ from the assigned roles by the project manager. Artifact A4 defines a technique to collect participants' profiles from \gls{vcs} logs and classify them into classes of roles. It does so via two approaches, which are then compared. The first approach finds classes of users by applying k-means clustering to users based on attributes calculated for them. The classes identified by the clustering are then used to build a decision tree classification model. The second approach classifies individual commits based on commit messages and file types. The distribution of commit types is used for creating a decision tree classification model. The two approaches are implemented and tested against three real datasets, one from academia and two from industry. Our classification covers 86\% percent of the total commits. The results are evaluated with actual role information that was manually collected from the teams responsible for the analysed repositories. In practice, the developed artifact helps the project manager to better understand the actual type of work that is required in developing a specific software product.
 \end{question}
 
-RQ1 is addressed by ....
-\begin{question}{Mining the time perspective}
-	\textbf{RQ1.} \emph{How can we use project event data to extract information about the \textbf{temporal} perspective of activities?}
+ 
+
+
+\begin{question}{Mining the Control-Flow Perspective}
+	\textbf{RQ4.} \emph{How can we use project event data to extract information about the \textbf{control-flow} perspective?}\\
+	 
+	
+	RQ4 is addressed by Artifact A4. This artifact is developed with the assumption that the complexity of software development process is hard to be discovered as a single process model. In fact, existing models of the \gls{sdlc} always remain at a high level of abstraction and never specify exactly the low-level activities that constitute the different phases of software development. Moreover, many \glspl{sdlc} models assume that certain activities (or phases) of software development happen in a specific order and never overlap. An exception to this is the so-called \glsfirst{rup} model, which acknowledges that different phases of the development can be done concurrently. However, the \gls{rup} has only been a theoretical model so far and no tools were developed to mine such model from data. Artifact A4 was developed to fulfil this goal. It uses data from \gls{vcs} to analyse to mine the activity types of which the development process consists. The artifact is implemented as a prototype in Java and its outputs evaluated in terms of effectiveness against existing real-world repositories from GitHub. As a result, various patterns of software development were found and visualized according the \gls{rup} model. In this way, it was possible to understand the how the work transitioned among the different phases (i.e., the control-flow) of software development. 
 \end{question}
-
-RQ1 is addressed by ....
-
-
-
-
-\begin{question}{Subquestions addressing each process perspective}
-	\begin{description}[\bfseries RQ 1.]
-		\item[\bfseries RQ1.] \emph{How can we use project event data to extract information about the \textbf{temporal} perspective of activities?} 
-		%	For example, an answer to this question would look like: the development activity has a duration of 2 weeks on average, the average time of task creation is 15 minutes, etc. 
-		
-		\item[\bfseries RQ2.] \emph{How can we use project event data to extract information about the \textbf{case} perspective?} 
-		%	For example, an answer to this question would look like: all the bugs are solved in a 3 steps iteration, or a quality piece of code takes a conversation with 3 people and is successfully merged into the main branch after 1 week, etc.
-		
-		\item[\bfseries RQ3.] \emph{How can we use project event data to extract information about the \textbf{organizational} perspective?} 
-		%	For example, an answer to this question would look like: the software development is carried out by a team of 4 people, the actual user roles in the company are developer and tester, etc.
-		
-		\item[\bfseries RQ4.] \emph{How can we use project event data to extract information about the \textbf{control-flow} perspective?} 
-		%	For example, an answer to this question would look like: the testing is always done before development, or while new features are worked on, also new requirements are created, etc. Note that, differently from \textbf{RQ1} this question focuses on the logical connection and order of activities.
-		
-	\end{description}
-\end{question}
-
-\todoinline{Bring again big picture with answers to each RQ or a summary-table}
-
-On a broader context, we discuss the implications of this research for industry and academia. 
-
-For industry, these results of this thesis provide the basis for developing a monitoring tool that allows the manager to obtain insights on software development from a process perspective. The four artifacts can be combined together into a dashboard which gives rich information on the various perspectives of the process. Furthermore, existing and new performance indicators can be included to the ones already presented in this thesis, according to the specific needs of the domain. Such dashboard would provide new insights to help managers in making informed decisions based on facts. 
-
-For academia, this work informs both areas of business process management and software engineering, in particular their sub-fields of process mining and mining software repositories, respectively. Process mining researchers can use data from a new domain, such as software. Researchers from the mining software repositories area can exploit a new lens on analysing their data, i.e., a process point of view. 
-
 
 \section{Future Research and Concluding Remarks}
 \label{sec:8-future}
 
 There are several ways in which current research can be improved. 
 
-An integrated visualization that brings all four perspectives together would be beneficial to the managers. This would give a clear picture of the impact of each perspective and let the manager decide which of these to prioritize when it comes to improvement. Therefore, the manager has more control over the project and capacity to react to potential issues. 
+\begin{enumerate}
+	\item[\bfseries Develop more advanced visualisation techniques.]\\
+	Visualisation is key to process understanding \citep{DBLP:journals/corr/abs-2202-07941}. An interesting follow-up of this research would be to provide an integrated visualization that brings all four perspectives together in a way that would be beneficial to the managers. This would give a clear bigger picture of the impact of each perspective and let the manager decide which of these to prioritize when it comes to improvement. Therefore, the manager has more control over the project and capacity to react to potential issues. 
+	
+	\item[\bfseries User studies.]\\
+	
+	Qualitative analyses of the impact of the proposed artifacts in an industrial context. User studies should be conducted for each of the artifacts in order to investigate their perceived usefulness and ease of use \citep{DBLP:journals/misq/VenkateshMDD03}. With this feedback the already developed artifacts can be improved. 
+	
+	\item[\bfseries Integrate different datasets.]\\
+	 
+	Another point concerns the data used for the analysis. This thesis used data from one source at a time such \gls{vcs} or Jira. However, data present in these systems only store part of the overall end-to-end software development methodology. Integrating data from diverse systems \citep{DBLP:conf/icse/TrautschTHLG20}, such as project planning systems, emails, documents, etc, would enable for learning more about the overarching software process (e.g., the end-to-end process from idea-inception to software-product release). This, in turn, would open up chances for process redesign or innovation. 
+	
+	\item[\bfseries Coordination studies]\\
+	
+	We want to compare the software development in OSS to bureaucratic organisations (Gate-Keeping Process). The work analyses speech acts from pull-requests. It connects people who interacted on the same comments of the pull request by building a social network. This allows us to identify the type of user by means of the speech-acts they use and gate-keepers because they are probably at the centre of the network. 
+	
+	\item[\bfseries New forms of organising: Holacracy.]\\ 
+	This work applies mining concepts to data from a Holacratic organization. Build social network of users. Find the most influential ones. 
+	
+	\item[\bfseries Process mining on source code (modules, where-to-log)]\\
+	This work applies process mining on the "where-to-log" problem in the \gls{msr} field. More specifically, it gets the source code from GitHub and parses its Abstract Syntax Tree (AST). Differently from other works, we apply process mining analyses (e.g., variant analyses) in order to characterize how developers have chosen where to put logging statements. 
+	
+	
+\end{enumerate}
 
-Qualitative analyses of the impact of the proposed artifacts in an industrial context. User studies should be conducted for each of the artifacts in order to investigate their perceived usefulness and ease of use. With this feedback the artifacts can be adapted and improved. 
 
-Integrate data from different information systems. Data present in \gls{vcs} only store part of the overall end-to-end software development methodology. Integrating data from systems, such as project planning systems, emails, documents, etc, would enable for learning more about how ideas turn into specific process steps. This, in turn, would open up chances for process redesign or innovation. 
+For industry, the results of this thesis provide the basis for developing a monitoring tool that allows the manager to obtain insights on software development from a process perspective. The four artifacts can be combined together into a dashboard which gives rich information on the various perspectives of the process. Furthermore, existing and new performance indicators can be included to the ones already presented in this thesis, according to the specific needs of the domain. Such dashboard would provide new insights to help managers in making informed decisions based on facts. 
 
-\todoinline{One big paragraph about Aron work}
-
-\todoinline{Work with Springest data}
-
-\todoinline{Process mining on source code (modules, where-to-log)}
-
-\todoinline{Kathi Tötzl thesis (social network)}
-
-\todoinline{Put the work in relation with the perspectives}
-
-
+For academia, this work informs both areas of business process management and software engineering, in particular their sub-fields of process mining and mining software repositories, respectively. Process mining researchers can use data from a new domain, such as software. Researchers from the mining software repositories area can exploit a new lens on analysing their data, i.e., a process point of view. 
 
