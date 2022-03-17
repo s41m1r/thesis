@@ -20,3 +20,4 @@
 tables/vcs-data2.fdb_latexmk
 book.fdb_latexmk
 *.fls
+*.pdf
