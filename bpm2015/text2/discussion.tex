@@ -2,7 +2,7 @@
 
 In this section we compare our method to other alternatives for mining data out of logs and interpret our results.
 
-Well known tools that are used in academia and practice include ProM \cite{van2005prom} and Disco\footnote{http://fluxicon.com/disco/}. Both tools require input data to be in the XES \citep{verbeek2010xes} format. Thus, we convert our data from the $\defineExample$ case into XES. To show events per objects of the project structure, we choose the file path as the \emph{caseId}. To flatten the logs we extract all the file paths and build a mapping from each file to the set of changes done to it.
+Well known tools that are used in academia and practice include ProM \citep{van2005prom} and Disco\footnote{http://fluxicon.com/disco/}. Both tools require input data to be in the XES \citep{verbeek2010xes} format. Thus, we convert our data from the $\defineExample$ case into XES. To show events per objects of the project structure, we choose the file path as the \emph{caseId}. To flatten the logs we extract all the file paths and build a mapping from each file to the set of changes done to it.
 
 Figure~\ref{fig:dottedchart} depicts the results of the Dotted chart plugin of ProM applied to our log data. Also here, we observe different changes of each file of the repository. While the files and their corresponding events are shown, the plugin does not allow to rearrange the data in order to understand the file structure, nor does it allow to perform any kind of aggregation or connection between data, to observe them from a higher level perspective.
 

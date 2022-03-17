@@ -47,7 +47,7 @@ by the major \glspl{vcs}, such as Git and Subversion. The information retrieved 
 \subsection{Classify activities.}
 
 Having the data stored in a \gls{dbms}, enables us to run several analyzes already at this level by simply issuing SQL queries. For example, we can obtain all changes that happened to single files during their lifetime. For the scope of this work, we collect all the file paths, all the changes that happened to files, the amount of change in terms of \gls{loc}, the type of change (e.g., addition, modification, deletion), the commit identifier, and the user who did the change. 
-Next, we automatically categorize the type of change. For this, we apply regular expression on path attribute using the classes provided by literature~\cite{DBLP:journals/ese/VasilescuSGM14}. 
+Next, we automatically categorize the type of change. For this, we apply regular expression on path attribute using the classes provided by literature~\citep{DBLP:journals/ese/VasilescuSGM14}. 
 Examples of classes are  \textsl{Documentation}, \textsl{Image}, \textsl{Testing}, \textsl{Coding}, \textsl{User interface}, etc. There are in total fourteen classes. When a type of change does not belong to any class, it is put under the category \textsl{Unknown}.
 
 \input{Project-mining-2-Mining-Type-of-Work/tables/regex}
