@@ -79,7 +79,7 @@ While obtaining an overarching view on software development is challenging, ther
 
 
 Although different technologies exist in practice (e.g., Subversion, Mercurial, Git), the information contained in the logs can be roughly summarized by \Cref{tab:vcs-log-data1}. %\todo{Maybe I can change this table with a more generic one that contains all information?}  
-The table displays an excerpt of a \gls{vcs} log, i.e., a set of user commits, after having extracted and structured the data according to five attributes. The semantics of the  attributes is a follows: 
+The table displays an excerpt of a \gls{vcs} log, i.e., a set of user commits, after having extracted and structured the data according to five attributes. The semantics of the  attributes is as follows: 
 \begin{inparaenum}[\itshape i)]
 	\item \emph{Id} is a unique identifier;
 	\item \emph{Resource} is the resource that issued the commit;
@@ -200,7 +200,7 @@ Evaluation goals are
 	\item ethics, and
 	\item efficiency.
 \end{iiilist}
-They are respectively addressed as follows. Rigor is assured by the design science approach. Uncertainty involves technical infeasibility and unavailuability of the data. Infeasibility risk is reduced by starting from the design of small artifacts with basic features and incrementally improve. Unavailability risk is reduced by replication of the dataset locally. An ethics problem may regard the “big-brother is watching you” effect on people. This will be solved considering only data from partners and public repositories. Efficiency is evaluated by measuring whether all time patterns are found in a reasonably short time.
+They are respectively addressed as follows. Rigour is assured by the design science approach. Uncertainty involves technical infeasibility and unavailability of the data. Infeasibility risk is reduced by starting from the design of small artifacts with basic features and incrementally improve. Unavailability risk is reduced by replication of the dataset locally. An ethics problem may regard the “big-brother is watching you” effect on people. This will be solved considering only data from partners and public repositories. Efficiency is evaluated by measuring whether all time patterns are found in a reasonably short time.
 
 \input{tables/time-principle}
 
@@ -264,7 +264,7 @@ Evaluation goals are as follows. Rigor is assured by the iterations. Uncertainty
 
 \input{tables/orga-principle}
 
-\Cref{tab:orga-principle} summarises the guiding principle that should be followed in order to mine the case-perspective from the history of changes in the artifacts of a software. This artifact is evaluated through a Quick \& Simple strategy (\cite{Venable2016}), i.e., the technique is evaluated with real data from industry partners. Three iteration episodes are included: 
+\Cref{tab:orga-principle} summarises the guiding principle that should be followed in order to mine the organizational-perspective from the history of changes in the artifacts of a software. This artifact is evaluated through a Quick \& Simple strategy (\cite{Venable2016}), i.e., the technique is evaluated with real data from industry partners. Three iteration episodes are included: 
 \begin{iiilist}
 	\item initial design of the artifact voted to a simple and structured representation of the data (formative)
 	\item exploration and selection of the best features and classifiers.
@@ -288,7 +288,7 @@ Evaluation goals are considered as follows. Rigor is assured by the iterations. 
 
 \input{tables/control-flow-principle}
 
-\Cref{tab:control-flow-principle} summarises the guiding principle that should be followed in order to mine the case-perspective from the history of changes in the artifacts of a software. This artifact is evaluated through a Technical risk \& Efficacy strategy (see \cite{Venable2016}), i.e., the technique is firstly evaluated with an initial well-known dataset, then revised and evaluated with other projects. Three iteration episodes are included: 
+\Cref{tab:control-flow-principle} summarises the guiding principle that should be followed in order to mine the control-flow perspective from the history of changes in the artifacts of a software. This artifact is evaluated through a Technical risk \& Efficacy strategy (see \cite{Venable2016}), i.e., the technique is firstly evaluated with an initial well-known dataset, then revised and evaluated with other projects. Three iteration episodes are included: 
 \begin{iiilist}
 	\item initial exploratory analysis on the applicability of \gls{pm} techniques on pull requests (formative);
 	\item evaluation of \gls{pm} methods and assessment of statistical significance of results; and
@@ -335,7 +335,7 @@ Evaluation goals are considered as follows. Rigor is assured by the iterations. 
 
 %\todo[inline]{Is this the best place for this section?}
 
-This thesis includes the collection of and generation of datasets from real life software projects. These project data were collected both from industrial partners and from \gls{oss}. \Cref{tab:dataset} summarizes the available data. Logs from industrial partner are concerned with specific development activities (e.g., building railway interlocking-system software) and include a sufficient number of events that cover one software release. Logs from \gls{oss} were manually extracted by GitHub repositories. A tool has then been devised to parse these data and use them to populate a database. An original dataset is represented by Github pull requests. This dataset contains a list of manually annotated pull requests using the coding scheme by \cite[]{Majchrzak2016}. An additional output of this thesis will be the creation of a larger dataset using a machine learning approach that is able to automatically categorize pull requests in the classes given by \cite[]{Majchrzak2016}.
+This thesis includes the collection of and generation of datasets from real life software projects. These project data were collected both from industrial partners and from \gls{oss}. \Cref{tab:dataset} summarizes the available data for this thesis. Logs from industrial partner are concerned with specific development activities (e.g., building railway interlocking-system software) and include a sufficient number of events that cover one software release. Logs from \gls{oss} were manually extracted by GitHub repositories. A tool has then been devised to parse these data and use them to populate a database. An original dataset is represented by Github pull requests. This dataset contains a list of manually annotated pull requests using the coding scheme by \cite[]{Majchrzak2016}. An additional output of this thesis will be the creation of a larger dataset using a machine learning approach that is able to automatically categorize pull requests in the classes given by \cite[]{Majchrzak2016}.
 
 \input{tables/datatset}
 
@@ -367,11 +367,11 @@ This doctoral thesis aims at bridging the gap between automatic analysis of soft
 
 \begin{itemize}
 	
-	\item \textbf{Conceptualization of project-oriented business processes.} Processes have been seen so far as repeatable endeavors. However, there are processes which are not repeated exactly in the same way twice. This is the case with project-oriented business processes. Such processes, are conducted as projects, in that they are usually planned a priori and run under limited resources. 
+	\item \textbf{Conceptualization of project-oriented business processes.} Processes have been seen so far as repeatable endeavours. However, there are processes which are not repeated exactly in the same way twice. These processes are referred to as project-oriented business processes. Such processes, are conducted as projects, in that they are usually planned a priori and run under limited resources. This thesis provides a conceptualisation of project-oriented business processes and techniques to work with the trace data they generate. 
 	
-	\item \textbf{Visualization.} Existing techniques in the software engineering area are able to provide several possible views on the software development. Major visualization techniques can be divided into graph-based \citep{DBLP:journals/ijseke/GermanH06,DBLP:journals/smr/GreevyDG06}, notation-based \citep{DBLP:conf/wcre/McNairGW07}, matrix-based \citep{DBLP:conf/icsm/GirbaDL04} and metaphor-based \citep{DBLP:conf/vissoft/WettelL07}. These visualization techniques help in multiple ways, such as understanding code smells, refactoring, evolution, distribution of work etc. However, most of the works in software engineering area are not process-aware. Thus, this thesis aims at researching the most suitable visualization techniques that help understanding the work process that lays behind software development. 	
+	\item \textbf{Visualization.} Existing techniques in the software engineering area are able to provide several possible views on the software development. Major visualization techniques can be divided into graph-based \citep{DBLP:journals/ijseke/GermanH06,DBLP:journals/smr/GreevyDG06}, notation-based \citep{DBLP:conf/wcre/McNairGW07}, matrix-based \citep{DBLP:conf/icsm/GirbaDL04} and metaphor-based \citep{DBLP:conf/vissoft/WettelL07}. These visualization techniques help in multiple ways, such as understanding code smells, refactoring, evolution, distribution of work etc. However, most of the works in software engineering area are not process-aware. Thus, this thesis proposes more suitable visualization techniques that help understanding the work process that lays behind software development. 	
 
-	\item \textbf{Extension of the scope of process mining.} Process mining techniques rely on structured data. These data are typically captured by the standard XES \citep{xes-standard:2015} which defines precisely the input of process mining techniques. This work extends process mining towards mining processes also from data that are not directly represented in the XES standard. 
+	\item \textbf{Extension of the scope of process mining.} Process mining techniques rely on structured data. These data are typically captured by the standard \gls{xes} \citep{xes-standard:2015} which defines precisely the input of process mining techniques. This work extends the applicability of process mining towards mining processes also from data that are not directly represented in the \gls{xes} standard. 
 	
 	\item \textbf{Datasets for further research.} During the course of this research a number of datasets have been generated. These datasets are available for further use by researchers who want to replicate these studies or pursue different goals using the same concepts that this thesis provides. 
 	
@@ -435,7 +435,7 @@ This dissertation has led to the publications listed below.\\
 \end{itemize}
 
 
-\noindent The following publications are related to the requirements.
+\noindent The following publications are related to the research questions.
 \begin{itemize}
 	
 \item \textbf{Bala, S.}, Cabanillas, C., Haselböck, A., Havur, G., Mendling, J., Polleres, A., Sperl, S., Steyskal, S.: \textit{A Framework for Safety-Critical Process Management in Engineering Projects}. In: Ceravolo, P. and Rinderle-Ma, S. (eds.) Data-Driven Process Discovery and Analysis- SIMPDA. pp. 1--27. Springer (2015). \cite[]{Bala2017} -- Related to \textbf{RQ1} \& \textbf{RQ3}.
